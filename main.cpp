@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
-#include "animal.h"
+#include "animal.h" 
 
 int main(int argc, char *argv[])
 {
