@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include "animal.h" 
 
@@ -6,42 +5,26 @@ using namespace std;
 
 //Base Class
 //general constructors
-Animal::Animal(const string & aName, list<string> & PAttribute, list<string> & NPAttribute, const int anId){
-	cout << "Animal(string&, list<string>&, list<string>&, int) " << this << endl;
+Animal::Animal(const string & aName, list<string> & PAttribute, list<string> & NPAttribute){
 	name = aName;
 	PAttr = PAttribute;
 	NPAttr = NPAttribute;
-	id = anID;
 }
-Animal::Animal(const string & aName, const int anId){
-	cout << "Animal(string&, int) " << this << endl;
+Animal::Animal(const string & aName){
 	name = aName;
-	PAttr = list<string> x;
-	NPAttr = list<string> y;
-	id = anID;
+    PAttr = list<string> {};
+    NPAttr = list<string> {};
 }
 
 //destructor
-Animal::~Animal(){
-	cout << "~Animal(void) "  << this << endl;
-}
+Animal::~Animal(){}
 
-int Animal::getAnimalID(){return id;}
-int Animal::getAnimalName(){return name;}
+string Animal::getAnimalName(){return name;}
 
-list<string> getPAttr() { return PAList; };
-void addPAttr(string attribute) { PAList.push_back(attribute); };
-void remPAttr(string attribute) { PAList.remove(attribute); };
+list<string> Animal::getPAttr() { return PAttr; }
+void Animal::addPAttr(string attribute) { PAttr.push_back(attribute); }
+void Animal::remPAttr(string attribute) { PAttr.remove(attribute); }
 
-list<string> getNPAttr() {return NPAList};
-void addNPAttr(string attribute) { NPAList.push_back(attribute); };
-void remNPAttr(string attribute) { NPAList.remove(attribute); };
-
-string Animal::toString()const {
-	return to_string(id) + " " + name;
-}
-
-ostream & operator<<(ostream & out, const Animal & anAnimal){
-	out << anAnimal.toString() << endl;
-	return out;
-}
+list<string> Animal::getNPAttr() {return NPAttr;}
+void Animal::addNPAttr(string attribute) { NPAttr.push_back(attribute); }
+void Animal::remNPAttr(string attribute) { NPAttr.remove(attribute); }
