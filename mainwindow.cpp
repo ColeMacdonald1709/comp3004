@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QSqlError>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -8,12 +9,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     /*conect to database*/
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/home/student/cuACS/cuACS_db.db");
+    QSqlDatabase db = QSqlDatabase::database();
+    db.setDatabaseName("cuACS_db.db");
+    /*show error if not open*/
+    if (!db.open()){
+        db.lastError();
+    }
 
+    db.close();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }

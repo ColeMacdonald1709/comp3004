@@ -20,46 +20,14 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>130</y>
-      <width>83</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>190</y>
-      <width>83</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QFrame" name="frame">
+   <widget class="QTableView" name="tableView">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>831</width>
-      <height>431</height>
+      <width>501</width>
+      <height>501</height>
      </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
     </property>
    </widget>
   </widget>
@@ -72,6 +40,12 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menucuACS">
+    <property name="title">
+     <string>cuACS</string>
+    </property>
+   </widget>
+   <addaction name="menucuACS"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
