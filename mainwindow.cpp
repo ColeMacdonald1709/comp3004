@@ -59,6 +59,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_addAnimalbtn_clicked()
 {
     addNewAnimal addAnimal;
+    addAnimal.uiMain = this;
     addAnimal.setModal(true);
     addAnimal.exec();
 }
@@ -84,5 +85,24 @@ void MainWindow::showAnimals()
             ui->animalView->setItem(i,col+1,table_cell);
             table_cell->setText(PAttr->at(col));
         }
+    }
+}
+void MainWindow::updateAnimals(Animal* newAnimal){
+    QFont boldfont;
+    boldfont.setBold(true);
+    int newRow = ui->animalView->rowCount();
+    ui->animalView->insertRow(newRow);
+    QList<QString>* PAttr = newAnimal->getPAttr();
+
+    QTableWidgetItem* table_cell = new QTableWidgetItem;
+    ui->animalView->setItem(newRow,0,table_cell);
+    table_cell->setText(newAnimal->getAnimalName());
+    table_cell->setFont(boldfont);
+    //add click event to show detailed profile on name
+
+    for(int col=0; col<PAttr->size();col++){
+        table_cell = new QTableWidgetItem;
+        ui->animalView->setItem(newRow,col+1,table_cell);
+        table_cell->setText(PAttr->at(col));
     }
 }

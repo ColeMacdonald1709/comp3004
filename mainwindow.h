@@ -18,6 +18,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void updateAnimals(Animal*);
 
 private slots:
     void on_addAnimalbtn_clicked();

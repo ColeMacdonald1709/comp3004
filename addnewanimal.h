@@ -2,6 +2,10 @@
 #define ADDNEWANIMAL_H
 
 #include <QDialog>
+#include <QString>
+#include <QList>
+#include <QtSql>
+#include "mainwindow.h"
 
 namespace Ui {
 class addNewAnimal;
@@ -14,6 +18,7 @@ class addNewAnimal : public QDialog
 public:
     explicit addNewAnimal(QWidget *parent = 0);
     ~addNewAnimal();
+    MainWindow *uiMain;
 //some problem with these
 private slots:
     void on_cancelbtn_clicked();

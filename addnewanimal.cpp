@@ -1,9 +1,6 @@
-#include <QString>
-#include <QList>
-#include <QtSql>
-#include "mainwindow.h"
 #include "addnewanimal.h"
 #include "ui_addnewanimal.h"
+#include "mainwindow.h"
 
 addNewAnimal::addNewAnimal(QWidget *parent) :
     QDialog(parent),
@@ -63,7 +60,7 @@ void addNewAnimal::on_addAnimalbtn_clicked()
 {
 
     QString Name;
-    QList<QString> PAList;
+    QList<QString>* PAList = new QList<QString>();
     //QList<QString> NPAList;
 
     //name
@@ -71,68 +68,69 @@ void addNewAnimal::on_addAnimalbtn_clicked()
     //add values to PALIST
     //species
     if (ui->radDog->isChecked()){
-        PAList.append("Dog");
+        PAList->append("Dog");
     } else if (ui->radCat->isChecked()){
-        PAList.append("Cat");
+        PAList->append("Cat");
     } else if (ui->radRabbit->isChecked()){
-        PAList.append("Rabbit");
+        PAList->append("Rabbit");
     } else if (ui->radBird->isChecked()){
-        PAList.append("Bird");
+        PAList->append("Bird");
     } else if (ui->radFish->isChecked()){
-        PAList.append("Fish");
+        PAList->append("Fish");
     } else {
-        PAList.append("NULL");
+        PAList->append("NULL");
     };
     //breed
-    PAList.append(ui->txtBreed->toPlainText());
+    PAList->append(ui->txtBreed->toPlainText());
     //sex
     if (ui->radMale->isChecked()){
-        PAList.append("Male");
+        PAList->append("Male");
     } else if (ui->radFemale->isChecked()) {
-        PAList.append("Female");
+        PAList->append("Female");
     } else {
-        PAList.append("NULL");
+        PAList->append("NULL");
     };
     //age
-    PAList.append(ui->txtAge->toPlainText());
+    PAList->append(ui->txtAge->toPlainText());
     //size
-    PAList.append(ui->txtSize->toPlainText());
+    PAList->append(ui->txtSize->toPlainText());
     //color
-    PAList.append(ui->txtColor->toPlainText());
+    PAList->append(ui->txtColor->toPlainText());
     //neutered
     if (ui->radYesN->isChecked()){
-        PAList.append("Yes");
+        PAList->append("Yes");
     } else if (ui->radNoN->isChecked()) {
-        PAList.append("No");
+        PAList->append("No");
     } else {
-        PAList.append("NULL");
+        PAList->append("NULL");
     };
     //hypo
     if (ui->radYesH->isChecked()){
-        PAList.append("Yes");
+        PAList->append("Yes");
     } else if (ui->radNoH->isChecked()) {
-        PAList.append("No");
+        PAList->append("No");
     } else {
-        PAList.append("NULL");
+        PAList->append("NULL");
     };
     //declawed
     if (ui->radYesD->isChecked()){
-        PAList.append("Yes");
+        PAList->append("Yes");
     } else if (ui->radNoD->isChecked()) {
-        PAList.append("No");
+        PAList->append("No");
     } else {
-        PAList.append("NULL");
+        PAList->append("NULL");
     };
     //moulting
     if (ui->radYesM->isChecked()){
-        PAList.append("Yes");
+        PAList->append("Yes");
     } else if (ui->radNoM->isChecked()) {
-        PAList.append("No");
+        PAList->append("No");
     } else {
-        PAList.append("NULL");
+        PAList->append("NULL");
     };
 
     //add values to NPAList
+    QList<QString>* NPAList = new QList<QString>();
     //nothing yet
 
     //open database
@@ -164,16 +162,16 @@ void addNewAnimal::on_addAnimalbtn_clicked()
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?);"
                 );
     qry.addBindValue(Name);
-    qry.addBindValue(PAList.value(0));
-    qry.addBindValue(PAList.value(1));
-    qry.addBindValue(PAList.value(2));
-    qry.addBindValue(PAList.value(3));
-    qry.addBindValue(PAList.value(4));
-    qry.addBindValue(PAList.value(5));
-    qry.addBindValue(PAList.value(6));
-    qry.addBindValue(PAList.value(7));
-    qry.addBindValue(PAList.value(8));
-    qry.addBindValue(PAList.value(9));
+    qry.addBindValue(PAList->value(0));
+    qry.addBindValue(PAList->value(1));
+    qry.addBindValue(PAList->value(2));
+    qry.addBindValue(PAList->value(3));
+    qry.addBindValue(PAList->value(4));
+    qry.addBindValue(PAList->value(5));
+    qry.addBindValue(PAList->value(6));
+    qry.addBindValue(PAList->value(7));
+    qry.addBindValue(PAList->value(8));
+    qry.addBindValue(PAList->value(9));
 
     if(!qry.exec())
     {
@@ -182,12 +180,12 @@ void addNewAnimal::on_addAnimalbtn_clicked()
 
     //close db
     AnimalDB.close();
+    //create new animal?
+    Animal* newAnimal = new Animal(Name, PAList, NPAList);
 
     //mainwindow.showAnimals();
+    uiMain->updateAnimals(newAnimal);
     this->close();
-
-    //create animal?
-    //Animal(Name, PAList, NPAList);
 }
 
 
