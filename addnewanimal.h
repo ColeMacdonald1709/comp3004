@@ -16,15 +16,8 @@ public:
     ~addNewAnimal();
 //some problem with these
 private slots:
-    /*
-    void on_radDog_clicked(bool checked);
-    void on_radCat_clicked(bool checked);
-    void on_radRabbit_clicked(bool checked);
-    void on_radBird_clicked(bool checked);
-    void on_radFish_clicked(bool checked);
-    */
-
     void on_cancelbtn_clicked();
+    void on_addAnimalbtn_clicked();
 
 private:
     Ui::addNewAnimal *ui;
