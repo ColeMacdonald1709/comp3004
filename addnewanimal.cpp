@@ -22,7 +22,7 @@ addNewAnimal::addNewAnimal(QWidget *parent) :
     }
 
     QSqlQuery * qry = new QSqlQuery();
-    qry->prepare("select Attribute from NP-Attr-List");
+    qry->prepare("select Attribute from NP_Attr_List");
     qry->exec();
 
     model->setQuery(*qry);
