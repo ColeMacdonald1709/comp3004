@@ -14,7 +14,7 @@ addNewAnimal::addNewAnimal(QWidget *parent) :
 
     //open connection to db
     NPADB = QSqlDatabase::database();
-    NPADB.setDatabaseName("/home/student/comp3004/cuACS_db.db");
+    NPADB.setDatabaseName("/home/student/Documents/comp3004/cuACS_db.db");
     if(!NPADB.open()) {
         qDebug()<<("Failed to open database");
     } else {
