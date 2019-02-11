@@ -1,30 +1,32 @@
-#include <string>
-#include "animal.h" 
-
-using namespace std;
+#include "animal.h"
 
 //Base Class
 //general constructors
-Animal::Animal(const string & aName, list<string> & PAttribute, list<string> & NPAttribute){
-	name = aName;
-	PAttr = PAttribute;
-	NPAttr = NPAttribute;
+Animal::Animal(const QString & aName, QList<QString>* PAttribute, QList<QString>* NPAttribute){
+    name = aName;
+    PAttr = PAttribute;
+    NPAttr = NPAttribute;
 }
-Animal::Animal(const string & aName){
-	name = aName;
-    PAttr = list<string> {};
-    NPAttr = list<string> {};
+Animal::Animal(const QString & aName){
+    name = aName;
+    PAttr = new QList<QString>();
+    NPAttr = new QList<QString>();
 }
 
 //destructor
-Animal::~Animal(){}
+Animal::~Animal(){
+    delete PAttr;
+    delete NPAttr;
+}
 
-string Animal::getAnimalName(){return name;}
+QString Animal::getAnimalName(){return name;}
 
-list<string> Animal::getPAttr() { return PAttr; }
-void Animal::addPAttr(string attribute) { PAttr.push_back(attribute); }
-void Animal::remPAttr(string attribute) { PAttr.remove(attribute); }
+void Animal::viewProfile(){}
 
-list<string> Animal::getNPAttr() {return NPAttr;}
-void Animal::addNPAttr(string attribute) { NPAttr.push_back(attribute); }
-void Animal::remNPAttr(string attribute) { NPAttr.remove(attribute); }
+QList<QString>* Animal::getPAttr() { return PAttr; }
+void Animal::addPAttr(QString attribute) { PAttr->append(attribute); }
+void Animal::remPAttr(QString attribute) { PAttr->removeAt(PAttr->indexOf(attribute)); }
+
+QList<QString>* Animal::getNPAttr() {return NPAttr;}
+void Animal::addNPAttr(QString attribute) { NPAttr->append(attribute); }
+void Animal::remNPAttr(QString attribute) { NPAttr->removeAt(NPAttr->indexOf(attribute)); }

@@ -9,24 +9,51 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    /*conect to database*/
-    QSqlDatabase db = QSqlDatabase::database();
-    db.setDatabaseName("cuACS_db.db");
-    /*show error if not open*/
-    if (!db.open()){
-        qDebug()<<("Failed to open database");
-    } else {
-        qDebug()<<("Connected to database");
+//load up animals and clients
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("/home/student/comp3004/cuACS_db.db");
+    db.open();
+    QSqlQuery animalqry("select * from Animals");
+    while(animalqry.next()){
+        QString name = animalqry.value("Name").toString();
+//add physical attributes
+        QList<QString>* PAttr = new QList<QString>();
+        QString species = animalqry.value("Species").toString();
+        PAttr->append(species);
+        QString breed = animalqry.value("Breed").toString();
+        PAttr->append(breed);
+        QString sex = animalqry.value("Sex").toString();
+        PAttr->append(sex);
+        QString age = animalqry.value("Age").toString();
+        PAttr->append(age);
+        QString size = animalqry.value("Size").toString();
+        PAttr->append(size);
+        QString color = animalqry.value("Color").toString();
+        PAttr->append(color);
+        QString spayed = animalqry.value("Spayed").toString();
+        PAttr->append(spayed);
+        QString declawed = animalqry.value("Declawed").toString();
+        PAttr->append(declawed);
+        QString hypo = animalqry.value("Hypoallergenic").toString();
+        PAttr->append(hypo);
+        QString moulting = animalqry.value("Moulting").toString();
+        PAttr->append(moulting);
+//add non-physical attributes
+        QList<QString>* NPAttr = new QList<QString>();
+        Animal* newAnimal = new Animal(name,PAttr,NPAttr);
+//add animal to dynamic storage
+        animals.append(newAnimal);
     }
-
     db.close();
+    showAnimals();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-
+    for(int i=0;i<animals.size();i++){
+        delete animals.at(i);
+    }
 }
 
 void MainWindow::on_addAnimalbtn_clicked()
@@ -36,32 +63,26 @@ void MainWindow::on_addAnimalbtn_clicked()
     addAnimal.exec();
 }
 
-void MainWindow::on_viewAnimalsbtn_clicked()
+void MainWindow::showAnimals()
 {
-    //open database and load in contents into main list box
-    QSqlDatabase animalDB;
-    QSqlQueryModel * model = new QSqlQueryModel();
+//show all animals
+    QFont boldfont;
+    boldfont.setBold(true);
+    for(int i=0;i<animals.size();i++){
+        ui->animalView->insertRow(i);
+        Animal* curr = animals.at(i);
+        QList<QString>* PAttr = curr->getPAttr();
 
-    //open connection to db
-    animalDB = QSqlDatabase::database();
-    animalDB.setDatabaseName("cuACS_db.db");
-    if(!animalDB.open()) {
-        qDebug()<<("Failed to open database");
-    } else {
-        qDebug()<<("Connected to database");
+        QTableWidgetItem* table_cell = new QTableWidgetItem;
+        ui->animalView->setItem(i,0,table_cell);
+        table_cell->setText(curr->getAnimalName());
+        table_cell->setFont(boldfont);
+        //add click event to show detailed profile on name
+
+        for(int col=0; col<PAttr->size();col++){
+            table_cell = new QTableWidgetItem;
+            ui->animalView->setItem(i,col+1,table_cell);
+            table_cell->setText(PAttr->at(col));
+        }
     }
-
-    QSqlQuery * qry = new QSqlQuery();
-    qry->prepare("select * from Animals");
-    qry->exec();
-
-    model->setQuery(*qry);
-    ui->tblAnimals->setModel(model);
-
-    //close connection
-    animalDB.close();
-
-    qDebug() <<(model->rowCount());
-
-
 }
