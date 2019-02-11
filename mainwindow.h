@@ -18,6 +18,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_addAnimalbtn_clicked();
+
+    void on_viewAnimalsbtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -26,11 +26,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     mainwindow.cpp \
     animal.cpp \
-    main.cpp
+    main.cpp \
+    addnewanimal.cpp
 
 HEADERS += \
     mainwindow.h \
-    animal.h
+    animal.h \
+    addnewanimal.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    addnewanimal.ui

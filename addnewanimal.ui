@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addNewAnimal</class>
+ <widget class="QDialog" name="addNewAnimal">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>666</width>
+    <height>383</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QGroupBox" name="animalGB">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>101</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Type of Animal</string>
+   </property>
+   <widget class="QRadioButton" name="radDog">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>106</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Dog</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radCat">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>106</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cat</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radRabbit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>106</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rabbit</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radBird">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>106</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Bird</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radFish">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>106</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Fish</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="NphysAttrGB">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>10</y>
+     <width>301</width>
+     <height>321</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Non-Physical Attributes</string>
+   </property>
+   <widget class="QComboBox" name="NPABox">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>30</y>
+      <width>201</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListView" name="NPAList">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>261</width>
+      <height>241</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="physAttrGB">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>10</y>
+     <width>191</width>
+     <height>321</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Physical Attributes</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <widget class="QTextEdit" name="textEdit_9">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>90</y>
+      <width>124</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txtBreed">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>60</y>
+      <width>124</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txtSize">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>120</y>
+      <width>124</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txtColor">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>150</y>
+      <width>124</width>
+      <height>29</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>64</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Breed:</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>172</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Sex:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radMale">
+       <property name="text">
+        <string>Male</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radFemale">
+       <property name="text">
+        <string>Female</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>31</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Age:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>64</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Size:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>150</y>
+      <width>64</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Color:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>190</y>
+      <width>64</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Neutered</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>220</y>
+      <width>64</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Declawed</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>240</y>
+      <width>71</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hypo allergenic</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>280</y>
+      <width>64</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Moulting</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radYesN">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>190</y>
+      <width>51</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Yes</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">radgroupN</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="radNoN">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>190</y>
+      <width>51</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>No</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">radgroupN</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="radNoD">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>220</y>
+      <width>51</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>No</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">radgroupD</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="radYesD">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>220</y>
+      <width>51</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Yes</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">radgroupD</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="radNoM">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>280</y>
+      <width>51</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>No</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">radgroupM</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="radYesM">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>280</y>
+      <width>51</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Yes</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">radgroupM</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="radNoH">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>250</y>
+      <width>51</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>No</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">radGroupH</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="radYesH">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>250</y>
+      <width>51</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Yes</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">radGroupH</string>
+    </attribute>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>340</y>
+     <width>174</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="addAnimalbtn">
+      <property name="text">
+       <string>Add Animal</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="cancelbtn">
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <zorder>layoutWidget</zorder>
+  <zorder>NphysAttrGB</zorder>
+  <zorder>animalGB</zorder>
+  <zorder>physAttrGB</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="radgroupM"/>
+  <buttongroup name="radgroupN"/>
+  <buttongroup name="radGroupH"/>
+  <buttongroup name="radgroupD"/>
+ </buttongroups>
+</ui>
