@@ -88,6 +88,7 @@ void MainWindow::showAnimals()
     }
 }
 void MainWindow::updateAnimals(Animal* newAnimal){
+    animals.append(newAnimal);
     QFont boldfont;
     boldfont.setBold(true);
     int newRow = ui->animalView->rowCount();

@@ -41,9 +41,6 @@ addNewAnimal::addNewAnimal(QWidget *parent) :
 
     //close connection
     NPADB.close();
-
-    qDebug() <<(model->rowCount());
-
 }
 
 addNewAnimal::~addNewAnimal()
@@ -180,10 +177,11 @@ void addNewAnimal::on_addAnimalbtn_clicked()
 
     //close db
     AnimalDB.close();
-    //create new animal?
+
+    //create new animal
     Animal* newAnimal = new Animal(Name, PAList, NPAList);
 
-    //mainwindow.showAnimals();
+    //show animals and add to dynamic animal list
     uiMain->updateAnimals(newAnimal);
     this->close();
 }
