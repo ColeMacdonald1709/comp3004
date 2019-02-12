@@ -1,19 +1,18 @@
 COMP 3004 Deliverable 1:
 --------------------------------------------------
 To install:
-  Clone repository in "/home/student/Documents":
-    cd /home/student/Documents
-    git clone https://github.com/ColeMacdonald1709/comp3004 comp3004
-      <enter GitHub username>
-      <enter GitHub password>  
-  open directory "/home/student/Documents/comp3004":
-    cd comp3004
+  within the directory that you downloaded the .tar file open a cmd window
+  input:
+  1)tar -xvf file.tar
 
 To build:
+  2)input:
   qmake
+  3)input:
   make
   
 To run: 
+  4)Input:
   ./cuACS
 
 Help:
