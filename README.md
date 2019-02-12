@@ -1,18 +1,25 @@
-COMP 3004 Deliverable 1:
+/**
+COMP3004A/B WIN19 - Project Deliverable 1 - Team R4V3N$
+Dennis Kuipers  101033098
+Cole Macdonald	101013458
+Ian Sloan 		101021039
+**/
 --------------------------------------------------
 To install:
-  within the directory that you downloaded the .tar file open a cmd window
-  input:
-  1)tar -xvf file.tar
+  within the directory that you downloaded the cuACS.tar file open a cmd window
+  1)Input:
+  tar -xvf cuACS.tar
+  2)Input:
+  cd comp3004
 
 To build:
-  2)input:
-  qmake
   3)input:
+  qmake
+  4)input:
   make
   
 To run: 
-  4)Input:
+  5)Input:
   ./cuACS
 
 Help:
