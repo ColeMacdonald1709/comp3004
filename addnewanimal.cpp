@@ -14,7 +14,7 @@ addNewAnimal::addNewAnimal(QWidget *parent) :
 
     //open connection to db
     NPADB = QSqlDatabase::database();
-    NPADB.setDatabaseName("/home/student/Documents/comp3004/cuACS_db.db");
+    NPADB.setDatabaseName("./cuACS_db.db");
     if(!NPADB.open()) {
         qDebug()<<("Failed to open database");
     } else {
@@ -135,7 +135,7 @@ void addNewAnimal::on_addAnimalbtn_clicked()
 
     //open connection to db
     AnimalDB = QSqlDatabase::database();
-    AnimalDB.setDatabaseName("/home/student/Documents/comp3004/cuACS_db.db");
+    AnimalDB.setDatabaseName("./cuACS_db.db");
     if(!AnimalDB.open()) {
         qDebug()<<("Failed to open database");
     } else {
@@ -185,10 +185,3 @@ void addNewAnimal::on_addAnimalbtn_clicked()
     uiMain->updateAnimals(newAnimal);
     this->close();
 }
-
-
-
-
-
-
-

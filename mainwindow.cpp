@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 //load up animals and clients
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/home/student/Documents/comp3004/cuACS_db.db");
+    db.setDatabaseName("./cuACS_db.db");
     db.open();
     QSqlQuery animalqry("select * from Animals");
     while(animalqry.next()){
