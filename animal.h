@@ -41,12 +41,6 @@ string species;
 string breed;
 int age;
 string gender;
-string size;
-string color;
-string neutered;
-string declawed;
-string hypoallergenic;
-string moulting;
 */
 
 class Dog: public Animal {

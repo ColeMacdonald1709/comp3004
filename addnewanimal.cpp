@@ -6,47 +6,13 @@ Ian Sloan 		101021039
 **/
 #include "addnewanimal.h"
 #include "ui_addnewanimal.h"
-#include "mainwindow.h"
+#include "manageanimal.h"
 
 addNewAnimal::addNewAnimal(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::addNewAnimal)
 {
     ui->setupUi(this);
-
-    //open database and load in contents into main list box
-    QSqlDatabase NPADB;
-    QSqlQueryModel * model = new QSqlQueryModel();
-
-    //open connection to db
-    NPADB = QSqlDatabase::database();
-    NPADB.setDatabaseName("./cuACS_db.db");
-    if(!NPADB.open()) {
-        qDebug()<<("Failed to open database");
-    } else {
-        qDebug()<<("Connected to database");
-    }
-
-    QSqlQuery * qry = new QSqlQuery();
-    qry->prepare("select Attribute from NP_Attr_List");
-    qry->exec();
-
-    model->setQuery(*qry);
-    ui->NPABox_1->setModel(model);
-    ui->NPABox_2->setModel(model);
-    ui->NPABox_3->setModel(model);
-    ui->NPABox_4->setModel(model);
-    ui->NPABox_5->setModel(model);
-    ui->NPABox_6->setModel(model);
-    ui->NPABox_7->setModel(model);
-    ui->NPABox_8->setModel(model);
-    ui->NPABox_9->setModel(model);
-    ui->NPABox_10->setModel(model);
-    ui->NPABox_11->setModel(model);
-    ui->NPABox_12->setModel(model);
-
-    //close connection
-    NPADB.close();
 }
 
 addNewAnimal::~addNewAnimal()
@@ -94,43 +60,7 @@ void addNewAnimal::on_addAnimalbtn_clicked()
         PAList->append("NULL");
     };
     //age
-    PAList->append(ui->txtAge->toPlainText());
-    //size
-    PAList->append(ui->txtSize->toPlainText());
-    //color
-    PAList->append(ui->txtColor->toPlainText());
-    //neutered
-    if (ui->radYesN->isChecked()){
-        PAList->append("Yes");
-    } else if (ui->radNoN->isChecked()) {
-        PAList->append("No");
-    } else {
-        PAList->append("NULL");
-    };
-    //hypo
-    if (ui->radYesH->isChecked()){
-        PAList->append("Yes");
-    } else if (ui->radNoH->isChecked()) {
-        PAList->append("No");
-    } else {
-        PAList->append("NULL");
-    };
-    //declawed
-    if (ui->radYesD->isChecked()){
-        PAList->append("Yes");
-    } else if (ui->radNoD->isChecked()) {
-        PAList->append("No");
-    } else {
-        PAList->append("NULL");
-    };
-    //moulting
-    if (ui->radYesM->isChecked()){
-        PAList->append("Yes");
-    } else if (ui->radNoM->isChecked()) {
-        PAList->append("No");
-    } else {
-        PAList->append("NULL");
-    };
+    PAList->append(ui->ageComboBox->currentText().toStdString().c_str());
 
     //add values to NPAList
     QList<QString>* NPAList = new QList<QString>();
@@ -150,35 +80,23 @@ void addNewAnimal::on_addAnimalbtn_clicked()
 
     //set up query
     QSqlQuery qry;
-    qry.prepare("INSERT INTO Animals ("
-                "Name,"
-                "Species,"
-                "Breed,"
-                "Sex,"
-                "Age,"
-                "Size,"
-                "Color,"
-                "Spayed,"
-                "Declawed,"
-                "Hypoallergenic,"
-                "Moulting)"
-                "VALUES (?,?,?,?,?,?,?,?,?,?,?);"
-                );
+    qry.prepare("INSERT INTO Animals (Name, Species, Breed, Sex, Age)"
+                "VALUES (?,?,?,?,?)");
+    //name
     qry.addBindValue(Name);
+    //species
     qry.addBindValue(PAList->value(0));
+    //breed
     qry.addBindValue(PAList->value(1));
+    //sex
     qry.addBindValue(PAList->value(2));
+    //age
     qry.addBindValue(PAList->value(3));
-    qry.addBindValue(PAList->value(4));
-    qry.addBindValue(PAList->value(5));
-    qry.addBindValue(PAList->value(6));
-    qry.addBindValue(PAList->value(7));
-    qry.addBindValue(PAList->value(8));
-    qry.addBindValue(PAList->value(9));
 
     if(!qry.exec())
     {
         qDebug() <<("Error adding values to DB");
+        qDebug() << qry.lastError();
     }
 
     //close db

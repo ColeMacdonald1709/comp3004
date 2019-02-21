@@ -4,8 +4,8 @@ Dennis Kuipers  101033098
 Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MANAGEANIMAL_H
+#define MANAGEANIMAL_H
 
 #include <QMainWindow>
 #include <QtSql>
@@ -14,16 +14,17 @@ Ian Sloan 		101021039
 #include "animal.h"
 
 namespace Ui {
-class MainWindow;
+class manageAnimal;
 }
 
-class MainWindow : public QMainWindow
+class manageAnimal : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit manageAnimal(QWidget *parent = 0);
+    ~manageAnimal();
+    void loadAnimals();
     void updateAnimals(Animal*);
 
 private slots:
@@ -31,8 +32,8 @@ private slots:
     void showAnimals();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::manageAnimal *ui;
     QList<Animal*> animals;
 };
 
-#endif // MAINWINDOW_H
+#endif // MANAGEANIMAL_H
