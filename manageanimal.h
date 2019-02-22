@@ -31,9 +31,12 @@ private slots:
     void on_addAnimalbtn_clicked();
     void showAnimals();
 
+    void on_animalView_activated(const QModelIndex &index);
+
 private:
     Ui::manageAnimal *ui;
     QList<Animal*> animals;
+    QSqlDatabase db;
 };
 
 #endif // MANAGEANIMAL_H

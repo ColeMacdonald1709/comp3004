@@ -64,11 +64,31 @@ void addNewAnimal::on_addAnimalbtn_clicked()
 
     //add values to NPAList
     QList<QString>* NPAList = new QList<QString>();
-    //nothing yet
-
-    //open database
-    QSqlDatabase AnimalDB;
-
+    QString val;
+    val = QString::number(ui->NPAttr1spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr2spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr3spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr4spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr5spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr6spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr7spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr8spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr9spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr10spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr11spinBox->value());
+    NPAList->append(val);
+    val = QString::number(ui->NPAttr12spinBox->value());
+    NPAList->append(val);
     //open connection to db
     AnimalDB = QSqlDatabase::database();
     AnimalDB.setDatabaseName("./cuACS_db.db");
@@ -80,18 +100,22 @@ void addNewAnimal::on_addAnimalbtn_clicked()
 
     //set up query
     QSqlQuery qry;
-    qry.prepare("INSERT INTO Animals (Name, Species, Breed, Sex, Age)"
-                "VALUES (?,?,?,?,?)");
+    qry.prepare("INSERT INTO Animals (Name, Species, Breed, Sex, Age, NPA1, NPA2, NPA3, NPA4, NPA5, NPA6, NPA7, NPA8, NPA9, NPA10, NPA11, NPA12)"
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     //name
     qry.addBindValue(Name);
-    //species
-    qry.addBindValue(PAList->value(0));
-    //breed
-    qry.addBindValue(PAList->value(1));
-    //sex
-    qry.addBindValue(PAList->value(2));
-    //age
-    qry.addBindValue(PAList->value(3));
+    //insert PAs - Species,Breed,Sex,Age
+    for (int i=0; i<4; i++){
+        qry.addBindValue(PAList->value(i));
+        qDebug() <<("addBinValue : " + PAList->value(i));
+    }
+
+    //insert NPAs 1-12
+    for (int i=0;i<12;i++){
+        qry.addBindValue(NPAList->value(i));
+        qDebug() <<("addBinValue : " + NPAList->value(i));
+    }
+
 
     if(!qry.exec())
     {

@@ -32,6 +32,7 @@ private slots:
 
 private:
     Ui::addNewAnimal *ui;
+    QSqlDatabase AnimalDB;
 };
 
 #endif // ADDNEWANIMAL_H

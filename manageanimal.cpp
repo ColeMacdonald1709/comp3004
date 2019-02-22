@@ -15,6 +15,8 @@ manageAnimal::manageAnimal(QWidget *parent) :
     ui(new Ui::manageAnimal)
 {
     ui->setupUi(this);
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("./cuACS_db.db");
     loadAnimals();
     showAnimals();
 }
@@ -81,8 +83,11 @@ void manageAnimal::updateAnimals(Animal* newAnimal){
 }
 void manageAnimal::loadAnimals(){
     //load up animals and clients
-        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("./cuACS_db.db");
+        if (!db.open())
+        {
+            qDebug()<<"Failed to open cuACS database";
+            return;
+        }
         db.open();
         QSqlQuery animalqry("select * from Animals");
         while(animalqry.next()){
@@ -93,15 +98,83 @@ void manageAnimal::loadAnimals(){
             PAttr->append(species);
             QString breed = animalqry.value("Breed").toString();
             PAttr->append(breed);
-            QString sex = animalqry.value("Sex").toString();
+        /*    QString sex = animalqry.value("Sex").toString();
             PAttr->append(sex);
             QString age = animalqry.value("Age").toString();
             PAttr->append(age);
+            */
     //add non-physical attributes
             QList<QString>* NPAttr = new QList<QString>();
+
+            QString npa1 = animalqry.value("NPA1").toString();
+            NPAttr->append(npa1);
+            QString npa2 = animalqry.value("NPA2").toString();
+            NPAttr->append(npa2);
+            QString npa3 = animalqry.value("NPA3").toString();
+            NPAttr->append(npa3);
+            QString npa4 = animalqry.value("NPA4").toString();
+            NPAttr->append(npa4);
+            QString npa5 = animalqry.value("NPA5").toString();
+            NPAttr->append(npa5);
+            QString npa6 = animalqry.value("NPA6").toString();
+            NPAttr->append(npa6);
+            QString npa7 = animalqry.value("NPA7").toString();
+            NPAttr->append(npa7);
+            QString npa8 = animalqry.value("NPA8").toString();
+            NPAttr->append(npa8);
+            QString npa9 = animalqry.value("NPA9").toString();
+            NPAttr->append(npa9);
+            QString npa10 = animalqry.value("NPA10").toString();
+            NPAttr->append(npa10);
+            QString npa11 = animalqry.value("NPA11").toString();
+            NPAttr->append(npa11);
+            QString npa12 = animalqry.value("NPA12").toString();
+            NPAttr->append(npa12);
+
             Animal* newAnimal = new Animal(name,PAttr,NPAttr);
     //add animal to dynamic storage
             animals.append(newAnimal);
         }
         db.close();
+}
+
+void manageAnimal::on_animalView_activated(const QModelIndex &index)
+{
+    QString animal = ui->animalView->model()->data(index).toString();
+
+    if (!db.open())
+    {
+        qDebug()<<"Failed to open cuACS database";
+        return;
+    }
+    db.open();
+    QSqlQuery animalqry;
+    animalqry.prepare("select * from Animals where Name ='"+animal+"' OR Species = '"+animal+"' OR Breed = '"+animal+"' ");
+
+    if(animalqry.exec())
+    {
+        while(animalqry.next())
+        {
+            ui->txt_Name->setText(animalqry.value(0).toString());
+            ui->txt_Species->setText(animalqry.value(1).toString());
+            ui->txt_Breed->setText(animalqry.value(2).toString());
+            ui->txt_Sex->setText(animalqry.value(3).toString());
+            ui->txt_Age->setText(animalqry.value(4).toString());
+            ui->txt_NPA1->setText(animalqry.value(5).toString());
+            ui->txt_NPA2->setText(animalqry.value(6).toString());
+            ui->txt_NPA3->setText(animalqry.value(7).toString());
+            ui->txt_NPA4->setText(animalqry.value(8).toString());
+            ui->txt_NPA5->setText(animalqry.value(9).toString());
+            ui->txt_NPA6->setText(animalqry.value(10).toString());
+            ui->txt_NPA7->setText(animalqry.value(11).toString());
+            ui->txt_NPA8->setText(animalqry.value(12).toString());
+            ui->txt_NPA9->setText(animalqry.value(13).toString());
+            ui->txt_NPA10->setText(animalqry.value(14).toString());
+            ui->txt_NPA11->setText(animalqry.value(15).toString());
+            ui->txt_NPA12->setText(animalqry.value(16).toString());
+        }
+
+        db.close();
+    }
+
 }
