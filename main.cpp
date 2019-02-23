@@ -4,14 +4,14 @@ Dennis Kuipers  101033098
 Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
-#include "manageanimal.h"
+#include "login.h"
 #include <QApplication>
 
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    manageAnimal w;
+    Login w;
     w.show();
 
     return a.exec();

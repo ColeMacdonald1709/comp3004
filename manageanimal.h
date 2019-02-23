@@ -7,23 +7,25 @@ Ian Sloan 		101021039
 #ifndef MANAGEANIMAL_H
 #define MANAGEANIMAL_H
 
-#include <QMainWindow>
+#include <QDialog>
 #include <QtSql>
 #include <QtDebug>
 #include <QFileInfo>
 #include "animal.h"
+#include "login.h"
 
 namespace Ui {
 class manageAnimal;
 }
 
-class manageAnimal : public QMainWindow
+class manageAnimal : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit manageAnimal(QWidget *parent = 0);
+    explicit manageAnimal(int user, QString username = "Staff", QWidget *parent = 0);
     ~manageAnimal();
+    Login *uiMain;
     void loadAnimals();
     void updateAnimals(Animal*);
 
@@ -32,6 +34,8 @@ private slots:
     void showAnimals();
 
     void on_animalView_activated(const QModelIndex &index);
+
+    void on_btnLogout_clicked();
 
 private:
     Ui::manageAnimal *ui;

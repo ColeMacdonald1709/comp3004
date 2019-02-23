@@ -7,11 +7,12 @@ Ian Sloan 		101021039
 #include "manageanimal.h"
 #include "ui_manageanimal.h"
 #include <QSqlError>
+#include <QString>
 #include "addnewanimal.h"
 #include "ui_addnewanimal.h"
 
-manageAnimal::manageAnimal(QWidget *parent) :
-    QMainWindow(parent),
+manageAnimal::manageAnimal(int user, QString username, QWidget *parent) :
+    QDialog(parent),
     ui(new Ui::manageAnimal)
 {
     ui->setupUi(this);
@@ -19,6 +20,18 @@ manageAnimal::manageAnimal(QWidget *parent) :
     db.setDatabaseName("./cuACS_db.db");
     loadAnimals();
     showAnimals();
+
+    if (user==0) {
+        qDebug()<<"Client user "+username+" logged in.";
+        ui->lblWelcome->setText("Welcome "+username);
+        ui->addAnimalbtn->hide();
+    } else if (user==1) {
+        qDebug()<<"Staff user logged in.";
+        ui->lblWelcome->setText("Welcome Staff User");
+        ui->addAnimalbtn->show();
+    } else {
+        qDebug()<<"User failed to log in.";
+    }
 }
 
 manageAnimal::~manageAnimal()
@@ -177,4 +190,10 @@ void manageAnimal::on_animalView_activated(const QModelIndex &index)
         db.close();
     }
 
+}
+
+void manageAnimal::on_btnLogout_clicked()
+{
+    db.close();
+    this->close();
 }
