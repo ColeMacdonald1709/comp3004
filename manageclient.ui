@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>manageclient</class>
+ <widget class="QDialog" name="manageclient">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>781</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTableWidget" name="clientlist">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="tabKeyNavigation">
+       <bool>true</bool>
+      </property>
+      <property name="showDropIndicator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="dragDropOverwriteMode">
+       <bool>false</bool>
+      </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>120</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>28</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Phone</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="clientdetails">
+      <property name="title">
+       <string>Client details</string>
+      </property>
+      <widget class="QWidget" name="horizontalLayoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>371</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="namelayout">
+        <item>
+         <widget class="QLabel" name="name">
+          <property name="text">
+           <string>Name</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="clientname">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="horizontalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>371</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="phonelayout">
+        <item>
+         <widget class="QLabel" name="phone">
+          <property name="text">
+           <string>Phone</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="clientphone">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="horizontalLayoutWidget_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>371</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="emaillayout">
+        <item>
+         <widget class="QLabel" name="email">
+          <property name="text">
+           <string>Email</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="clientemail">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="horizontalLayoutWidget_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>371</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="preferenceslayout">
+        <item>
+         <widget class="QLabel" name="prefs">
+          <property name="text">
+           <string>Preferences</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="clientprefs">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="horizontalLayoutWidget_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>371</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="NPAlayout">
+        <item>
+         <layout class="QVBoxLayout" name="NPAleftlayout">
+          <item>
+           <layout class="QHBoxLayout" name="NPA1">
+            <item>
+             <widget class="QLabel" name="NPA1label">
+              <property name="text">
+               <string>NPA1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA1text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="NPA2">
+            <item>
+             <widget class="QLabel" name="NPA2label">
+              <property name="text">
+               <string>NPA2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA2text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="NPA3">
+            <item>
+             <widget class="QLabel" name="NPA3label">
+              <property name="text">
+               <string>NPA3</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA3text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="NPA4">
+            <item>
+             <widget class="QLabel" name="NPA4label">
+              <property name="text">
+               <string>NPA4</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA4text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="NPA5">
+            <item>
+             <widget class="QLabel" name="NPA5label">
+              <property name="text">
+               <string>NPA5</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA5text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="NPA6">
+            <item>
+             <widget class="QLabel" name="NPA6label">
+              <property name="text">
+               <string>NPA6</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA6text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="NPArightlayout">
+          <item>
+           <layout class="QHBoxLayout" name="NPA7">
+            <item>
+             <widget class="QLabel" name="NPA7label">
+              <property name="text">
+               <string>NPA7</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA7text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="NPA8">
+            <item>
+             <widget class="QLabel" name="NPA8label">
+              <property name="text">
+               <string>NPA8</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA8text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="NPA9">
+            <item>
+             <widget class="QLabel" name="NPA9label">
+              <property name="text">
+               <string>NPA9</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA9text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="NPA10">
+            <item>
+             <widget class="QLabel" name="NPA10label">
+              <property name="text">
+               <string>NPA10</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA10text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="NPA11">
+            <item>
+             <widget class="QLabel" name="NPA11label">
+              <property name="text">
+               <string>NPA11</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA11text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="NPA12">
+            <item>
+             <widget class="QLabel" name="NPA12label">
+              <property name="text">
+               <string>NPA12</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="NPA12text">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

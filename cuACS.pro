@@ -28,15 +28,23 @@ SOURCES += \
     main.cpp \
     addnewanimal.cpp \
     manageanimal.cpp \
-    login.cpp
+    login.cpp \
+    staffportal.cpp \
+    manageclient.cpp \
+    client.cpp
 
 HEADERS += \
     animal.h \
     addnewanimal.h \
     manageanimal.h \
-    login.h
+    login.h \
+    staffportal.h \
+    manageclient.h \
+    client.h
 
 FORMS += \
     addnewanimal.ui \
     manageanimal.ui \
-    login.ui
+    login.ui \
+    staffportal.ui \
+    manageclient.ui

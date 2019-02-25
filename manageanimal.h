@@ -9,8 +9,10 @@ Ian Sloan 		101021039
 
 #include <QDialog>
 #include <QtSql>
+#include <QSqlError>
 #include <QtDebug>
 #include <QFileInfo>
+#include <QString>
 #include "animal.h"
 #include "login.h"
 
@@ -26,15 +28,14 @@ public:
     explicit manageAnimal(int user, QString username = "Staff", QWidget *parent = 0);
     ~manageAnimal();
     Login *uiMain;
-    void loadAnimals();
     void updateAnimals(Animal*);
 
 private slots:
     void on_addAnimalbtn_clicked();
     void showAnimals();
+    void loadAnimals();
 
     void on_animalView_activated(const QModelIndex &index);
-
     void on_btnLogout_clicked();
 
 private:

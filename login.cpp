@@ -5,6 +5,8 @@
 #include "ui_manageanimal.h"
 #include "addnewanimal.h"
 #include "ui_addnewanimal.h"
+#include "ui_portal.h"
+#include "staffportal.h"
 
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
@@ -20,6 +22,7 @@ Login::~Login()
 
 void Login::on_btnClient_clicked()
 {
+    //TODO: verify client in db
     QString username = ui->txtName->toPlainText();
     manageAnimal mngAnimal(0,username);
     mngAnimal.uiMain = this;
@@ -29,8 +32,10 @@ void Login::on_btnClient_clicked()
 
 void Login::on_btnStaff_clicked()
 {
-    manageAnimal mngAnimal(1);
-    mngAnimal.uiMain = this;
-    mngAnimal.setModal(true);
-    mngAnimal.exec();
+    //TODO: verify staff in db
+    //TODO: bring staff to portal to manage clients or manage animals
+    staffPortal portal(this);
+    portal.uiMain = this;
+    portal.setModal(true);
+    portal.exec();
 }

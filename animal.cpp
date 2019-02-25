@@ -27,12 +27,23 @@ Animal::~Animal(){
 
 QString Animal::getAnimalName(){return name;}
 
+//may not be necessary
 void Animal::viewProfile(){}
 
+//TODO: UPDATE FUNCTION TO ALLOW KEY PAIR VALUE
 QList<QString>* Animal::getPAttr() { return PAttr; }
+
+//TODO: UPDATE FUNCTION TO ALLOW KEY PAIR VALUES
 void Animal::addPAttr(QString attribute) { PAttr->append(attribute); }
+
+//TODO: UPDATE FUNCTION TO ALLOW KEY PAIR VALUE
 void Animal::remPAttr(QString attribute) { PAttr->removeAt(PAttr->indexOf(attribute)); }
 
+//TODO: UPDATE FUNCTION TO ALLOW KEY PAIR VALUE
 QList<QString>* Animal::getNPAttr() {return NPAttr;}
+
+//TODO: UPDATE FUNCTION TO ALLOW KEY PAIR VALUE
 void Animal::addNPAttr(QString attribute) { NPAttr->append(attribute); }
+
+//TODO: UPDATE FUNCTION TO ALLOW KEY PAIR VALUE
 void Animal::remNPAttr(QString attribute) { NPAttr->removeAt(NPAttr->indexOf(attribute)); }

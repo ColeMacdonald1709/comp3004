@@ -6,8 +6,6 @@ Ian Sloan 		101021039
 **/
 #include "manageanimal.h"
 #include "ui_manageanimal.h"
-#include <QSqlError>
-#include <QString>
 #include "addnewanimal.h"
 #include "ui_addnewanimal.h"
 
@@ -152,7 +150,7 @@ void manageAnimal::loadAnimals(){
 }
 
 void manageAnimal::on_animalView_activated(const QModelIndex &index)
-{
+{//MAY NEED TO MODIFY TO USE DYNAMIC MEMORY INSTEAD OF DB CALL
     QString animal = ui->animalView->model()->data(index).toString();
 
     if (!db.open())
