@@ -107,13 +107,13 @@ void addNewAnimal::on_addAnimalbtn_clicked()
     //insert PAs - Species,Breed,Sex,Age
     for (int i=0; i<4; i++){
         qry.addBindValue(PAList->value(i));
-        qDebug() <<("addBinValue : " + PAList->value(i));
+        qDebug() <<("addBindValue : " + PAList->value(i));
     }
 
     //insert NPAs 1-12
     for (int i=0;i<12;i++){
         qry.addBindValue(NPAList->value(i));
-        qDebug() <<("addBinValue : " + NPAList->value(i));
+        qDebug() <<("addBindValue : " + NPAList->value(i));
     }
 
 
