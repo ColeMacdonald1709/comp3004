@@ -31,7 +31,8 @@ SOURCES += \
     login.cpp \
     staffportal.cpp \
     manageclient.cpp \
-    client.cpp
+    client.cpp \
+    addnewclient.cpp
 
 HEADERS += \
     animal.h \
@@ -40,11 +41,13 @@ HEADERS += \
     login.h \
     staffportal.h \
     manageclient.h \
-    client.h
+    client.h \
+    addnewclient.h
 
 FORMS += \
     addnewanimal.ui \
     manageanimal.ui \
     login.ui \
     staffportal.ui \
-    manageclient.ui
+    manageclient.ui \
+    addnewclient.ui

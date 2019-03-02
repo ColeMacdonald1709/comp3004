@@ -1,5 +1,6 @@
 #include "manageclient.h"
 #include "ui_manageclient.h"
+#include "addnewclient.h"
 
 manageclient::manageclient(QWidget *parent) :
     QDialog(parent),
@@ -100,7 +101,24 @@ void manageclient::showClients(){
 }
 
 void manageclient::updateClients(Client* newClient){
+    clients.append(newClient);
+    QFont boldfont;
+    boldfont.setBold(true);
+    int newRow = ui->clientlist->rowCount();
+    ui->clientlist->insertRow(newRow);
 
+    QTableWidgetItem* table_cell = new QTableWidgetItem;
+    ui->clientlist->setItem(newRow,0,table_cell);
+    table_cell->setText(newClient->getName());
+    table_cell->setFont(boldfont);
+
+    table_cell = new QTableWidgetItem;
+    ui->clientlist->setItem(newRow,1,table_cell);
+    table_cell->setText(newClient->getPhone());
+
+    table_cell = new QTableWidgetItem;
+    ui->clientlist->setItem(newRow,2,table_cell);
+    table_cell->setText(newClient->getEmail());
 }
 //show detailed profile
 void manageclient::on_clientlist_doubleClicked(const QModelIndex &index)
@@ -111,25 +129,51 @@ void manageclient::on_clientlist_doubleClicked(const QModelIndex &index)
             ui->clientname->setText(clients.at(i)->getName());
             ui->clientphone->setText(clients.at(i)->getPhone());
             ui->clientemail->setText(clients.at(i)->getEmail());
+            if(clients.at(i)->getInfo()->size() > 0 && clients.at(i)->getPrefs()->size() > 0){
+                QString species = clients.at(i)->getInfo()->at(0);
+                QString breed = clients.at(i)->getInfo()->at(1);
+                QString age = clients.at(i)->getInfo()->at(2);
+                QString sex = clients.at(i)->getInfo()->at(3);
+                ui->clientprefs->setText(age + " " + sex + " " + breed + " " + species);
 
-            QString species = clients.at(i)->getInfo()->at(0);
-            QString breed = clients.at(i)->getInfo()->at(1);;
-            QString age = clients.at(i)->getInfo()->at(2);;
-            QString sex = clients.at(i)->getInfo()->at(3);;
-            ui->clientprefs->setText(age + " " + sex + " " + breed + " " + species);
+                ui->NPA1text->setText(clients.at(i)->getPrefs()->at(0));
+                ui->NPA2text->setText(clients.at(i)->getPrefs()->at(1));
+                ui->NPA3text->setText(clients.at(i)->getPrefs()->at(2));
+                ui->NPA4text->setText(clients.at(i)->getPrefs()->at(3));
+                ui->NPA5text->setText(clients.at(i)->getPrefs()->at(4));
+                ui->NPA6text->setText(clients.at(i)->getPrefs()->at(5));
+                ui->NPA7text->setText(clients.at(i)->getPrefs()->at(6));
+                ui->NPA8text->setText(clients.at(i)->getPrefs()->at(7));
+                ui->NPA9text->setText(clients.at(i)->getPrefs()->at(8));
+                ui->NPA10text->setText(clients.at(i)->getPrefs()->at(9));
+                ui->NPA11text->setText(clients.at(i)->getPrefs()->at(10));
+                ui->NPA12text->setText(clients.at(i)->getPrefs()->at(11));
+            }else{
+                ui->clientprefs->setText("");
 
-            ui->NPA1text->setText(clients.at(i)->getPrefs()->at(0));
-            ui->NPA2text->setText(clients.at(i)->getPrefs()->at(1));
-            ui->NPA3text->setText(clients.at(i)->getPrefs()->at(2));
-            ui->NPA4text->setText(clients.at(i)->getPrefs()->at(3));
-            ui->NPA5text->setText(clients.at(i)->getPrefs()->at(4));
-            ui->NPA6text->setText(clients.at(i)->getPrefs()->at(5));
-            ui->NPA7text->setText(clients.at(i)->getPrefs()->at(6));
-            ui->NPA8text->setText(clients.at(i)->getPrefs()->at(7));
-            ui->NPA9text->setText(clients.at(i)->getPrefs()->at(8));
-            ui->NPA10text->setText(clients.at(i)->getPrefs()->at(9));
-            ui->NPA11text->setText(clients.at(i)->getPrefs()->at(10));
-            ui->NPA12text->setText(clients.at(i)->getPrefs()->at(11));
+                ui->NPA1text->setText("");
+                ui->NPA2text->setText("");
+                ui->NPA3text->setText("");
+                ui->NPA4text->setText("");
+                ui->NPA5text->setText("");
+                ui->NPA6text->setText("");
+                ui->NPA7text->setText("");
+                ui->NPA8text->setText("");
+                ui->NPA9text->setText("");
+                ui->NPA10text->setText("");
+                ui->NPA11text->setText("");
+                ui->NPA12text->setText("");
+            }
         }
     }
+}
+
+
+
+void manageclient::on_addclientbutton_clicked()
+{
+    addnewclient addClient;
+    addClient.uiMain = this;
+    addClient.setModal(true);
+    addClient.exec();
 }

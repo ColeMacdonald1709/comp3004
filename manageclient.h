@@ -23,10 +23,10 @@ public:
 
 private slots:
     void loadClients();
-
     void showClients();
-
     void on_clientlist_doubleClicked(const QModelIndex &index);
+
+    void on_addclientbutton_clicked();
 
 private:
     Ui::manageclient *ui;

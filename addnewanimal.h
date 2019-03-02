@@ -25,7 +25,7 @@ public:
     explicit addNewAnimal(QWidget *parent = 0);
     ~addNewAnimal();
     manageAnimal *uiMain;
-//some problem with these
+
 private slots:
     void on_cancelbtn_clicked();
     void on_addAnimalbtn_clicked();
