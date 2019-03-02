@@ -79,7 +79,7 @@
     </rect>
    </property>
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
@@ -362,7 +362,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>intelligence</string>
         </property>
        </widget>
       </item>
@@ -395,7 +395,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>curiosity</string>
         </property>
        </widget>
       </item>
@@ -431,7 +431,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>charisma</string>
         </property>
        </widget>
       </item>
@@ -464,7 +464,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>hygiene</string>
         </property>
        </widget>
       </item>
@@ -497,7 +497,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>palate</string>
         </property>
        </widget>
       </item>
@@ -530,7 +530,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>energetic</string>
         </property>
        </widget>
       </item>
@@ -563,7 +563,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>independance</string>
         </property>
        </widget>
       </item>
@@ -596,7 +596,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>obidience</string>
         </property>
        </widget>
       </item>
@@ -629,7 +629,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>patience</string>
         </property>
        </widget>
       </item>
@@ -662,7 +662,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>playful</string>
         </property>
        </widget>
       </item>
@@ -695,7 +695,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>vocal</string>
         </property>
        </widget>
       </item>
@@ -728,7 +728,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>social</string>
         </property>
        </widget>
       </item>
