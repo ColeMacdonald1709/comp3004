@@ -232,12 +232,15 @@
        <layout class="QHBoxLayout" name="NPAlayout">
         <item>
          <layout class="QVBoxLayout" name="NPAleftlayout">
+          <property name="leftMargin">
+           <number>5</number>
+          </property>
           <item>
            <layout class="QHBoxLayout" name="NPA1">
             <item>
              <widget class="QLabel" name="NPA1label">
               <property name="text">
-               <string>NPA1</string>
+               <string>charisma</string>
               </property>
              </widget>
             </item>
@@ -255,7 +258,7 @@
             <item>
              <widget class="QLabel" name="NPA2label">
               <property name="text">
-               <string>NPA2</string>
+               <string>curiosity</string>
               </property>
              </widget>
             </item>
@@ -273,7 +276,7 @@
             <item>
              <widget class="QLabel" name="NPA3label">
               <property name="text">
-               <string>NPA3</string>
+               <string>energetic</string>
               </property>
              </widget>
             </item>
@@ -291,7 +294,7 @@
             <item>
              <widget class="QLabel" name="NPA4label">
               <property name="text">
-               <string>NPA4</string>
+               <string>hygiene</string>
               </property>
              </widget>
             </item>
@@ -309,7 +312,7 @@
             <item>
              <widget class="QLabel" name="NPA5label">
               <property name="text">
-               <string>NPA5</string>
+               <string>independance</string>
               </property>
              </widget>
             </item>
@@ -327,7 +330,7 @@
             <item>
              <widget class="QLabel" name="NPA6label">
               <property name="text">
-               <string>NPA6</string>
+               <string>intelligence</string>
               </property>
              </widget>
             </item>
@@ -344,12 +347,15 @@
         </item>
         <item>
          <layout class="QVBoxLayout" name="NPArightlayout">
+          <property name="leftMargin">
+           <number>5</number>
+          </property>
           <item>
            <layout class="QHBoxLayout" name="NPA7">
             <item>
              <widget class="QLabel" name="NPA7label">
               <property name="text">
-               <string>NPA7</string>
+               <string>obidience</string>
               </property>
              </widget>
             </item>
@@ -367,7 +373,7 @@
             <item>
              <widget class="QLabel" name="NPA8label">
               <property name="text">
-               <string>NPA8</string>
+               <string>palate</string>
               </property>
              </widget>
             </item>
@@ -385,7 +391,7 @@
             <item>
              <widget class="QLabel" name="NPA9label">
               <property name="text">
-               <string>NPA9</string>
+               <string>patience</string>
               </property>
              </widget>
             </item>
@@ -403,7 +409,7 @@
             <item>
              <widget class="QLabel" name="NPA10label">
               <property name="text">
-               <string>NPA10</string>
+               <string>playful</string>
               </property>
              </widget>
             </item>
@@ -421,7 +427,7 @@
             <item>
              <widget class="QLabel" name="NPA11label">
               <property name="text">
-               <string>NPA11</string>
+               <string>social</string>
               </property>
              </widget>
             </item>
@@ -439,7 +445,7 @@
             <item>
              <widget class="QLabel" name="NPA12label">
               <property name="text">
-               <string>NPA12</string>
+               <string>vocal</string>
               </property>
              </widget>
             </item>
