@@ -53,7 +53,10 @@ void Login::on_btnClient_clicked()
         manageAnimal mngAnimal(0,username);
         mngAnimal.uiMain = this;
         mngAnimal.setModal(true);
+        this->hide();
         mngAnimal.exec();
+        this->show();
+        ui->txtName->clear();
     } else {
         qDebug()<<"Client name not in db.";
         QMessageBox::information(
@@ -73,6 +76,7 @@ void Login::on_btnStaff_clicked()
     portal.uiMain = this;
     portal.setModal(true);
     portal.exec();
+    ui->txtName->clear();
     } else {
         qDebug()<<"Staff login incorrect.";
         QMessageBox::information(

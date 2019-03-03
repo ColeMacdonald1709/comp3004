@@ -25,6 +25,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_staff_logout_clicked();
+
 private:
     Ui::staffPortal *ui;
 };

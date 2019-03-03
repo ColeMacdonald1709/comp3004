@@ -28,6 +28,7 @@ public:
     explicit manageAnimal(int user, QString username = "Staff", QWidget *parent = 0);
     ~manageAnimal();
     Login *uiMain;
+
     void updateAnimals(Animal*);
 
 private slots:
