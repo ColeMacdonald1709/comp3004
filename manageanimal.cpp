@@ -14,8 +14,9 @@ manageAnimal::manageAnimal(int user, QString username, QWidget *parent) :
     ui(new Ui::manageAnimal)
 {
     ui->setupUi(this);
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    db = QSqlDatabase::database();
     db.setDatabaseName("./cuACS_db.db");
+
     loadAnimals();
     showAnimals();
 

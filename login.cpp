@@ -48,7 +48,7 @@ void Login::on_btnClient_clicked()
         }
     }
     db.close();
-
+    db.removeDatabase("QSQLITE");
     if (verified) {
         manageAnimal mngAnimal(0,username);
         mngAnimal.uiMain = this;

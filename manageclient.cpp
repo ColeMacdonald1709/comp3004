@@ -7,7 +7,7 @@ manageclient::manageclient(QWidget *parent) :
     ui(new Ui::manageclient)
 {
     ui->setupUi(this);
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    db = QSqlDatabase::database();
     db.setDatabaseName("./cuACS_db.db");
     loadClients();
     showClients();
