@@ -13,7 +13,9 @@ Client::Client(QString n, QString p, QString e, QList<QString>* info, QList<QStr
     name = n;
     phone = p;
     email = e;
+    //NPA
     personalInfo = info;
+    //animal looking for
     preferences = prefs;
 }
 Client::~Client(){

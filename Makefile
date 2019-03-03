@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = cuACS1.0.0
-DISTDIR = /home/student/comp3004/.tmp/cuACS1.0.0
+DISTDIR = /home/student/Documents/comp3004/.tmp/cuACS1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Gui -lQt5Sql -lQt5Core -lGL -lpthread 
@@ -57,11 +57,13 @@ SOURCES       = animal.cpp \
 		login.cpp \
 		staffportal.cpp \
 		manageclient.cpp \
-		client.cpp moc_addnewanimal.cpp \
+		client.cpp \
+		addnewclient.cpp moc_addnewanimal.cpp \
 		moc_manageanimal.cpp \
 		moc_login.cpp \
 		moc_staffportal.cpp \
-		moc_manageclient.cpp
+		moc_manageclient.cpp \
+		moc_addnewclient.cpp
 OBJECTS       = animal.o \
 		main.o \
 		addnewanimal.o \
@@ -70,11 +72,13 @@ OBJECTS       = animal.o \
 		staffportal.o \
 		manageclient.o \
 		client.o \
+		addnewclient.o \
 		moc_addnewanimal.o \
 		moc_manageanimal.o \
 		moc_login.o \
 		moc_staffportal.o \
-		moc_manageclient.o
+		moc_manageclient.o \
+		moc_addnewclient.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -170,14 +174,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		login.h \
 		staffportal.h \
 		manageclient.h \
-		client.h animal.cpp \
+		client.h \
+		addnewclient.h animal.cpp \
 		main.cpp \
 		addnewanimal.cpp \
 		manageanimal.cpp \
 		login.cpp \
 		staffportal.cpp \
 		manageclient.cpp \
-		client.cpp
+		client.cpp \
+		addnewclient.cpp
 QMAKE_TARGET  = cuACS
 DESTDIR       = 
 TARGET        = cuACS
@@ -186,7 +192,7 @@ TARGET        = cuACS
 first: all
 ####### Build rules
 
-$(TARGET): ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h $(OBJECTS)  
+$(TARGET): ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h ui_addnewclient.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: cuACS.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -393,9 +399,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents animal.h addnewanimal.h manageanimal.h login.h staffportal.h manageclient.h client.h $(DISTDIR)/
-	$(COPY_FILE) --parents animal.cpp main.cpp addnewanimal.cpp manageanimal.cpp login.cpp staffportal.cpp manageclient.cpp client.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents addnewanimal.ui manageanimal.ui login.ui staffportal.ui manageclient.ui $(DISTDIR)/
+	$(COPY_FILE) --parents animal.h addnewanimal.h manageanimal.h login.h staffportal.h manageclient.h client.h addnewclient.h $(DISTDIR)/
+	$(COPY_FILE) --parents animal.cpp main.cpp addnewanimal.cpp manageanimal.cpp login.cpp staffportal.cpp manageclient.cpp client.cpp addnewclient.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents addnewanimal.ui manageanimal.ui login.ui staffportal.ui manageclient.ui addnewclient.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -427,28 +433,28 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_addnewanimal.cpp moc_manageanimal.cpp moc_login.cpp moc_staffportal.cpp moc_manageclient.cpp
+compiler_moc_header_make_all: moc_addnewanimal.cpp moc_manageanimal.cpp moc_login.cpp moc_staffportal.cpp moc_manageclient.cpp moc_addnewclient.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_addnewanimal.cpp moc_manageanimal.cpp moc_login.cpp moc_staffportal.cpp moc_manageclient.cpp
+	-$(DEL_FILE) moc_addnewanimal.cpp moc_manageanimal.cpp moc_login.cpp moc_staffportal.cpp moc_manageclient.cpp moc_addnewclient.cpp
 moc_addnewanimal.cpp: manageanimal.h \
 		animal.h \
 		login.h \
 		addnewanimal.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include addnewanimal.h -o moc_addnewanimal.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/Documents/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include addnewanimal.h -o moc_addnewanimal.cpp
 
 moc_manageanimal.cpp: animal.h \
 		login.h \
 		manageanimal.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include manageanimal.h -o moc_manageanimal.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/Documents/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include manageanimal.h -o moc_manageanimal.cpp
 
 moc_login.cpp: login.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include login.h -o moc_login.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/Documents/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include login.h -o moc_login.cpp
 
 moc_staffportal.cpp: manageanimal.h \
 		animal.h \
@@ -459,19 +465,26 @@ moc_staffportal.cpp: manageanimal.h \
 		staffportal.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include staffportal.h -o moc_staffportal.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/Documents/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include staffportal.h -o moc_staffportal.cpp
 
 moc_manageclient.cpp: client.h \
 		manageclient.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include manageclient.h -o moc_manageclient.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/Documents/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include manageclient.h -o moc_manageclient.cpp
+
+moc_addnewclient.cpp: manageclient.h \
+		client.h \
+		addnewclient.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/Documents/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include addnewclient.h -o moc_addnewclient.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h
+compiler_uic_make_all: ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h ui_addnewclient.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h
+	-$(DEL_FILE) ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h ui_addnewclient.h
 ui_addnewanimal.h: addnewanimal.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic addnewanimal.ui -o ui_addnewanimal.h
@@ -491,6 +504,10 @@ ui_staffportal.h: staffportal.ui \
 ui_manageclient.h: manageclient.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic manageclient.ui -o ui_manageclient.h
+
+ui_addnewclient.h: addnewclient.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic addnewclient.ui -o ui_addnewclient.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -548,11 +565,18 @@ staffportal.o: staffportal.cpp staffportal.h \
 
 manageclient.o: manageclient.cpp manageclient.h \
 		client.h \
-		ui_manageclient.h
+		ui_manageclient.h \
+		addnewclient.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o manageclient.o manageclient.cpp
 
 client.o: client.cpp client.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o client.o client.cpp
+
+addnewclient.o: addnewclient.cpp addnewclient.h \
+		manageclient.h \
+		client.h \
+		ui_addnewclient.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addnewclient.o addnewclient.cpp
 
 moc_addnewanimal.o: moc_addnewanimal.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_addnewanimal.o moc_addnewanimal.cpp
@@ -568,6 +592,9 @@ moc_staffportal.o: moc_staffportal.cpp
 
 moc_manageclient.o: moc_manageclient.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_manageclient.o moc_manageclient.cpp
+
+moc_addnewclient.o: moc_addnewclient.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_addnewclient.o moc_addnewclient.cpp
 
 ####### Install
 
