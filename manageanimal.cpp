@@ -150,44 +150,7 @@ void manageAnimal::loadAnimals(){
 }
 
 void manageAnimal::on_animalView_activated(const QModelIndex &index)
-{//MAY NEED TO MODIFY TO USE DYNAMIC MEMORY INSTEAD OF DB CALL
- /*   QString animal = ui->animalView->model()->data(index).toString();
-
-    if (!db.open())
-    {
-        qDebug()<<"Failed to open cuACS database";
-        return;
-    }
-    db.open();
-    QSqlQuery animalqry;
-    animalqry.prepare("select * from Animals where Name ='"+animal+"' OR Species = '"+animal+"' OR Breed = '"+animal+"' ");
-
-    if(animalqry.exec())
-    {
-        while(animalqry.next())
-        {
-            ui->txt_Name->setText(animalqry.value(0).toString());
-            ui->txt_Species->setText(animalqry.value(1).toString());
-            ui->txt_Breed->setText(animalqry.value(2).toString());
-            ui->txt_Sex->setText(animalqry.value(3).toString());
-            ui->txt_Age->setText(animalqry.value(4).toString());
-            ui->txt_NPA1->setText(animalqry.value(5).toString());
-            ui->txt_NPA2->setText(animalqry.value(6).toString());
-            ui->txt_NPA3->setText(animalqry.value(7).toString());
-            ui->txt_NPA4->setText(animalqry.value(8).toString());
-            ui->txt_NPA5->setText(animalqry.value(9).toString());
-            ui->txt_NPA6->setText(animalqry.value(10).toString());
-            ui->txt_NPA7->setText(animalqry.value(11).toString());
-            ui->txt_NPA8->setText(animalqry.value(12).toString());
-            ui->txt_NPA9->setText(animalqry.value(13).toString());
-            ui->txt_NPA10->setText(animalqry.value(14).toString());
-            ui->txt_NPA11->setText(animalqry.value(15).toString());
-            ui->txt_NPA12->setText(animalqry.value(16).toString());
-        }
-
-        db.close();
-    }
-*/
+{
     //access dynamic memory and pull the animal that at index of the row that was clicked
 
     Animal* selectedAnimal = animals.at(index.row());

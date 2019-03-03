@@ -13,6 +13,10 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
+
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("./cuACS_db.db");
+
 }
 
 Login::~Login()
@@ -22,20 +26,58 @@ Login::~Login()
 
 void Login::on_btnClient_clicked()
 {
-    //TODO: verify client in db
     QString username = ui->txtName->toPlainText();
-    manageAnimal mngAnimal(0,username);
-    mngAnimal.uiMain = this;
-    mngAnimal.setModal(true);
-    mngAnimal.exec();
+    bool verified=false;
+
+    //load up animals and clients
+    if (!db.open())
+    {
+        qDebug()<<"Failed to open cuACS database";
+        return;
+    }
+    db.open();
+
+    //check if name is in database
+    QSqlQuery clientqry("select * from Clients");
+    while(clientqry.next()){
+        QString name = clientqry.value("Name").toString();
+        qDebug()<<"Name:"+name;
+
+        if (name==username) {
+            verified=true;
+        }
+    }
+    db.close();
+
+    if (verified) {
+        manageAnimal mngAnimal(0,username);
+        mngAnimal.uiMain = this;
+        mngAnimal.setModal(true);
+        mngAnimal.exec();
+    } else {
+        qDebug()<<"Client name not in db.";
+        QMessageBox::information(
+            this,
+            tr("Client not found"),
+            tr("Username incorrect.") );
+    }
+
 }
 
 void Login::on_btnStaff_clicked()
 {
-    //TODO: verify staff in db
-    //TODO: bring staff to portal to manage clients or manage animals
+    QString username = ui->txtName->toPlainText();
+
+    if (username=="admin") {
     staffPortal portal(this);
     portal.uiMain = this;
     portal.setModal(true);
     portal.exec();
+    } else {
+        qDebug()<<"Staff login incorrect.";
+        QMessageBox::information(
+            this,
+            tr("Staff not found"),
+            tr("Staff name incorrect.") );
+    }
 }
