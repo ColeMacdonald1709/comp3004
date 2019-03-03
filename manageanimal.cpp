@@ -191,7 +191,7 @@ void manageAnimal::on_animalView_activated(const QModelIndex &index)
     //access dynamic memory and pull the animal that at index of the row that was clicked
 
     Animal* selectedAnimal = animals.at(index.row());
-    qDebug()<<selectedAnimal->getAnimalName();
+   // qDebug()<<selectedAnimal->getAnimalName();
 
     ui->txt_Name->setText(selectedAnimal->getAnimalName());
     ui->txt_Species->setText(selectedAnimal->getPAttr()->at(0));
