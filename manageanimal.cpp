@@ -109,11 +109,11 @@ void manageAnimal::loadAnimals(){
             PAttr->append(species);
             QString breed = animalqry.value("Breed").toString();
             PAttr->append(breed);
-        /*    QString sex = animalqry.value("Sex").toString();
+            QString sex = animalqry.value("Sex").toString();
             PAttr->append(sex);
             QString age = animalqry.value("Age").toString();
             PAttr->append(age);
-            */
+
     //add non-physical attributes
             QList<QString>* NPAttr = new QList<QString>();
 
@@ -151,7 +151,7 @@ void manageAnimal::loadAnimals(){
 
 void manageAnimal::on_animalView_activated(const QModelIndex &index)
 {//MAY NEED TO MODIFY TO USE DYNAMIC MEMORY INSTEAD OF DB CALL
-    QString animal = ui->animalView->model()->data(index).toString();
+ /*   QString animal = ui->animalView->model()->data(index).toString();
 
     if (!db.open())
     {
@@ -187,6 +187,29 @@ void manageAnimal::on_animalView_activated(const QModelIndex &index)
 
         db.close();
     }
+*/
+    //access dynamic memory and pull the animal that at index of the row that was clicked
+
+    Animal* selectedAnimal = animals.at(index.row());
+
+    ui->txt_Name->setText(selectedAnimal->getAnimalName());
+    ui->txt_Species->setText(selectedAnimal->getPAttr()->at(0));
+    ui->txt_Breed->setText(selectedAnimal->getPAttr()->at(1));
+    ui->txt_Sex->setText(selectedAnimal->getPAttr()->at(2));
+    ui->txt_Age->setText(selectedAnimal->getPAttr()->at(3));
+
+    ui->txt_NPA1->setText(selectedAnimal->getNPAttr()->at(0));
+    ui->txt_NPA2->setText(selectedAnimal->getNPAttr()->at(1));
+    ui->txt_NPA3->setText(selectedAnimal->getNPAttr()->at(2));
+    ui->txt_NPA4->setText(selectedAnimal->getNPAttr()->at(3));
+    ui->txt_NPA5->setText(selectedAnimal->getNPAttr()->at(4));
+    ui->txt_NPA6->setText(selectedAnimal->getNPAttr()->at(5));
+    ui->txt_NPA7->setText(selectedAnimal->getNPAttr()->at(6));
+    ui->txt_NPA8->setText(selectedAnimal->getNPAttr()->at(7));
+    ui->txt_NPA9->setText(selectedAnimal->getNPAttr()->at(8));
+    ui->txt_NPA10->setText(selectedAnimal->getNPAttr()->at(9));
+    ui->txt_NPA11->setText(selectedAnimal->getNPAttr()->at(10));
+    ui->txt_NPA12->setText(selectedAnimal->getNPAttr()->at(11));
 
 }
 
