@@ -1,3 +1,9 @@
+/**
+COMP3004A/B W19 - Project Deliverable 2 - Team R4V3N$
+Dennis Kuipers  101033098
+Cole Macdonald	101013458
+Ian Sloan 		101021039
+**/
 #include "manageclient.h"
 #include "ui_manageclient.h"
 #include "addnewclient.h"
@@ -176,4 +182,10 @@ void manageclient::on_addclientbutton_clicked()
     addClient.uiMain = this;
     addClient.setModal(true);
     addClient.exec();
+}
+
+void manageclient::on_btnLogout_clicked()
+{
+    db.close();
+    this->close();
 }

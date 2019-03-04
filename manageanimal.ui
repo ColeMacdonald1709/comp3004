@@ -140,19 +140,6 @@
      </property>
     </column>
    </widget>
-   <widget class="QLabel" name="lblWelcome">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>56</y>
-      <width>161</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Welcome Staff User</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnLogout">
     <property name="geometry">
      <rect>
@@ -163,7 +150,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Logout</string>
+     <string>Back</string>
     </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">

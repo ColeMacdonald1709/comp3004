@@ -1,3 +1,9 @@
+/**
+COMP3004A/B W19 - Project Deliverable 2 - Team R4V3N$
+Dennis Kuipers  101033098
+Cole Macdonald	101013458
+Ian Sloan 		101021039
+**/
 #include <QString>
 #include "login.h"
 #include "ui_login.h"
@@ -29,7 +35,7 @@ void Login::on_btnClient_clicked()
     QString username = ui->txtName->toPlainText();
     bool verified=false;
 
-    //load up animals and clients
+    //load up client list
     if (!db.open())
     {
         qDebug()<<"Failed to open cuACS database";
@@ -41,8 +47,6 @@ void Login::on_btnClient_clicked()
     QSqlQuery clientqry("select * from Clients");
     while(clientqry.next()){
         QString name = clientqry.value("Name").toString();
-        qDebug()<<"Name:"+name;
-
         if (name==username) {
             verified=true;
         }
@@ -50,6 +54,7 @@ void Login::on_btnClient_clicked()
     db.close();
     db.removeDatabase("QSQLITE");
     if (verified) {
+        qDebug()<<"Client user logged in.";
         manageAnimal mngAnimal(0,username);
         mngAnimal.uiMain = this;
         mngAnimal.setModal(true);
@@ -69,14 +74,16 @@ void Login::on_btnClient_clicked()
 
 void Login::on_btnStaff_clicked()
 {
+    //check if login credentials are correct
     QString username = ui->txtName->toPlainText();
 
     if (username=="admin") {
-    staffPortal portal(this);
-    portal.uiMain = this;
-    portal.setModal(true);
-    portal.exec();
-    ui->txtName->clear();
+        qDebug()<<"Staff user logged in.";
+        staffPortal portal(this);
+        portal.uiMain = this;
+        portal.setModal(true);
+        portal.exec();
+        ui->txtName->clear();
     } else {
         qDebug()<<"Staff login incorrect.";
         QMessageBox::information(

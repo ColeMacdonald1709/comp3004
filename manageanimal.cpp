@@ -1,5 +1,5 @@
 /**
-COMP3004A/B WIN19 - Project Deliverable 1 - Team R4V3N$
+COMP3004A/B W19 - Project Deliverable 2 - Team R4V3N$
 Dennis Kuipers  101033098
 Cole Macdonald	101013458
 Ian Sloan 		101021039
@@ -17,20 +17,11 @@ manageAnimal::manageAnimal(int user, QString username, QWidget *parent) :
     db = QSqlDatabase::database();
     db.setDatabaseName("./cuACS_db.db");
 
+    if (user==0) { ui->addAnimalbtn->hide(); }
+
     loadAnimals();
     showAnimals();
 
-    if (user==0) {
-        qDebug()<<"Client user "+username+" logged in.";
-        ui->lblWelcome->setText("Welcome "+username);
-        ui->addAnimalbtn->hide();
-    } else if (user==1) {
-        qDebug()<<"Staff user logged in.";
-        ui->lblWelcome->setText("Welcome Staff User");
-        ui->addAnimalbtn->show();
-    } else {
-        qDebug()<<"User failed to log in.";
-    }
 }
 
 manageAnimal::~manageAnimal()
