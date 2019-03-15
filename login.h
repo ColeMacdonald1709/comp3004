@@ -6,35 +6,21 @@ Ian Sloan 		101021039
 **/
 #ifndef LOGIN_H
 #define LOGIN_H
-
-#include <QMessageBox>
-#include <QtSql>
-#include <QSqlError>
-#include <QtDebug>
-#include <QFileInfo>
 #include <QString>
-#include <QMainWindow>
+#include "uiserver.h"
+//#include "dbserver.h"
 
-namespace Ui {
-class Login;
-}
-
-class Login : public QMainWindow
+class Login
 {
-    Q_OBJECT
-
 public:
-    explicit Login(QWidget *parent = 0);
+    //gotta include DatabaseServer* in Login creation
+    Login(UIServer*);
     ~Login();
-
-private slots:
-    void on_btnClient_clicked();
-    void on_btnStaff_clicked();
-
+    void verify_client(QString*);
+    void verify_staff(QString*);
 private:
-    Ui::Login *ui;
-    QSqlDatabase db;
-
+    //DatabaseServer* db;
+    UIServer* ui;
 };
 
 #endif // LOGIN_H

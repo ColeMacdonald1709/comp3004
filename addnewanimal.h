@@ -14,24 +14,24 @@ Ian Sloan 		101021039
 #include "manageanimal.h"
 
 namespace Ui {
-class addNewAnimal;
+class AddNewAnimal;
 }
 
-class addNewAnimal : public QDialog
+class AddNewAnimal : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit addNewAnimal(QWidget *parent = 0);
-    ~addNewAnimal();
-    manageAnimal *uiMain;
+    explicit AddNewAnimal(QWidget *parent = 0);
+    ~AddNewAnimal();
+    ManageAnimal *uiMain;
 
 private slots:
     void on_cancelbtn_clicked();
     void on_addAnimalbtn_clicked();
 
 private:
-    Ui::addNewAnimal *ui;
+    Ui::AddNewAnimal *ui;
     QSqlDatabase AnimalDB;
 };
 

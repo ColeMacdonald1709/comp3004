@@ -14,24 +14,24 @@ Ian Sloan 		101021039
 #include "manageclient.h"
 
 namespace Ui {
-class addnewclient;
+class AddNewClient;
 }
 
-class addnewclient : public QDialog
+class AddNewClient : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit addnewclient(QWidget *parent = 0);
-    ~addnewclient();
-    manageclient *uiMain;
+    explicit AddNewClient(QWidget *parent = 0);
+    ~AddNewClient();
+    ManageClient *uiMain;
 
 private slots:
     void on_cancel_button_clicked();
     void on_pushButton_2_clicked();
 
 private:
-    Ui::addnewclient *ui;
+    Ui::AddNewClient *ui;
     QSqlDatabase ClientDB;
 };
 

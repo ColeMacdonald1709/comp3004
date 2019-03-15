@@ -15,16 +15,16 @@ Ian Sloan 		101021039
 #include "client.h"
 
 namespace Ui {
-class manageclient;
+class ManageClient;
 }
 
-class manageclient : public QDialog
+class ManageClient : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit manageclient(QWidget *parent = 0);
-    ~manageclient();
+    explicit ManageClient(QWidget *parent = 0);
+    ~ManageClient();
     void updateClients(Client*);
 
 private slots:
@@ -37,7 +37,7 @@ private slots:
     void on_btnLogout_clicked();
 
 private:
-    Ui::manageclient *ui;
+    Ui::ManageClient *ui;
     QList<Client*> clients;
     QSqlDatabase db;
 };

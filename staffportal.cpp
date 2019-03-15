@@ -7,22 +7,22 @@ Ian Sloan 		101021039
 #include "staffportal.h"
 #include "ui_staffportal.h"
 
-staffPortal::staffPortal(QWidget *parent) :
+StaffPortal::StaffPortal(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::staffPortal)
+    ui(new Ui::StaffPortal)
 {
     ui->setupUi(this);
 }
 
-staffPortal::~staffPortal()
+StaffPortal::~StaffPortal()
 {
     delete ui;
 }
 
 //mange animals button event
-void staffPortal::on_btnAnimals_clicked()
+void StaffPortal::on_btnAnimals_clicked()
 {
-    manageAnimal mngAnimal(1);
+    ManageAnimal mngAnimal(1);
     mngAnimal.uiMain = uiMain;
     mngAnimal.setModal(true);
     mngAnimal.exec();
@@ -30,16 +30,16 @@ void staffPortal::on_btnAnimals_clicked()
 }
 
 //mange clients button event
-void staffPortal::on_btnClients_clicked()
+void StaffPortal::on_btnClients_clicked()
 {
-    manageclient mngClient(this);
+    ManageClient mngClient(this);
     mngClient.setModal(true);
     mngClient.exec();
     this->show();
 }
 
 
-void staffPortal::on_staff_logout_clicked()
+void StaffPortal::on_staff_logout_clicked()
 {
     qDebug()<<"User logged out.";
     this->close();

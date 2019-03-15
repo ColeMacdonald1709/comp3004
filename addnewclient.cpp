@@ -7,24 +7,24 @@ Ian Sloan 		101021039
 #include "addnewclient.h"
 #include "ui_addnewclient.h"
 
-addnewclient::addnewclient(QWidget *parent) :
+AddNewClient::AddNewClient(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::addnewclient)
+    ui(new Ui::AddNewClient)
 {
     ui->setupUi(this);
 }
 
-addnewclient::~addnewclient()
+AddNewClient::~AddNewClient()
 {
     delete ui;
 }
 
-void addnewclient::on_cancel_button_clicked()
+void AddNewClient::on_cancel_button_clicked()
 {
     this->close();
 }
 
-void addnewclient::on_pushButton_2_clicked()
+void AddNewClient::on_pushButton_2_clicked()
 {
     QString name, phone, email;
     name = ui->name_txt->text();

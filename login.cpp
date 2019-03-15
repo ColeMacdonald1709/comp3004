@@ -4,32 +4,43 @@ Dennis Kuipers  101033098
 Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
-#include <QString>
 #include "login.h"
-#include "ui_login.h"
-#include "manageanimal.h"
-#include "ui_manageanimal.h"
-#include "addnewanimal.h"
-#include "ui_addnewanimal.h"
-#include "ui_portal.h"
-#include "staffportal.h"
+#include <QString>
 
-Login::Login(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Login)
+//Constructor will have DatabaseServer*
+Login::Login(UIServer* uiserver)
 {
-    ui->setupUi(this);
-
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("./cuACS_db.db");
-
+    //db = ;
+    ui = uiserver;
 }
 
 Login::~Login()
 {
+    //delete db;
     delete ui;
 }
 
+void Login::verify_client(QString* name){
+    //contact database server
+    /*if(db.verify_client(QString* name))
+     *ui->showmanageanimals(client, name, 0)
+     *
+    *else
+     *ui->showloginerror();
+     */
+}
+
+void Login::verify_staff(QString* name){
+    //contact database server
+    /*if(db.verify_staff(QString* name))
+    *ui->showstaffportal()
+    *
+   *else
+    *ui->showloginerror()
+    */
+}
+
+/*
 void Login::on_btnClient_clicked()
 {
     QString username = ui->txtName->toPlainText();
@@ -92,3 +103,4 @@ void Login::on_btnStaff_clicked()
             tr("Staff name incorrect.") );
     }
 }
+*/

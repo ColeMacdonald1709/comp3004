@@ -4,15 +4,14 @@ Dennis Kuipers  101033098
 Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
-#include "login.h"
 #include <QApplication>
-
+#include "uiserver.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Login w;
-    w.show();
+    //DatabaseServer dbserver = DBServer();
+    UIServer uiserver = UIServer();
 
     return a.exec();
 }

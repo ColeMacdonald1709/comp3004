@@ -9,9 +9,9 @@ Ian Sloan 		101021039
 #include "addnewanimal.h"
 #include "ui_addnewanimal.h"
 
-manageAnimal::manageAnimal(int user, QString username, QWidget *parent) :
+ManageAnimal::ManageAnimal(int user, QString username, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::manageAnimal)
+    ui(new Ui::ManageAnimal)
 {
     ui->setupUi(this);
     db = QSqlDatabase::database();
@@ -24,7 +24,7 @@ manageAnimal::manageAnimal(int user, QString username, QWidget *parent) :
 
 }
 
-manageAnimal::~manageAnimal()
+ManageAnimal::~ManageAnimal()
 {
     delete ui;
     for(int i=0;i<animals.size();i++){
@@ -32,15 +32,15 @@ manageAnimal::~manageAnimal()
     }
 }
 
-void manageAnimal::on_addAnimalbtn_clicked()
+void ManageAnimal::on_addAnimalbtn_clicked()
 {
-    addNewAnimal addAnimal;
+    AddNewAnimal addAnimal;
     addAnimal.uiMain = this;
     addAnimal.setModal(true);
     addAnimal.exec();
 }
 
-void manageAnimal::showAnimals()
+void ManageAnimal::showAnimals()
 {
 //show all animals
     QFont boldfont;
@@ -64,7 +64,7 @@ void manageAnimal::showAnimals()
         }
     }
 }
-void manageAnimal::updateAnimals(Animal* newAnimal){
+void ManageAnimal::updateAnimals(Animal* newAnimal){
     animals.append(newAnimal);
     QFont boldfont;
     boldfont.setBold(true);
@@ -84,7 +84,7 @@ void manageAnimal::updateAnimals(Animal* newAnimal){
         table_cell->setText(PAttr->at(col));
     }
 }
-void manageAnimal::loadAnimals(){
+void ManageAnimal::loadAnimals(){
     //load up animals and clients
         if (!db.open())
         {
@@ -141,7 +141,7 @@ void manageAnimal::loadAnimals(){
         db.close();
 }
 
-void manageAnimal::on_animalView_activated(const QModelIndex &index)
+void ManageAnimal::on_animalView_activated(const QModelIndex &index)
 {
     //access dynamic memory and pull the animal that at index of the row that was clicked
 
@@ -168,7 +168,7 @@ void manageAnimal::on_animalView_activated(const QModelIndex &index)
 
 }
 
-void manageAnimal::on_btnLogout_clicked()
+void ManageAnimal::on_btnLogout_clicked()
 {
     db.close();
     this->close();

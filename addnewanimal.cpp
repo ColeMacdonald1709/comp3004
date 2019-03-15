@@ -8,24 +8,24 @@ Ian Sloan 		101021039
 #include "ui_addnewanimal.h"
 #include "manageanimal.h"
 
-addNewAnimal::addNewAnimal(QWidget *parent) :
+AddNewAnimal::AddNewAnimal(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::addNewAnimal)
+    ui(new Ui::AddNewAnimal)
 {
     ui->setupUi(this);
 }
 
-addNewAnimal::~addNewAnimal()
+AddNewAnimal::~AddNewAnimal()
 {
     delete ui;
 }
 
-void addNewAnimal::on_cancelbtn_clicked()
+void AddNewAnimal::on_cancelbtn_clicked()
 {
     this->close();
 }
 
-void addNewAnimal::on_addAnimalbtn_clicked()
+void AddNewAnimal::on_addAnimalbtn_clicked()
 {
 
     QString Name;

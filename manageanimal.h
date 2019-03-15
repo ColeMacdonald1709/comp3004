@@ -17,19 +17,19 @@ Ian Sloan 		101021039
 #include "login.h"
 
 namespace Ui {
-class manageAnimal;
+class ManageAnimal;
 }
 
-class manageAnimal : public QDialog
+class ManageAnimal : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit manageAnimal(int user, QString username = "Staff", QWidget *parent = 0);
-    ~manageAnimal();
+    explicit ManageAnimal(int user, QString username = "Staff", QWidget *parent = 0);
+    ~ManageAnimal();
     Login *uiMain;
 
-    void updateAnimals(Animal*);
+    void UpdateAnimals(Animal*);
 
 private slots:
     void on_addAnimalbtn_clicked();
@@ -40,7 +40,7 @@ private slots:
     void on_btnLogout_clicked();
 
 private:
-    Ui::manageAnimal *ui;
+    Ui::ManageAnimal *ui;
     QList<Animal*> animals;
     QSqlDatabase db;
 };

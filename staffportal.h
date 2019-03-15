@@ -14,16 +14,16 @@ Ian Sloan 		101021039
 #include "login.h"
 
 namespace Ui {
-class staffPortal;
+class StaffPortal;
 }
 
-class staffPortal : public QDialog
+class StaffPortal : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit staffPortal(QWidget *parent = 0);
-    ~staffPortal();
+    explicit StaffPortal(QWidget *parent = 0);
+    ~StaffPortal();
     Login *uiMain;
 
 private slots:
@@ -34,7 +34,7 @@ private slots:
     void on_staff_logout_clicked();
 
 private:
-    Ui::staffPortal *ui;
+    Ui::StaffPortal *ui;
 };
 
 #endif // STAFFPORTAL_H
