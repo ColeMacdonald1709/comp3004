@@ -59,9 +59,9 @@ SOURCES       = animal.cpp \
 		manageclient.cpp \
 		client.cpp \
 		addnewclient.cpp \
-		uiserver.cpp moc_addnewanimal.cpp \
+		uiserver.cpp \
+		dbserver.cpp moc_addnewanimal.cpp \
 		moc_manageanimal.cpp \
-		moc_staffportal.cpp \
 		moc_manageclient.cpp \
 		moc_addnewclient.cpp \
 		moc_uiserver.cpp
@@ -75,9 +75,9 @@ OBJECTS       = animal.o \
 		client.o \
 		addnewclient.o \
 		uiserver.o \
+		dbserver.o \
 		moc_addnewanimal.o \
 		moc_manageanimal.o \
-		moc_staffportal.o \
 		moc_manageclient.o \
 		moc_addnewclient.o \
 		moc_uiserver.o
@@ -178,7 +178,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		manageclient.h \
 		client.h \
 		addnewclient.h \
-		uiserver.h animal.cpp \
+		uiserver.h \
+		dbserver.h animal.cpp \
 		main.cpp \
 		addnewanimal.cpp \
 		manageanimal.cpp \
@@ -187,7 +188,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		manageclient.cpp \
 		client.cpp \
 		addnewclient.cpp \
-		uiserver.cpp
+		uiserver.cpp \
+		dbserver.cpp
 QMAKE_TARGET  = cuACS
 DESTDIR       = 
 TARGET        = cuACS
@@ -403,8 +405,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents animal.h addnewanimal.h manageanimal.h login.h staffportal.h manageclient.h client.h addnewclient.h uiserver.h $(DISTDIR)/
-	$(COPY_FILE) --parents animal.cpp main.cpp addnewanimal.cpp manageanimal.cpp login.cpp staffportal.cpp manageclient.cpp client.cpp addnewclient.cpp uiserver.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents animal.h addnewanimal.h manageanimal.h login.h staffportal.h manageclient.h client.h addnewclient.h uiserver.h dbserver.h $(DISTDIR)/
+	$(COPY_FILE) --parents animal.cpp main.cpp addnewanimal.cpp manageanimal.cpp login.cpp staffportal.cpp manageclient.cpp client.cpp addnewclient.cpp uiserver.cpp dbserver.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents addnewanimal.ui manageanimal.ui login.ui staffportal.ui manageclient.ui addnewclient.ui $(DISTDIR)/
 
 
@@ -437,14 +439,25 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_addnewanimal.cpp moc_manageanimal.cpp moc_staffportal.cpp moc_manageclient.cpp moc_addnewclient.cpp moc_uiserver.cpp
+compiler_moc_header_make_all: moc_addnewanimal.cpp moc_manageanimal.cpp moc_manageclient.cpp moc_addnewclient.cpp moc_uiserver.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_addnewanimal.cpp moc_manageanimal.cpp moc_staffportal.cpp moc_manageclient.cpp moc_addnewclient.cpp moc_uiserver.cpp
+	-$(DEL_FILE) moc_addnewanimal.cpp moc_manageanimal.cpp moc_manageclient.cpp moc_addnewclient.cpp moc_uiserver.cpp
 moc_addnewanimal.cpp: manageanimal.h \
 		animal.h \
 		login.h \
 		uiserver.h \
+		ui_addnewanimal.h \
+		ui_addnewclient.h \
 		ui_login.h \
+		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
+		addnewanimal.h \
+		addnewclient.h \
+		manageclient.h \
+		client.h \
+		staffportal.h \
+		dbserver.h \
 		addnewanimal.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -453,24 +466,23 @@ moc_addnewanimal.cpp: manageanimal.h \
 moc_manageanimal.cpp: animal.h \
 		login.h \
 		uiserver.h \
+		ui_addnewanimal.h \
+		ui_addnewclient.h \
 		ui_login.h \
+		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
+		addnewanimal.h \
+		manageanimal.h \
+		addnewclient.h \
+		manageclient.h \
+		client.h \
+		staffportal.h \
+		dbserver.h \
 		manageanimal.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include manageanimal.h -o moc_manageanimal.cpp
-
-moc_staffportal.cpp: manageanimal.h \
-		animal.h \
-		login.h \
-		uiserver.h \
-		ui_login.h \
-		manageclient.h \
-		client.h \
-		ui_manageanimal.h \
-		staffportal.h \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include staffportal.h -o moc_staffportal.cpp
 
 moc_manageclient.cpp: client.h \
 		manageclient.h \
@@ -485,9 +497,22 @@ moc_addnewclient.cpp: manageclient.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include addnewclient.h -o moc_addnewclient.cpp
 
-moc_uiserver.cpp: ui_login.h \
+moc_uiserver.cpp: ui_addnewanimal.h \
+		ui_addnewclient.h \
+		ui_login.h \
+		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
+		addnewanimal.h \
+		manageanimal.h \
+		animal.h \
 		login.h \
 		uiserver.h \
+		addnewclient.h \
+		manageclient.h \
+		client.h \
+		staffportal.h \
+		dbserver.h \
 		uiserver.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -536,8 +561,21 @@ animal.o: animal.cpp animal.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o animal.o animal.cpp
 
 main.o: main.cpp uiserver.h \
+		ui_addnewanimal.h \
+		ui_addnewclient.h \
 		ui_login.h \
-		login.h
+		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
+		addnewanimal.h \
+		manageanimal.h \
+		animal.h \
+		login.h \
+		dbserver.h \
+		client.h \
+		addnewclient.h \
+		manageclient.h \
+		staffportal.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 addnewanimal.o: addnewanimal.cpp addnewanimal.h \
@@ -545,35 +583,71 @@ addnewanimal.o: addnewanimal.cpp addnewanimal.h \
 		animal.h \
 		login.h \
 		uiserver.h \
+		ui_addnewanimal.h \
+		ui_addnewclient.h \
 		ui_login.h \
-		ui_addnewanimal.h
+		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
+		addnewclient.h \
+		manageclient.h \
+		client.h \
+		staffportal.h \
+		dbserver.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addnewanimal.o addnewanimal.cpp
 
 manageanimal.o: manageanimal.cpp manageanimal.h \
 		animal.h \
 		login.h \
 		uiserver.h \
+		ui_addnewanimal.h \
+		ui_addnewclient.h \
 		ui_login.h \
 		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
 		addnewanimal.h \
-		ui_addnewanimal.h
+		addnewclient.h \
+		manageclient.h \
+		client.h \
+		staffportal.h \
+		dbserver.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o manageanimal.o manageanimal.cpp
 
 login.o: login.cpp login.h \
 		uiserver.h \
-		ui_login.h
+		ui_addnewanimal.h \
+		ui_addnewclient.h \
+		ui_login.h \
+		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
+		addnewanimal.h \
+		manageanimal.h \
+		animal.h \
+		addnewclient.h \
+		manageclient.h \
+		client.h \
+		staffportal.h \
+		dbserver.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o login.cpp
 
 staffportal.o: staffportal.cpp staffportal.h \
+		uiserver.h \
+		ui_addnewanimal.h \
+		ui_addnewclient.h \
+		ui_login.h \
+		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
+		addnewanimal.h \
 		manageanimal.h \
 		animal.h \
 		login.h \
-		uiserver.h \
-		ui_login.h \
-		manageclient.h \
+		dbserver.h \
 		client.h \
-		ui_manageanimal.h \
-		ui_staffportal.h
+		addnewclient.h \
+		manageclient.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o staffportal.o staffportal.cpp
 
 manageclient.o: manageclient.cpp manageclient.h \
@@ -592,18 +666,33 @@ addnewclient.o: addnewclient.cpp addnewclient.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addnewclient.o addnewclient.cpp
 
 uiserver.o: uiserver.cpp uiserver.h \
+		ui_addnewanimal.h \
+		ui_addnewclient.h \
 		ui_login.h \
-		login.h
+		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
+		addnewanimal.h \
+		manageanimal.h \
+		animal.h \
+		login.h \
+		dbserver.h \
+		client.h \
+		addnewclient.h \
+		manageclient.h \
+		staffportal.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o uiserver.o uiserver.cpp
+
+dbserver.o: dbserver.cpp dbserver.h \
+		animal.h \
+		client.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dbserver.o dbserver.cpp
 
 moc_addnewanimal.o: moc_addnewanimal.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_addnewanimal.o moc_addnewanimal.cpp
 
 moc_manageanimal.o: moc_manageanimal.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_manageanimal.o moc_manageanimal.cpp
-
-moc_staffportal.o: moc_staffportal.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_staffportal.o moc_staffportal.cpp
 
 moc_manageclient.o: moc_manageclient.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_manageclient.o moc_manageclient.cpp

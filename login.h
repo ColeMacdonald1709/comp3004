@@ -6,20 +6,22 @@ Ian Sloan 		101021039
 **/
 #ifndef LOGIN_H
 #define LOGIN_H
+
 #include <QString>
+
 #include "uiserver.h"
-//#include "dbserver.h"
+#include "dbserver.h"
 
 class Login
 {
 public:
-    //gotta include DatabaseServer* in Login creation
     Login(UIServer*);
+    Login(DBServer*);
     ~Login();
     void verify_client(QString*);
     void verify_staff(QString*);
 private:
-    //DatabaseServer* db;
+    DBServer* db;
     UIServer* ui;
 };
 

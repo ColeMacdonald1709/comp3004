@@ -7,34 +7,18 @@ Ian Sloan 		101021039
 #ifndef STAFFPORTAL_H
 #define STAFFPORTAL_H
 
-#include <QDialog>
-#include "manageanimal.h"
-#include "manageclient.h"
-#include "ui_manageanimal.h"
-#include "login.h"
+#include "uiserver.h"
 
-namespace Ui {
-class StaffPortal;
-}
-
-class StaffPortal : public QDialog
+class StaffPortal
 {
-    Q_OBJECT
-
 public:
-    explicit StaffPortal(QWidget *parent = 0);
+    StaffPortal(UIServer*);
     ~StaffPortal();
-    Login *uiMain;
-
-private slots:
-    void on_btnAnimals_clicked();
-
-    void on_btnClients_clicked();
-
-    void on_staff_logout_clicked();
-
+    void open_manage_animal();
+    void open_manage_client();
+    void logout();
 private:
-    Ui::StaffPortal *ui;
+    UIServer* ui;
 };
 
 #endif // STAFFPORTAL_H

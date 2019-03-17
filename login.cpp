@@ -5,102 +5,22 @@ Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
 #include "login.h"
-#include <QString>
 
-//Constructor will have DatabaseServer*
-Login::Login(UIServer* uiserver)
-{
-    //db = ;
-    ui = uiserver;
-}
+Login::Login(UIServer* uiserver){ui = uiserver;}
+Login::Login(DBServer* dbserver){db = dbserver;}
 
-Login::~Login()
-{
-    //delete db;
-    delete ui;
-}
+Login::~Login(){}
 
 void Login::verify_client(QString* name){
-    //contact database server
-    /*if(db.verify_client(QString* name))
-     *ui->showmanageanimals(client, name, 0)
-     *
-    *else
-     *ui->showloginerror();
-     */
+    if(db->verify_client(name))
+        ui->show_animals(true, name);
+    else
+        ui->show_login_error();
 }
 
 void Login::verify_staff(QString* name){
-    //contact database server
-    /*if(db.verify_staff(QString* name))
-    *ui->showstaffportal()
-    *
-   *else
-    *ui->showloginerror()
-    */
+    if(db->verify_staff(name))
+        ui->show_staff_portal();
+    else
+        ui->show_login_error();
 }
-
-/*
-void Login::on_btnClient_clicked()
-{
-    QString username = ui->txtName->toPlainText();
-    bool verified=false;
-
-    //load up client list
-    if (!db.open())
-    {
-        qDebug()<<"Failed to open cuACS database";
-        return;
-    }
-    db.open();
-
-    //check if name is in database
-    QSqlQuery clientqry("select * from Clients");
-    while(clientqry.next()){
-        QString name = clientqry.value("Name").toString();
-        if (name==username) {
-            verified=true;
-        }
-    }
-    db.close();
-    db.removeDatabase("QSQLITE");
-    if (verified) {
-        qDebug()<<"Client user logged in.";
-        manageAnimal mngAnimal(0,username);
-        mngAnimal.uiMain = this;
-        mngAnimal.setModal(true);
-        this->hide();
-        mngAnimal.exec();
-        this->show();
-        ui->txtName->clear();
-    } else {
-        qDebug()<<"Client name not in db.";
-        QMessageBox::information(
-            this,
-            tr("Client not found"),
-            tr("Username incorrect.") );
-    }
-
-}
-
-void Login::on_btnStaff_clicked()
-{
-    //check if login credentials are correct
-    QString username = ui->txtName->toPlainText();
-
-    if (username=="admin") {
-        qDebug()<<"Staff user logged in.";
-        staffPortal portal(this);
-        portal.uiMain = this;
-        portal.setModal(true);
-        portal.exec();
-        ui->txtName->clear();
-    } else {
-        qDebug()<<"Staff login incorrect.";
-        QMessageBox::information(
-            this,
-            tr("Staff not found"),
-            tr("Staff name incorrect.") );
-    }
-}
-*/

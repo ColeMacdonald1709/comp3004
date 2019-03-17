@@ -7,40 +7,21 @@ Ian Sloan 		101021039
 #include "staffportal.h"
 #include "ui_staffportal.h"
 
-StaffPortal::StaffPortal(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::StaffPortal)
+StaffPortal::StaffPortal(UIServer* uiserver)
 {
-    ui->setupUi(this);
+    ui = uiserver;
 }
+StaffPortal::~StaffPortal(){}
 
-StaffPortal::~StaffPortal()
+void StaffPortal::open_manage_animal()
 {
-    delete ui;
+    ui->show_animals(false,"admin");
 }
-
-//mange animals button event
-void StaffPortal::on_btnAnimals_clicked()
+void StaffPortal::open_manage_client()
 {
-    ManageAnimal mngAnimal(1);
-    mngAnimal.uiMain = uiMain;
-    mngAnimal.setModal(true);
-    mngAnimal.exec();
-    this->show();
+    ui->show_clients();
 }
-
-//mange clients button event
-void StaffPortal::on_btnClients_clicked()
+void StaffPortal::logout()
 {
-    ManageClient mngClient(this);
-    mngClient.setModal(true);
-    mngClient.exec();
-    this->show();
-}
-
-
-void StaffPortal::on_staff_logout_clicked()
-{
-    qDebug()<<"User logged out.";
-    this->close();
+    ui->logout();
 }

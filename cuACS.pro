@@ -33,7 +33,8 @@ SOURCES += \
     manageclient.cpp \
     client.cpp \
     addnewclient.cpp \
-    uiserver.cpp
+    uiserver.cpp \
+    dbserver.cpp
 
 HEADERS += \
     animal.h \
@@ -44,7 +45,8 @@ HEADERS += \
     manageclient.h \
     client.h \
     addnewclient.h \
-    uiserver.h
+    uiserver.h \
+    dbserver.h
 
 FORMS += \
     addnewanimal.ui \
