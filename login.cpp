@@ -11,14 +11,14 @@ Login::Login(DBServer* dbserver){db = dbserver;}
 
 Login::~Login(){}
 
-void Login::verify_client(QString* name){
+void Login::verify_client(QString name){
     if(db->verify_client(name))
         ui->show_animals(true, name);
     else
         ui->show_login_error();
 }
 
-void Login::verify_staff(QString* name){
+void Login::verify_staff(QString name){
     if(db->verify_staff(name))
         ui->show_staff_portal();
     else

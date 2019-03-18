@@ -4,44 +4,17 @@ Dennis Kuipers  101033098
 Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
+
 #include "manageanimal.h"
-#include "ui_manageanimal.h"
-#include "addnewanimal.h"
-#include "ui_addnewanimal.h"
 
-ManageAnimal::ManageAnimal(int user, QString username, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ManageAnimal)
-{
-    ui->setupUi(this);
-    db = QSqlDatabase::database();
-    db.setDatabaseName("./cuACS_db.db");
+ManageAnimal::ManageAnimal(UIServer* uiserver){ui = uiserver;}
+ManageAnimal::ManageAnimal(DBServer* dbserver){db = dbserver;}
 
-    if (user==0) { ui->addAnimalbtn->hide(); }
-
-    loadAnimals();
-    showAnimals();
-
-}
-
-ManageAnimal::~ManageAnimal()
-{
-    delete ui;
-    for(int i=0;i<animals.size();i++){
-        delete animals.at(i);
-    }
-}
-
-void ManageAnimal::on_addAnimalbtn_clicked()
-{
-    AddNewAnimal addAnimal;
-    addAnimal.uiMain = this;
-    addAnimal.setModal(true);
-    addAnimal.exec();
-}
-
+ManageAnimal::~ManageAnimal(){}
+class UIServer;
+class DBServer;
 void ManageAnimal::showAnimals()
-{
+{/*
 //show all animals
     QFont boldfont;
     boldfont.setBold(true);
@@ -63,8 +36,8 @@ void ManageAnimal::showAnimals()
             table_cell->setText(PAttr->at(col));
         }
     }
-}
-void ManageAnimal::updateAnimals(Animal* newAnimal){
+*/}
+void ManageAnimal::updateAnimals(Animal* newAnimal){/*
     animals.append(newAnimal);
     QFont boldfont;
     boldfont.setBold(true);
@@ -83,8 +56,8 @@ void ManageAnimal::updateAnimals(Animal* newAnimal){
         ui->animalView->setItem(newRow,col+1,table_cell);
         table_cell->setText(PAttr->at(col));
     }
-}
-void ManageAnimal::loadAnimals(){
+*/}
+void ManageAnimal::loadAnimals(){/*
     //load up animals and clients
         if (!db.open())
         {
@@ -139,37 +112,4 @@ void ManageAnimal::loadAnimals(){
             animals.append(newAnimal);
         }
         db.close();
-}
-
-void ManageAnimal::on_animalView_activated(const QModelIndex &index)
-{
-    //access dynamic memory and pull the animal that at index of the row that was clicked
-
-    Animal* selectedAnimal = animals.at(index.row());
-
-    ui->txt_Name->setText(selectedAnimal->getAnimalName());
-    ui->txt_Species->setText(selectedAnimal->getPAttr()->at(0));
-    ui->txt_Breed->setText(selectedAnimal->getPAttr()->at(1));
-    ui->txt_Sex->setText(selectedAnimal->getPAttr()->at(2));
-    ui->txt_Age->setText(selectedAnimal->getPAttr()->at(3));
-
-    ui->txt_NPA1->setText(selectedAnimal->getNPAttr()->at(0));
-    ui->txt_NPA2->setText(selectedAnimal->getNPAttr()->at(1));
-    ui->txt_NPA3->setText(selectedAnimal->getNPAttr()->at(2));
-    ui->txt_NPA4->setText(selectedAnimal->getNPAttr()->at(3));
-    ui->txt_NPA5->setText(selectedAnimal->getNPAttr()->at(4));
-    ui->txt_NPA6->setText(selectedAnimal->getNPAttr()->at(5));
-    ui->txt_NPA7->setText(selectedAnimal->getNPAttr()->at(6));
-    ui->txt_NPA8->setText(selectedAnimal->getNPAttr()->at(7));
-    ui->txt_NPA9->setText(selectedAnimal->getNPAttr()->at(8));
-    ui->txt_NPA10->setText(selectedAnimal->getNPAttr()->at(9));
-    ui->txt_NPA11->setText(selectedAnimal->getNPAttr()->at(10));
-    ui->txt_NPA12->setText(selectedAnimal->getNPAttr()->at(11));
-
-}
-
-void ManageAnimal::on_btnLogout_clicked()
-{
-    db.close();
-    this->close();
-}
+*/}

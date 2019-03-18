@@ -12,34 +12,25 @@ Ian Sloan 		101021039
 #include <QtSql>
 #include <QSqlError>
 #include <QDebug>
-#include "client.h"
 
-namespace Ui {
-class ManageClient;
-}
+#include "uiserver.h"
+#include "dbserver.h"
 
-class ManageClient : public QDialog
+class UIServer;
+class DBServer;
+class ManageClient
 {
-    Q_OBJECT
-
 public:
-    explicit ManageClient(QWidget *parent = 0);
+    ManageClient(UIServer*);
+    ManageClient(DBServer*);
     ~ManageClient();
     void updateClients(Client*);
-
-private slots:
-    void loadClients();
     void showClients();
-    void on_clientlist_doubleClicked(const QModelIndex &index);
-
-    void on_addclientbutton_clicked();
-
-    void on_btnLogout_clicked();
+    void loadClients();
 
 private:
-    Ui::ManageClient *ui;
-    QList<Client*> clients;
-    QSqlDatabase db;
+    DBServer* db;
+    UIServer* ui;
 };
 
 #endif // MANAGECLIENT_H

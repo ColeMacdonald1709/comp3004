@@ -11,28 +11,21 @@ Ian Sloan 		101021039
 #include <QString>
 #include <QList>
 #include <QtSql>
-#include "manageclient.h"
 
-namespace Ui {
-class AddNewClient;
-}
-
-class AddNewClient : public QDialog
+#include "uiserver.h"
+#include "dbserver.h"
+class UIServer;
+class DBServer;
+class AddNewClient
 {
-    Q_OBJECT
-
 public:
-    explicit AddNewClient(QWidget *parent = 0);
+    AddNewClient(UIServer*);
+    AddNewClient(DBServer*);
     ~AddNewClient();
-    ManageClient *uiMain;
-
-private slots:
-    void on_cancel_button_clicked();
-    void on_pushButton_2_clicked();
 
 private:
-    Ui::AddNewClient *ui;
-    QSqlDatabase ClientDB;
+    DBServer* db;
+    UIServer* ui;
 };
 
 #endif // ADDNEWCLIENT_H

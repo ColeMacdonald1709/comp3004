@@ -13,36 +13,25 @@ Ian Sloan 		101021039
 #include <QtDebug>
 #include <QFileInfo>
 #include <QString>
-#include "animal.h"
-#include "login.h"
 
-namespace Ui {
-class ManageAnimal;
-}
+#include "uiserver.h"
+#include "dbserver.h"
 
-class ManageAnimal : public QDialog
+class UIServer;
+class DBServer;
+class ManageAnimal
 {
-    Q_OBJECT
-
 public:
-    explicit ManageAnimal(int user, QString username = "Staff", QWidget *parent = 0);
+    ManageAnimal(UIServer*);
+    ManageAnimal(DBServer*);
     ~ManageAnimal();
-    Login *uiMain;
-
-    void UpdateAnimals(Animal*);
-
-private slots:
-    void on_addAnimalbtn_clicked();
+    void updateAnimals(Animal*);
     void showAnimals();
     void loadAnimals();
 
-    void on_animalView_activated(const QModelIndex &index);
-    void on_btnLogout_clicked();
-
 private:
-    Ui::ManageAnimal *ui;
-    QList<Animal*> animals;
-    QSqlDatabase db;
+    DBServer* db;
+    UIServer* ui;
 };
 
 #endif // MANAGEANIMAL_H

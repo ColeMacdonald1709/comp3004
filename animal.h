@@ -34,7 +34,7 @@ class Animal {
         QList<QString>* NPAttr;
 };
 
-#endif
+
 
 /*
 string species;
@@ -67,3 +67,5 @@ class Fish: public Animal {
     public:
         Fish(const QString & aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
 };
+
+#endif

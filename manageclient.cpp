@@ -5,30 +5,13 @@ Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
 #include "manageclient.h"
-#include "ui_manageclient.h"
-#include "addnewclient.h"
 
-manageclient::manageclient(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::manageclient)
-{
-    ui->setupUi(this);
-    db = QSqlDatabase::database();
-    db.setDatabaseName("./cuACS_db.db");
-    loadClients();
-    showClients();
+ManageClient::ManageClient(UIServer* uiserver) {ui = uiserver;}
+ManageClient::ManageClient(DBServer* dbserver) {db = dbserver;}
 
-}
+ManageClient::~ManageClient(){}
 
-manageclient::~manageclient()
-{
-    delete ui;
-    for(int i=0;i<clients.size();i++){
-        delete clients.at(i);
-    }
-}
-
-void manageclient::loadClients(){
+void ManageClient::loadClients(){
     if (!db.open())
     {
         qDebug()<<"Failed to open cuACS database";
@@ -83,7 +66,7 @@ void manageclient::loadClients(){
     db.close();
 }
 
-void manageclient::showClients(){
+void ManageClient::showClients(){
     //show all clients
         QFont boldfont;
         boldfont.setBold(true);
@@ -106,7 +89,7 @@ void manageclient::showClients(){
         }
 }
 
-void manageclient::updateClients(Client* newClient){
+void ManageClient::updateClients(Client* newClient){
     clients.append(newClient);
     QFont boldfont;
     boldfont.setBold(true);
@@ -126,66 +109,4 @@ void manageclient::updateClients(Client* newClient){
     ui->clientlist->setItem(newRow,2,table_cell);
     table_cell->setText(newClient->getEmail());
 }
-//show detailed profile
-void manageclient::on_clientlist_doubleClicked(const QModelIndex &index)
-{
-    QString name = ui->clientlist->model()->data(index).toString();
-    for(int i=0;i<clients.size();i++){
-        if(clients.at(i)->getName() == name){
-            ui->clientname->setText(clients.at(i)->getName());
-            ui->clientphone->setText(clients.at(i)->getPhone());
-            ui->clientemail->setText(clients.at(i)->getEmail());
-            if(clients.at(i)->getInfo()->size() > 0 && clients.at(i)->getPrefs()->size() > 0){
-                QString species = clients.at(i)->getInfo()->at(0);
-                QString breed = clients.at(i)->getInfo()->at(1);
-                QString age = clients.at(i)->getInfo()->at(2);
-                QString sex = clients.at(i)->getInfo()->at(3);
-                ui->clientprefs->setText(age + " " + sex + " " + breed + " " + species);
 
-                ui->NPA1text->setText(clients.at(i)->getPrefs()->at(0));
-                ui->NPA2text->setText(clients.at(i)->getPrefs()->at(1));
-                ui->NPA3text->setText(clients.at(i)->getPrefs()->at(2));
-                ui->NPA4text->setText(clients.at(i)->getPrefs()->at(3));
-                ui->NPA5text->setText(clients.at(i)->getPrefs()->at(4));
-                ui->NPA6text->setText(clients.at(i)->getPrefs()->at(5));
-                ui->NPA7text->setText(clients.at(i)->getPrefs()->at(6));
-                ui->NPA8text->setText(clients.at(i)->getPrefs()->at(7));
-                ui->NPA9text->setText(clients.at(i)->getPrefs()->at(8));
-                ui->NPA10text->setText(clients.at(i)->getPrefs()->at(9));
-                ui->NPA11text->setText(clients.at(i)->getPrefs()->at(10));
-                ui->NPA12text->setText(clients.at(i)->getPrefs()->at(11));
-            }else{
-                ui->clientprefs->setText("");
-
-                ui->NPA1text->setText("");
-                ui->NPA2text->setText("");
-                ui->NPA3text->setText("");
-                ui->NPA4text->setText("");
-                ui->NPA5text->setText("");
-                ui->NPA6text->setText("");
-                ui->NPA7text->setText("");
-                ui->NPA8text->setText("");
-                ui->NPA9text->setText("");
-                ui->NPA10text->setText("");
-                ui->NPA11text->setText("");
-                ui->NPA12text->setText("");
-            }
-        }
-    }
-}
-
-
-
-void manageclient::on_addclientbutton_clicked()
-{
-    addnewclient addClient;
-    addClient.uiMain = this;
-    addClient.setModal(true);
-    addClient.exec();
-}
-
-void manageclient::on_btnLogout_clicked()
-{
-    db.close();
-    this->close();
-}

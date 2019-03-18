@@ -11,15 +11,16 @@ Ian Sloan 		101021039
 
 #include "uiserver.h"
 #include "dbserver.h"
-
+class UIServer;
+class DBServer;
 class Login
 {
 public:
     Login(UIServer*);
     Login(DBServer*);
     ~Login();
-    void verify_client(QString*);
-    void verify_staff(QString*);
+    void verify_client(QString);
+    void verify_staff(QString);
 private:
     DBServer* db;
     UIServer* ui;
