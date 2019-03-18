@@ -34,7 +34,6 @@ class UIServer
 public:
     UIServer();
     ~UIServer();
-    void verify_user(bool,QString*);
     void show_animals(bool,QString*);
     void show_login_error();
     void show_staff_portal();
@@ -58,18 +57,27 @@ private:
 
 class AddNewAnimalUI: public QDialog
 {
+    Q_OBJECT
 public:
-
+    explicit AddNewAnimal(QWidget *parent = 0);
+    void show_window();
+    void hide_window();
 private:
-
+    void on_cancelbtn_clicked();
+    void on_addAnimalbtn_clicked();
+    void update_animals(QString*,QList<QString>*,QList<QString>*);
 };
 
 class AddNewClientUI: public QDialog
 {
+    Q_OBJECT
 public:
-
+    explicit AddNewClient(QWidget *parent = 0);
+    void show_window();
+    void hide_window();
 private:
-
+    void on_cancel_button_clicked();
+    void on_pushButton_2_clicked();
 };
 
 class LoginUI: public QMainWindow
@@ -77,26 +85,28 @@ class LoginUI: public QMainWindow
     Q_OBJECT
 public:
     explicit LoginUI(QWidget *parent = 0);
+    void show_window();
+    void hide_window();
 private:
     void on_btnClient_clicked();
     void on_btnStaff_clicked();
-    void show_window();
-    void hide_window();
     void invalid_cred();
 };
 
 class ManageAnimalUI: public QDialog
 {
 public:
-
+    void show_window();
+    void hide_window();
 private:
-
+    void update_animals(QString*,QList<QString>*,QList<QString>*);
 };
 
 class ManageClientUI: public QDialog
 {
 public:
-
+    void show_window();
+    void hide_window();
 private:
 
 };
@@ -106,6 +116,8 @@ class StaffPortalUI: public QDialog
     Q_OBJECT
 public:
     explicit StaffPortalUI(QWidget *parent=0);
+    void show_window();
+    void hide_window();
 private:
     void on_btnAnimals_clicked();
     void on_btnClients_clicked();

@@ -7,17 +7,14 @@ Ian Sloan 		101021039
 #ifndef MANAGECLIENT_H
 #define MANAGECLIENT_H
 
-#include <QDialog>
 #include <QList>
-#include <QtSql>
-#include <QSqlError>
-#include <QDebug>
+
 #include "client.h"
+#include "uiserver.h"
+#include "dbserver.h"
 
-namespace Ui {
-class ManageClient;
-}
-
+class UIServer;
+class DBServer;
 class ManageClient : public QDialog
 {
     Q_OBJECT

@@ -8,7 +8,10 @@ Ian Sloan 		101021039
 #define STAFFPORTAL_H
 
 #include "uiserver.h"
+#include "dbserver.h"
 
+class UIServer;
+class DBServer;
 class StaffPortal
 {
 public:

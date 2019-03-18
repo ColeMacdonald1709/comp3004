@@ -8,18 +8,12 @@ Ian Sloan 		101021039
 #define MANAGEANIMAL_H
 
 #include <QDialog>
-#include <QtSql>
-#include <QSqlError>
-#include <QtDebug>
-#include <QFileInfo>
 #include <QString>
-#include "animal.h"
-#include "login.h"
+#include "uiserver.h"
+#include "dbserver.h"
 
-namespace Ui {
-class ManageAnimal;
-}
-
+class UIServer;
+class DBServer;
 class ManageAnimal : public QDialog
 {
     Q_OBJECT

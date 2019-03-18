@@ -7,32 +7,24 @@ Ian Sloan 		101021039
 #ifndef ADDNEWCLIENT_H
 #define ADDNEWCLIENT_H
 
-#include <QDialog>
 #include <QString>
 #include <QList>
-#include <QtSql>
-#include "manageclient.h"
 
-namespace Ui {
-class AddNewClient;
-}
+#include "uiserver.h"
+#include "dbserver.h"
 
-class AddNewClient : public QDialog
+class UIServer;
+class DBServer;
+class AddNewClient
 {
-    Q_OBJECT
-
 public:
-    explicit AddNewClient(QWidget *parent = 0);
-    ~AddNewClient();
-    ManageClient *uiMain;
-
-private slots:
-    void on_cancel_button_clicked();
-    void on_pushButton_2_clicked();
-
+    AddNewClient(UIServer*);
+    AddNewClient(DBServer*);
+    bool client_exists(QString*);
+    void add_new_client(QString*,QString*,QString*);
 private:
-    Ui::AddNewClient *ui;
-    QSqlDatabase ClientDB;
+    UIServer* ui;
+    DBServer* db;
 };
 
 #endif // ADDNEWCLIENT_H

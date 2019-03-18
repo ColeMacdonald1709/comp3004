@@ -7,32 +7,24 @@ Ian Sloan 		101021039
 #ifndef ADDNEWANIMAL_H
 #define ADDNEWANIMAL_H
 
-#include <QDialog>
 #include <QString>
 #include <QList>
-#include <QtSql>
-#include "manageanimal.h"
 
-namespace Ui {
-class AddNewAnimal;
-}
+#include "uiserver.h"
+#include "dbserver.h"
 
-class AddNewAnimal : public QDialog
+class UIServer;
+class DBServer;
+class AddNewAnimal
 {
-    Q_OBJECT
-
 public:
-    explicit AddNewAnimal(QWidget *parent = 0);
-    ~AddNewAnimal();
-    ManageAnimal *uiMain;
-
-private slots:
-    void on_cancelbtn_clicked();
-    void on_addAnimalbtn_clicked();
-
+    AddNewAnimal(UIServer*);
+    AddNewAnimal(DBServer*);
+    bool animal_exists(QString*);
+    void add_new_animal(QString*, QList<QString>*, QList<QString>*);
 private:
-    Ui::AddNewAnimal *ui;
-    QSqlDatabase AnimalDB;
+    UIServer* ui;
+    DBServer* db;
 };
 
 #endif // ADDNEWANIMAL_H
