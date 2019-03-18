@@ -25,3 +25,4 @@ void AddNewAnimal::add_new_animal(QString* name, QList<QString>* PA, QList<QStri
 
     db->add_new_animal(newanimal);
 }
+
