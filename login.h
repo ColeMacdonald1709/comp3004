@@ -11,6 +11,7 @@ Ian Sloan 		101021039
 
 #include "uiserver.h"
 #include "dbserver.h"
+
 class UIServer;
 class DBServer;
 class Login

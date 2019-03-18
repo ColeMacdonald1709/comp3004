@@ -8,10 +8,6 @@ Ian Sloan 		101021039
 #define MANAGEANIMAL_H
 
 #include <QDialog>
-#include <QtSql>
-#include <QSqlError>
-#include <QtDebug>
-#include <QFileInfo>
 #include <QString>
 
 #include "uiserver.h"
@@ -19,7 +15,8 @@ Ian Sloan 		101021039
 
 class UIServer;
 class DBServer;
-class ManageAnimal
+
+class ManageAnimal : public QDialog
 {
 public:
     ManageAnimal(UIServer*);

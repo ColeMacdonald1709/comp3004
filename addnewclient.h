@@ -7,13 +7,19 @@ Ian Sloan 		101021039
 #ifndef ADDNEWCLIENT_H
 #define ADDNEWCLIENT_H
 
-#include <QDialog>
 #include <QString>
 #include <QList>
+<<<<<<< HEAD
 #include <QtSql>
 
 #include "uiserver.h"
 #include "dbserver.h"
+=======
+
+#include "uiserver.h"
+#include "dbserver.h"
+
+>>>>>>> 9b432a2ae24f343885a345ca1efbcd16b5ac7d28
 class UIServer;
 class DBServer;
 class AddNewClient
@@ -21,11 +27,19 @@ class AddNewClient
 public:
     AddNewClient(UIServer*);
     AddNewClient(DBServer*);
+<<<<<<< HEAD
     ~AddNewClient();
 
 private:
     DBServer* db;
     UIServer* ui;
+=======
+    bool client_exists(QString*);
+    void add_new_client(QString*,QString*,QString*);
+private:
+    UIServer* ui;
+    DBServer* db;
+>>>>>>> 9b432a2ae24f343885a345ca1efbcd16b5ac7d28
 };
 
 #endif // ADDNEWCLIENT_H
