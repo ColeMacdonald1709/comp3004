@@ -11,8 +11,6 @@ ManageAnimal::ManageAnimal(UIServer* uiserver){ui = uiserver;}
 ManageAnimal::ManageAnimal(DBServer* dbserver){db = dbserver;}
 
 ManageAnimal::~ManageAnimal(){}
-class UIServer;
-class DBServer;
 void ManageAnimal::showAnimals()
 {/*
 //show all animals
