@@ -5,27 +5,24 @@ Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
 
-#ifndef LOGIN_H
-#define LOGIN_H
-
-#include <QString>
+#ifndef EDITCLIENT_H
+#define EDITCLIENT_H
 
 #include "uiserver.h"
 #include "dbserver.h"
 
 class UIServer;
 class DBServer;
-class Login
+class EditClient
 {
 public:
-    Login(UIServer*);
-    Login(DBServer*);
-    ~Login();
-    void verify_client(QString);
-    void verify_staff(QString);
+    EditClient(UIServer*);
+    EditClient(DBServer*);
+    ~EditClient();
 private:
     DBServer* db;
     UIServer* ui;
 };
 
-#endif // LOGIN_H
+
+#endif // EDITCLIENT_H

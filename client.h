@@ -1,11 +1,13 @@
 /**
-COMP3004A/B W19 - Project Deliverable 2 - Team R4V3N$
+COMP3004A/B W19 - Project Deliverable 3 - Team R4V3N$
 Dennis Kuipers  101033098
 Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
+
 #ifndef CLIENT_H
 #define CLIENT_H
+
 #include <QString>
 #include <QList>
 

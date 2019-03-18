@@ -1,3 +1,10 @@
+/**
+COMP3004A/B W19 - Project Deliverable 3 - Team R4V3N$
+Dennis Kuipers  101033098
+Cole Macdonald	101013458
+Ian Sloan 		101021039
+**/
+
 #include "uiserver.h"
 
 UIServer::UIServer()
@@ -16,6 +23,9 @@ UIServer::UIServer()
 
     UIServer::manageclientUI();
     UIServer::manageclientLogic = new ManageClient(this);
+
+    UIServer::clientportalUI();
+    UIServer::clientportalLogic = new ClientPortal(this);
 
     UIServer::staffportalUI();
     UIServer::staffportalLogic = new StaffPortal(this);
@@ -37,6 +47,9 @@ UIServer::~UIServer()
     delete UIServer::manageclientUI;
     delete UIServer::manageclientLogic;
 
+    delete UIServer::clientportalUI;
+    delete UIServer::clientportalLogic;
+
     delete UIServer::staffportalUI;
     delete UIServer::staffportalLogic;
 }
@@ -54,6 +67,10 @@ void UIServer::show_login_error()
 {
     UIServer::loginUI->show_window();
     UIServer::loginUI->invalid_cred();
+}
+void UIServer::show_client_portal()
+{
+    UIServer::clientportalUI->show_window();
 }
 void UIServer::show_staff_portal()
 {
@@ -75,7 +92,7 @@ void UIServer::logout()
 
 ///addnewanimal interface
 /// ---------------------
-AddNewAnimalUI::AddNewAnimalUI(QWidget* parent=0) : QDialog(parent), UIServer::addnewanimalUI(new Ui::AddNewClient)
+AddNewAnimalUI::AddNewAnimalUI(QWidget *parent=0) : QDialog(parent), UIServer::addnewanimalUI(new Ui::AddNewAnimal)
 {
     UIServer::addnewanimalUI->setupUi(this);
 }
@@ -154,13 +171,13 @@ void AddNewAnimalUI::on_addAnimalbtn_clicked()
         UIServer::manageanimalUI->show_window();
         UIServer::manageanimalUI->update_animals(&name, PAList, NPAList);
     }else{
-        //show animal already exists popup
+        QMessageBox::warning(this, tr("Animal already exists"), tr("Error: Animal name already in use."));
     }
 }
 
 ///addnewclient interface
 ///----------------------
-AddNewClientUI::AddNewClient(QWidget* parent=0) : QDialog(parent), UIServer::addnewclientUI(new Ui::AddNewClient)
+AddNewClientUI::AddNewClient(QWidget *parent=0) : QDialog(parent), UIServer::addnewclientUI(new Ui::AddNewClient)
 {
     UIServer::addnewclientUI->setupUi(this);
 }
@@ -192,17 +209,15 @@ void AddNewClientUI::on_add_button_clicked()
         UIServer::manageclientUI->show_window();
         UIServer::manageclientUI->update_clients(&name, &phone, &email);
     }else{
-        //show client already exists popup
+        QMessageBox::warning(this, tr("Animal already exists"), tr("Error: Animal name already in use."));
     }
 }
-///
 
 ///Login interface
 ///---------------
-void LoginUI::Login(QWidget *parent=0) : QMainWindow(parent), UIServer::loginUI(new Ui::Login)
+void LoginUI::Login(QWidget *parent=0) : QDialog(parent), UIServer::loginUI(new Ui::Login)
 {
     UIServer::loginUI->setupUi(this);
-=======
     QString username = UIServer::loginUI->txtName->toPlainText();
     UIServer::loginLogic->verify_staff(username);
 }
@@ -210,17 +225,16 @@ void LoginUI::invalid_cred()
 {
     UIServer::loginUI->txtName = "";
     QMessageBox::information(this, tr("Credentials invalid"), tr("Username incorrect."));
->>>>>>> 9b432a2ae24f343885a345ca1efbcd16b5ac7d28
 }
 void LoginUI::show_window()
 {
-    /////this->setModal(true);
-    /// this->exec();
-    /////this->show();
+    this->setModal(true);
+    this->exec();
+    this->show();
 }
 void LoginUI::hide_window()
 {
-    this->close();
+    this->hide();
 }
 void LoginUI::invalid_cred()
 {
@@ -238,7 +252,35 @@ void LoginUI::on_btnStaff_clicked()
     QString username = UIServer::loginUI->txtName->toPlainText();
     UIServer::verify_user(false, &username);
 }
-///
+
+///client portal interface
+///----------------------
+ClientPortalUI::ClientPortalUI(QWidget *parent=0) : QDialog(parent), UIServer::staffportalUI(new Ui::StaffPortal)
+{
+    UIServer::clientportalUI->setupUi(this);
+}
+void ClientPortalUI::on_btnViewanimals_clicked()
+{
+    UIServer::clientportalLogic->open_view_animal();
+}
+void ClientPortalUI::on_btnEditprofile_clicked()
+{
+    UIServer::clientportalLogic->open_edit_client();
+}
+void ClientPortalUI::on_client_logout_clicked()
+{
+    UIServer::clientportalLogic->logout();
+}
+void ClientPortalUI::show_window()
+{
+    this->setModal(true);
+    this->exec();
+    this->show();
+}
+void StaffPortalUI::hide_window()
+{
+    this->hide();
+}
 
 ///staff portal interface
 ///----------------------

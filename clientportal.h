@@ -5,23 +5,22 @@ Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
 
-#ifndef STAFFPORTAL_H
-#define STAFFPORTAL_H
+#ifndef CLIENTPORTAL_H
+#define CLIENTPORTAL_H
 
 #include "uiserver.h"
 
 class UIServer;
-class StaffPortal
+class ClientPortal
 {
 public:
-    StaffPortal(UIServer*);
-    ~StaffPortal();
-    void open_manage_animal();
-    void open_manage_client();
+    ClientPortal(UIServer*);
+    ~ClientPortal();
+    void open_view_animal();
+    void open_edit_client();
     void logout();
 private:
     UIServer* ui;
 };
 
-#endif // STAFFPORTAL_H
-
+#endif // ClientPortal_H

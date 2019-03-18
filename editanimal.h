@@ -5,27 +5,23 @@ Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
 
-#ifndef LOGIN_H
-#define LOGIN_H
-
-#include <QString>
+#ifndef EDITANIMAL_H
+#define EDITANIMAL_H
 
 #include "uiserver.h"
 #include "dbserver.h"
 
 class UIServer;
 class DBServer;
-class Login
+class EditAnimal
 {
 public:
-    Login(UIServer*);
-    Login(DBServer*);
-    ~Login();
-    void verify_client(QString);
-    void verify_staff(QString);
+    EditAnimal(UIServer*);
+    EditAnimal(DBServer*);
+    ~EditAnimal();
 private:
     DBServer* db;
     UIServer* ui;
 };
 
-#endif // LOGIN_H
+#endif // EDITANIMAL_H

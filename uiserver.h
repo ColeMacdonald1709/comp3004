@@ -1,3 +1,10 @@
+/**
+COMP3004A/B W19 - Project Deliverable 3 - Team R4V3N$
+Dennis Kuipers  101033098
+Cole Macdonald	101013458
+Ian Sloan 		101021039
+**/
+
 #ifndef UISERVER_H
 #define UISERVER_H
 
@@ -11,6 +18,7 @@
 #include "ui_login.h"
 #include "ui_manageanimal.h"
 #include "ui_manageclient.h"
+#include "ui_clientportal.h"
 #include "ui_staffportal.h"
 
 #include "addnewanimal.h"
@@ -18,6 +26,7 @@
 #include "login.h"
 #include "manageanimal.h"
 #include "manageclient.h"
+#include "clientportal.h"
 #include "staffportal.h"
 
 namespace Ui {
@@ -26,6 +35,7 @@ class AddNewClient;
 class Login;
 class ManageAnimal;
 class ManageClient;
+class ClientPortal;
 class StaffPortal;
 }
 
@@ -45,6 +55,7 @@ private:
     Ui::Login* loginUI;
     Ui::ManageAnimal* manageanimalUI;
     Ui::ManageClient* manageclientUI;
+    Ui::ClientPortal* clientportalUI;
     Ui::StaffPortal* staffportalUI;
 
     AddNewAnimal* addnewanimalLogic;
@@ -52,6 +63,7 @@ private:
     Login* loginLogic;
     ManageAnimal* manageanimalLogic;
     ManageClient* manageclientLogic;
+    ClientPortal* clientportalLogic;
     StaffPortal* staffportalLogic;
 };
 
@@ -80,7 +92,7 @@ private:
     void on_pushButton_2_clicked();
 };
 
-class LoginUI: public QMainWindow
+class LoginUI: public QDialog
 {
     Q_OBJECT
 public:
@@ -111,6 +123,19 @@ public:
     void hide_window();
 private:
     //void update_clients(QString*,QList<QString>*,QList<QString>*);
+};
+
+class ClientPortalUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit ClientPortalUI(QWidget *parent=0);
+    void show_window();
+    void hide_window();
+private:
+    void on_btnViewnimals_clicked();
+    void on_btnEditprofile_clicked();
+    void on_client_logout_clicked();
 };
 
 class StaffPortalUI: public QDialog

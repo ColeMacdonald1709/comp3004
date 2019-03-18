@@ -1,3 +1,10 @@
+/**
+COMP3004A/B W19 - Project Deliverable 3 - Team R4V3N$
+Dennis Kuipers  101033098
+Cole Macdonald	101013458
+Ian Sloan 		101021039
+**/
+
 #ifndef DBSERVER_H
 #define DBSERVER_H
 
@@ -8,7 +15,6 @@
 
 #include "animal.h"
 #include "client.h"
-
 
 class DBServer
 {

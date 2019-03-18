@@ -5,24 +5,24 @@ Cole Macdonald	101013458
 Ian Sloan 		101021039
 **/
 
-#include "staffportal.h"
-#include "ui_staffportal.h"
+#include "clientportal.h"
+#include "ui_clientportal.h"
 
-StaffPortal::StaffPortal(UIServer* uiserver)
+ClientPortal::ClientPortal(UIServer* uiserver)
 {
     ui = uiserver;
 }
-StaffPortal::~StaffPortal(){}
+ClientPortal::~ClientPortal(){}
 
-void StaffPortal::open_manage_animal()
+void ClientPortal::open_view_animal()
 {
     ui->show_animals(false,"admin");
 }
-void StaffPortal::open_manage_client()
+void ClientPortal::open_edit_client()
 {
     ui->show_clients();
 }
-void StaffPortal::logout()
+void ClientPortal::logout()
 {
     ui->logout();
 }

@@ -1,5 +1,5 @@
 /**
-COMP3004A/B W19 - Project Deliverable 2 - Team R4V3N$
+COMP3004A/B W19 - Project Deliverable 3 - Team R4V3N$
 Dennis Kuipers  101033098
 Cole Macdonald	101013458
 Ian Sloan 		101021039
@@ -12,7 +12,7 @@ ManageAnimal::ManageAnimal(DBServer* dbserver){db = dbserver;}
 
 ManageAnimal::~ManageAnimal(){}
 void ManageAnimal::showAnimals()
-{/*
+{
 //show all animals
     QFont boldfont;
     boldfont.setBold(true);
@@ -34,8 +34,8 @@ void ManageAnimal::showAnimals()
             table_cell->setText(PAttr->at(col));
         }
     }
-*/}
-void ManageAnimal::updateAnimals(Animal* newAnimal){/*
+}
+void ManageAnimal::updateAnimals(Animal* newAnimal){
     animals.append(newAnimal);
     QFont boldfont;
     boldfont.setBold(true);
@@ -54,8 +54,8 @@ void ManageAnimal::updateAnimals(Animal* newAnimal){/*
         ui->animalView->setItem(newRow,col+1,table_cell);
         table_cell->setText(PAttr->at(col));
     }
-*/}
-void ManageAnimal::loadAnimals(){/*
+}
+void ManageAnimal::loadAnimals(){
     //load up animals and clients
         if (!db.open())
         {
@@ -110,4 +110,4 @@ void ManageAnimal::loadAnimals(){/*
             animals.append(newAnimal);
         }
         db.close();
-*/}
+}
