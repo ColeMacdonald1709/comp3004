@@ -38,6 +38,13 @@ class ManageClient;
 class ClientPortal;
 class StaffPortal;
 }
+class AddNewAnimal;
+class AddNewClient;
+class Login;
+class ManageAnimal;
+class ManageClient;
+class ClientPortal;
+class StaffPortal;
 
 class UIServer
 {
@@ -71,7 +78,7 @@ class AddNewAnimalUI: public QDialog
 {
     Q_OBJECT
 public:
-    explicit AddNewAnimal(QWidget *parent = 0);
+    explicit AddNewAnimalUI(QWidget *parent = 0);
     void show_window();
     void hide_window();
 private:
@@ -84,7 +91,7 @@ class AddNewClientUI: public QDialog
 {
     Q_OBJECT
 public:
-    explicit AddNewClient(QWidget *parent = 0);
+    explicit AddNewClientUI(QWidget *parent = 0);
     void show_window();
     void hide_window();
 private:

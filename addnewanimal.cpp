@@ -17,12 +17,12 @@ void AddNewAnimal::add_new_animal(QString* name, QList<QString>* PA, QList<QStri
 {
     Animal* newanimal;
     QString species = PA->at(0);
-    if(species == "Dog"){newanimal = new Dog(name,PA,NPA);}
-    else if(species == "Cat"){newanimal = new Cat(name,PA,NPA);}
-    else if(species == "Rabbit"){newanimal = new Rabbit(name,PA,NPA);}
-    else if(species == "Bird"){newanimal = new Bird(name,PA,NPA);}
-    else if(species == "Fish"){newanimal = new Fish(name,PA,NPA);}
-    else{newanimal = new Animal(name,PA,NPA);}
+    if(species == "Dog"){newanimal = new Dog(*name,PA,NPA);}
+    else if(species == "Cat"){newanimal = new Cat(*name,PA,NPA);}
+    else if(species == "Rabbit"){newanimal = new Rabbit(*name,PA,NPA);}
+    else if(species == "Bird"){newanimal = new Bird(*name,PA,NPA);}
+    else if(species == "Fish"){newanimal = new Fish(*name,PA,NPA);}
+    else{newanimal = new Animal(*name,PA,NPA);}
 
     db->add_new_animal(newanimal);
 }

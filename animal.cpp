@@ -9,12 +9,12 @@ Ian Sloan 		101021039
 
 //Base Class
 //general constructors
-Animal::Animal(const QString & aName, QList<QString>* PAttribute, QList<QString>* NPAttribute){
+Animal::Animal(QString aName, QList<QString>* PAttribute, QList<QString>* NPAttribute){
     name = aName;
     PAttr = PAttribute;
     NPAttr = NPAttribute;
 }
-Animal::Animal(const QString & aName){
+Animal::Animal(QString aName){
     name = aName;
     PAttr = new QList<QString>();
     NPAttr = new QList<QString>();
