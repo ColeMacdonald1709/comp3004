@@ -26,7 +26,12 @@ public:
     bool verify_staff(QString*);
     void add_new_animal(Animal*);
     void add_new_client(Client*);
+<<<<<<< HEAD
     void get_client(int, QString*, QString*, QString*);
+=======
+    int get_size();
+    Animal* get_Animal(int);
+>>>>>>> c274a1e4c2570658ffcc33de0b4af879dc2ba9d0
 private:
     QList<Animal*> animals;
     QList<Client*> clients;

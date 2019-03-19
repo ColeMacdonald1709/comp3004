@@ -170,7 +170,8 @@ void AddNewAnimalUI::on_addAnimalbtn_clicked()
         UIServer::addnewanimalLogic->add_new_animal(name, PAList, NPAList);
         AddNewAnimalUI::hide_window();
         ManageAnimalUI::show_window();
-        ManageAnimalUI::update_animals(&name, PAList, NPAList);
+        ManageAnimalUI::update_animals(&name, PAList);
+
     }else{
         QMessageBox::warning(this, tr("Animal already exists"), tr("Error: Animal name already in use."));
     }
@@ -372,3 +373,42 @@ void StaffPortalUI::hide_window()
 {
     this->hide();
 }
+///manageanimal interface
+///
+ManageAnimalUI::ManageAnimalUI(QWidget *parent=0) : QDialog(parent), UIServer::manageanimalUI(new Ui::ManageAnimal)
+{
+    UIServer::manageanimalUI->setupUi(this);
+}
+void ManageAnimalUI::show_window()
+{
+    this->setModal(true);
+    this->exec();
+    this->show();
+}
+void ManageAnimalUI::hide_window()
+{
+    this->hide();
+}
+
+void ManageAnimalUI::update_animals(QString* name, QList<QString>* PA)
+{
+    QFont boldfont;
+    boldfont.setBold(true);
+    int newRow = UIServer::manageanimalUI->animalView->rowCount();
+    UIServer::manageanimalUI->animalView->insertRow(newRow);
+
+    QTableWidgetItem* table_cell = new QTableWidgetItem;
+    UIServer::manageanimalUI->animalView->setItem(newRow,0,table_cell);
+    table_cell->setText(name);
+    table_cell->setFont(boldfont);
+    //add click event to show detailed profile on name
+
+    for(int col=0; col<PA->size();col++){
+        table_cell = new QTableWidgetItem;
+        UIServer::manageanimalUI->animalView->setItem(newRow,col+1,table_cell);
+        table_cell->setText(PA->at(col));
+    }
+
+}
+
+

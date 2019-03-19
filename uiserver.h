@@ -76,7 +76,7 @@ public:
 private:
     void on_cancelbtn_clicked();
     void on_addAnimalbtn_clicked();
-    void update_animals(QString*,QList<QString>*,QList<QString>*);
+    void update_animals(QString*,QList<QString>*);
 };
 
 class AddNewClientUI: public QDialog
@@ -110,8 +110,10 @@ class ManageAnimalUI: public QDialog
 public:
     void show_window();
     void hide_window();
+    void set_client_view(QString*);
+    void set_staff_view(QString*);
 private:
-    void update_animals(QString*,QList<QString>*,QList<QString>*);
+    void update_animals(QString*,QList<QString>*);
 };
 
 class ManageClientUI: public QDialog
