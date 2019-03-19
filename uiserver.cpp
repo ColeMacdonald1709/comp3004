@@ -221,8 +221,6 @@ void AddNewClientUI::on_add_button_clicked()
 void LoginUI::Login(QWidget *parent=0) : QDialog(parent), UIServer::loginUI(new Ui::Login)
 {
     UIServer::loginUI->setupUi(this);
-    QString username = UIServer::loginUI->txtName->toPlainText();
-    UIServer::loginLogic->verify_staff(username);
 }
 void LoginUI::invalid_cred()
 {

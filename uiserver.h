@@ -13,14 +13,6 @@ Ian Sloan 		101021039
 #include <QString>
 #include <QMessageBox>
 
-#include "ui_addnewanimal.h"
-#include "ui_addnewclient.h"
-#include "ui_login.h"
-#include "ui_manageanimal.h"
-#include "ui_manageclient.h"
-#include "ui_clientportal.h"
-#include "ui_staffportal.h"
-
 #include "addnewanimal.h"
 #include "addnewclient.h"
 #include "login.h"
