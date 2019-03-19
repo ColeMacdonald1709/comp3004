@@ -11,23 +11,21 @@ Ian Sloan 		101021039
 #include <QDialog>
 #include <QString>
 
+#include "animal.h"
 #include "uiserver.h"
 #include "dbserver.h"
 
 class UIServer;
 class DBServer;
-class ManageAnimal : public QDialog
+class ManageAnimal
 {
 public:
     ManageAnimal(UIServer*);
     ManageAnimal(DBServer*);
     ~ManageAnimal();
     void updateAnimals(Animal*);
-    void showAnimals();
-    void loadAnimals();
     void set_client_view(QString);
     void set_staff_view(QString);
-
 private:
     DBServer* db;
     UIServer* ui;
