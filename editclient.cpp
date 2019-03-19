@@ -11,3 +11,7 @@ EditClient::EditClient(UIServer* uiserver){ui = uiserver;}
 EditClient::EditClient(DBServer* dbserver){db = dbserver;}
 
 EditClient::~EditClient(){}
+
+void editClient(QString* name, QString* phone,QString* email,QList<QString>* PAList, QList<QString>* NPAList){
+    db->editClientProfile(name, phone, email, PAList, NPAList);
+}

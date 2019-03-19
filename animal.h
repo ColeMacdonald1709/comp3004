@@ -14,8 +14,8 @@ Ian Sloan 		101021039
 //Animal is an abstract class
 class Animal {
     public:
-        Animal(const QString & aName, QList<QString>* PAttr, QList<QString>* NPAttr);
-        Animal(const QString & aName);
+        Animal(QString aName, QList<QString>* PAttr, QList<QString>* NPAttr);
+        Animal(QString aName);
         ~Animal(void);
 
         QString getAnimalName();
@@ -46,27 +46,27 @@ string gender;
 
 class Dog: public Animal {
     public:
-        Dog(const QString & aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
+        Dog(QString aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
 };
 
 class Cat: public Animal {
     public:
-        Cat(const QString & aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
+        Cat(QString aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
 };
 
 class Rabbit: public Animal {
     public:
-        Rabbit(const QString & aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
+        Rabbit(QString aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
 };
 
 class Bird: public Animal {
     public:
-        Bird(const QString & aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
+        Bird(QString aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
 };
 
 class Fish: public Animal {
     public:
-        Fish(const QString & aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
+        Fish(QString aName, QList<QString>* PAttr, QList<QString>* NPAttr) : Animal(aName, PAttr, NPAttr) {}
 };
 
 #endif

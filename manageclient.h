@@ -9,9 +9,7 @@ Ian Sloan 		101021039
 #define MANAGECLIENT_H
 
 #include <QList>
-#include <QtSql>
-#include <QSqlError>
-#include <QDebug>
+#include <QString>
 
 #include "client.h"
 #include "uiserver.h"
@@ -19,16 +17,14 @@ Ian Sloan 		101021039
 
 class UIServer;
 class DBServer;
-class ManageClient : public QDialog
+class ManageClient
 {
 public:
     ManageClient(UIServer*);
     ManageClient(DBServer*);
     ~ManageClient();
-    void updateClients(Client*);
-    void showClients();
-    void loadClients();
-
+    void get_client(int,QString*,QString*,QString*);
+    void get_client_profile(QString*);
 private:
     DBServer* db;
     UIServer* ui;

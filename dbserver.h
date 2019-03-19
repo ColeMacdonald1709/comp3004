@@ -24,8 +24,13 @@ public:
     bool verify_animal(QString*);
     bool verify_client(QString*);
     bool verify_staff(QString*);
-    void add_new_animal(Animal*);
-    void add_new_client(Client*);
+    int add_new_animal(Animal*);
+    int add_new_client(Client*);
+    void editClientProfile(QString*, QString*, QString*, QList<QString>*, QList<QString>*);
+    void editAnimalProfile(QString*, QList<QString>*, QList<QString>*);
+    void get_client(int, QString*, QString*, QString*);
+    int get_size();
+    Animal* get_Animal(int);
 private:
     QList<Animal*> animals;
     QList<Client*> clients;

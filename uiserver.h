@@ -13,14 +13,6 @@ Ian Sloan 		101021039
 #include <QString>
 #include <QMessageBox>
 
-#include "ui_addnewanimal.h"
-#include "ui_addnewclient.h"
-#include "ui_login.h"
-#include "ui_manageanimal.h"
-#include "ui_manageclient.h"
-#include "ui_clientportal.h"
-#include "ui_staffportal.h"
-
 #include "addnewanimal.h"
 #include "addnewclient.h"
 #include "login.h"
@@ -28,6 +20,18 @@ Ian Sloan 		101021039
 #include "manageclient.h"
 #include "clientportal.h"
 #include "staffportal.h"
+#include "editclient.h"
+#include "editanimal.h"
+
+#include "ui_addnewanimal.h"
+#include "ui_addnewclient.h"
+#include "ui_login.h"
+#include "ui_manageanimal.h"
+#include "ui_manageclient.h"
+#include "ui_clientportal.h"
+#include "ui_staffportal.h"
+#include "ui_editclient.h"
+#include "ui_editanimal.h"
 
 namespace Ui {
 class AddNewAnimal;
@@ -37,7 +41,18 @@ class ManageAnimal;
 class ManageClient;
 class ClientPortal;
 class StaffPortal;
+class EditClient;
+class EditAnimal;
 }
+class AddNewAnimal;
+class AddNewClient;
+class Login;
+class ManageAnimal;
+class ManageClient;
+class ClientPortal;
+class StaffPortal;
+class EditClient;
+class EditAnimal;
 
 class UIServer
 {
@@ -46,6 +61,7 @@ public:
     ~UIServer();
     void show_animals(bool,QString*);
     void show_login_error();
+    void show_client_portal();
     void show_staff_portal();
     void show_clients();
     void logout();
@@ -57,6 +73,8 @@ private:
     Ui::ManageClient* manageclientUI;
     Ui::ClientPortal* clientportalUI;
     Ui::StaffPortal* staffportalUI;
+    Ui::EditClient* editclientUI;
+    Ui::EditAnimal* editanimalUI;
 
     AddNewAnimal* addnewanimalLogic;
     AddNewClient* addnewclientLogic;
@@ -65,26 +83,28 @@ private:
     ManageClient* manageclientLogic;
     ClientPortal* clientportalLogic;
     StaffPortal* staffportalLogic;
+    EditClient* editclientLogic;
+    EditAnimal* editanimalLogic;
 };
 
 class AddNewAnimalUI: public QDialog
 {
     Q_OBJECT
 public:
-    explicit AddNewAnimal(QWidget *parent = 0);
+    explicit AddNewAnimalUI(QWidget *parent = 0);
     void show_window();
     void hide_window();
 private:
     void on_cancelbtn_clicked();
     void on_addAnimalbtn_clicked();
-    void update_animals(QString*,QList<QString>*,QList<QString>*);
+    void update_animals(QString*,QList<QString>*);
 };
 
 class AddNewClientUI: public QDialog
 {
     Q_OBJECT
 public:
-    explicit AddNewClient(QWidget *parent = 0);
+    explicit AddNewClientUI(QWidget *parent = 0);
     void show_window();
     void hide_window();
 private:
@@ -111,8 +131,11 @@ class ManageAnimalUI: public QDialog
 public:
     void show_window();
     void hide_window();
+    void set_client_view(QString*);
+    void set_staff_view(QString*);
 private:
-    void update_animals(QString*,QList<QString>*,QList<QString>*);
+    void update_animals(QString*,QList<QString>*);
+    void on_btnEditanimal_clicked();
 };
 
 class ManageClientUI: public QDialog
@@ -122,7 +145,8 @@ public:
     void show_window();
     void hide_window();
 private:
-    void update_clients(QString*,QString*,QString*,QList<QString>*);
+    void load_clients();
+    void update_clients(QString*,QString*,QString*);
 };
 
 class ClientPortalUI: public QDialog
@@ -149,6 +173,30 @@ private:
     void on_btnAnimals_clicked();
     void on_btnClients_clicked();
     void on_staff_logout_clicked();
+};
+
+class EditAnimalUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit EditAnimalUI(QWidget *parent = 0);
+    void show_window();
+    void hide_window();
+private:
+    void on_btnSave_clicked();
+    void on_btnCancel_clicked();
+};
+
+class EditClientUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit EditClientUI(QWidget *parent = 0);
+    void show_window();
+    void hide_window();
+private:
+    void on_btnSave_clicked();
+    void on_btnClient_clicked();
 };
 
 #endif // UISERVER_H

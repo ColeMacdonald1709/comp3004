@@ -60,7 +60,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtName"/>
+       <widget class="QLineEdit" name="txtName">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -80,7 +84,39 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtSpecies"/>
+       <widget class="QRadioButton" name="radDog">
+        <property name="text">
+         <string>Dog</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radCat">
+        <property name="text">
+         <string>Cat</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radBird">
+        <property name="text">
+         <string>Bird</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radFist">
+        <property name="text">
+         <string>Fish</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radRabbit">
+        <property name="text">
+         <string>Rabbit</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -120,7 +156,18 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtSex"/>
+       <widget class="QRadioButton" name="radMale">
+        <property name="text">
+         <string>Male</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radFemale">
+        <property name="text">
+         <string>Female</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -140,7 +187,37 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtAge"/>
+       <widget class="QComboBox" name="ageComboBox">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>Baby</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Teenage</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Adult</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Mature</string>
+         </property>
+        </item>
+       </widget>
       </item>
      </layout>
     </item>
