@@ -111,3 +111,11 @@ void ManageAnimal::loadAnimals(){
         }
         db.close();
 }
+
+void set_client_view(QString username) {
+
+}
+
+void set_staff_view(QString username) {
+
+}

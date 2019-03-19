@@ -16,11 +16,12 @@ ClientPortal::~ClientPortal(){}
 
 void ClientPortal::open_view_animal()
 {
-    ui->show_animals(false,"admin");
+    QString username = ui->loginUI->txtName->text();
+    ui->show_animals(true,&username);
 }
 void ClientPortal::open_edit_client()
 {
-    ui->show_clients();
+    ui->edit_profile();
 }
 void ClientPortal::logout()
 {

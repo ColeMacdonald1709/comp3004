@@ -56,38 +56,39 @@ UIServer::~UIServer()
 
 void UIServer::show_animals(bool isclient, QString* n)
 {
-    /*if(isclient) {
-        UIServer::manageanimalUI->set_client_view(n);
-    }else{
-        UIServer::manageanimalUI->set_staff_view(n);
+    if(isclient) {
+        UIServer::manageanimalLogic->set_client_view(n);
+    } else {
+        UIServer::manageanimalLogic->set_staff_view(n);
     }
-    UIServer::manageanimalUI->show_window();*/
+    ManageAnimalUI::show_window();
 }
 void UIServer::show_login_error()
 {
-    UIServer::loginUI->show_window();
-    UIServer::loginUI->invalid_cred();
+    LoginUI::show_window();
+    LoginUI::invalid_cred();
 }
 void UIServer::show_client_portal()
 {
-    UIServer::clientportalUI->show_window();
+    ClientPortalUI::show_window();
 }
 void UIServer::show_staff_portal()
 {
-    UIServer::staffportalUI->show_window();
+    StaffPortalUI::show_window();
 }
 void UIServer::show_clients()
 {
-    UIServer::manageclientUI->show_window();
+    ManageClientUI::show_window();
 }
 void UIServer::logout()
 {
-    UIServer::addnewanimalUI->hide_window();
-    UIServer::addnewclientUI->hide_window();
-    UIServer::manageanimalUI->hide_window();
-    UIServer::manageclientUI->hide_window();
-    UIServer::staffportalUI->hide_window();
-    UIServer::loginUI->show_window();
+    AddNewAnimalUI::hide_window();
+    AddNewClientUI::hide_window();
+    ManageAnimalUI::hide_window();
+    ManageClientUI::hide_window();
+    ClientPortalUI::hide_window();
+    StaffPortalUI::hide_window();
+    LoginUI::show_window();
 }
 
 ///addnewanimal interface
@@ -111,7 +112,7 @@ void AddNewAnimalUI::hide_window()
 ///addnewanimals forms
 void AddNewAnimalUI::on_cancelbtn_clicked()
 {
-    UIServer::addnewanimalUI->hide_window();
+    AddNewAnimalUI::hide_window();
 }
 void AddNewAnimalUI::on_addAnimalbtn_clicked()
 {
@@ -167,9 +168,9 @@ void AddNewAnimalUI::on_addAnimalbtn_clicked()
         NPAList->append(val);
 
         UIServer::addnewanimalLogic->add_new_animal(name, PAList, NPAList);
-        UIServer::addnewanimalUI->hide_window();
-        UIServer::manageanimalUI->show_window();
-        UIServer::manageanimalUI->update_animals(&name, PAList, NPAList);
+        AddNewAnimalUI::hide_window();
+        ManageAnimalUI::show_window();
+        ManageAnimalUI::update_animals(&name, PAList, NPAList);
     }else{
         QMessageBox::warning(this, tr("Animal already exists"), tr("Error: Animal name already in use."));
     }
@@ -194,22 +195,25 @@ void AddNewClientUI::hide_window()
 ///addnewclient forms
 void AddNewClientUI::on_cancel_button_clicked()
 {
-    UIServer::addnewclientUI->hide_window();
+    AddNewClientUI::hide_window();
 }
 void AddNewClientUI::on_add_button_clicked()
 {
-    QString name = IServer::addnewclientUI->name_txt->text();
+    QString name = UIServer::addnewclientUI->name_txt->text();
     if(!UIServer::addnewclientLogic->client_exists(name)){
         QString phone, email;
+        QList<QString>* NPAList = new QList<QString>();
         phone = UIServer::addnewclientUI->phone_txt->text();
         email = UIServer::addnewclientUI->email_txt->text();
-
+        for(i=0;i=12;i++)
+            NPAList->append(0);
+        
         UIServer::addnewclientLogic->add_new_client(&name, &phone, &email);
-        UIServer::addnewclientUI->hide_window();
-        UIServer::manageclientUI->show_window();
-        UIServer::manageclientUI->update_clients(&name, &phone, &email);
-    }else{
-        QMessageBox::warning(this, tr("Animal already exists"), tr("Error: Animal name already in use."));
+        AddNewClientUI::hide_window();
+        ManageClientUI::show_window();
+        ManageClientUI::update_clients(&name, &phone, &email,NPAList);
+    } else {
+        QMessageBox::warning(this, tr("Client already exists"), tr("Error: Client name already in use."));
     }
 }
 

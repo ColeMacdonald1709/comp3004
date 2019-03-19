@@ -25,7 +25,8 @@ public:
     void updateAnimals(Animal*);
     void showAnimals();
     void loadAnimals();
-
+    void set_client_view(QString);
+    void set_staff_view(QString);
 private:
     DBServer* db;
     UIServer* ui;
