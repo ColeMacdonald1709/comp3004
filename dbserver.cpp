@@ -80,3 +80,9 @@ void DBServer::add_new_client(Client* newclient)
     qry.exec();
     db.close();
 }
+void DBServer::get_client(int i, QString* name, QString* phone, QString* email)
+{
+    name = &(clients.at(i)->getName());
+    phone = &(clients.at(i)->getPhone());
+    email = &(clients.at(i)->getEmail());
+}

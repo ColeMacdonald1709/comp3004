@@ -202,16 +202,15 @@ void AddNewClientUI::on_add_button_clicked()
     QString name = UIServer::addnewclientUI->name_txt->text();
     if(!UIServer::addnewclientLogic->client_exists(name)){
         QString phone, email;
-        QList<QString>* NPAList = new QList<QString>();
         phone = UIServer::addnewclientUI->phone_txt->text();
         email = UIServer::addnewclientUI->email_txt->text();
         for(i=0;i=12;i++)
             NPAList->append(0);
         
         UIServer::addnewclientLogic->add_new_client(&name, &phone, &email);
-        AddNewClientUI::hide_window();
-        ManageClientUI::show_window();
-        ManageClientUI::update_clients(&name, &phone, &email,NPAList);
+        UIServer::addnewanimalUI->hide_window();
+        UIServer::manageclientUI->show_window();
+        UIServer::manageclientUI->update_clients(&name, &phone, &email);
     } else {
         QMessageBox::warning(this, tr("Client already exists"), tr("Error: Client name already in use."));
     }
@@ -284,6 +283,67 @@ void ClientPortalUI::show_window()
 void StaffPortalUI::hide_window()
 {
     this->hide();
+}
+
+///manage client interface
+/// ----------------------
+ManageClientUI::ManageClientUI(QWidget *parent=0) : QDialog(parent), UIServer::manageclientUI(new Ui::ManageClient)
+{
+    UIServer::manageclientUI->setupUi(this);
+}
+void ManageClientUI::show_window()
+{
+    this->setModal(true);
+    this->exec();
+    this->show();
+}
+void ManageClientUI::hide_window()
+{
+    this->hide();
+}
+void ManageClientUI::update_clients(QString* name, QString* phone, QString* email)
+{
+    QFont boldfont;
+    boldfont.setBold(true);
+    int newRow = UIServer::manageclientUI->clientlist->rowCount();
+    UIServer::manageclientUI->clientlist->insertRow(newRow);
+
+    QTableWidgetItem* table_cell = new QTableWidgetItem;
+    UIServer::manageclientUI->clientlist->setItem(newRow,0,table_cell);
+    table_cell->setText(name);
+    table_cell->setFont(boldfont);
+
+    table_cell = new QTableWidgetItem;
+    UIServer::manageclientUI->clientlist->setItem(newRow,1,table_cell);
+    table_cell->setText(phone);
+
+    table_cell = new QTableWidgetItem;
+    UIServer::manageclientUI->clientlist->setItem(newRow,2,table_cell);
+    table_cell->setText(email);
+}
+void ManageClientUI::load_clients()
+{
+    int size = UIServer::manageclientLogic->client_size();
+    QString name, phone, email;
+    QFont boldfont;
+    boldfont.setBold(true);
+    for(int i=0; i<size; i++){
+        UIServer::manageclientLogic->get_client(i, &name, &phone, &email);
+        UIServer::manageclientUI->clientlist->insertRow(i);
+
+        QTableWidgetItem* table_cell = new QTableWidgetItem;
+        UIServer::manageclientUI->clientlist->setItem(i,0,table_cell);
+        table_cell->setText(name);
+        table_cell->setFont(boldfont);
+
+        table_cell = new QTableWidgetItem;
+        UIServer::manageclientUI->clientlist->setItem(i,1,table_cell);
+        table_cell->setText(phone);
+
+        table_cell = new QTableWidgetItem;
+        UIServer::manageclientUI->clientlist->setItem(i,2,table_cell);
+        table_cell->setText(email);
+    }
 }
 
 ///staff portal interface

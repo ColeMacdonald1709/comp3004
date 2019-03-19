@@ -129,7 +129,8 @@ public:
     void show_window();
     void hide_window();
 private:
-    void update_clients(QString*,QString*,QString*,QList<QString>*);
+    void load_clients();
+    void update_clients(QString*,QString*,QString*);
 };
 
 class ClientPortalUI: public QDialog
