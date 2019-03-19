@@ -11,12 +11,14 @@ ManageAnimal::ManageAnimal(UIServer* uiserver){ui = uiserver;}
 ManageAnimal::ManageAnimal(DBServer* dbserver){db = dbserver;}
 
 ManageAnimal::~ManageAnimal(){}
+
 void ManageAnimal::set_client_view(QString n){
-    ui->addAnimalbtn->show();
+    ui->addAnimalbtn->hide();
 }
 void ManageAnimal::set_staff_view(QString n){
     ui->addAnimalbtn->show();
 }
+
 void ManageAnimal::showAnimals()
 {
 //show all animals

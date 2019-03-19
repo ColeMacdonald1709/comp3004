@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = cuACS1.0.0
-DISTDIR = /home/student/Documents/comp3004/.tmp/cuACS1.0.0
+DISTDIR = /home/student/comp3004/.tmp/cuACS1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Gui -lQt5Sql -lQt5Core -lGL -lpthread 
@@ -471,7 +471,7 @@ moc_uiserver.cpp: addnewanimal.h \
 		uiserver.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/Documents/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include uiserver.h -o moc_uiserver.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/comp3004 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include uiserver.h -o moc_uiserver.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -537,6 +537,7 @@ main.o: main.cpp uiserver.h \
 		manageanimal.h \
 		manageclient.h \
 		clientportal.h \
+<<<<<<< HEAD
 		staffportal.h \
 		editclient.h \
 		editanimal.h \
@@ -549,6 +550,9 @@ main.o: main.cpp uiserver.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+=======
+		staffportal.h
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 addnewanimal.o: addnewanimal.cpp addnewanimal.h \
@@ -561,6 +565,7 @@ addnewanimal.o: addnewanimal.cpp addnewanimal.h \
 		manageanimal.h \
 		manageclient.h \
 		clientportal.h \
+<<<<<<< HEAD
 		staffportal.h \
 		editclient.h \
 		editanimal.h \
@@ -577,6 +582,12 @@ addnewanimal.o: addnewanimal.cpp addnewanimal.h \
 
 manageanimal.o: manageanimal.cpp manageanimal.h \
 		animal.h \
+=======
+		staffportal.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addnewanimal.o addnewanimal.cpp
+
+manageanimal.o: manageanimal.cpp manageanimal.h \
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
 		uiserver.h \
 		addnewanimal.h \
 		dbserver.h \
@@ -585,6 +596,7 @@ manageanimal.o: manageanimal.cpp manageanimal.h \
 		login.h \
 		manageclient.h \
 		clientportal.h \
+<<<<<<< HEAD
 		staffportal.h \
 		editclient.h \
 		editanimal.h \
@@ -597,6 +609,9 @@ manageanimal.o: manageanimal.cpp manageanimal.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+=======
+		staffportal.h
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o manageanimal.o manageanimal.cpp
 
 login.o: login.cpp login.h \
@@ -609,6 +624,7 @@ login.o: login.cpp login.h \
 		manageanimal.h \
 		manageclient.h \
 		clientportal.h \
+<<<<<<< HEAD
 		staffportal.h \
 		editclient.h \
 		editanimal.h \
@@ -621,6 +637,9 @@ login.o: login.cpp login.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+=======
+		staffportal.h
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o login.cpp
 
 staffportal.o: staffportal.cpp staffportal.h \
@@ -634,6 +653,7 @@ staffportal.o: staffportal.cpp staffportal.h \
 		manageanimal.h \
 		manageclient.h \
 		clientportal.h \
+<<<<<<< HEAD
 		editclient.h \
 		editanimal.h \
 		ui_addnewanimal.h \
@@ -645,6 +665,9 @@ staffportal.o: staffportal.cpp staffportal.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+=======
+		ui_staffportal.h
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o staffportal.o staffportal.cpp
 
 manageclient.o: manageclient.cpp manageclient.h \
@@ -657,6 +680,7 @@ manageclient.o: manageclient.cpp manageclient.h \
 		login.h \
 		manageanimal.h \
 		clientportal.h \
+<<<<<<< HEAD
 		staffportal.h \
 		editclient.h \
 		editanimal.h \
@@ -669,6 +693,9 @@ manageclient.o: manageclient.cpp manageclient.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+=======
+		staffportal.h
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o manageclient.o manageclient.cpp
 
 client.o: client.cpp client.h
@@ -684,6 +711,7 @@ addnewclient.o: addnewclient.cpp addnewclient.h \
 		manageanimal.h \
 		manageclient.h \
 		clientportal.h \
+<<<<<<< HEAD
 		staffportal.h \
 		editclient.h \
 		editanimal.h \
@@ -696,6 +724,9 @@ addnewclient.o: addnewclient.cpp addnewclient.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+=======
+		staffportal.h
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addnewclient.o addnewclient.cpp
 
 uiserver.o: uiserver.cpp uiserver.h \
@@ -738,6 +769,7 @@ clientportal.o: clientportal.cpp clientportal.h \
 		manageanimal.h \
 		manageclient.h \
 		staffportal.h \
+<<<<<<< HEAD
 		editclient.h \
 		editanimal.h \
 		ui_addnewanimal.h \
@@ -749,6 +781,9 @@ clientportal.o: clientportal.cpp clientportal.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+=======
+		ui_clientportal.h
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o clientportal.o clientportal.cpp
 
 editanimal.o: editanimal.cpp editanimal.h \
@@ -762,6 +797,7 @@ editanimal.o: editanimal.cpp editanimal.h \
 		manageanimal.h \
 		manageclient.h \
 		clientportal.h \
+<<<<<<< HEAD
 		staffportal.h \
 		editclient.h \
 		ui_addnewanimal.h \
@@ -773,6 +809,9 @@ editanimal.o: editanimal.cpp editanimal.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+=======
+		staffportal.h
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o editanimal.o editanimal.cpp
 
 editclient.o: editclient.cpp editclient.h \

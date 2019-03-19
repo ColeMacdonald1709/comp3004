@@ -54,6 +54,7 @@ class StaffPortal;
 class EditClient;
 class EditAnimal;
 
+
 class UIServer
 {
 public:

@@ -575,3 +575,4 @@ void EditAnimalUI::on_btnSave_clicked() {
 void EditAnimalUI::on_btnClient_clicked(){
     EditAnimalUI::hide_window();
 }
+
