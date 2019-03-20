@@ -125,6 +125,7 @@ void DBServer::editAnimalProfile(QString *, QList<QString> *, QList<QString> *) 
         //remove old profile from db and dynamic
     }
 }
+<<<<<<< HEAD
 void DBServer::get_client(int i, QString* name, QString* phone, QString* email)
 {
     *name = clients.at(i)->getName();
@@ -134,6 +135,8 @@ void DBServer::get_client(int i, QString* name, QString* phone, QString* email)
 void DBServer::loadAnimals(){
     db.open();
 }
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 
 void DBServer::get_client(int i, QString* name, QString* phone, QString* email)
 {
@@ -148,6 +151,87 @@ void DBServer::loadAnimals(){
         qDebug()<<"Failed to open cuACS database";
         return;
     }
+<<<<<<< HEAD
+=======
+    QSqlQuery animalqry("SELECT * FROM Animals");
+    while(animalqry.next()){
+        QString name = animalqry.value("Name").toString();
+        //add physical attributes
+        QList<QString>* PAttr = new QList<QString>();
+        QString species = animalqry.value("Species").toString();
+        PAttr->append(species);
+        QString breed = animalqry.value("Breed").toString();
+        PAttr->append(breed);
+        QString sex = animalqry.value("Sex").toString();
+        PAttr->append(sex);
+        QString age = animalqry.value("Age").toString();
+        PAttr->append(age);
+
+        //add non-physical attributes
+        QList<QString>* NPAttr = new QList<QString>();
+
+        QString npa1 = animalqry.value("NPA1").toString();
+        NPAttr->append(npa1);
+        QString npa2 = animalqry.value("NPA2").toString();
+        NPAttr->append(npa2);
+        QString npa3 = animalqry.value("NPA3").toString();
+        NPAttr->append(npa3);
+        QString npa4 = animalqry.value("NPA4").toString();
+        NPAttr->append(npa4);
+        QString npa5 = animalqry.value("NPA5").toString();
+        NPAttr->append(npa5);
+        QString npa6 = animalqry.value("NPA6").toString();
+        NPAttr->append(npa6);
+        QString npa7 = animalqry.value("NPA7").toString();
+        NPAttr->append(npa7);
+        QString npa8 = animalqry.value("NPA8").toString();
+        NPAttr->append(npa8);
+        QString npa9 = animalqry.value("NPA9").toString();
+        NPAttr->append(npa9);
+        QString npa10 = animalqry.value("NPA10").toString();
+        NPAttr->append(npa10);
+        QString npa11 = animalqry.value("NPA11").toString();
+        NPAttr->append(npa11);
+        QString npa12 = animalqry.value("NPA12").toString();
+        NPAttr->append(npa12);
+
+        Animal* newAnimal = new Animal(name,PAttr,NPAttr);
+        //add animal to dynamic storage
+        animals.append(newAnimal);
+    }
+    db.close();
+}
+
+int DBServer::get_size(){
+    return animals.size();
+}
+
+Animal* DBServer::get_Animal(int i){
+    return animals.at(i);
+}
+
+void DBServer::get_client(int i, QString* name, QString* phone, QString* email)
+{
+    name = &(clients.at(i)->getName());
+    phone = &(clients.at(i)->getPhone());
+    email = &(clients.at(i)->getEmail());
+}
+
+QStringList* DBServer::get_breeds(QString species, QStringList* breeds)
+{//run through dynamic animals list and grab the breed from PAttr[1] of each animal matching species
+    for (int i=0; i<animals.size(); i++){
+        if (animals.at(i)->getPAttr()->at(0) == species)
+            breeds->append(animals.at(i)->getPAttr()->at(1));
+    }
+}
+
+void DBServer::loadAnimals(){
+    if (!db.open())
+    {
+        qDebug()<<"Failed to open cuACS database";
+        return;
+    }
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 
     QSqlQuery animalqry("SELECT * FROM Animals");
     while(animalqry.next()){
@@ -204,6 +288,7 @@ int DBServer::get_size(){
 
 Animal* DBServer::get_Animal(int i){
     return animals.at(i);
+<<<<<<< HEAD
 }
 
 void DBServer::get_client(int i, QString* name, QString* phone, QString* email)
@@ -369,4 +454,6 @@ void DBServer::get_client(QString* name, QString* phone, QString* email, QList<Q
 }
 Animal* DBServer::get_Animal(int i){
     return animals.at(i);
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 }

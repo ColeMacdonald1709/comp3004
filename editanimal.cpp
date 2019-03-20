@@ -12,11 +12,15 @@ EditAnimal::EditAnimal(DBServer* dbserver){db = dbserver;}
 
 EditAnimal::~EditAnimal(){}
 
+<<<<<<< HEAD
 void EditAnimal::set_up(QString* name, QList<QString>* PA, QList<QString>* NPA)
 {
     db->get_animal(name, PA, NPA);
 }
 void editAnimal(QString* name, QList<QString>* PAList, QList<QString>* NPAList)
 {
+=======
+void editAnimal(QString* name, QList<QString>* PAList, QList<QString>* NPAList){
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
     db->editAnimalProfile(name, PAList, NPAList);
 }

@@ -25,7 +25,10 @@ public:
     ~ManageClient();
     int client_size();
     void get_client(int,QString*,QString*,QString*);
+<<<<<<< HEAD
     void get_client(int, QString*, QString*, QString*,QList<QString>*,QList<QString>*);
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
     void get_client_profile(QString*);
 private:
     DBServer* db;

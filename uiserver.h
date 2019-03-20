@@ -32,6 +32,18 @@ Ian Sloan 		101021039
 #include "manageanimal.h"
 #include "manageclient.h"
 #include "staffportal.h"
+#include "editclient.h"
+#include "editanimal.h"
+
+#include "ui_addnewanimal.h"
+#include "ui_addnewclient.h"
+#include "ui_login.h"
+#include "ui_manageanimal.h"
+#include "ui_manageclient.h"
+#include "ui_clientportal.h"
+#include "ui_staffportal.h"
+#include "ui_editclient.h"
+#include "ui_editanimal.h"
 
 namespace Ui {
 class AddNewAnimal;
@@ -43,12 +55,28 @@ class ManageAnimal;
 class ManageClient;
 class ClientPortal;
 class StaffPortal;
+class EditClient;
+class EditAnimal;
 }
+<<<<<<< HEAD
+=======
+class AddNewAnimal;
+class AddNewClient;
+class Login;
+class ManageAnimal;
+class ManageClient;
+class ClientPortal;
+class StaffPortal;
+class EditClient;
+class EditAnimal;
+
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 
 class AddNewAnimalUI: public QDialog
 {
     Q_OBJECT
 public:
+<<<<<<< HEAD
     explicit AddNewAnimalUI();
     void show_window();
     void hide_window();
@@ -70,6 +98,41 @@ public:
 private:
     void on_cancel_button_clicked();
     void on_add_button_clicked();
+=======
+    UIServer();
+    ~UIServer();
+    void show_animals(bool,QString*);
+    void show_login_error();
+    void show_client_portal();
+    void show_staff_portal();
+    void show_clients();
+    void logout();
+private slots:
+    void on_comboBox_currentIndexChanged(const QString &arg1);
+
+    void on_comboBoxSpecies_currentIndexChanged(const QString &arg1);
+
+private:
+    Ui::AddNewAnimal* addnewanimalUI;
+    Ui::AddNewClient* addnewclientUI;
+    Ui::Login* loginUI;
+    Ui::ManageAnimal* manageanimalUI;
+    Ui::ManageClient* manageclientUI;
+    Ui::ClientPortal* clientportalUI;
+    Ui::StaffPortal* staffportalUI;
+    Ui::EditClient* editclientUI;
+    Ui::EditAnimal* editanimalUI;
+
+    AddNewAnimal* addnewanimalLogic;
+    AddNewClient* addnewclientLogic;
+    Login* loginLogic;
+    ManageAnimal* manageanimalLogic;
+    ManageClient* manageclientLogic;
+    ClientPortal* clientportalLogic;
+    StaffPortal* staffportalLogic;
+    EditClient* editclientLogic;
+    EditAnimal* editanimalLogic;
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 };
 
 class EditAnimalUI: public QDialog
@@ -118,11 +181,15 @@ public:
     void show_window();
     void hide_window();
     void update_animals(QString*,QList<QString>*);
+<<<<<<< HEAD
     void set_client_view();
     void set_staff_view();
     void load_animals();
     Ui::ManageAnimal* manageanimalUI;
 private:
+=======
+    void on_btnEditanimal_clicked();
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 };
 
 class ManageClientUI: public QDialog
@@ -166,6 +233,7 @@ private:
     void on_staff_logout_clicked();
 };
 
+<<<<<<< HEAD
 class AddNewAnimal;
 class AddNewClient;
 class EditAnimal;
@@ -209,6 +277,30 @@ public:
     static ManageClient manageclientLogic;
     static ClientPortal clientportalLogic;
     static StaffPortal staffportalLogic;
+=======
+class EditAnimalUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit EditAnimalUI(QWidget *parent = 0);
+    void show_window();
+    void hide_window();
+private:
+    void on_btnSave_clicked();
+    void on_btnCancel_clicked();
+};
+
+class EditClientUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit EditClientUI(QWidget *parent = 0);
+    void show_window();
+    void hide_window();
+private:
+    void on_btnSave_clicked();
+    void on_btnClient_clicked();
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 };
 
 #endif // UISERVER_H

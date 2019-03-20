@@ -19,7 +19,10 @@ public:
     EditClient(UIServer*);
     EditClient(DBServer*);
     ~EditClient();
+<<<<<<< HEAD
     void set_up(QString*, QString*, QString*, QList<QString>*, QList<QString>*);
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
     void editClient(QString* ,QString* ,QString* ,QList<QString>*, QList<QString>*);
     void get_breeds(QString*);
 private:

@@ -560,8 +560,11 @@ main.o: main.cpp uiserver.h \
 		manageanimal.h \
 		manageclient.h \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		staffportal.h
 =======
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 		clientportal.h \
 		staffportal.h \
 		editclient.h \
@@ -575,6 +578,9 @@ main.o: main.cpp uiserver.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+<<<<<<< HEAD
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
+=======
 >>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
@@ -600,8 +606,11 @@ addnewanimal.o: addnewanimal.cpp addnewanimal.h \
 		manageanimal.h \
 		manageclient.h \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		staffportal.h
 =======
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 		clientportal.h \
 		staffportal.h \
 		editclient.h \
@@ -615,6 +624,9 @@ addnewanimal.o: addnewanimal.cpp addnewanimal.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+<<<<<<< HEAD
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
+=======
 >>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addnewanimal.o addnewanimal.cpp
 
@@ -640,8 +652,11 @@ manageanimal.o: manageanimal.cpp manageanimal.h \
 		login.h \
 		manageclient.h \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		staffportal.h
 =======
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 		clientportal.h \
 		staffportal.h \
 		editclient.h \
@@ -655,6 +670,9 @@ manageanimal.o: manageanimal.cpp manageanimal.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+<<<<<<< HEAD
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
+=======
 >>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o manageanimal.o manageanimal.cpp
 
@@ -680,8 +698,11 @@ login.o: login.cpp login.h \
 		manageanimal.h \
 		manageclient.h \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		staffportal.h
 =======
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 		clientportal.h \
 		staffportal.h \
 		editclient.h \
@@ -695,6 +716,9 @@ login.o: login.cpp login.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+<<<<<<< HEAD
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
+=======
 >>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o login.cpp
 
@@ -735,6 +759,9 @@ staffportal.o: staffportal.cpp staffportal.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+<<<<<<< HEAD
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
+=======
 >>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o staffportal.o staffportal.cpp
 
@@ -760,8 +787,11 @@ manageclient.o: manageclient.cpp manageclient.h \
 		login.h \
 		manageanimal.h \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		staffportal.h
 =======
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 		clientportal.h \
 		staffportal.h \
 		editclient.h \
@@ -775,6 +805,9 @@ manageclient.o: manageclient.cpp manageclient.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+<<<<<<< HEAD
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
+=======
 >>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o manageclient.o manageclient.cpp
 
@@ -803,8 +836,11 @@ addnewclient.o: addnewclient.cpp addnewclient.h \
 		manageanimal.h \
 		manageclient.h \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		staffportal.h
 =======
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 		clientportal.h \
 		staffportal.h \
 		editclient.h \
@@ -818,6 +854,9 @@ addnewclient.o: addnewclient.cpp addnewclient.h \
 		ui_staffportal.h \
 		ui_editclient.h \
 		ui_editanimal.h
+<<<<<<< HEAD
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
+=======
 >>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addnewclient.o addnewclient.cpp
 
@@ -843,9 +882,12 @@ clientportal.o: clientportal.cpp clientportal.h \
 		manageanimal.h \
 		manageclient.h \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		staffportal.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o clientportal.o clientportal.cpp
 =======
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 		clientportal.h \
 		staffportal.h \
 		editclient.h \
@@ -929,9 +971,12 @@ editclient.o: editclient.cpp editclient.h \
 		manageanimal.h \
 		manageclient.h \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		staffportal.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o editclient.o editclient.cpp
 =======
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 		clientportal.h \
 		staffportal.h \
 		editclient.h \
@@ -988,6 +1033,7 @@ dbserver.o: dbserver.cpp dbserver.h \
 		addnewclient.h \
 		clientportal.h \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		editanimal.h \
 		editclient.h \
 		login.h \
@@ -996,6 +1042,8 @@ dbserver.o: dbserver.cpp dbserver.h \
 		staffportal.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dbserver.o dbserver.cpp
 =======
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 		staffportal.h \
 		editanimal.h \
 		ui_addnewanimal.h \

@@ -40,9 +40,15 @@
       </item>
       <item>
 <<<<<<< HEAD
+<<<<<<< HEAD
        <widget class="QLabel" name="name_label_txt">
         <property name="text">
          <string/>
+=======
+       <widget class="QLineEdit" name="txtName">
+        <property name="enabled">
+         <bool>false</bool>
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 =======
        <widget class="QLineEdit" name="txtName">
         <property name="enabled">

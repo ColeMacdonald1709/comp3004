@@ -11,12 +11,15 @@ ManageAnimal::ManageAnimal(UIServer* uiserver){ui = uiserver;}
 ManageAnimal::ManageAnimal(DBServer* dbserver){db = dbserver;}
 ManageAnimal::~ManageAnimal(){}
 
+<<<<<<< HEAD
 int ManageAnimal::animal_size(){return db->get_animal_size();}
 void ManageAnimal::get_animal(int i, QString* name, QList<QString>* PA)
 {
     db->get_animal(i,name,PA);
 }
 
+=======
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 void ManageAnimal::set_client_view(QString n){
     ui->addAnimalbtn->hide();
 }
