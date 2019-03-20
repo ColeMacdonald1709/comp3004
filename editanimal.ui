@@ -36,7 +36,7 @@
     <rect>
      <x>30</x>
      <y>70</y>
-     <width>441</width>
+     <width>466</width>
      <height>161</height>
     </rect>
    </property>
@@ -60,9 +60,15 @@
        </widget>
       </item>
       <item>
+<<<<<<< HEAD
        <widget class="QLabel" name="label_4">
         <property name="text">
          <string/>
+=======
+       <widget class="QLineEdit" name="txtName">
+        <property name="enabled">
+         <bool>false</bool>
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
         </property>
        </widget>
       </item>
@@ -84,7 +90,68 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtSpecies"/>
+       <widget class="QRadioButton" name="radDog">
+        <property name="text">
+         <string>Dog</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radCat">
+        <property name="text">
+         <string>Cat</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radBird">
+        <property name="text">
+         <string>Bird</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radFist">
+        <property name="text">
+         <string>Fish</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radRabbit">
+        <property name="text">
+         <string>Rabbit</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox">
+        <item>
+         <property name="text">
+          <string>Dog</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cat</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Bird</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Fish</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Rabbit</string>
+         </property>
+        </item>
+       </widget>
       </item>
      </layout>
     </item>
@@ -124,7 +191,18 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtSex"/>
+       <widget class="QRadioButton" name="radMale">
+        <property name="text">
+         <string>Male</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radFemale">
+        <property name="text">
+         <string>Female</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -144,7 +222,37 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtAge"/>
+       <widget class="QComboBox" name="ageComboBox">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>Baby</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Teenage</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Adult</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Mature</string>
+         </property>
+        </item>
+       </widget>
       </item>
      </layout>
     </item>

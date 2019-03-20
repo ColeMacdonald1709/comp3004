@@ -7,26 +7,8 @@
     <x>0</x>
     <y>0</y>
     <width>500</width>
-    <height>500</height>
+    <height>671</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>500</width>
-    <height>500</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>500</width>
-    <height>500</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -35,12 +17,12 @@
    <property name="geometry">
     <rect>
      <x>29</x>
-     <y>110</y>
+     <y>100</y>
      <width>441</width>
      <height>101</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="persInfoLayout">
     <item>
      <layout class="QHBoxLayout" name="name_layout">
       <property name="leftMargin">
@@ -57,9 +39,15 @@
        </widget>
       </item>
       <item>
+<<<<<<< HEAD
        <widget class="QLabel" name="name_label_txt">
         <property name="text">
          <string/>
+=======
+       <widget class="QLineEdit" name="txtName">
+        <property name="enabled">
+         <bool>false</bool>
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
         </property>
        </widget>
       </item>
@@ -133,7 +121,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>460</y>
+     <y>620</y>
      <width>441</width>
      <height>31</height>
     </rect>
@@ -195,12 +183,12 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>260</y>
+     <y>410</y>
      <width>441</width>
-     <height>181</height>
+     <height>198</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="NPAttributes">
+   <layout class="QGridLayout" name="NPAttributeLayout">
     <property name="sizeConstraint">
      <enum>QLayout::SetFixedSize</enum>
     </property>
@@ -219,117 +207,6 @@
     <property name="spacing">
      <number>0</number>
     </property>
-    <item row="5" column="0">
-     <layout class="QHBoxLayout" name="NPA6">
-      <property name="spacing">
-       <number>50</number>
-      </property>
-      <property name="leftMargin">
-       <number>16</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="NPAttr6">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>intelligence</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="NPAttr6spinBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximum">
-         <number>5</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="1">
-     <layout class="QHBoxLayout" name="NPA8">
-      <property name="spacing">
-       <number>50</number>
-      </property>
-      <property name="leftMargin">
-       <number>24</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="NPAttr8">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>palate</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="NPAttr8spinBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximum">
-         <number>5</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="0">
-     <layout class="QHBoxLayout" name="NPA2">
-      <property name="spacing">
-       <number>50</number>
-      </property>
-      <property name="leftMargin">
-       <number>37</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="NPAttr2">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>curiosity</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="NPAttr2spinBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximum">
-         <number>5</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
     <item row="4" column="1">
      <layout class="QHBoxLayout" name="NPA11">
       <property name="spacing">
@@ -347,120 +224,12 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>social</string>
+         <string>Social</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QSpinBox" name="NPAttr11spinBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximum">
-         <number>5</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="2" column="1">
-     <layout class="QHBoxLayout" name="NPA9">
-      <property name="spacing">
-       <number>50</number>
-      </property>
-      <property name="leftMargin">
-       <number>10</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="NPAttr9">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>patience</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="NPAttr9spinBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximum">
-         <number>5</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="5" column="1">
-     <layout class="QHBoxLayout" name="NPA12">
-      <property name="spacing">
-       <number>50</number>
-      </property>
-      <property name="leftMargin">
-       <number>27</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="NPAttr12">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>vocal</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="NPAttr12spinBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximum">
-         <number>5</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="3" column="1">
-     <layout class="QHBoxLayout" name="NPA10">
-      <property name="spacing">
-       <number>50</number>
-      </property>
-      <property name="leftMargin">
-       <number>20</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="NPAttr10">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>playful</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="NPAttr10spinBox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
           <horstretch>0</horstretch>
@@ -491,114 +260,12 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>energetic</string>
+         <string>Energetic</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QSpinBox" name="NPAttr3spinBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximum">
-         <number>5</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="4" column="0">
-     <layout class="QHBoxLayout" name="NPA5">
-      <property name="spacing">
-       <number>50</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="NPAttr5">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>independance</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="NPAttr5spinBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximum">
-         <number>5</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="1">
-     <layout class="QHBoxLayout" name="NPA7">
-      <property name="spacing">
-       <number>50</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="NPAttr7">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>obidience</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="NPAttr7spinBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximum">
-         <number>5</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="3" column="0">
-     <layout class="QHBoxLayout" name="NPA4">
-      <property name="spacing">
-       <number>50</number>
-      </property>
-      <property name="leftMargin">
-       <number>40</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="NPAttr4">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>hygiene</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="NPAttr4spinBox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
           <horstretch>0</horstretch>
@@ -632,12 +299,333 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>charisma</string>
+         <string>Charisma</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QSpinBox" name="NPAttr1spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <layout class="QHBoxLayout" name="NPA7">
+      <property name="spacing">
+       <number>50</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="NPAttr7">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Obidience</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="NPAttr7spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="1">
+     <layout class="QHBoxLayout" name="NPA10">
+      <property name="spacing">
+       <number>50</number>
+      </property>
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="NPAttr10">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Playful</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="NPAttr10spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="0">
+     <layout class="QHBoxLayout" name="NPA5">
+      <property name="spacing">
+       <number>50</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="NPAttr5">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Independance</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="NPAttr5spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="NPA2">
+      <property name="spacing">
+       <number>50</number>
+      </property>
+      <property name="leftMargin">
+       <number>37</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="NPAttr2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Curiosity</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="NPAttr2spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="0">
+     <layout class="QHBoxLayout" name="NPA4">
+      <property name="spacing">
+       <number>50</number>
+      </property>
+      <property name="leftMargin">
+       <number>40</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="NPAttr4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Hygiene</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="NPAttr4spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="5" column="0">
+     <layout class="QHBoxLayout" name="NPA6">
+      <property name="spacing">
+       <number>50</number>
+      </property>
+      <property name="leftMargin">
+       <number>16</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="NPAttr6">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Intelligence</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="NPAttr6spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="1">
+     <layout class="QHBoxLayout" name="NPA9">
+      <property name="spacing">
+       <number>50</number>
+      </property>
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="NPAttr9">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Patience</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="NPAttr9spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="1">
+     <layout class="QHBoxLayout" name="NPA8">
+      <property name="spacing">
+       <number>50</number>
+      </property>
+      <property name="leftMargin">
+       <number>24</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="NPAttr8">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Palate</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="NPAttr8spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="5" column="1">
+     <layout class="QHBoxLayout" name="NPA12">
+      <property name="spacing">
+       <number>52</number>
+      </property>
+      <property name="leftMargin">
+       <number>27</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="NPAttr12">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Vocal</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="NPAttr12spinBox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
           <horstretch>0</horstretch>
@@ -657,7 +645,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>230</y>
+     <y>220</y>
      <width>161</width>
      <height>17</height>
     </rect>
@@ -689,6 +677,255 @@
    </property>
    <property name="text">
     <string>Personal Information</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxBreed">
+   <property name="geometry">
+    <rect>
+     <x>227</x>
+     <y>280</y>
+     <width>171</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>171</width>
+     <height>25</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxSpecies">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>240</y>
+     <width>86</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Dog</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Cat</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Bird</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Fish</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Rabbit</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>33</x>
+     <y>352</y>
+     <width>139</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="name_layout_6">
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="name_label_6">
+      <property name="text">
+       <string>Age</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="ageComboBox">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <item>
+       <property name="text">
+        <string>Baby</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Teenage</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Adult</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Mature</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>33</x>
+     <y>316</y>
+     <width>185</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="name_layout_5">
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="name_label_5">
+      <property name="text">
+       <string>Sex</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radMale">
+      <property name="text">
+       <string>Male</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radFemale">
+      <property name="text">
+       <string>Female</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="name_label_4">
+   <property name="geometry">
+    <rect>
+     <x>34</x>
+     <y>280</y>
+     <width>39</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Breed</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtBreed">
+   <property name="geometry">
+    <rect>
+     <x>79</x>
+     <y>280</y>
+     <width>142</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radDog">
+   <property name="geometry">
+    <rect>
+     <x>99</x>
+     <y>244</y>
+     <width>52</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Dog</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radCat">
+   <property name="geometry">
+    <rect>
+     <x>157</x>
+     <y>244</y>
+     <width>48</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cat</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="name_label_3">
+   <property name="geometry">
+    <rect>
+     <x>43</x>
+     <y>244</y>
+     <width>50</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Species</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radFist">
+   <property name="geometry">
+    <rect>
+     <x>269</x>
+     <y>244</y>
+     <width>52</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Fish</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radBird">
+   <property name="geometry">
+    <rect>
+     <x>211</x>
+     <y>244</y>
+     <width>52</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Bird</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radRabbit">
+   <property name="geometry">
+    <rect>
+     <x>327</x>
+     <y>244</y>
+     <width>68</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Rabbit</string>
    </property>
   </widget>
  </widget>

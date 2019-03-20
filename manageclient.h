@@ -26,6 +26,7 @@ public:
     int client_size();
     void get_client(int,QString*,QString*,QString*);
     void get_client(int, QString*, QString*, QString*,QList<QString>*,QList<QString>*);
+    void get_client_profile(QString*);
 private:
     DBServer* db;
     UIServer* ui;

@@ -33,9 +33,9 @@ protected:
     QString phone;
     QString email;
     //attributes
-    QList<QString>* personalInfo;
+    QList<QString>* PAList;
     //animal preferences
-    QList<QString>* preferences;
+    QList<QString>* NPAList;
 };
 
 #endif // CLIENT_H

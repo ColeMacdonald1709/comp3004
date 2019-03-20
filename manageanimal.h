@@ -26,6 +26,11 @@ public:
     int animal_size();
     void get_animal(int,QString*,QList<QString>*);
     void get_animal(int,QString*,QList<QString>*,QList<QString>*);
+    void get_animal(QString*);
+    void updateAnimals(Animal*);
+    void set_client_view(QString);
+    void set_staff_view(QString);
+    void showAnimals();
 private:
     DBServer* db;
     UIServer* ui;

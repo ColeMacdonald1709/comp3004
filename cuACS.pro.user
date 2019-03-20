@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.5.2, 2019-03-19T20:39:17. -->
+=======
+<<<<<<< HEAD
+<!-- Written by QtCreator 4.5.2, 2019-03-19T16:26:49. -->
+=======
+<!-- Written by QtCreator 4.5.2, 2019-03-19T13:23:17. -->
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
+>>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -183,8 +191,13 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">cuACS</value>
+<<<<<<< HEAD
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">cuACS2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/student/Documents/comp3004/cuACS.pro</value>
+=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/student/comp3004/cuACS.pro</value>
+>>>>>>> a280c47f30f68b8c754c59b0c6e7b04a41d2c7e3
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">cuACS.pro</value>

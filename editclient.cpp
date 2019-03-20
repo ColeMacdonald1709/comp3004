@@ -15,3 +15,14 @@ void EditClient::set_up(QString* name, QString* phone, QString* email, QList<QSt
 {
     db->get_client(name, phone, email, PA, NPA);
 }
+void editClient(QString* name, QString* phone,QString* email,QList<QString>* PAList, QList<QString>* NPAList)
+{
+    db->editClientProfile(name, phone, email, PAList, NPAList);
+}
+
+void get_breeds(QString* species)
+{
+   QList<QString>* breeds = new QList<QString>();
+   db->get_breeds(species,breeds);
+   UIServer::editclientUI->comboBoxBreed->additems(breeds);
+}
