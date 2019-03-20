@@ -22,7 +22,6 @@ class ManageClient
 public:
     ManageClient(UIServer*);
     ManageClient(DBServer*);
-    ~ManageClient();
     int client_size();
     void get_client(int,QString*,QString*,QString*);
     void get_client(int, QString*, QString*, QString*,QList<QString>*,QList<QString>*);

@@ -9,7 +9,7 @@ Ian Sloan 		101021039
 
 ManageClient::ManageClient(UIServer* uiserver) {ui = uiserver;}
 ManageClient::ManageClient(DBServer* dbserver) {db = dbserver;}
-ManageClient::~ManageClient(){}
+
 int ManageClient::client_size(){return db->get_client_size();}
 void ManageClient::get_client(int i, QString* name, QString* phone, QString* email)
 {

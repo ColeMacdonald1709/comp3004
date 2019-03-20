@@ -20,7 +20,6 @@ class Login
 public:
     Login(UIServer*);
     Login(DBServer*);
-    ~Login();
     void verify_client(QString);
     void verify_staff(QString);
 private:

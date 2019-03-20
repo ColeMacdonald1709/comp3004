@@ -15,7 +15,6 @@ class StaffPortal
 {
 public:
     StaffPortal(UIServer*);
-    ~StaffPortal();
     void open_manage_animal();
     void open_manage_client();
     void logout();

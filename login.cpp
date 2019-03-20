@@ -10,8 +10,6 @@ Ian Sloan 		101021039
 Login::Login(UIServer* uiserver){ui = uiserver;}
 Login::Login(DBServer* dbserver){db = dbserver;}
 
-Login::~Login(){}
-
 void Login::verify_client(QString name){
     if(db->verify_client(&name))
         ui->show_client_portal(&name);

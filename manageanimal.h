@@ -22,7 +22,6 @@ class ManageAnimal
 public:
     ManageAnimal(UIServer*);
     ManageAnimal(DBServer*);
-    ~ManageAnimal();
     int animal_size();
     void get_animal(int,QString*,QList<QString>*);
     void get_animal(int,QString*,QList<QString>*,QList<QString>*);

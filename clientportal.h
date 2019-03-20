@@ -17,7 +17,6 @@ class ClientPortal
 {
 public:
     ClientPortal(UIServer*);
-    ~ClientPortal();
     void open_view_animal();
     void open_edit_client();
     void logout();

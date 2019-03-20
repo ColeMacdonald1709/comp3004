@@ -11,7 +11,6 @@ ClientPortal::ClientPortal(UIServer* uiserver)
 {
     ui = uiserver;
 }
-ClientPortal::~ClientPortal(){}
 void ClientPortal::set_name(QString* n)
 {
     name = n;

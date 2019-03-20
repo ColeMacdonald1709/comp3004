@@ -18,7 +18,6 @@ class EditAnimal
 public:
     EditAnimal(UIServer*);
     EditAnimal(DBServer*);
-    ~EditAnimal();
     void set_up(QString*,QList<QString>*,QList<QString>*);
     void editAnimal(QString*, QList<QString>*, QList<QString>*);
 private:

@@ -11,7 +11,6 @@ StaffPortal::StaffPortal(UIServer* uiserver)
 {
     ui = uiserver;
 }
-StaffPortal::~StaffPortal(){}
 
 void StaffPortal::open_manage_animal()
 {

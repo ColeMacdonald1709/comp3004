@@ -18,77 +18,73 @@ Ian Sloan 		101021039
 #include "editclient.h"
 #include "editanimal.h"
 
+#include <QDebug>
+
 UIServer::UIServer()
 {
-    AddNewAnimal(this);
-    AddNewAnimalUI(this);
-
-    AddNewClient(this);
-    AddNewClientUI(this);
-
-    EditAnimal(this);
-    EditAnimalUI(this);
-
-    EditClient(this);
-    EditClientUI(this);
-
-    Login(this);
-    LoginUI(this);
-
-    ManageAnimal(this);
-    ManageAnimalUI(this);
-
-    ManageClient(this);
-    ManageClientUI(this);
-
-    ClientPortal(this);
-    ClientPortalUI(this);
-
-    StaffPortal(this);
-    StaffPortalUI(this);
+    UIServer::addnewanimalLogic = new AddNewAnimal(this);
+    UIServer::addnewanimalUIC = new AddNewAnimalUI(this);
+    UIServer::addnewclientLogic = new AddNewClient(this);
+    UIServer::addnewclientUIC = new AddNewClientUI(this);
+    UIServer::editanimalLogic = new EditAnimal(this);
+    UIServer::editanimalUIC = new EditAnimalUI(this);
+    UIServer::editclientLogic = new EditClient(this);
+    UIServer::editclientUIC = new EditClientUI(this);
+    UIServer::loginLogic = new Login(this);
+    UIServer::loginUIC = new LoginUI(this);
+    UIServer::manageanimalLogic = new ManageAnimal(this);
+    UIServer::manageanimalUIC = new ManageAnimalUI(this);
+    UIServer::manageclientLogic = new ManageClient(this);
+    UIServer::manageclientUIC = new ManageClientUI(this);
+    UIServer::clientportalLogic = new ClientPortal(this);
+    UIServer::clientportalUIC = new ClientPortalUI(this);
+    UIServer::staffportalLogic = new StaffPortal(this);
+    UIServer::staffportalUIC = new StaffPortalUI(this);
 }
 UIServer::~UIServer()
 {
     delete UIServer::addnewanimalUIC->addnewanimalUI;
-    //delete UIServer::addnewanimalUIC;
-    //delete UIServer::addnewanimalLogic;
+    delete UIServer::addnewanimalUIC;
+    delete UIServer::addnewanimalLogic;
 
     delete UIServer::addnewclientUIC->addnewclientUI;
-    //delete UIServer::addnewclientUIC;
-    //delete UIServer::addnewclientLogic;
+    delete UIServer::addnewclientUIC;
+    delete UIServer::addnewclientLogic;
 
     delete UIServer::editanimalUIC->editanimalUI;
-    //delete UIServer::editanimalUIC;
-    //delete UIServer::editanimalLogic;
+    delete UIServer::editanimalUIC;
+    delete UIServer::editanimalLogic;
 
     delete UIServer::editclientUIC->editclientUI;
-    //delete UIServer::editclientUIC;
-    //delete UIServer::editclientLogic;
+    delete UIServer::editclientUIC;
+    delete UIServer::editclientLogic;
 
     delete UIServer::loginUIC->loginUI;
-    //delete UIServer::loginUIC;
-    //delete UIServer::loginLogic;
+    delete UIServer::loginUIC;
+    delete UIServer::loginLogic;
 
     delete UIServer::manageanimalUIC->manageanimalUI;
-    //delete UIServer::manageanimalUIC;
-    //delete UIServer::manageanimalLogic;
+    delete UIServer::manageanimalUIC;
+    delete UIServer::manageanimalLogic;
 
     delete UIServer::manageclientUIC->manageclientUI;
-    //delete UIServer::manageclientUIC;
-    //delete UIServer::manageclientLogic;
+    delete UIServer::manageclientUIC;
+    delete UIServer::manageclientLogic;
 
     delete UIServer::clientportalUIC->clientportalUI;
-    //delete UIServer::clientportalUIC;
-    //delete UIServer::clientportalLogic;
+    delete UIServer::clientportalUIC;
+    delete UIServer::clientportalLogic;
 
     delete UIServer::staffportalUIC->staffportalUI;
-    //delete UIServer::staffportalUIC;
-    //delete UIServer::staffportalLogic;
+    delete UIServer::staffportalUIC;
+    delete UIServer::staffportalLogic;
 }
 
 void UIServer::init()
 {
     UIServer::loginUIC->show_window();
+    UIServer::manageanimalUIC->load_animals();
+    UIServer::manageclientUIC->load_clients();
 }
 void UIServer::show_animals(bool isclient)
 {
@@ -514,7 +510,6 @@ ManageAnimalUI::ManageAnimalUI(UIServer* uis) : QDialog(), manageanimalUI(new Ui
 {
     uiserver = uis;
     manageanimalUI->setupUi(this);
-    load_animals();
 }
 void ManageAnimalUI::show_window()
 {
@@ -575,7 +570,6 @@ ManageClientUI::ManageClientUI(UIServer* uis) : QDialog(), manageclientUI(new Ui
 {
     uiserver = uis;
     manageclientUI->setupUi(this);
-    load_clients();
 }
 void ManageClientUI::show_window()
 {
