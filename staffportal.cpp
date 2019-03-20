@@ -6,7 +6,6 @@ Ian Sloan 		101021039
 **/
 
 #include "staffportal.h"
-#include "ui_staffportal.h"
 
 StaffPortal::StaffPortal(UIServer* uiserver)
 {

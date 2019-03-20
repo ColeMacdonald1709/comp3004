@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     DBServer dbserver;
     UIServer uiserver;
+    uiserver.init();
 
     return a.exec();
 }

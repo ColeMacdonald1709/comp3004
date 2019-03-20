@@ -24,5 +24,5 @@ void EditClient::get_breeds(const QString& species)
    QList<QString>* breeds = NULL;
    QString s = species;
    db->get_breeds(&s,breeds);
-   UIServer::editclientUIC.editclientUI->comboBoxBreed->addItems(*breeds);
+   ui->editclientUIC->editclientUI->comboBoxBreed->addItems(*breeds);
 }
