@@ -52,6 +52,11 @@ public:
 
     int get_animal_size();
     int get_client_size();
+
+    void editAnimalProfile(QString*, QList<QString>*, QList<QString>*);
+    void editClientProfile(QString*, QString*, QString*, QList<QString>*,QList<QString>*);
+
+    void get_breeds(QString*,QList<QString>*);
 private:
     QList<Animal*> animals;
     QList<Client*> clients;

@@ -18,7 +18,6 @@ void Login::verify_client(QString name){
     else
         ui->show_login_error();
 }
-
 void Login::verify_staff(QString name){
     if(db->verify_staff(&name))
         ui->show_staff_portal();

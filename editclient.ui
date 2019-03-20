@@ -39,21 +39,9 @@
        </widget>
       </item>
       <item>
-<<<<<<< HEAD
-<<<<<<< HEAD
-       <widget class="QLabel" name="name_label_txt">
+       <widget class="QLabel" name="txtName">
         <property name="text">
          <string/>
-=======
-       <widget class="QLineEdit" name="txtName">
-        <property name="enabled">
-         <bool>false</bool>
->>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
-=======
-       <widget class="QLineEdit" name="txtName">
-        <property name="enabled">
-         <bool>false</bool>
->>>>>>> b6aa78aeda228726d1751e47f8d6cebb49ac33ed
         </property>
        </widget>
       </item>
@@ -736,7 +724,7 @@
     </property>
    </item>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>33</x>
@@ -794,7 +782,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>33</x>
@@ -895,7 +883,7 @@
     <string>Species</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radFist">
+  <widget class="QRadioButton" name="radFish">
    <property name="geometry">
     <rect>
      <x>269</x>
