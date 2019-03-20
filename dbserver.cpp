@@ -186,12 +186,21 @@ void DBServer::get_client(int i, QString* name, QString* phone, QString* email)
     email = &(clients.at(i)->getEmail());
 }
 
+QStringList* DBServer::get_breeds(QString species, QStringList* breeds)
+{//run through dynamic animals list and grab the breed from PAttr[1] of each animal matching species
+    for (int i=0; i<animals.size(); i++){
+        if (animals.at(i)->getPAttr()->at(0) == species)
+            breeds->append(animals.at(i)->getPAttr()->at(1));
+    }
+}
+
 void DBServer::loadAnimals(){
     if (!db.open())
     {
         qDebug()<<"Failed to open cuACS database";
         return;
     }
+
     QSqlQuery animalqry("SELECT * FROM Animals");
     while(animalqry.next()){
         QString name = animalqry.value("Name").toString();

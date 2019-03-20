@@ -576,3 +576,7 @@ void EditAnimalUI::on_btnClient_clicked(){
     EditAnimalUI::hide_window();
 }
 
+void UIServer::on_comboBoxSpecies_currentIndexChanged(const QString &arg1)
+{
+    UIServer::editclientLogic->get_breeds(arg1);
+}

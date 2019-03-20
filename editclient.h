@@ -20,6 +20,7 @@ public:
     EditClient(DBServer*);
     ~EditClient();
     void editClient(QString* ,QString* ,QString* ,QList<QString>*, QList<QString>*);
+    void get_breeds(QString*);
 private:
     DBServer* db;
     UIServer* ui;

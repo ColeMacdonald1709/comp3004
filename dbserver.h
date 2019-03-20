@@ -30,6 +30,7 @@ public:
     void editAnimalProfile(QString*, QList<QString>*, QList<QString>*);
     void get_client(int, QString*, QString*, QString*);
     int get_size();
+    void get_breeds(QString*,QList<QString>*);
     Animal* get_Animal(int);
 private:
     QList<Animal*> animals;

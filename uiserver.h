@@ -66,6 +66,11 @@ public:
     void show_staff_portal();
     void show_clients();
     void logout();
+private slots:
+    void on_comboBox_currentIndexChanged(const QString &arg1);
+
+    void on_comboBoxSpecies_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::AddNewAnimal* addnewanimalUI;
     Ui::AddNewClient* addnewclientUI;
