@@ -11,6 +11,23 @@ DBServer::DBServer()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("./cuACS_db.db");
+    animals = new QList<Animal*>();
+    clients = new QList<Client*>();
+}
+DBServer::~DBServer()
+{
+    for(int i=0; i<animals->size(); i++){
+        delete animals->at(i);
+    }
+    for(int i=0; i<clients->size(); i++){
+        delete clients->at(i);
+    }
+    delete animals;
+    delete clients;
+    db.close();
+}
+void DBServer::init()
+{
     loadAnimals();
     loadClients();
     AddNewAnimal(this);
@@ -21,21 +38,11 @@ DBServer::DBServer()
     ManageAnimal(this);
     ManageClient(this);
 }
-DBServer::~DBServer()
-{
-    for(int i=0; i<animals.size(); i++){
-        delete animals.at(i);
-    }
-    for(int i=0; i<clients.size(); i++){
-        delete clients.at(i);
-    }
-    db.close();
-}
 bool DBServer::verify_animal(QString* name)
 {
     bool verified = false;
-    for(int i=0; i<animals.size(); i++){
-        if(animals.at(i)->getAnimalName() == *name){
+    for(int i=0; i<animals->size(); i++){
+        if(animals->at(i)->getAnimalName() == *name){
             verified = true;
             break;
         }
@@ -45,8 +52,8 @@ bool DBServer::verify_animal(QString* name)
 bool DBServer::verify_client(QString* name)
 {
     bool verified = false;
-    for(int i=0; i<clients.size(); i++){
-        if(clients.at(i)->getName() == *name){
+    for(int i=0; i<clients->size(); i++){
+        if(clients->at(i)->getName() == *name){
             verified = true;
             break;
         }
@@ -62,7 +69,7 @@ bool DBServer::verify_staff(QString* name){
 void DBServer::add_new_animal(Animal* newanimal)
 {
     db.open();
-    animals.append(newanimal);
+    animals->append(newanimal);
 
     //set up query
     QSqlQuery qry;
@@ -79,7 +86,7 @@ void DBServer::add_new_animal(Animal* newanimal)
 void DBServer::add_new_client(Client* newclient)
 {
     db.open();
-    clients.append(newclient);
+    clients->append(newclient);
     //set up query
     QSqlQuery qry;
     qry.prepare("INSERT INTO Clients (Name, Phone, Email, "
@@ -98,9 +105,9 @@ void DBServer::add_new_client(Client* newclient)
 void DBServer::editClientProfile(QString* name, QString* phone, QString* email, QList<QString>* PAList,QList<QString>* NPAList) {
     //look in clients and update
     Client* newprofile = new Client(*name,*phone,*email,PAList,NPAList);
-    for(int i=0; i<clients.size(); i++){
-        if(clients.at(i)->getName() == *name){
-            clients.replace(i,newprofile);
+    for(int i=0; i<clients->size(); i++){
+        if(clients->at(i)->getName() == *name){
+            clients->replace(i,newprofile);
             break;
         }
     }
@@ -136,9 +143,9 @@ void DBServer::editClientProfile(QString* name, QString* phone, QString* email, 
 void DBServer::editAnimalProfile(QString* name, QList<QString>* PAList, QList<QString>* NPAList) {
     //look in animals and update
     Animal* newprofile = new Animal(*name,PAList,NPAList);
-    for (int i=0;i<animals.size();i++){
-        if (animals.at(i)->getAnimalName() == *name){
-            animals.replace(i,newprofile);
+    for (int i=0;i<animals->size();i++){
+        if (animals->at(i)->getAnimalName() == *name){
+            animals->replace(i,newprofile);
             break;
         }
     }
@@ -169,9 +176,9 @@ void DBServer::editAnimalProfile(QString* name, QList<QString>* PAList, QList<QS
 }
 void DBServer::get_client(int i, QString* name, QString* phone, QString* email)
 {
-    *name = clients.at(i)->getName();
-    *phone = clients.at(i)->getPhone();
-    *email = clients.at(i)->getEmail();
+    *name = clients->at(i)->getName();
+    *phone = clients->at(i)->getPhone();
+    *email = clients->at(i)->getEmail();
 }
 void DBServer::loadAnimals(){
     db.open();
@@ -219,15 +226,15 @@ void DBServer::loadAnimals(){
 
         Animal* newAnimal = new Animal(name,PAttr,NPAttr);
         //add animal to dynamic storage
-        animals.append(newAnimal);
+        animals->append(newAnimal);
     }
     db.close();
 }
 void DBServer::get_breeds(QString* species, QList<QString>* breeds)
 {//run through dynamic animals list and grab the breed from PAttr[1] of each animal matching species
-    for (int i=0; i<animals.size(); i++){
-        if (animals.at(i)->getPAttr()->at(0) == *species)
-            breeds->append(animals.at(i)->getPAttr()->at(1));
+    for (int i=0; i<animals->size(); i++){
+        if (animals->at(i)->getPAttr()->at(0) == *species)
+            breeds->append(animals->at(i)->getPAttr()->at(1));
     }
 }
 void DBServer::loadClients(){
@@ -275,30 +282,30 @@ void DBServer::loadClients(){
         prefs->append(NPA12);
         Client* newClient = new Client(name,phone,email,info,prefs);
         //add client to dynamic storage
-        clients.append(newClient);
+        clients->append(newClient);
     }
     db.close();
 }
 int DBServer::get_animal_size(){
-    return animals.size();
+    return animals->size();
 }
 int DBServer::get_client_size(){
-    return clients.size();
+    return clients->size();
 }
 void DBServer::get_animal(int i, QString* name, QList<QString>* PA, QList<QString>* NPA){
-    *name = animals.at(i)->getAnimalName();
-    *PA = *(animals.at(i)->getPAttr());
-    *NPA = *(animals.at(i)->getNPAttr());
+    *name = animals->at(i)->getAnimalName();
+    *PA = *(animals->at(i)->getPAttr());
+    *NPA = *(animals->at(i)->getNPAttr());
 }
 void DBServer::get_animal(int i, QString* name, QList<QString>* PA)
 {
-    *name = animals.at(i)->getAnimalName();
-    *PA = *(animals.at(i)->getPAttr());
+    *name = animals->at(i)->getAnimalName();
+    *PA = *(animals->at(i)->getPAttr());
 }
 void DBServer::get_animal(QString* name, QList<QString>* PA, QList<QString>* NPA)
 {
-    for(int i=0; i<animals.size(); i++){
-        if(animals.at(i)->getAnimalName() == *name){
+    for(int i=0; i<animals->size(); i++){
+        if(animals->at(i)->getAnimalName() == *name){
             get_animal(i, name, PA, NPA);
             break;
         }
@@ -306,16 +313,16 @@ void DBServer::get_animal(QString* name, QList<QString>* PA, QList<QString>* NPA
 }
 void DBServer::get_client(int i, QString* name, QString* phone, QString* email, QList<QString>* PA, QList<QString>* NPA)
 {
-    *name = clients.at(i)->getName();
-    *phone = clients.at(i)->getPhone();
-    *email = clients.at(i)->getEmail();
-    *PA = *(clients.at(i)->getPrefs());
-    *NPA = *(clients.at(i)->getInfo());
+    *name = clients->at(i)->getName();
+    *phone = clients->at(i)->getPhone();
+    *email = clients->at(i)->getEmail();
+    *PA = *(clients->at(i)->getPrefs());
+    *NPA = *(clients->at(i)->getInfo());
 }
 void DBServer::get_client(QString* name, QString* phone, QString* email, QList<QString>* PA, QList<QString>* NPA)
 {
-    for(int i=0; i<clients.size(); i++){
-        if(clients.at(i)->getName() == *name){
+    for(int i=0; i<clients->size(); i++){
+        if(clients->at(i)->getName() == *name){
             get_client(i, name, phone, email, PA, NPA);
             break;
         }

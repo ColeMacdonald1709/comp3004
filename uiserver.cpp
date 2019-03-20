@@ -82,9 +82,9 @@ UIServer::~UIServer()
 
 void UIServer::init()
 {
-    UIServer::loginUIC->show_window();
     UIServer::manageanimalUIC->load_animals();
     UIServer::manageclientUIC->load_clients();
+    UIServer::loginUIC->show_window();
 }
 void UIServer::show_animals(bool isclient)
 {
@@ -140,10 +140,10 @@ AddNewAnimalUI::AddNewAnimalUI(UIServer* uis) : QDialog(), addnewanimalUI(new Ui
 {
     uiserver = uis;
     addnewanimalUI->setupUi(this);
+    this->setModal(true);
 }
 void AddNewAnimalUI::show_window()
 {
-    this->setModal(true);
     this->exec();
     this->show();
 }
@@ -223,10 +223,10 @@ AddNewClientUI::AddNewClientUI(UIServer* uis) : QDialog(), addnewclientUI(new Ui
 {
     uiserver = uis;
     addnewclientUI->setupUi(this);
+    this->setModal(true);
 }
 void AddNewClientUI::show_window()
 {
-    this->setModal(true);
     this->exec();
     this->show();
 }
@@ -260,10 +260,10 @@ EditAnimalUI::EditAnimalUI(UIServer* uis) : QDialog(), editanimalUI(new Ui::Edit
 {
     uiserver = uis;
     editanimalUI->setupUi(this);
+    this->setModal(true);
 }
 void EditAnimalUI::show_window()
 {
-    this->setModal(true);
     this->exec();
     this->show();
 }
@@ -342,10 +342,10 @@ EditClientUI::EditClientUI(UIServer* uis) : QDialog(), editclientUI(new Ui::Edit
 {
     uiserver = uis;
     editclientUI->setupUi(this);
+    this->setModal(true);
 }
 void EditClientUI::show_window()
 {
-    this->setModal(true);
     this->exec();
     this->show();
 }
@@ -447,6 +447,7 @@ LoginUI::LoginUI(UIServer* uis) : QDialog(), loginUI(new Ui::Login)
 {
     uiserver = uis;
     loginUI->setupUi(this);
+    this->setModal(true);
 }
 void LoginUI::invalid_cred()
 {
@@ -455,7 +456,6 @@ void LoginUI::invalid_cred()
 }
 void LoginUI::show_window()
 {
-    this->setModal(true);
     this->exec();
     this->show();
 }
@@ -480,6 +480,7 @@ ClientPortalUI::ClientPortalUI(UIServer* uis) : QDialog(), clientportalUI(new Ui
 {
     uiserver = uis;
     clientportalUI->setupUi(this);
+    this->setModal(true);
 }
 void ClientPortalUI::on_Viewanimals_clicked()
 {
@@ -495,7 +496,6 @@ void ClientPortalUI::on_client_logout_clicked()
 }
 void ClientPortalUI::show_window()
 {
-    this->setModal(true);
     this->exec();
     this->show();
 }
@@ -510,10 +510,10 @@ ManageAnimalUI::ManageAnimalUI(UIServer* uis) : QDialog(), manageanimalUI(new Ui
 {
     uiserver = uis;
     manageanimalUI->setupUi(this);
+    this->setModal(true);
 }
 void ManageAnimalUI::show_window()
 {
-    this->setModal(true);
     this->exec();
     this->show();
 }
@@ -570,10 +570,10 @@ ManageClientUI::ManageClientUI(UIServer* uis) : QDialog(), manageclientUI(new Ui
 {
     uiserver = uis;
     manageclientUI->setupUi(this);
+    this->setModal(true);
 }
 void ManageClientUI::show_window()
 {
-    this->setModal(true);
     this->exec();
     this->show();
 }
@@ -632,6 +632,7 @@ StaffPortalUI::StaffPortalUI(UIServer* uis) : QDialog(), staffportalUI(new Ui::S
 {
     uiserver = uis;
     staffportalUI->setupUi(this);
+    this->setModal(true);
 }
 void StaffPortalUI::on_btnAnimals_clicked()
 {
@@ -647,7 +648,6 @@ void StaffPortalUI::on_staff_logout_clicked()
 }
 void StaffPortalUI::show_window()
 {
-    this->setModal(true);
     this->exec();
     this->show();
 }

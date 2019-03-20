@@ -57,9 +57,10 @@ public:
     void editClientProfile(QString*, QString*, QString*, QList<QString>*,QList<QString>*);
 
     void get_breeds(QString*,QList<QString>*);
+    void init();
 private:
-    QList<Animal*> animals;
-    QList<Client*> clients;
+    QList<Animal*>* animals;
+    QList<Client*>* clients;
     QSqlDatabase db;
 };
 

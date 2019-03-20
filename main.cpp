@@ -12,9 +12,15 @@ Ian Sloan 		101021039
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    DBServer dbserver;
-    UIServer uiserver;
-    uiserver.init();
+    DBServer* dbserver = new DBServer();
+    dbserver->init();
+    UIServer* uiserver = new UIServer();
+    uiserver->init();
 
-    return a.exec();
+    if(a.exec() == 0){
+        qDebug() << "cleaning up";
+        delete dbserver;
+        delete uiserver;
+    }
+    return 0;
 }
