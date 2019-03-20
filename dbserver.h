@@ -15,20 +15,43 @@ Ian Sloan 		101021039
 
 #include "animal.h"
 #include "client.h"
+#include "addnewanimal.h"
+#include "addnewclient.h"
+#include "clientportal.h"
+#include "editanimal.h"
+#include "editclient.h"
+#include "login.h"
+#include "manageanimal.h"
+#include "manageclient.h"
+#include "staffportal.h"
 
 class DBServer
 {
 public:
     DBServer();
     ~DBServer();
+
+    void loadAnimals();
+    void loadClients();
+
     bool verify_animal(QString*);
+
     bool verify_client(QString*);
     bool verify_staff(QString*);
+
     void add_new_animal(Animal*);
     void add_new_client(Client*);
+
     void get_client(int, QString*, QString*, QString*);
-    int get_size();
-    Animal* get_Animal(int);
+    void get_client(int, QString*, QString*, QString*, QList<QString>*, QList<QString>*);
+    void get_client(QString* , QString* , QString* , QList<QString>* , QList<QString>* );
+
+    void get_animal(int, QString*, QList<QString>*,QList<QString>*);
+    void get_animal(int, QString*, QList<QString>*);
+    void get_animal(QString*, QList<QString>*, QList<QString>*);
+
+    int get_animal_size();
+    int get_client_size();
 private:
     QList<Animal*> animals;
     QList<Client*> clients;

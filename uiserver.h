@@ -13,25 +13,163 @@ Ian Sloan 		101021039
 #include <QString>
 #include <QMessageBox>
 
+#include "ui_addnewanimal.h"
+#include "ui_addnewclient.h"
+#include "ui_clientportal.h"
+#include "ui_editanimal.h"
+#include "ui_editclient.h"
+#include "ui_login.h"
+#include "ui_manageanimal.h"
+#include "ui_manageclient.h"
+#include "ui_staffportal.h"
+
 #include "addnewanimal.h"
 #include "addnewclient.h"
+#include "clientportal.h"
+#include "editanimal.h"
+#include "editclient.h"
 #include "login.h"
 #include "manageanimal.h"
 #include "manageclient.h"
-#include "clientportal.h"
 #include "staffportal.h"
 
 namespace Ui {
 class AddNewAnimal;
 class AddNewClient;
+class EditClient;
+class EditAnimal;
 class Login;
 class ManageAnimal;
 class ManageClient;
 class ClientPortal;
 class StaffPortal;
 }
+
+class AddNewAnimalUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit AddNewAnimalUI();
+    void show_window();
+    void hide_window();
+    void update_animals(QString*,QList<QString>*);
+    Ui::AddNewAnimal* addnewanimalUI;
+private:
+    void on_cancelbtn_clicked();
+    void on_addAnimalbtn_clicked();
+};
+
+class AddNewClientUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit AddNewClientUI();
+    void show_window();
+    void hide_window();
+    Ui::AddNewClient* addnewclientUI;
+private:
+    void on_cancel_button_clicked();
+    void on_add_button_clicked();
+};
+
+class EditAnimalUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit EditAnimalUI();
+    void show_window();
+    void hide_window();
+    void load_info(QString*);
+    Ui::EditAnimal* editanimalUI;
+private:
+};
+
+class EditClientUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit EditClientUI();
+    void show_window();
+    void hide_window();
+    void load_info(QString*);
+    Ui::EditClient* editclientUI;
+private:
+};
+
+class LoginUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit LoginUI();
+    void show_window();
+    void hide_window();
+    void invalid_cred();
+    Ui::Login* loginUI;
+private:
+    void on_btnClient_clicked();
+    void on_btnStaff_clicked();
+};
+
+class ManageAnimalUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit ManageAnimalUI();
+    void show_window();
+    void hide_window();
+    void update_animals(QString*,QList<QString>*);
+    void set_client_view();
+    void set_staff_view();
+    void load_animals();
+    Ui::ManageAnimal* manageanimalUI;
+private:
+};
+
+class ManageClientUI: public QDialog
+{
+   Q_OBJECT
+public:
+    explicit ManageClientUI();
+    void show_window();
+    void hide_window();
+    void update_clients(QString*,QString*,QString*);
+    void load_clients();
+    Ui::ManageClient* manageclientUI;
+private:
+};
+
+class ClientPortalUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit ClientPortalUI();
+    void show_window();
+    void hide_window();
+    Ui::ClientPortal* clientportalUI;
+private:
+    void on_Viewanimals_clicked();
+    void on_Editprofile_clicked();
+    void on_client_logout_clicked();
+};
+
+class StaffPortalUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit StaffPortalUI();
+    void show_window();
+    void hide_window();
+    Ui::StaffPortal* staffportalUI;
+private:
+    void on_btnAnimals_clicked();
+    void on_btnClients_clicked();
+    void on_staff_logout_clicked();
+};
+
 class AddNewAnimal;
 class AddNewClient;
+class EditAnimal;
+class EditClient;
 class Login;
 class ManageAnimal;
 class ManageClient;
@@ -43,114 +181,34 @@ class UIServer
 public:
     UIServer();
     ~UIServer();
-    void show_animals(bool,QString*);
+    void init();
+    void show_animals(bool);
     void show_login_error();
     void show_staff_portal();
+    void show_client_portal(QString*);
     void show_clients();
     void logout();
-private:
-    Ui::AddNewAnimal* addnewanimalUI;
-    Ui::AddNewClient* addnewclientUI;
-    Ui::Login* loginUI;
-    Ui::ManageAnimal* manageanimalUI;
-    Ui::ManageClient* manageclientUI;
-    Ui::ClientPortal* clientportalUI;
-    Ui::StaffPortal* staffportalUI;
+    void edit_client_profile(QString*);
 
-    AddNewAnimal* addnewanimalLogic;
-    AddNewClient* addnewclientLogic;
-    Login* loginLogic;
-    ManageAnimal* manageanimalLogic;
-    ManageClient* manageclientLogic;
-    ClientPortal* clientportalLogic;
-    StaffPortal* staffportalLogic;
-};
+    static AddNewAnimalUI addnewanimalUIC;
+    static AddNewClientUI addnewclientUIC;
+    static EditAnimalUI editanimalUIC;
+    static EditClientUI editclientUIC;
+    static LoginUI loginUIC;
+    static ManageAnimalUI manageanimalUIC;
+    static ManageClientUI manageclientUIC;
+    static ClientPortalUI clientportalUIC;
+    static StaffPortalUI staffportalUIC;
 
-class AddNewAnimalUI: public QDialog
-{
-    Q_OBJECT
-public:
-    explicit AddNewAnimalUI(QWidget *parent = 0);
-    void show_window();
-    void hide_window();
-private:
-    void on_cancelbtn_clicked();
-    void on_addAnimalbtn_clicked();
-    void update_animals(QString*,QList<QString>*);
-};
-
-class AddNewClientUI: public QDialog
-{
-    Q_OBJECT
-public:
-    explicit AddNewClientUI(QWidget *parent = 0);
-    void show_window();
-    void hide_window();
-private:
-    void on_cancel_button_clicked();
-    void on_pushButton_2_clicked();
-};
-
-class LoginUI: public QDialog
-{
-    Q_OBJECT
-public:
-    explicit LoginUI(QWidget *parent = 0);
-    void show_window();
-    void hide_window();
-private:
-    void on_btnClient_clicked();
-    void on_btnStaff_clicked();
-    void invalid_cred();
-};
-
-class ManageAnimalUI: public QDialog
-{
-    Q_OBJECT
-public:
-    void show_window();
-    void hide_window();
-    void set_client_view(QString*);
-    void set_staff_view(QString*);
-private:
-    void update_animals(QString*,QList<QString>*);
-};
-
-class ManageClientUI: public QDialog
-{
-   Q_OBJECT
-public:
-    void show_window();
-    void hide_window();
-private:
-    void load_clients();
-    void update_clients(QString*,QString*,QString*);
-};
-
-class ClientPortalUI: public QDialog
-{
-    Q_OBJECT
-public:
-    explicit ClientPortalUI(QWidget *parent=0);
-    void show_window();
-    void hide_window();
-private:
-    void on_btnViewnimals_clicked();
-    void on_btnEditprofile_clicked();
-    void on_client_logout_clicked();
-};
-
-class StaffPortalUI: public QDialog
-{
-    Q_OBJECT
-public:
-    explicit StaffPortalUI(QWidget *parent=0);
-    void show_window();
-    void hide_window();
-private:
-    void on_btnAnimals_clicked();
-    void on_btnClients_clicked();
-    void on_staff_logout_clicked();
+    static AddNewAnimal addnewanimalLogic;
+    static AddNewClient addnewclientLogic;
+    static EditAnimal editanimalLogic;
+    static EditClient editclientLogic;
+    static Login loginLogic;
+    static ManageAnimal manageanimalLogic;
+    static ManageClient manageclientLogic;
+    static ClientPortal clientportalLogic;
+    static StaffPortal staffportalLogic;
 };
 
 #endif // UISERVER_H

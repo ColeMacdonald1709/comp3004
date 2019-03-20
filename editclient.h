@@ -19,6 +19,7 @@ public:
     EditClient(UIServer*);
     EditClient(DBServer*);
     ~EditClient();
+    void set_up(QString*, QString*, QString*, QList<QString>*, QList<QString>*);
 private:
     DBServer* db;
     UIServer* ui;

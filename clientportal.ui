@@ -42,14 +42,14 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QPushButton" name="btnViewanimals">
+     <widget class="QPushButton" name="Viewanimals">
       <property name="text">
        <string>View Animals</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="btnEditprofile">
+     <widget class="QPushButton" name="Editprofile">
       <property name="text">
        <string>Edit Profile</string>
       </property>

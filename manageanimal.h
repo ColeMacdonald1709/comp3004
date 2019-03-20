@@ -23,9 +23,9 @@ public:
     ManageAnimal(UIServer*);
     ManageAnimal(DBServer*);
     ~ManageAnimal();
-    void updateAnimals(Animal*);
-    void set_client_view(QString);
-    void set_staff_view(QString);
+    int animal_size();
+    void get_animal(int,QString*,QList<QString>*);
+    void get_animal(int,QString*,QList<QString>*,QList<QString>*);
 private:
     DBServer* db;
     UIServer* ui;

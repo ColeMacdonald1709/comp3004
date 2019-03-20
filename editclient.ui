@@ -57,7 +57,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtName"/>
+       <widget class="QLabel" name="name_label_txt">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -125,7 +129,7 @@
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>

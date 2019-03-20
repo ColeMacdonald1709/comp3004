@@ -7,12 +7,13 @@ Ian Sloan 		101021039
 
 #include <QApplication>
 #include "uiserver.h"
+#include "dbserver.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    //DatabaseServer dbserver = DBServer();
-    UIServer uiserver = UIServer();
+    DBServer dbserver;
+    UIServer uiserver;
 
     return a.exec();
 }

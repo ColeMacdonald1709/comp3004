@@ -16,7 +16,7 @@ StaffPortal::~StaffPortal(){}
 
 void StaffPortal::open_manage_animal()
 {
-    ui->show_animals(false,"admin");
+    ui->show_animals(false);
 }
 void StaffPortal::open_manage_client()
 {

@@ -8,6 +8,8 @@ Ian Sloan 		101021039
 #ifndef CLIENTPORTAL_H
 #define CLIENTPORTAL_H
 
+#include <QString>
+
 #include "uiserver.h"
 
 class UIServer;
@@ -19,8 +21,10 @@ public:
     void open_view_animal();
     void open_edit_client();
     void logout();
+    void set_name(QString*);
 private:
     UIServer* ui;
+    QString* name;
 };
 
 #endif // ClientPortal_H

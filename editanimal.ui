@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>EditClient</class>
- <widget class="QDialog" name="EditClient">
+ <class>EditAnimal</class>
+ <widget class="QDialog" name="EditAnimal">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -60,7 +60,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="txtName"/>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>

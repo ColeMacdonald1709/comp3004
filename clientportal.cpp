@@ -6,22 +6,23 @@ Ian Sloan 		101021039
 **/
 
 #include "clientportal.h"
-#include "ui_clientportal.h"
 
 ClientPortal::ClientPortal(UIServer* uiserver)
 {
     ui = uiserver;
 }
 ClientPortal::~ClientPortal(){}
-
+void ClientPortal::set_name(QString* n)
+{
+    name = n;
+}
 void ClientPortal::open_view_animal()
 {
-    QString username = ui->loginUI->txtName->text();
-    ui->show_animals(true,&username);
+    ui->show_animals(true);
 }
 void ClientPortal::open_edit_client()
 {
-    ui->edit_profile();
+    ui->edit_client_profile(name);
 }
 void ClientPortal::logout()
 {

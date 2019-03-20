@@ -9,35 +9,13 @@ Ian Sloan 		101021039
 
 ManageAnimal::ManageAnimal(UIServer* uiserver){ui = uiserver;}
 ManageAnimal::ManageAnimal(DBServer* dbserver){db = dbserver;}
-
 ManageAnimal::~ManageAnimal(){}
-void ManageAnimal::set_client_view(QString* n){
-    ui->addAnimalbtn->hide();
-}
-void ManageAnimal::set_staff_view(QString* n){
-    ui->addAnimalbtn->show();
-}
-void ManageAnimal::showAnimals()
+int ManageAnimal::animal_size(){return db->get_animal_size();}
+void ManageAnimal::get_animal(int i, QString* name, QList<QString>* PA)
 {
-//show all animals
-    QFont boldfont;
-    boldfont.setBold(true);
-    for(int i=0;i<db->get_size();i++){
-        UIServer::manageanimalUI->animalView->insertRow(i);
-        Animal* curr = db->get_Animal(i);
-        QList<QString>* PAttr = curr->getPAttr();
-
-        QTableWidgetItem* table_cell = new QTableWidgetItem;
-        UIServer::manageanimalUI->animalView->setItem(i,0,table_cell);
-        table_cell->setText(curr->getAnimalName());
-        table_cell->setFont(boldfont);
-
-        //add click event to show detailed profile on name
-
-        for(int col=0; col<PAttr->size();col++){
-            table_cell = new QTableWidgetItem;
-            UIServer::manageanimalUI->animalView->setItem(i,col+1,table_cell);
-            table_cell->setText(PAttr->at(col));
-        }
-    }
+    db->get_animal(i,name,PA);
+}
+void ManageAnimal::get_animal(int i, QString* name, QList<QString>* PA, QList<QString>* NPA)
+{
+    db->get_animal(i,name,PA,NPA);
 }

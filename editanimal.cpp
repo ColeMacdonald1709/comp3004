@@ -11,3 +11,8 @@ EditAnimal::EditAnimal(UIServer* uiserver){ui = uiserver;}
 EditAnimal::EditAnimal(DBServer* dbserver){db = dbserver;}
 
 EditAnimal::~EditAnimal(){}
+
+void EditAnimal::set_up(QString* name, QList<QString>* PA, QList<QString>* NPA)
+{
+    db->get_animal(name, PA, NPA);
+}

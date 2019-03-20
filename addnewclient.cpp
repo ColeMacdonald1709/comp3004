@@ -16,6 +16,6 @@ bool AddNewClient::client_exists(QString* name)
 }
 void AddNewClient::add_new_client(QString* name, QString* phone, QString* email)
 {
-    Client* newclient = new Client(name,phone,email);
+    Client* newclient = new Client(*name,*phone,*email);
     db->add_new_client(newclient);
 }

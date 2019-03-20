@@ -33,11 +33,11 @@ SOURCES += \
     manageclient.cpp \
     client.cpp \
     addnewclient.cpp \
-    uiserver.cpp \
-    dbserver.cpp \
     clientportal.cpp \
     editanimal.cpp \
-    editclient.cpp
+    editclient.cpp \
+    uiserver.cpp \
+    dbserver.cpp
 
 HEADERS += \
     animal.h \
@@ -48,11 +48,12 @@ HEADERS += \
     manageclient.h \
     client.h \
     addnewclient.h \
-    uiserver.h \
-    dbserver.h \
     clientportal.h \
     editclient.h \
-    editanimal.h
+    editanimal.h\
+    uiserver.h \
+    dbserver.h
+
 
 FORMS += \
     addnewanimal.ui \

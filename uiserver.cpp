@@ -9,169 +9,193 @@ Ian Sloan 		101021039
 
 UIServer::UIServer()
 {
-    UIServer::addnewanimalUI();
-    UIServer::addnewanimalLogic = new AddNewAnimal(this);
+    AddNewAnimal(this);
+    AddNewAnimalUI();
 
-    UIServer::addnewclientUI();
-    UIServer::addnewclientLogic = new AddNewClient(this);
+    AddNewClient(this);
+    AddNewClientUI();
 
-    UIServer::loginUI();
-    UIServer::loginLogic = new Login(this);
+    EditAnimal(this);
+    EditAnimalUI();
 
-    UIServer::manageanimalUI();
-    UIServer::manageanimalLogic = new ManageAnimal(this);
+    EditClient(this);
+    EditClientUI();
 
-    UIServer::manageclientUI();
-    UIServer::manageclientLogic = new ManageClient(this);
+    Login(this);
+    LoginUI();
 
-    UIServer::clientportalUI();
-    UIServer::clientportalLogic = new ClientPortal(this);
+    ManageAnimal(this);
+    ManageAnimalUI();
 
-    UIServer::staffportalUI();
-    UIServer::staffportalLogic = new StaffPortal(this);
+    ManageClient(this);
+    ManageClientUI();
+
+    ClientPortal(this);
+    ClientPortalUI();
+
+    StaffPortal(this);
+    StaffPortalUI();
 }
 UIServer::~UIServer()
 {
-    delete UIServer::addnewanimalUI;
-    delete UIServer::addnewanimalLogic;
+    delete UIServer::addnewanimalUIC.addnewanimalUI;
+    //delete UIServer::addnewanimalUIC;
+    //delete UIServer::addnewanimalLogic;
 
-    delete UIServer::addnewclientUI;
-    delete UIServer::addnewclientLogic;
+    delete UIServer::addnewclientUIC.addnewclientUI;
+    //delete UIServer::addnewclientUIC;
+    //delete UIServer::addnewclientLogic;
 
-    delete UIServer::loginUI;
-    delete UIServer::loginLogic;
+    delete UIServer::editanimalUIC.editanimalUI;
+    //delete UIServer::editanimalUIC;
+    //delete UIServer::editanimalLogic;
 
-    delete UIServer::manageanimalUI;
-    delete UIServer::manageanimalLogic;
+    delete UIServer::editclientUIC.editclientUI;
+    //delete UIServer::editclientUIC;
+    //delete UIServer::editclientLogic;
 
-    delete UIServer::manageclientUI;
-    delete UIServer::manageclientLogic;
+    delete UIServer::loginUIC.loginUI;
+    //delete UIServer::loginUIC;
+    //delete UIServer::loginLogic;
 
-    delete UIServer::clientportalUI;
-    delete UIServer::clientportalLogic;
+    delete UIServer::manageanimalUIC.manageanimalUI;
+    //delete UIServer::manageanimalUIC;
+    //delete UIServer::manageanimalLogic;
 
-    delete UIServer::staffportalUI;
-    delete UIServer::staffportalLogic;
+    delete UIServer::manageclientUIC.manageclientUI;
+    //delete UIServer::manageclientUIC;
+    //delete UIServer::manageclientLogic;
+
+    delete UIServer::clientportalUIC.clientportalUI;
+    //delete UIServer::clientportalUIC;
+    //delete UIServer::clientportalLogic;
+
+    delete UIServer::staffportalUIC.staffportalUI;
+    //delete UIServer::staffportalUIC;
+    //delete UIServer::staffportalLogic;
 }
 
-void UIServer::show_animals(bool isclient, QString* n)
+void UIServer::init()
+{
+    UIServer::loginUIC.show_window();
+}
+void UIServer::show_animals(bool isclient)
 {
     if(isclient) {
-        UIServer::manageanimalLogic->set_client_view(n);
+        UIServer::manageanimalUIC.manageanimalUI->addAnimalbtn->hide();
     } else {
-        UIServer::manageanimalLogic->set_staff_view(n);
+        UIServer::manageanimalUIC.manageanimalUI->addAnimalbtn->show();
     }
-    ManageAnimalUI::show_window();
+    UIServer::manageanimalUIC.show_window();
 }
 void UIServer::show_login_error()
 {
-    LoginUI::show_window();
-    LoginUI::invalid_cred();
-}
-void UIServer::show_client_portal()
-{
-    ClientPortalUI::show_window();
-}
-void UIServer::show_staff_portal()
-{
-    StaffPortalUI::show_window();
-}
-void UIServer::show_clients()
-{
-    ManageClientUI::show_window();
+    UIServer::loginUIC.show_window();
+    UIServer::loginUIC.invalid_cred();
 }
 void UIServer::logout()
 {
-    AddNewAnimalUI::hide_window();
-    AddNewClientUI::hide_window();
-    ManageAnimalUI::hide_window();
-    ManageClientUI::hide_window();
-    ClientPortalUI::hide_window();
-    StaffPortalUI::hide_window();
-    LoginUI::show_window();
+    UIServer::addnewanimalUIC.hide_window();
+    UIServer::addnewclientUIC.hide_window();
+    UIServer::manageanimalUIC.hide_window();
+    UIServer::manageclientUIC.hide_window();
+    UIServer::clientportalUIC.hide_window();
+    UIServer::staffportalUIC.hide_window();
+    UIServer::loginUIC.show_window();
+}
+void UIServer::show_staff_portal()
+{
+    UIServer::staffportalUIC.show_window();
+}
+void UIServer::show_client_portal(QString* n)
+{
+    UIServer::clientportalUIC.show_window();
+    UIServer::clientportalLogic.set_name(n);
+}
+void UIServer::edit_client_profile(QString* n)
+{
+    UIServer::clientportalUIC.hide_window();
+    UIServer::editclientUIC.load_info(n);
+    UIServer::editclientUIC.show_window();
 }
 
 ///addnewanimal interface
 /// ---------------------
-AddNewAnimalUI::AddNewAnimalUI(QWidget *parent=0) : QDialog(parent), UIServer::addnewanimalUI(new Ui::AddNewAnimal)
+AddNewAnimalUI::AddNewAnimalUI() : QDialog(), addnewanimalUI(new Ui::AddNewAnimal)
 {
-    UIServer::addnewanimalUI->setupUi(this);
+    addnewanimalUI->setupUi(this);
 }
 void AddNewAnimalUI::show_window()
 {
     this->setModal(true);
     this->exec();
     this->show();
-    QString username = UIServer::loginUI->txtName->toPlainText();
-    UIServer::loginLogic->verify_client(username);
 }
 void AddNewAnimalUI::hide_window()
 {
     this->hide();
 }
-///addnewanimals forms
 void AddNewAnimalUI::on_cancelbtn_clicked()
 {
     AddNewAnimalUI::hide_window();
 }
 void AddNewAnimalUI::on_addAnimalbtn_clicked()
 {
-    QString name = UIServer::addnewanimalUI->txtName->toPlainText();
-    if(!UIServer::addnewanimalLogic->animal_exists(&name)){
+    QString name = addnewanimalUI->txtName->toPlainText();
+    if(!UIServer::addnewanimalLogic.animal_exists(&name)){
         QList<QString>* PAList = new QList<QString>();
         QList<QString>* NPAList = new QList<QString>();
         //add values to PALIST
         //species
-        if (UIServer::addnewanimalUI->radDog->isChecked()){PAList->append("Dog");}
-        else if (UIServer::addnewanimalUI->radCat->isChecked()){PAList->append("Cat");}
-        else if (UIServer::addnewanimalUI->radRabbit->isChecked()){PAList->append("Rabbit");}
-        else if (UIServer::addnewanimalUI->radBird->isChecked()){PAList->append("Bird");}
-        else if (UIServer::addnewanimalUI->radFish->isChecked()){PAList->append("Fish");}
+        if (addnewanimalUI->radDog->isChecked()){PAList->append("Dog");}
+        else if (addnewanimalUI->radCat->isChecked()){PAList->append("Cat");}
+        else if (addnewanimalUI->radRabbit->isChecked()){PAList->append("Rabbit");}
+        else if (addnewanimalUI->radBird->isChecked()){PAList->append("Bird");}
+        else if (addnewanimalUI->radFish->isChecked()){PAList->append("Fish");}
         else {PAList->append("NULL");};
 
         //breed
-        PAList->append(UIServer::addnewanimalUI->txtBreed->toPlainText());
+        PAList->append(addnewanimalUI->txtBreed->toPlainText());
 
         //sex
-        if (UIServer::addnewanimalUI->radMale->isChecked()){PAList->append("Male");}
-        else if (UIServer::addnewanimalUI->radFemale->isChecked()) {PAList->append("Female");}
+        if (addnewanimalUI->radMale->isChecked()){PAList->append("Male");}
+        else if (addnewanimalUI->radFemale->isChecked()) {PAList->append("Female");}
         else {PAList->append("NULL");};
 
         //age
-        PAList->append(UIServer::addnewanimalUI->ageComboBox->currentText().toStdString().c_str());
+        PAList->append(addnewanimalUI->ageComboBox->currentText().toStdString().c_str());
 
         //add values to NPAList
         QString val;
-        val = QString::number(UIServer::addnewanimalUI->NPAttr1spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr1spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr2spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr2spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr3spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr3spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr4spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr4spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr5spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr5spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr6spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr6spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr7spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr7spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr8spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr8spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr9spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr9spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr10spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr10spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr11spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr11spinBox->value());
         NPAList->append(val);
-        val = QString::number(UIServer::addnewanimalUI->NPAttr12spinBox->value());
+        val = QString::number(addnewanimalUI->NPAttr12spinBox->value());
         NPAList->append(val);
 
-        UIServer::addnewanimalLogic->add_new_animal(name, PAList, NPAList);
-        AddNewAnimalUI::hide_window();
-        ManageAnimalUI::show_window();
-        ManageAnimalUI::update_animals(&name, PAList);
-
+        UIServer::addnewanimalLogic.add_new_animal(&name, PAList, NPAList);
+        hide_window();
+        UIServer::manageanimalUIC.show_window();
+        UIServer::manageanimalUIC.update_animals(&name, PAList);
     }else{
         QMessageBox::warning(this, tr("Animal already exists"), tr("Error: Animal name already in use."));
     }
@@ -179,9 +203,9 @@ void AddNewAnimalUI::on_addAnimalbtn_clicked()
 
 ///addnewclient interface
 ///----------------------
-AddNewClientUI::AddNewClient(QWidget *parent=0) : QDialog(parent), UIServer::addnewclientUI(new Ui::AddNewClient)
+AddNewClientUI::AddNewClientUI() : QDialog(), addnewclientUI(new Ui::AddNewClient)
 {
-    UIServer::addnewclientUI->setupUi(this);
+    addnewclientUI->setupUi(this);
 }
 void AddNewClientUI::show_window()
 {
@@ -193,39 +217,100 @@ void AddNewClientUI::hide_window()
 {
     this->hide();
 }
-///addnewclient forms
 void AddNewClientUI::on_cancel_button_clicked()
 {
     AddNewClientUI::hide_window();
 }
 void AddNewClientUI::on_add_button_clicked()
 {
-    QString name = UIServer::addnewclientUI->name_txt->text();
-    if(!UIServer::addnewclientLogic->client_exists(name)){
+    QString name = addnewclientUI->name_txt->text();
+    if(!UIServer::addnewclientLogic.client_exists(&name)){
         QString phone, email;
-        phone = UIServer::addnewclientUI->phone_txt->text();
-        email = UIServer::addnewclientUI->email_txt->text();
-        for(i=0;i=12;i++)
-            NPAList->append(0);
-        
-        UIServer::addnewclientLogic->add_new_client(&name, &phone, &email);
-        UIServer::addnewanimalUI->hide_window();
-        UIServer::manageclientUI->show_window();
-        UIServer::manageclientUI->update_clients(&name, &phone, &email);
+        phone = addnewclientUI->phone_txt->text();
+        email = addnewclientUI->email_txt->text();
+        UIServer::addnewclientLogic.add_new_client(&name, &phone, &email);
+        hide_window();
+        UIServer::manageclientUIC.show_window();
+        UIServer::manageclientUIC.update_clients(&name, &phone, &email);
     } else {
         QMessageBox::warning(this, tr("Client already exists"), tr("Error: Client name already in use."));
     }
 }
 
+///edit animal interface
+/// --------------------
+EditAnimalUI::EditAnimalUI() : QDialog(), editanimalUI(new Ui::EditAnimal)
+{
+    editanimalUI->setupUi(this);
+}
+void EditAnimalUI::show_window()
+{
+    this->setModal(true);
+    this->exec();
+    this->show();
+}
+void EditAnimalUI::hide_window()
+{
+    this->hide();
+}
+void EditAnimalUI::load_info(QString* n)
+{
+    QList<QString>* PA=NULL;
+    QList<QString>* NPA=NULL;
+    UIServer::editanimalLogic.set_up(n, PA, NPA);
+
+}
+
+///edit client interface
+/// --------------------
+EditClientUI::EditClientUI() : QDialog(), editclientUI(new Ui::EditClient)
+{
+    editclientUI->setupUi(this);
+}
+void EditClientUI::show_window()
+{
+    this->setModal(true);
+    this->exec();
+    this->show();
+}
+void EditClientUI::hide_window()
+{
+    this->hide();
+}
+void EditClientUI::load_info(QString* n)
+{
+    QString phone, email;
+    QList<QString>*PA=NULL;
+    QList<QString>*NPA=NULL;
+    UIServer::editclientLogic.set_up(n, &phone, &email, PA, NPA);
+    editclientUI->name_label_txt->setText(*n);
+    editclientUI->phone_label->setText(phone);
+    editclientUI->emai_label->setText(email);
+
+    //do for loop for PA
+    editclientUI->NPAttr1spinBox->setValue(NPA->at(0).toInt());
+    editclientUI->NPAttr2spinBox->setValue(NPA->at(1).toInt());
+    editclientUI->NPAttr3spinBox->setValue(NPA->at(2).toInt());
+    editclientUI->NPAttr4spinBox->setValue(NPA->at(3).toInt());
+    editclientUI->NPAttr5spinBox->setValue(NPA->at(4).toInt());
+    editclientUI->NPAttr6spinBox->setValue(NPA->at(5).toInt());
+    editclientUI->NPAttr7spinBox->setValue(NPA->at(6).toInt());
+    editclientUI->NPAttr8spinBox->setValue(NPA->at(7).toInt());
+    editclientUI->NPAttr9spinBox->setValue(NPA->at(8).toInt());
+    editclientUI->NPAttr10spinBox->setValue(NPA->at(9).toInt());
+    editclientUI->NPAttr11spinBox->setValue(NPA->at(10).toInt());
+    editclientUI->NPAttr12spinBox->setValue(NPA->at(11).toInt());
+}
+
 ///Login interface
 ///---------------
-void LoginUI::Login(QWidget *parent=0) : QDialog(parent), UIServer::loginUI(new Ui::Login)
+LoginUI::LoginUI() : QDialog(), loginUI(new Ui::Login)
 {
-    UIServer::loginUI->setupUi(this);
+    loginUI->setupUi(this);
 }
 void LoginUI::invalid_cred()
 {
-    UIServer::loginUI->txtName = "";
+    loginUI->txtName->clear();
     QMessageBox::information(this, tr("Credentials invalid"), tr("Username incorrect."));
 }
 void LoginUI::show_window()
@@ -238,40 +323,34 @@ void LoginUI::hide_window()
 {
     this->hide();
 }
-void LoginUI::invalid_cred()
-{
-    UIServer::loginUI->txtName = "";
-    QMessageBox::information(this, tr("Credentials invalid"), tr("Username incorrect."));
-}
-///login forms
 void LoginUI::on_btnClient_clicked()
 {
-    QString username = UIServer::loginUI->txtName->toPlainText();
-    UIServer::verify_user(true, &username);
+    QString username = loginUI->txtName->toPlainText();
+    UIServer::loginLogic.verify_client(username);
 }
 void LoginUI::on_btnStaff_clicked()
 {
-    QString username = UIServer::loginUI->txtName->toPlainText();
-    UIServer::verify_user(false, &username);
+    QString username = loginUI->txtName->toPlainText();
+    UIServer::loginLogic.verify_staff(username);
 }
 
 ///client portal interface
 ///----------------------
-ClientPortalUI::ClientPortalUI(QWidget *parent=0) : QDialog(parent), UIServer::staffportalUI(new Ui::StaffPortal)
+ClientPortalUI::ClientPortalUI() : QDialog(), clientportalUI(new Ui::ClientPortal)
 {
-    UIServer::clientportalUI->setupUi(this);
+    clientportalUI->setupUi(this);
 }
-void ClientPortalUI::on_btnViewanimals_clicked()
+void ClientPortalUI::on_Viewanimals_clicked()
 {
-    UIServer::clientportalLogic->open_view_animal();
+    UIServer::clientportalLogic.open_view_animal();
 }
-void ClientPortalUI::on_btnEditprofile_clicked()
+void ClientPortalUI::on_Editprofile_clicked()
 {
-    UIServer::clientportalLogic->open_edit_client();
+    UIServer::clientportalLogic.open_edit_client();
 }
 void ClientPortalUI::on_client_logout_clicked()
 {
-    UIServer::clientportalLogic->logout();
+    UIServer::clientportalLogic.logout();
 }
 void ClientPortalUI::show_window()
 {
@@ -279,16 +358,77 @@ void ClientPortalUI::show_window()
     this->exec();
     this->show();
 }
-void StaffPortalUI::hide_window()
+void ClientPortalUI::hide_window()
 {
     this->hide();
 }
 
+///manageanimal interface
+///----------------------
+ManageAnimalUI::ManageAnimalUI() : QDialog(), manageanimalUI(new Ui::ManageAnimal)
+{
+    manageanimalUI->setupUi(this);
+    load_animals();
+}
+void ManageAnimalUI::show_window()
+{
+    this->setModal(true);
+    this->exec();
+    this->show();
+}
+void ManageAnimalUI::hide_window()
+{
+    this->hide();
+}
+void ManageAnimalUI::update_animals(QString* name, QList<QString>* PA)
+{
+    QFont boldfont;
+    boldfont.setBold(true);
+    int newRow = manageanimalUI->animalView->rowCount();
+    manageanimalUI->animalView->insertRow(newRow);
+
+    QTableWidgetItem* table_cell = new QTableWidgetItem;
+    manageanimalUI->animalView->setItem(newRow,0,table_cell);
+    table_cell->setText(*name);
+    table_cell->setFont(boldfont);
+    //add click event to show detailed profile on name
+
+    for(int col=0; col<PA->size();col++){
+        table_cell = new QTableWidgetItem;
+        manageanimalUI->animalView->setItem(newRow,col+1,table_cell);
+        table_cell->setText(PA->at(col));
+    }
+}
+void ManageAnimalUI::load_animals()
+{
+    QFont boldfont;
+    boldfont.setBold(true);
+    QString name;
+    QList<QString> PA;
+    int size = UIServer::manageanimalLogic.animal_size();
+    for(int i=0; i<size; i++){
+        UIServer::manageanimalLogic.get_animal(i,&name,&PA);
+        manageanimalUI->animalView->insertRow(i);
+
+        QTableWidgetItem* table_cell = new QTableWidgetItem;
+        manageanimalUI->animalView->setItem(i,0,table_cell);
+        table_cell->setText(name);
+        table_cell->setFont(boldfont);
+
+        for(int col=0; col<PA.size(); col++){
+            table_cell = new QTableWidgetItem;
+            manageanimalUI->animalView->setItem(i,col+1,table_cell);
+            table_cell->setText(PA.at(col));
+        }
+    }
+}
+
 ///manage client interface
 /// ----------------------
-ManageClientUI::ManageClientUI(QWidget *parent=0) : QDialog(parent), UIServer::manageclientUI(new Ui::ManageClient)
+ManageClientUI::ManageClientUI() : QDialog(), manageclientUI(new Ui::ManageClient)
 {
-    UIServer::manageclientUI->setupUi(this);
+    manageclientUI->setupUi(this);
+    load_clients();
 }
 void ManageClientUI::show_window()
 {
@@ -304,64 +444,64 @@ void ManageClientUI::update_clients(QString* name, QString* phone, QString* emai
 {
     QFont boldfont;
     boldfont.setBold(true);
-    int newRow = UIServer::manageclientUI->clientlist->rowCount();
-    UIServer::manageclientUI->clientlist->insertRow(newRow);
+    int newRow = manageclientUI->clientlist->rowCount();
+    manageclientUI->clientlist->insertRow(newRow);
 
     QTableWidgetItem* table_cell = new QTableWidgetItem;
-    UIServer::manageclientUI->clientlist->setItem(newRow,0,table_cell);
-    table_cell->setText(name);
+    manageclientUI->clientlist->setItem(newRow,0,table_cell);
+    table_cell->setText(*name);
     table_cell->setFont(boldfont);
 
     table_cell = new QTableWidgetItem;
-    UIServer::manageclientUI->clientlist->setItem(newRow,1,table_cell);
-    table_cell->setText(phone);
+    manageclientUI->clientlist->setItem(newRow,1,table_cell);
+    table_cell->setText(*phone);
 
     table_cell = new QTableWidgetItem;
-    UIServer::manageclientUI->clientlist->setItem(newRow,2,table_cell);
-    table_cell->setText(email);
+    manageclientUI->clientlist->setItem(newRow,2,table_cell);
+    table_cell->setText(*email);
 }
 void ManageClientUI::load_clients()
 {
-    int size = UIServer::manageclientLogic->client_size();
-    QString name, phone, email;
+    int size = UIServer::manageclientLogic.client_size();
     QFont boldfont;
     boldfont.setBold(true);
+    QString name, phone, email;
     for(int i=0; i<size; i++){
-        UIServer::manageclientLogic->get_client(i, &name, &phone, &email);
-        UIServer::manageclientUI->clientlist->insertRow(i);
+        UIServer::manageclientLogic.get_client(i, &name, &phone, &email);
+        manageclientUI->clientlist->insertRow(i);
 
         QTableWidgetItem* table_cell = new QTableWidgetItem;
-        UIServer::manageclientUI->clientlist->setItem(i,0,table_cell);
+        manageclientUI->clientlist->setItem(i,0,table_cell);
         table_cell->setText(name);
         table_cell->setFont(boldfont);
 
         table_cell = new QTableWidgetItem;
-        UIServer::manageclientUI->clientlist->setItem(i,1,table_cell);
+        manageclientUI->clientlist->setItem(i,1,table_cell);
         table_cell->setText(phone);
 
         table_cell = new QTableWidgetItem;
-        UIServer::manageclientUI->clientlist->setItem(i,2,table_cell);
+        manageclientUI->clientlist->setItem(i,2,table_cell);
         table_cell->setText(email);
     }
 }
 
 ///staff portal interface
 ///----------------------
-StaffPortalUI::StaffPortalUI(QWidget *parent=0) : QDialog(parent), UIServer::staffportalUI(new Ui::StaffPortal)
+StaffPortalUI::StaffPortalUI() : QDialog(), staffportalUI(new Ui::StaffPortal)
 {
-    UIServer::staffportalUI->setupUi(this);
+    staffportalUI->setupUi(this);
 }
 void StaffPortalUI::on_btnAnimals_clicked()
 {
-    UIServer::staffportalLogic->open_manage_animal();
+    UIServer::staffportalLogic.open_manage_animal();
 }
 void StaffPortalUI::on_btnClients_clicked()
 {
-    UIServer::staffportalLogic->open_manage_client();
+    UIServer::staffportalLogic.open_manage_client();
 }
 void StaffPortalUI::on_staff_logout_clicked()
 {
-    UIServer::staffportalLogic->logout();
+    UIServer::staffportalLogic.logout();
 }
 void StaffPortalUI::show_window()
 {
@@ -373,42 +513,3 @@ void StaffPortalUI::hide_window()
 {
     this->hide();
 }
-///manageanimal interface
-///
-ManageAnimalUI::ManageAnimalUI(QWidget *parent=0) : QDialog(parent), UIServer::manageanimalUI(new Ui::ManageAnimal)
-{
-    UIServer::manageanimalUI->setupUi(this);
-}
-void ManageAnimalUI::show_window()
-{
-    this->setModal(true);
-    this->exec();
-    this->show();
-}
-void ManageAnimalUI::hide_window()
-{
-    this->hide();
-}
-
-void ManageAnimalUI::update_animals(QString* name, QList<QString>* PA)
-{
-    QFont boldfont;
-    boldfont.setBold(true);
-    int newRow = UIServer::manageanimalUI->animalView->rowCount();
-    UIServer::manageanimalUI->animalView->insertRow(newRow);
-
-    QTableWidgetItem* table_cell = new QTableWidgetItem;
-    UIServer::manageanimalUI->animalView->setItem(newRow,0,table_cell);
-    table_cell->setText(name);
-    table_cell->setFont(boldfont);
-    //add click event to show detailed profile on name
-
-    for(int col=0; col<PA->size();col++){
-        table_cell = new QTableWidgetItem;
-        UIServer::manageanimalUI->animalView->setItem(newRow,col+1,table_cell);
-        table_cell->setText(PA->at(col));
-    }
-
-}
-
-

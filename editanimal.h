@@ -19,7 +19,7 @@ public:
     EditAnimal(UIServer*);
     EditAnimal(DBServer*);
     ~EditAnimal();
-    void editAnimal(QString*, QList<QString>*, QList<QString>*);
+    void set_up(QString*,QList<QString>*,QList<QString>*);
 private:
     DBServer* db;
     UIServer* ui;

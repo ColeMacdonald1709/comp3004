@@ -23,12 +23,11 @@ public:
     AddNewClient(UIServer*);
     AddNewClient(DBServer*);
     ~AddNewClient();
-
+    bool client_exists(QString*);
+    void add_new_client(QString*,QString*,QString*);
 private:
     DBServer* db;
     UIServer* ui;
-    bool client_exists(QString*);
-    void add_new_client(QString*,QString*,QString*);
 };
 
 #endif // ADDNEWCLIENT_H
