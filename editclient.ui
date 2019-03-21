@@ -384,7 +384,7 @@
     <item row="4" column="0">
      <layout class="QHBoxLayout" name="NPA5">
       <property name="spacing">
-       <number>50</number>
+       <number>51</number>
       </property>
       <item>
        <widget class="QLabel" name="NPAttr5">
@@ -676,13 +676,13 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>33</x>
-     <y>352</y>
-     <width>139</width>
-     <height>27</height>
+     <x>30</x>
+     <y>360</y>
+     <width>141</width>
+     <height>31</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="name_layout_6">
+   <layout class="QHBoxLayout" name="ageLayout">
     <property name="leftMargin">
      <number>10</number>
     </property>
@@ -734,13 +734,13 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>33</x>
-     <y>316</y>
-     <width>185</width>
-     <height>25</height>
+     <x>30</x>
+     <y>320</y>
+     <width>181</width>
+     <height>31</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="name_layout_5">
+   <layout class="QHBoxLayout" name="sexLayout">
     <property name="leftMargin">
      <number>10</number>
     </property>
@@ -770,106 +770,81 @@
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="name_label_4">
+  <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>34</x>
+     <x>30</x>
+     <y>240</y>
+     <width>441</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="speciesLayout">
+    <item>
+     <widget class="QLabel" name="name_label_3">
+      <property name="text">
+       <string>Species</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radDog">
+      <property name="text">
+       <string>Dog</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radCat">
+      <property name="text">
+       <string>Cat</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radBird">
+      <property name="text">
+       <string>Bird</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radFish">
+      <property name="text">
+       <string>Fish</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radRabbit">
+      <property name="text">
+       <string>Rabbit</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
      <y>280</y>
-     <width>39</width>
-     <height>17</height>
+     <width>251</width>
+     <height>31</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Breed</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtBreed">
-   <property name="geometry">
-    <rect>
-     <x>79</x>
-     <y>280</y>
-     <width>142</width>
-     <height>25</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="radDog">
-   <property name="geometry">
-    <rect>
-     <x>99</x>
-     <y>244</y>
-     <width>52</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Dog</string>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="radCat">
-   <property name="geometry">
-    <rect>
-     <x>157</x>
-     <y>244</y>
-     <width>48</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Cat</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="name_label_3">
-   <property name="geometry">
-    <rect>
-     <x>43</x>
-     <y>244</y>
-     <width>50</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Species</string>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="radFish">
-   <property name="geometry">
-    <rect>
-     <x>269</x>
-     <y>244</y>
-     <width>52</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Fish</string>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="radBird">
-   <property name="geometry">
-    <rect>
-     <x>211</x>
-     <y>244</y>
-     <width>52</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Bird</string>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="radRabbit">
-   <property name="geometry">
-    <rect>
-     <x>327</x>
-     <y>244</y>
-     <width>68</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Rabbit</string>
-   </property>
+   <layout class="QHBoxLayout" name="breedLayout">
+    <item>
+     <widget class="QLabel" name="name_label_4">
+      <property name="text">
+       <string>Breed</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="txtBreed"/>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

@@ -355,6 +355,7 @@ void EditAnimalUI::on_btnSave_clicked() {
     NPAList->append(val);
 
     uiserver->editanimalLogic->editAnimal(&name,PAList,NPAList);
+    QMessageBox::information(this, tr("Information Updated"), tr("Save successful!"));
 }
 void EditAnimalUI::on_btnCancel_clicked()
 {
@@ -462,6 +463,7 @@ void EditClientUI::on_btnSave_clicked() {
     NPAList->append(val);
 
     uiserver->editclientLogic->editClient(&name,&phone,&email,PAList,NPAList);
+    QMessageBox::information(this, tr("Information Updated"), tr("Save successful!"));
 }
 void EditClientUI::on_btnCancel_clicked()
 {
