@@ -24,8 +24,7 @@ void ManageClient::get_client(int i, QString* name, QString* phone, QString* ema
 }
 void ManageClient::open_edit_client()
 {
-    //temporary
-    QString name = "Paul";
+    QString name = ui->manageclientUIC->manageclientUI->clientname->text();
     ui->edit_client_profile(&name);
 }
 void ManageClient::logout()

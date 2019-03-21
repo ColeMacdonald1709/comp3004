@@ -145,8 +145,6 @@ private:
 class ManageClientUI: public QDialog
 {
    Q_OBJECT
-    void on_animalView_activated(const QModelIndex &index);
-
 public:
     explicit ManageClientUI(UIServer*);
     void show_window();
@@ -156,7 +154,6 @@ public:
     Ui::ManageClient* manageclientUI;
 private slots:
     void on_addclientbutton_clicked();
-    void on_btnEditclient_clicked();
     void on_btnBack_clicked();
     void on_clientlist_activated(const QModelIndex &index);
 private:

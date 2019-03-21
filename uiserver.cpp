@@ -678,6 +678,7 @@ void ManageAnimalUI::on_addNewAnimalbtn_clicked()
     hide_window();
     uiserver->addnewanimalUIC->show_window();
 }
+
 ///manage client interface
 /// ----------------------
 ManageClientUI::ManageClientUI(UIServer* uis) : QDialog(), manageclientUI(new Ui::ManageClient)
@@ -769,17 +770,29 @@ void ManageClientUI::on_clientlist_activated(const QModelIndex &index)
         manageclientUI->NPA10text->setText(NPA.at(9));
         manageclientUI->NPA11text->setText(NPA.at(10));
         manageclientUI->NPA12text->setText(NPA.at(11));
-        manageclientUI->btnEditclient->setEnabled(true);
+        //manageclientUI->btnEditclient->setEnabled(true);
+    }else{
+        QString prefs = "";
+        manageclientUI->clientprefs->setText(prefs);
+        manageclientUI->NPA1text->setText("");
+        manageclientUI->NPA2text->setText("");
+        manageclientUI->NPA3text->setText("");
+        manageclientUI->NPA4text->setText("");
+        manageclientUI->NPA5text->setText("");
+        manageclientUI->NPA6text->setText("");
+        manageclientUI->NPA7text->setText("");
+        manageclientUI->NPA8text->setText("");
+        manageclientUI->NPA9text->setText("");
+        manageclientUI->NPA10text->setText("");
+        manageclientUI->NPA11text->setText("");
+        manageclientUI->NPA12text->setText("");
+        //manageclientUI->btnEditclient->setEnabled(true);
     }
 }
 void ManageClientUI::on_btnBack_clicked()
 {
     hide_window();
     uiserver->staffportalUIC->show_window();
-}
-void ManageClientUI::on_btnEditclient_clicked()
-{
-    uiserver->manageclientLogic->open_edit_client();
 }
 
 ///staff portal interface
