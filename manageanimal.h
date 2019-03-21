@@ -24,11 +24,9 @@ public:
     int animal_size();
     void get_animal(int,QString*,QList<QString>*);
     void get_animal(int,QString*,QList<QString>*,QList<QString>*);
-    void updateAnimals(Animal*);
     void set_client_view();
     void set_staff_view();
     void open_edit_animal();
-    void logout();
     void back();
 private:
     DBServer* db;

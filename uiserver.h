@@ -129,6 +129,7 @@ public:
     void show_window();
     void hide_window();
     void update_animals(QString*,QList<QString>*);
+    void update_animal(QString*,QList<QString>*);
     void set_client_view();
     void set_staff_view();
     void load_animals();

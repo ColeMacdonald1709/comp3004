@@ -84,37 +84,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radDog">
+       <widget class="QLabel" name="txt_species">
         <property name="text">
-         <string>Dog</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="radCat">
-        <property name="text">
-         <string>Cat</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="radBird">
-        <property name="text">
-         <string>Bird</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="radFish">
-        <property name="text">
-         <string>Fish</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="radRabbit">
-        <property name="text">
-         <string>Rabbit</string>
+         <string/>
         </property>
        </widget>
       </item>

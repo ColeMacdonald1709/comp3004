@@ -312,22 +312,8 @@ void EditAnimalUI::load_info(QString* n)
     uiserver->editanimalLogic->set_up(n, &PA, &NPA);
 
     editanimalUI->txt_name->setText(*n);
-    //species
-    if (PA.at(0) == "Dog") {editanimalUI->radDog->setChecked(true);}
-    else if (PA.at(0) == "Cat") {editanimalUI->radCat->setChecked(true);}
-    else if (PA.at(0) == "Rabbit") {editanimalUI->radRabbit->setChecked(true);}
-    else if (PA.at(0) == "Bird") {editanimalUI->radBird->setChecked(true);}
-    else if (PA.at(0) == "Fish") {editanimalUI->radFish->setChecked(true);}
-    //breed
+    editanimalUI->txt_species->setText(PA.at(0));
     editanimalUI->txtBreed->setText(PA.at(1));
-    //sex
-    if (PA.at(2) == "Male") {editanimalUI->radMale->setChecked(true);}
-    else if (PA.at(2) == "Female") {editanimalUI->radFemale->setChecked(true);}
-    //age
-    if (PA.at(3) == "Baby") {editanimalUI->ageComboBox->setCurrentIndex(0);}
-    else if (PA.at(3) == "Teenage") {editanimalUI->ageComboBox->setCurrentIndex(1);}
-    else if (PA.at(3) == "Adult") {editanimalUI->ageComboBox->setCurrentIndex(2);}
-    else if (PA.at(3) == "Mature") {editanimalUI->ageComboBox->setCurrentIndex(3);}
 
     editanimalUI->NPAttr1spinBox->setValue(NPA.at(0).toInt());
     editanimalUI->NPAttr2spinBox->setValue(NPA.at(1).toInt());
@@ -342,6 +328,7 @@ void EditAnimalUI::load_info(QString* n)
     editanimalUI->NPAttr11spinBox->setValue(NPA.at(10).toInt());
     editanimalUI->NPAttr12spinBox->setValue(NPA.at(11).toInt());
 
+    show_window();
 }
 void EditAnimalUI::on_btnSave_clicked() {
     QString name = editanimalUI->txt_name->text();
@@ -349,24 +336,15 @@ void EditAnimalUI::on_btnSave_clicked() {
     QList<QString>* NPAList = new QList<QString>();
     //add values to PALIST
     //species
-    if (editanimalUI->radDog->isChecked()){PAList->append("Dog");}
-    else if (editanimalUI->radCat->isChecked()){PAList->append("Cat");}
-    else if (editanimalUI->radRabbit->isChecked()){PAList->append("Rabbit");}
-    else if (editanimalUI->radBird->isChecked()){PAList->append("Bird");}
-    else if (editanimalUI->radFish->isChecked()){PAList->append("Fish");}
-    else {PAList->append("NULL");};
-
+    PAList->append(editanimalUI->txt_species->text());
     //breed
     PAList->append(editanimalUI->txtBreed->text());
-
     //sex
     if (editanimalUI->radMale->isChecked()){PAList->append("Male");}
     else if (editanimalUI->radFemale->isChecked()) {PAList->append("Female");}
     else {PAList->append("NULL");};
-
     //age
     PAList->append(editanimalUI->ageComboBox->currentText().toStdString().c_str());
-
     //add values to NPAList
     QString val;
     val = QString::number(editanimalUI->NPAttr1spinBox->value());
@@ -396,11 +374,14 @@ void EditAnimalUI::on_btnSave_clicked() {
 
     uiserver->editanimalLogic->editAnimal(&name,PAList,NPAList);
     QMessageBox::information(this, tr("Information Updated"), tr("Save successful!"));
+    hide_window();
+    uiserver->manageanimalUIC->show_window();
 }
 void EditAnimalUI::on_btnCancel_clicked()
 {
     editanimalUI->txtBreed->clear();
     hide_window();
+    uiserver->manageanimalUIC->show_window();
 }
 
 ///edit client interface
@@ -504,6 +485,7 @@ void EditClientUI::on_btnSave_clicked() {
 
     uiserver->editclientLogic->editClient(&name,&phone,&email,PAList,NPAList);
     QMessageBox::information(this, tr("Information Updated"), tr("Save successful!"));
+    hide_window();
 }
 void EditClientUI::on_btnCancel_clicked()
 {
@@ -613,6 +595,21 @@ void ManageAnimalUI::update_animals(QString* name, QList<QString>* PA)
         table_cell->setText(PA->at(col));
     }
 }
+void ManageAnimalUI::update_animal(QString* name, QList<QString>* PA)
+{
+    QFont boldfont;
+    boldfont.setBold(true);
+    for(int i=0; i<manageanimalUI->animalView->rowCount(); i++)
+    {
+        if(manageanimalUI->animalView->itemAt(0,i)->text() == *name){
+            manageanimalUI->animalView->itemAt(0,i)->setText(PA->at(0));
+            manageanimalUI->animalView->itemAt(1,i)->setText(PA->at(1));
+            manageanimalUI->animalView->itemAt(2,i)->setText(PA->at(2));
+            manageanimalUI->animalView->itemAt(3,i)->setText(PA->at(3));
+            break;
+        }
+    }
+}
 void ManageAnimalUI::load_animals()
 {
     QFont boldfont;
@@ -638,7 +635,7 @@ void ManageAnimalUI::load_animals()
 }
 void ManageAnimalUI::on_animalView_activated(const QModelIndex &index)
 {
-    //access dynamic memory and pull the animal that at index of the row that was clicked
+    manageanimalUI->btnEditanimal->setEnabled(true);
     QList<QString> PA;
     QList<QString> NPA;
     QString name;
@@ -662,7 +659,9 @@ void ManageAnimalUI::on_animalView_activated(const QModelIndex &index)
     manageanimalUI->txt_NPA10->setText(NPA.at(9));
     manageanimalUI->txt_NPA11->setText(NPA.at(10));
     manageanimalUI->txt_NPA12->setText(NPA.at(11));
+
     manageanimalUI->btnEditanimal->setEnabled(true);
+
 }
 void ManageAnimalUI::on_btnEditanimal_clicked()
 {
@@ -752,28 +751,31 @@ void ManageClientUI::on_clientlist_activated(const QModelIndex &index)
     QString phone;
     QString email;
     uiserver->manageclientLogic->get_client(index.row(),&name,&phone,&email,&PA,&NPA);
-
     manageclientUI->clientname->setText(name);
-    manageclientUI->clientphone->setText(PA.at(0));
-    manageclientUI->clientemail->setText(PA.at(1));
-
-    manageclientUI->NPA1text->setText(NPA.at(0));
-    manageclientUI->NPA2text->setText(NPA.at(1));
-    manageclientUI->NPA3text->setText(NPA.at(2));
-    manageclientUI->NPA4text->setText(NPA.at(3));
-    manageclientUI->NPA5text->setText(NPA.at(4));
-    manageclientUI->NPA6text->setText(NPA.at(5));
-    manageclientUI->NPA7text->setText(NPA.at(6));
-    manageclientUI->NPA8text->setText(NPA.at(7));
-    manageclientUI->NPA9text->setText(NPA.at(8));
-    manageclientUI->NPA10text->setText(NPA.at(9));
-    manageclientUI->NPA11text->setText(NPA.at(10));
-    manageclientUI->NPA12text->setText(NPA.at(11));
-    manageclientUI->btnEditclient->setEnabled(true);
+    manageclientUI->clientphone->setText(phone);
+    manageclientUI->clientemail->setText(email);
+    if(PA.size() > 0 && NPA.size() > 0){
+        QString prefs = PA.at(2) + " " + PA.at(3) + " " + PA.at(1) + " " + PA.at(0);
+        manageclientUI->clientprefs->setText(prefs);
+        manageclientUI->NPA1text->setText(NPA.at(0));
+        manageclientUI->NPA2text->setText(NPA.at(1));
+        manageclientUI->NPA3text->setText(NPA.at(2));
+        manageclientUI->NPA4text->setText(NPA.at(3));
+        manageclientUI->NPA5text->setText(NPA.at(4));
+        manageclientUI->NPA6text->setText(NPA.at(5));
+        manageclientUI->NPA7text->setText(NPA.at(6));
+        manageclientUI->NPA8text->setText(NPA.at(7));
+        manageclientUI->NPA9text->setText(NPA.at(8));
+        manageclientUI->NPA10text->setText(NPA.at(9));
+        manageclientUI->NPA11text->setText(NPA.at(10));
+        manageclientUI->NPA12text->setText(NPA.at(11));
+        manageclientUI->btnEditclient->setEnabled(true);
+    }
 }
 void ManageClientUI::on_btnBack_clicked()
 {
-    uiserver->manageclientLogic->back();
+    hide_window();
+    uiserver->staffportalUIC->show_window();
 }
 void ManageClientUI::on_btnEditclient_clicked()
 {
@@ -810,5 +812,3 @@ void StaffPortalUI::hide_window()
 {
     this->close();
 }
-
-

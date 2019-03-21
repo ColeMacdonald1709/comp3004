@@ -20,4 +20,5 @@ void EditAnimal::set_up(QString* name, QList<QString>* PA, QList<QString>* NPA)
 void EditAnimal::editAnimal(QString* name, QList<QString>* PAList, QList<QString>* NPAList)
 {
     db->editAnimalProfile(name, PAList, NPAList);
+    ui->manageanimalUIC->update_animal(name, PAList);
 }

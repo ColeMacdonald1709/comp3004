@@ -109,31 +109,24 @@ void DBServer::editClientProfile(QString* name, QString* phone, QString* email, 
     //set up query
     QSqlQuery qry;
     qry.prepare("UPDATE Clients "
-                "SET Phone = '?', Email = '?', "
-                "Species = '?', Breed = '?', Sex = '?', Age = '?', "
-                "NPA1 = '?', NPA2 = '?', NPA3 = '?', NPA4 = '?', NPA5 = '?', NPA6 = '?', "
-                "NPA7 = '?', NPA8 = '?', NPA9 = '?', NPA10 = '?', NPA11 = '?', NPA12 = '?' "
-                "WHERE Name = '?'");
+                "SET Phone = ?, Email = ?, "
+                "Species = ?, Breed = ?, Sex = ?, Age = ?, "
+                "NPA1 = ?, NPA2 = ?, NPA3 = ?, NPA4 = ?, NPA5 = ?, NPA6 = ?, "
+                "NPA7 = ?, NPA8 = ?, NPA9 = ?, NPA10 = ?, NPA11 = ?, NPA12 = ? "
+                "WHERE Name = ?");
     qry.addBindValue(newprofile->getPhone());
     qry.addBindValue(newprofile->getEmail());
     for (int i=0; i<4; i++){qry.addBindValue(newprofile->getInfo()->value(i));}
     for (int i=0;i<12;i++){qry.addBindValue(newprofile->getPrefs()->value(i));}
     qry.addBindValue(*name);
 
-    //alternate if above doesn't work
-    /* qry.prepare("UPDATE Clients "
-                "SET Name = '" + *name + "', Phone = '"+ *phone +"', Email = '"+ *email +"', "
-                "Species = '"+ PAList->at(0) +"', Breed = '"+ PAList->at(1) +"', Sex = '"+ PAList->at(2) +"', Age = '"+ PAList->at(3) +"', "
-                "NPA1 = '"+ NPAList->at(0) +"', NPA2 = '"+ NPAList->at(1) +"', NPA3 = '"+ NPAList->at(2) +"', NPA4 = '"+ NPAList->at(3) +"', NPA5 = '"+ NPAList->at(4) +"', NPA6 = '"+ NPAList->at(5) +"', "
-                "NPA7 = '"+ NPAList->at(6) +"', NPA8 = '"+ NPAList->at(7) +"', NPA9 = '"+ NPAList->at(8) +"', NPA10 = '"+ NPAList->at(9) +"', NPA11 = '"+ NPAList->at(10) +"', NPA12 = '"+ NPAList->at(11) +"') "
-                "WHERE Name = '?'");
-                            */
     qry.finish();
     qry.exec();
     db.close();
 }
 void DBServer::editAnimalProfile(QString* name, QList<QString>* PAList, QList<QString>* NPAList) {
-    //look in animals and update
+    qDebug() << *PAList;
+    qDebug() << *NPAList;
     Animal* newprofile = new Animal(*name,PAList,NPAList);
     for (int i=0;i<animals->size();i++){
         if (animals->at(i)->getAnimalName() == *name){
@@ -146,22 +139,14 @@ void DBServer::editAnimalProfile(QString* name, QList<QString>* PAList, QList<QS
     //set up query
     QSqlQuery qry;
     qry.prepare("UPDATE Animals "
-                "SET Name = '?', Species = '?', Breed = '?', Sex = '?', Age = '?', "
-                "NPA1 = '?', NPA2 = '?', NPA3 = '?', NPA4 = '?', NPA5 = '?', NPA6 = '?', "
-                "NPA7 = '?', NPA8 = '?', NPA9 = '?', NPA10 = '?', NPA11 = '?', NPA12 = '?')"
-                "WHERE Name = '?'");
-    qry.addBindValue(newprofile->getAnimalName());
+                "SET Species = ?, Breed = ?, Sex = ?, Age = ?, "
+                "NPA1 = ?, NPA2 = ?, NPA3 = ?, NPA4 = ?, NPA5 = ?, NPA6 = ?, "
+                "NPA7 = ?, NPA8 = ?, NPA9 = ?, NPA10 = ?, NPA11 = ?, NPA12 = ? "
+                "WHERE Name = ?");
     for (int i=0; i<4; i++){qry.addBindValue(newprofile->getPAttr()->value(i));}
-    for (int i=0;i<12;i++){qry.addBindValue(newprofile->getNPAttr()->value(i));}
+    for (int i=0; i<12; i++){qry.addBindValue(newprofile->getNPAttr()->value(i));}
     qry.addBindValue(*name);
-    //alternate if above doesn't work
-    /*  qry.prepare("UPDATE Animals "
-                "SET Name= '"+*name+"', "
-                "Species = '"+ PAList->at(0) +"', Breed = '"+ PAList->at(1) +"', Sex = '"+ PAList->at(2) +"', Age = '"+ PAList->at(3) +"', "
-                "NPA1 = '"+ NPAList->at(0) +"', NPA2 = '"+ NPAList->at(1) +"', NPA3 = '"+ NPAList->at(2) +"', NPA4 = '"+ NPAList->at(3) +"', NPA5 = '"+ NPAList->at(4) +"', NPA6 = '"+ NPAList->at(5) +"', "
-                "NPA7 = '"+ NPAList->at(6) +"', NPA8 = '"+ NPAList->at(7) +"', NPA9 = '"+ NPAList->at(8) +"', NPA10 = '"+ NPAList->at(9) +"', NPA11 = '"+ NPAList->at(10) +"', NPA12 = '"+ NPAList->at(11) +"') "
-                "WHERE Name = '?'");
-                */
+
     qry.finish();
     qry.exec();
     db.close();

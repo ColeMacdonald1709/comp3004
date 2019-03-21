@@ -20,4 +20,5 @@ void EditClient::set_up(QString* name, QString* phone, QString* email, QList<QSt
 void EditClient::editClient(QString* name, QString* phone,QString* email,QList<QString>* PAList, QList<QString>* NPAList)
 {
     db->editClientProfile(name, phone, email, PAList, NPAList);
+    ui->clientportalUIC->show_window();
 }

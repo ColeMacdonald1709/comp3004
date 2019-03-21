@@ -30,16 +30,10 @@ void ManageAnimal::get_animal(int i ,QString* name,QList<QString>* PA,QList<QStr
 {
     db->get_animal(i,name,PA,NPA);
 }
-void ManageAnimal::updateAnimals(Animal* a)
-{
-
-}
 void ManageAnimal::open_edit_animal()
 {
-    //temporary
-   // QString name = "Jack";
     QString name = ui->manageanimalUIC->manageanimalUI->txt_Name->text();
-    ui->edit_animal_profile(&name);
+    ui->editanimalUIC->load_info(&name);
 }
 void ManageAnimal::back()
 {
