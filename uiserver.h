@@ -141,6 +141,9 @@ public:
     Ui::ManageAnimal* manageanimalUI;
 private slots:
     void on_btnEditanimal_clicked();
+
+    void on_animalView_activated(const QModelIndex &index);
+
 private:
     UIServer* uiserver;
 };
