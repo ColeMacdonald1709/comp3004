@@ -72,7 +72,7 @@ public:
     Ui::AddNewClient* addnewclientUI;
 private slots:
     void on_cancel_button_clicked();
-    void on_add_button_clicked();
+    void on_add_client_clicked();
 private:
     UIServer* uiserver;
 };
@@ -135,10 +135,9 @@ public:
     Ui::ManageAnimal* manageanimalUI;
 private slots:
     void on_btnEditanimal_clicked();
-    void on_btnLogout_clicked();
     void on_animalView_activated(const QModelIndex &index);
     void on_btnBack_clicked();
-
+    void on_addNewAnimalbtn_clicked();
 private:
     UIServer* uiserver;
 };
@@ -156,12 +155,9 @@ public:
     Ui::ManageClient* manageclientUI;
 private slots:
     void on_addclientbutton_clicked();
-    void on_btnLogout_clicked();
     void on_btnEditclient_clicked();
     void on_btnBack_clicked();
-
     void on_clientlist_activated(const QModelIndex &index);
-
 private:
     UIServer* uiserver;
 };
@@ -212,8 +208,6 @@ public:
     void staffback();
     void clientback();
     void edit_client_profile(QString*);
-    void on_comboBox_currentIndexChanged(const QString &arg1);
-    void on_comboBoxSpecies_currentIndexChanged(const QString &arg1);
 
     AddNewAnimalUI *addnewanimalUIC;
     AddNewClientUI *addnewclientUIC;

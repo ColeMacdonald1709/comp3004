@@ -118,35 +118,6 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QComboBox" name="comboBox">
-        <item>
-         <property name="text">
-          <string>Dog</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Cat</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Bird</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Fish</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Rabbit</string>
-         </property>
-        </item>
-       </widget>
-      </item>
      </layout>
     </item>
     <item>

@@ -309,8 +309,8 @@ void DBServer::get_client(int i, QString* name, QString* phone, QString* email, 
     *name = clients->at(i)->getName();
     *phone = clients->at(i)->getPhone();
     *email = clients->at(i)->getEmail();
-    *PA = *(clients->at(i)->getPrefs());
-    *NPA = *(clients->at(i)->getInfo());
+    *PA = *(clients->at(i)->getInfo());
+    *NPA = *(clients->at(i)->getPrefs());
 }
 void DBServer::get_client(QString* name, QString* phone, QString* email, QList<QString>* PA, QList<QString>* NPA)
 {

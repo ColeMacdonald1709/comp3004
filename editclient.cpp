@@ -21,10 +21,3 @@ void EditClient::editClient(QString* name, QString* phone,QString* email,QList<Q
 {
     db->editClientProfile(name, phone, email, PAList, NPAList);
 }
-void EditClient::get_breeds(const QString& species)
-{
-   QList<QString>* breeds = NULL;
-   QString s = species;
-   db->get_breeds(&s,breeds);
-   ui->editclientUIC->editclientUI->comboBoxBreed->addItems(*breeds);
-}

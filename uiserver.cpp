@@ -107,12 +107,6 @@ void UIServer::show_login_error()
 }
 void UIServer::logout()
 {
-    UIServer::addnewanimalUIC->hide_window();
-    UIServer::addnewclientUIC->hide_window();
-    UIServer::manageanimalUIC->hide_window();
-    UIServer::manageclientUIC->hide_window();
-    UIServer::clientportalUIC->hide_window();
-    UIServer::staffportalUIC->hide_window();
     UIServer::loginUIC->show_window();
 }
 void UIServer::staffback()
@@ -137,10 +131,12 @@ void UIServer::clientback()
 }
 void UIServer::show_staff_portal()
 {
+    UIServer::loginUIC->hide_window();
     UIServer::staffportalUIC->show_window();
 }
 void UIServer::show_client_portal(QString* n)
 {
+    UIServer::loginUIC->hide_window();
     UIServer::clientportalUIC->show_window();
     UIServer::clientportalLogic->set_name(n);
 }
@@ -149,10 +145,6 @@ void UIServer::edit_client_profile(QString* n)
     UIServer::clientportalUIC->hide_window();
     UIServer::editclientUIC->load_info(n);
     UIServer::editclientUIC->show_window();
-}
-void UIServer::on_comboBoxSpecies_currentIndexChanged(const QString &arg1)
-{
-    UIServer::editclientLogic->get_breeds(arg1);
 }
 
 ///addnewanimal interface
@@ -169,9 +161,24 @@ void AddNewAnimalUI::show_window()
 void AddNewAnimalUI::hide_window()
 {
     this->close();
+    uiserver->manageanimalUIC->show_window();
 }
 void AddNewAnimalUI::on_cancelbtn_clicked()
 {
+    addnewanimalUI->txtName->clear();
+    addnewanimalUI->txtBreed->clear();
+    addnewanimalUI->NPAttr1spinBox->clear();
+    addnewanimalUI->NPAttr2spinBox->clear();
+    addnewanimalUI->NPAttr3spinBox->clear();
+    addnewanimalUI->NPAttr4spinBox->clear();
+    addnewanimalUI->NPAttr5spinBox->clear();
+    addnewanimalUI->NPAttr6spinBox->clear();
+    addnewanimalUI->NPAttr7spinBox->clear();
+    addnewanimalUI->NPAttr8spinBox->clear();
+    addnewanimalUI->NPAttr9spinBox->clear();
+    addnewanimalUI->NPAttr10spinBox->clear();
+    addnewanimalUI->NPAttr11spinBox->clear();
+    addnewanimalUI->NPAttr12spinBox->clear();
     hide_window();
 }
 void AddNewAnimalUI::on_addAnimalbtn_clicked()
@@ -250,12 +257,16 @@ void AddNewClientUI::show_window()
 void AddNewClientUI::hide_window()
 {
     this->close();
+    uiserver->manageclientUIC->show_window();
 }
 void AddNewClientUI::on_cancel_button_clicked()
 {
+    addnewclientUI->name_txt->clear();
+    addnewclientUI->phone_txt->clear();
+    addnewclientUI->email_txt->clear();
     hide_window();
 }
-void AddNewClientUI::on_add_button_clicked()
+void AddNewClientUI::on_add_client_clicked()
 {
     QString name = addnewclientUI->name_txt->text();
     if(!uiserver->addnewclientLogic->client_exists(&name)){
@@ -263,9 +274,8 @@ void AddNewClientUI::on_add_button_clicked()
         phone = addnewclientUI->phone_txt->text();
         email = addnewclientUI->email_txt->text();
         uiserver->addnewclientLogic->add_new_client(&name, &phone, &email);
-        hide_window();
-        uiserver->manageclientUIC->show_window();
         uiserver->manageclientUIC->update_clients(&name, &phone, &email);
+        hide_window();
     } else {
         QMessageBox::warning(this, tr("Client already exists"), tr("Error: Client name already in use."));
     }
@@ -348,6 +358,7 @@ void EditAnimalUI::on_btnSave_clicked() {
 }
 void EditAnimalUI::on_btnCancel_clicked()
 {
+    editanimalUI->txtBreed->clear();
     hide_window();
 }
 
@@ -365,30 +376,33 @@ void EditClientUI::show_window()
 void EditClientUI::hide_window()
 {
     this->close();
+    uiserver->clientportalUIC->show_window();
 }
 void EditClientUI::load_info(QString* n)
 {
-    QString phone, email;
-    QList<QString>*PA=NULL;
-    QList<QString>*NPA=NULL;
-    uiserver->editclientLogic->set_up(n, &phone, &email, PA, NPA);
+    QString phone;
+    QString email;
+    QList<QString> PA;
+    QList<QString> NPA;
+    uiserver->editclientLogic->set_up(n, &phone, &email, &PA, &NPA);
     editclientUI->txtName->setText(*n);
-    editclientUI->phone_label->setText(phone);
-    editclientUI->emai_label->setText(email);
+    editclientUI->txtPhone->setText(phone);
+    editclientUI->txtEmail->setText(email);
 
-    //do for loop for PA
-    editclientUI->NPAttr1spinBox->setValue(NPA->at(0).toInt());
-    editclientUI->NPAttr2spinBox->setValue(NPA->at(1).toInt());
-    editclientUI->NPAttr3spinBox->setValue(NPA->at(2).toInt());
-    editclientUI->NPAttr4spinBox->setValue(NPA->at(3).toInt());
-    editclientUI->NPAttr5spinBox->setValue(NPA->at(4).toInt());
-    editclientUI->NPAttr6spinBox->setValue(NPA->at(5).toInt());
-    editclientUI->NPAttr7spinBox->setValue(NPA->at(6).toInt());
-    editclientUI->NPAttr8spinBox->setValue(NPA->at(7).toInt());
-    editclientUI->NPAttr9spinBox->setValue(NPA->at(8).toInt());
-    editclientUI->NPAttr10spinBox->setValue(NPA->at(9).toInt());
-    editclientUI->NPAttr11spinBox->setValue(NPA->at(10).toInt());
-    editclientUI->NPAttr12spinBox->setValue(NPA->at(11).toInt());
+    editclientUI->txtBreed->clear();
+
+    editclientUI->NPAttr1spinBox->setValue(NPA.at(0).toInt());
+    editclientUI->NPAttr2spinBox->setValue(NPA.at(1).toInt());
+    editclientUI->NPAttr3spinBox->setValue(NPA.at(2).toInt());
+    editclientUI->NPAttr4spinBox->setValue(NPA.at(3).toInt());
+    editclientUI->NPAttr5spinBox->setValue(NPA.at(4).toInt());
+    editclientUI->NPAttr6spinBox->setValue(NPA.at(5).toInt());
+    editclientUI->NPAttr7spinBox->setValue(NPA.at(6).toInt());
+    editclientUI->NPAttr8spinBox->setValue(NPA.at(7).toInt());
+    editclientUI->NPAttr9spinBox->setValue(NPA.at(8).toInt());
+    editclientUI->NPAttr10spinBox->setValue(NPA.at(9).toInt());
+    editclientUI->NPAttr11spinBox->setValue(NPA.at(10).toInt());
+    editclientUI->NPAttr12spinBox->setValue(NPA.at(11).toInt());
 }
 void EditClientUI::on_btnSave_clicked() {
     QString name, phone, email;
@@ -451,6 +465,10 @@ void EditClientUI::on_btnSave_clicked() {
 }
 void EditClientUI::on_btnCancel_clicked()
 {
+    editclientUI->txtName->clear();
+    editclientUI->txtPhone->clear();
+    editclientUI->txtEmail->clear();
+    editclientUI->txtBreed->clear();
     hide_window();
 }
 
@@ -472,17 +490,20 @@ void LoginUI::show_window()
 }
 void LoginUI::hide_window()
 {
+    loginUI->txtName->clear();
     this->close();
 }
 void LoginUI::on_btnClient_clicked()
 {
     QString username = loginUI->txtName->toPlainText();
     uiserver->loginLogic->verify_client(username);
+    loginUI->txtName->clear();
 }
 void LoginUI::on_btnStaff_clicked()
 {
     QString username = loginUI->txtName->toPlainText();
     uiserver->loginLogic->verify_staff(username);
+    loginUI->txtName->clear();
 }
 
 ///client portal interface
@@ -494,14 +515,17 @@ ClientPortalUI::ClientPortalUI(UIServer* uis) : QDialog(), clientportalUI(new Ui
 }
 void ClientPortalUI::on_Viewanimals_clicked()
 {
+    hide_window();
     uiserver->clientportalLogic->open_view_animal();
 }
 void ClientPortalUI::on_Editprofile_clicked()
 {
+    hide_window();
     uiserver->clientportalLogic->open_edit_client();
 }
 void ClientPortalUI::on_client_logout_clicked()
 {
+    hide_window();
     uiserver->clientportalLogic->logout();
 }
 void ClientPortalUI::show_window()
@@ -599,40 +623,19 @@ void ManageAnimalUI::on_animalView_activated(const QModelIndex &index)
 }
 void ManageAnimalUI::on_btnEditanimal_clicked()
 {
+    hide_window();
     uiserver->manageanimalLogic->open_edit_animal();
 }
 void ManageAnimalUI::on_btnBack_clicked()
 {
+    hide_window();
     uiserver->manageanimalLogic->back();
 }
-void ManageAnimalUI::on_animalView_activated(const QModelIndex &index)
+void ManageAnimalUI::on_addNewAnimalbtn_clicked()
 {
-    //access dynamic memory and pull the animal that at index of the row that was clicked
-        QList<QString> PA;
-        QList<QString> NPA;
-        QString name;
-        uiserver->manageanimalLogic->get_animal(index.row(),&name,&PA,&NPA);
-
-        manageanimalUI->txt_Name->setText(name);
-        manageanimalUI->txt_Species->setText(PA.at(0));
-        manageanimalUI->txt_Breed->setText(PA.at(1));
-        manageanimalUI->txt_Sex->setText(PA.at(2));
-        manageanimalUI->txt_Age->setText(PA.at(3));
-
-        manageanimalUI->txt_NPA1->setText(NPA.at(0));
-        manageanimalUI->txt_NPA2->setText(NPA.at(1));
-        manageanimalUI->txt_NPA3->setText(NPA.at(2));
-        manageanimalUI->txt_NPA4->setText(NPA.at(3));
-        manageanimalUI->txt_NPA5->setText(NPA.at(4));
-        manageanimalUI->txt_NPA6->setText(NPA.at(5));
-        manageanimalUI->txt_NPA7->setText(NPA.at(6));
-        manageanimalUI->txt_NPA8->setText(NPA.at(7));
-        manageanimalUI->txt_NPA9->setText(NPA.at(8));
-        manageanimalUI->txt_NPA10->setText(NPA.at(9));
-        manageanimalUI->txt_NPA11->setText(NPA.at(10));
-        manageanimalUI->txt_NPA12->setText(NPA.at(11));
+    hide_window();
+    uiserver->addnewanimalUIC->show_window();
 }
-
 ///manage client interface
 /// ----------------------
 ManageClientUI::ManageClientUI(UIServer* uis) : QDialog(), manageclientUI(new Ui::ManageClient)
@@ -694,7 +697,8 @@ void ManageClientUI::load_clients()
 }
 void ManageClientUI::on_addclientbutton_clicked()
 {
-
+    hide_window();
+    uiserver->addnewclientUIC->show_window();
 }
 void ManageClientUI::on_clientlist_activated(const QModelIndex &index)
 {
@@ -731,6 +735,7 @@ void ManageClientUI::on_btnEditclient_clicked()
 {
     uiserver->manageclientLogic->open_edit_client();
 }
+
 ///staff portal interface
 ///----------------------
 StaffPortalUI::StaffPortalUI(UIServer* uis) : QDialog(), staffportalUI(new Ui::StaffPortal)
@@ -740,14 +745,17 @@ StaffPortalUI::StaffPortalUI(UIServer* uis) : QDialog(), staffportalUI(new Ui::S
 }
 void StaffPortalUI::on_btnAnimals_clicked()
 {
+    hide_window();
     uiserver->staffportalLogic->open_manage_animal();
 }
 void StaffPortalUI::on_btnClients_clicked()
 {
+    hide_window();
     uiserver->staffportalLogic->open_manage_client();
 }
 void StaffPortalUI::on_staff_logout_clicked()
 {
+    hide_window();
     uiserver->staffportalLogic->logout();
 }
 void StaffPortalUI::show_window()
@@ -758,8 +766,5 @@ void StaffPortalUI::hide_window()
 {
     this->close();
 }
-
-
-
 
 

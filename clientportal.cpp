@@ -13,7 +13,7 @@ ClientPortal::ClientPortal(UIServer* uiserver)
 }
 void ClientPortal::set_name(QString* n)
 {
-    name = n;
+    name = *n;
 }
 void ClientPortal::open_view_animal()
 {
@@ -21,8 +21,6 @@ void ClientPortal::open_view_animal()
 }
 void ClientPortal::open_edit_client()
 {
-    //temporary
-    QString name = "Paul";
     ui->edit_client_profile(&name);
 }
 void ClientPortal::logout()

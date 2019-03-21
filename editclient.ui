@@ -673,57 +673,6 @@
     <string>Personal Information</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBoxBreed">
-   <property name="geometry">
-    <rect>
-     <x>227</x>
-     <y>280</y>
-     <width>171</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>171</width>
-     <height>25</height>
-    </size>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="comboBoxSpecies">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>240</y>
-     <width>86</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>Dog</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Cat</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Bird</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Fish</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Rabbit</string>
-    </property>
-   </item>
-  </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>

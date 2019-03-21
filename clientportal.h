@@ -23,7 +23,7 @@ public:
     void set_name(QString*);
 private:
     UIServer* ui;
-    QString* name;
+    QString name;
 };
 
 #endif // ClientPortal_H

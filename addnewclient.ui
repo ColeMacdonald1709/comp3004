@@ -104,7 +104,7 @@
     <item>
      <layout class="QHBoxLayout" name="nav_lalyout">
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="add_client">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
