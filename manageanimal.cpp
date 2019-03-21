@@ -37,8 +37,9 @@ void ManageAnimal::updateAnimals(Animal* a)
 void ManageAnimal::open_edit_animal()
 {
     //temporary
-    QString name = "Jack";
-    ui->edit_client_profile(&name);
+   // QString name = "Jack";
+    QString name = ui->manageanimalUIC->manageanimalUI->txt_Name->text();
+    ui->edit_animal_profile(&name);
 }
 void ManageAnimal::back()
 {

@@ -208,6 +208,7 @@ public:
     void staffback();
     void clientback();
     void edit_client_profile(QString*);
+    void edit_animal_profile(QString*);
 
     AddNewAnimalUI *addnewanimalUIC;
     AddNewClientUI *addnewclientUIC;

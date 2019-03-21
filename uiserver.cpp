@@ -91,8 +91,11 @@ void UIServer::show_animals(bool isclient)
 {
     if(isclient) {
         UIServer::manageanimalUIC->manageanimalUI->addNewAnimalbtn->hide();
+        UIServer::manageanimalUIC->manageanimalUI->btnEditanimal->hide();
     } else {
         UIServer::manageanimalUIC->manageanimalUI->addNewAnimalbtn->show();
+        UIServer::manageanimalUIC->manageanimalUI->btnEditanimal->show();
+        UIServer::manageanimalUIC->manageanimalUI->btnEditanimal->setEnabled(false);
     }
     UIServer::manageanimalUIC->show_window();
 }
@@ -145,6 +148,12 @@ void UIServer::edit_client_profile(QString* n)
     UIServer::clientportalUIC->hide_window();
     UIServer::editclientUIC->load_info(n);
     UIServer::editclientUIC->show_window();
+}
+void UIServer::edit_animal_profile(QString* n)
+{
+    UIServer::staffportalUIC->hide_window();
+    UIServer::editanimalUIC->load_info(n);
+    UIServer::editanimalUIC->show_window();
 }
 
 ///addnewanimal interface
@@ -298,9 +307,40 @@ void EditAnimalUI::hide_window()
 }
 void EditAnimalUI::load_info(QString* n)
 {
-    QList<QString>* PA=NULL;
-    QList<QString>* NPA=NULL;
-    uiserver->editanimalLogic->set_up(n, PA, NPA);
+    QList<QString> PA;
+    QList<QString> NPA;
+    uiserver->editanimalLogic->set_up(n, &PA, &NPA);
+
+    editanimalUI->txt_name->setText(*n);
+    //species
+    if (PA.at(0) == "Dog") {editanimalUI->radDog->setChecked(true);}
+    else if (PA.at(0) == "Cat") {editanimalUI->radCat->setChecked(true);}
+    else if (PA.at(0) == "Rabbit") {editanimalUI->radRabbit->setChecked(true);}
+    else if (PA.at(0) == "Bird") {editanimalUI->radBird->setChecked(true);}
+    else if (PA.at(0) == "Fish") {editanimalUI->radFish->setChecked(true);}
+    //breed
+    editanimalUI->txtBreed->setText(PA.at(1));
+    //sex
+    if (PA.at(2) == "Male") {editanimalUI->radMale->setChecked(true);}
+    else if (PA.at(2) == "Female") {editanimalUI->radFemale->setChecked(true);}
+    //age
+    if (PA.at(3) == "Baby") {editanimalUI->ageComboBox->setCurrentIndex(0);}
+    else if (PA.at(3) == "Teenage") {editanimalUI->ageComboBox->setCurrentIndex(1);}
+    else if (PA.at(3) == "Adult") {editanimalUI->ageComboBox->setCurrentIndex(2);}
+    else if (PA.at(3) == "Mature") {editanimalUI->ageComboBox->setCurrentIndex(3);}
+
+    editanimalUI->NPAttr1spinBox->setValue(NPA.at(0).toInt());
+    editanimalUI->NPAttr2spinBox->setValue(NPA.at(1).toInt());
+    editanimalUI->NPAttr3spinBox->setValue(NPA.at(2).toInt());
+    editanimalUI->NPAttr4spinBox->setValue(NPA.at(3).toInt());
+    editanimalUI->NPAttr5spinBox->setValue(NPA.at(4).toInt());
+    editanimalUI->NPAttr6spinBox->setValue(NPA.at(5).toInt());
+    editanimalUI->NPAttr7spinBox->setValue(NPA.at(6).toInt());
+    editanimalUI->NPAttr8spinBox->setValue(NPA.at(7).toInt());
+    editanimalUI->NPAttr9spinBox->setValue(NPA.at(8).toInt());
+    editanimalUI->NPAttr10spinBox->setValue(NPA.at(9).toInt());
+    editanimalUI->NPAttr11spinBox->setValue(NPA.at(10).toInt());
+    editanimalUI->NPAttr12spinBox->setValue(NPA.at(11).toInt());
 
 }
 void EditAnimalUI::on_btnSave_clicked() {
@@ -599,29 +639,30 @@ void ManageAnimalUI::load_animals()
 void ManageAnimalUI::on_animalView_activated(const QModelIndex &index)
 {
     //access dynamic memory and pull the animal that at index of the row that was clicked
-        QList<QString> PA;
-        QList<QString> NPA;
-        QString name;
-        uiserver->manageanimalLogic->get_animal(index.row(),&name,&PA,&NPA);
+    QList<QString> PA;
+    QList<QString> NPA;
+    QString name;
+    uiserver->manageanimalLogic->get_animal(index.row(),&name,&PA,&NPA);
 
-        manageanimalUI->txt_Name->setText(name);
-        manageanimalUI->txt_Species->setText(PA.at(0));
-        manageanimalUI->txt_Breed->setText(PA.at(1));
-        manageanimalUI->txt_Sex->setText(PA.at(2));
-        manageanimalUI->txt_Age->setText(PA.at(3));
+    manageanimalUI->txt_Name->setText(name);
+    manageanimalUI->txt_Species->setText(PA.at(0));
+    manageanimalUI->txt_Breed->setText(PA.at(1));
+    manageanimalUI->txt_Sex->setText(PA.at(2));
+    manageanimalUI->txt_Age->setText(PA.at(3));
 
-        manageanimalUI->txt_NPA1->setText(NPA.at(0));
-        manageanimalUI->txt_NPA2->setText(NPA.at(1));
-        manageanimalUI->txt_NPA3->setText(NPA.at(2));
-        manageanimalUI->txt_NPA4->setText(NPA.at(3));
-        manageanimalUI->txt_NPA5->setText(NPA.at(4));
-        manageanimalUI->txt_NPA6->setText(NPA.at(5));
-        manageanimalUI->txt_NPA7->setText(NPA.at(6));
-        manageanimalUI->txt_NPA8->setText(NPA.at(7));
-        manageanimalUI->txt_NPA9->setText(NPA.at(8));
-        manageanimalUI->txt_NPA10->setText(NPA.at(9));
-        manageanimalUI->txt_NPA11->setText(NPA.at(10));
-        manageanimalUI->txt_NPA12->setText(NPA.at(11));
+    manageanimalUI->txt_NPA1->setText(NPA.at(0));
+    manageanimalUI->txt_NPA2->setText(NPA.at(1));
+    manageanimalUI->txt_NPA3->setText(NPA.at(2));
+    manageanimalUI->txt_NPA4->setText(NPA.at(3));
+    manageanimalUI->txt_NPA5->setText(NPA.at(4));
+    manageanimalUI->txt_NPA6->setText(NPA.at(5));
+    manageanimalUI->txt_NPA7->setText(NPA.at(6));
+    manageanimalUI->txt_NPA8->setText(NPA.at(7));
+    manageanimalUI->txt_NPA9->setText(NPA.at(8));
+    manageanimalUI->txt_NPA10->setText(NPA.at(9));
+    manageanimalUI->txt_NPA11->setText(NPA.at(10));
+    manageanimalUI->txt_NPA12->setText(NPA.at(11));
+    manageanimalUI->btnEditanimal->setEnabled(true);
 }
 void ManageAnimalUI::on_btnEditanimal_clicked()
 {
@@ -728,6 +769,7 @@ void ManageClientUI::on_clientlist_activated(const QModelIndex &index)
     manageclientUI->NPA10text->setText(NPA.at(9));
     manageclientUI->NPA11text->setText(NPA.at(10));
     manageclientUI->NPA12text->setText(NPA.at(11));
+    manageclientUI->btnEditclient->setEnabled(true);
 }
 void ManageClientUI::on_btnBack_clicked()
 {

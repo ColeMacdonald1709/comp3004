@@ -109,12 +109,11 @@ void DBServer::editClientProfile(QString* name, QString* phone, QString* email, 
     //set up query
     QSqlQuery qry;
     qry.prepare("UPDATE Clients "
-                "SET Name = '?', Phone = '?', Email = '?', "
+                "SET Phone = '?', Email = '?', "
                 "Species = '?', Breed = '?', Sex = '?', Age = '?', "
                 "NPA1 = '?', NPA2 = '?', NPA3 = '?', NPA4 = '?', NPA5 = '?', NPA6 = '?', "
                 "NPA7 = '?', NPA8 = '?', NPA9 = '?', NPA10 = '?', NPA11 = '?', NPA12 = '?' "
                 "WHERE Name = '?'");
-    qry.addBindValue(newprofile->getName());
     qry.addBindValue(newprofile->getPhone());
     qry.addBindValue(newprofile->getEmail());
     for (int i=0; i<4; i++){qry.addBindValue(newprofile->getInfo()->value(i));}
