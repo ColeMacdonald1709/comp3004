@@ -20,11 +20,11 @@ void ManageAnimal::get_animal(int i, QString* name, QList<QString>* PA)
 }
 void ManageAnimal::set_client_view()
 {
-    ui->manageanimalUIC->manageanimalUI->addAnimalbtn->hide();
+    ui->manageanimalUIC->manageanimalUI->addNewAnimalbtn->hide();
 }
 void ManageAnimal::set_staff_view()
 {
-    ui->manageanimalUIC->manageanimalUI->addAnimalbtn->show();
+    ui->manageanimalUIC->manageanimalUI->addNewAnimalbtn->show();
 }
 void ManageAnimal::get_animal(int i ,QString* name,QList<QString>* PA,QList<QString> *NPA)
 {
