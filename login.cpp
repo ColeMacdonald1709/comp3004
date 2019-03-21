@@ -7,8 +7,11 @@ Ian Sloan 		101021039
 
 #include "login.h"
 
-Login::Login(UIServer* uiserver){ui = uiserver;}
-Login::Login(DBServer* dbserver){db = dbserver;}
+Login::Login(DBServer* dbserver, UIServer* uiserver)
+{
+    ui = uiserver;
+    db = dbserver;
+}
 
 void Login::verify_client(QString name){
     if(db->verify_client(&name))

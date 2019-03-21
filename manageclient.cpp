@@ -7,8 +7,11 @@ Ian Sloan 		101021039
 
 #include "manageclient.h"
 
-ManageClient::ManageClient(UIServer* uiserver) {ui = uiserver;}
-ManageClient::ManageClient(DBServer* dbserver) {db = dbserver;}
+ManageClient::ManageClient(DBServer* dbserver, UIServer* uiserver)
+{
+    ui = uiserver;
+    db = dbserver;
+}
 
 int ManageClient::client_size(){return db->get_client_size();}
 void ManageClient::get_client(int i, QString* name, QString* phone, QString* email)

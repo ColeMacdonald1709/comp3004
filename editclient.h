@@ -16,8 +16,7 @@ class DBServer;
 class EditClient
 {
 public:
-    EditClient(UIServer*);
-    EditClient(DBServer*);
+    EditClient(DBServer*, UIServer*);
     void set_up(QString*, QString*, QString*, QList<QString>*, QList<QString>*);
     void editClient(QString* ,QString* ,QString* ,QList<QString>*, QList<QString>*);
     void get_breeds(const QString&);

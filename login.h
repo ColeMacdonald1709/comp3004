@@ -18,8 +18,7 @@ class DBServer;
 class Login
 {
 public:
-    Login(UIServer*);
-    Login(DBServer*);
+    Login(DBServer*,UIServer*);
     void verify_client(QString);
     void verify_staff(QString);
 private:

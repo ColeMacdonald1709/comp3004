@@ -30,13 +30,6 @@ void DBServer::init()
 {
     loadAnimals();
     loadClients();
-    AddNewAnimal(this);
-    AddNewClient(this);
-    EditAnimal(this);
-    EditClient(this);
-    Login(this);
-    ManageAnimal(this);
-    ManageClient(this);
 }
 bool DBServer::verify_animal(QString* name)
 {

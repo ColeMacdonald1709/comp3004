@@ -7,8 +7,11 @@ Ian Sloan 		101021039
 
 #include "editanimal.h"
 
-EditAnimal::EditAnimal(UIServer* uiserver){ui = uiserver;}
-EditAnimal::EditAnimal(DBServer* dbserver){db = dbserver;}
+EditAnimal::EditAnimal(DBServer* dbserver, UIServer* uiserver)
+{
+    ui = uiserver;
+    db = dbserver;
+}
 
 void EditAnimal::set_up(QString* name, QList<QString>* PA, QList<QString>* NPA)
 {

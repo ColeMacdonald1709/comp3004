@@ -19,8 +19,7 @@ class DBServer;
 class AddNewAnimal
 {
 public:
-    AddNewAnimal(UIServer*);
-    AddNewAnimal(DBServer*);
+    AddNewAnimal(DBServer*,UIServer*);
     bool animal_exists(QString*);
     void add_new_animal(QString*, QList<QString>*, QList<QString>*);
 private:

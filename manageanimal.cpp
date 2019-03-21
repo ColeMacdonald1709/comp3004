@@ -7,8 +7,11 @@ Ian Sloan 		101021039
 
 #include "manageanimal.h"
 
-ManageAnimal::ManageAnimal(UIServer* uiserver){ui = uiserver;}
-ManageAnimal::ManageAnimal(DBServer* dbserver){db = dbserver;}
+ManageAnimal::ManageAnimal(DBServer* dbserver, UIServer* uiserver)
+{
+    ui = uiserver;
+    db = dbserver;
+}
 
 int ManageAnimal::animal_size(){return db->get_animal_size();}
 void ManageAnimal::get_animal(int i, QString* name, QList<QString>* PA)

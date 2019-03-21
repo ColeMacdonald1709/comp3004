@@ -7,8 +7,11 @@ Ian Sloan 		101021039
 
 #include "addnewanimal.h"
 
-AddNewAnimal::AddNewAnimal(UIServer* uiserver){ui = uiserver;}
-AddNewAnimal::AddNewAnimal(DBServer* dbserver){db = dbserver;}
+AddNewAnimal::AddNewAnimal(DBServer* dbserver, UIServer* uiserver)
+{
+    ui = uiserver;
+    db = dbserver;
+}
 bool AddNewAnimal::animal_exists(QString* name)
 {
     return db->verify_animal(name);

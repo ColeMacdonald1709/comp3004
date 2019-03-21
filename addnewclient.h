@@ -20,8 +20,7 @@ class DBServer;
 class AddNewClient
 {
 public:
-    AddNewClient(UIServer*);
-    AddNewClient(DBServer*);
+    AddNewClient(DBServer*,UIServer*);
     bool client_exists(QString*);
     void add_new_client(QString*,QString*,QString*);
 private:

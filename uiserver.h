@@ -62,9 +62,10 @@ public:
     void hide_window();
     void update_animals(QString*,QList<QString>*);
     Ui::AddNewAnimal* addnewanimalUI;
-private:
+private slots:
     void on_cancelbtn_clicked();
     void on_addAnimalbtn_clicked();
+private:
     UIServer* uiserver;
 };
 class AddNewClientUI: public QDialog
@@ -75,9 +76,10 @@ public:
     void show_window();
     void hide_window();
     Ui::AddNewClient* addnewclientUI;
-private:
+private slots:
     void on_cancel_button_clicked();
     void on_add_button_clicked();
+private:
     UIServer* uiserver;
 };
 class EditAnimalUI: public QDialog
@@ -89,9 +91,10 @@ public:
     void hide_window();
     void load_info(QString*);
     Ui::EditAnimal* editanimalUI;
-private:
+private slots:
     void on_btnSave_clicked();
     void on_btnCancel_clicked();
+private:
     UIServer* uiserver;
 };
 class EditClientUI: public QDialog
@@ -103,10 +106,10 @@ public:
     void hide_window();
     void load_info(QString*);
     Ui::EditClient* editclientUI;
-
-private:
+private slots:
     void on_btnSave_clicked();
     void on_btnCancel_clicked();
+private:
     UIServer* uiserver;
 };
 class LoginUI: public QDialog
@@ -118,9 +121,10 @@ public:
     void hide_window();
     void invalid_cred();
     Ui::Login* loginUI;
-private:
+private slots:
     void on_btnClient_clicked();
     void on_btnStaff_clicked();
+private:
     UIServer* uiserver;
 };
 class ManageAnimalUI: public QDialog
@@ -135,8 +139,9 @@ public:
     void set_staff_view();
     void load_animals();
     Ui::ManageAnimal* manageanimalUI;
-private:
+private slots:
     void on_btnEditanimal_clicked();
+private:
     UIServer* uiserver;
 };
 class ManageClientUI: public QDialog
@@ -149,6 +154,9 @@ public:
     void update_clients(QString*,QString*,QString*);
     void load_clients();
     Ui::ManageClient* manageclientUI;
+private slots:
+    void on_addclientbutton_clicked();
+    void on_btnLogout_clicked();
 private:
     UIServer* uiserver;
 };
@@ -160,10 +168,11 @@ public:
     void show_window();
     void hide_window();
     Ui::ClientPortal* clientportalUI;
-private:
+private slots:
     void on_Viewanimals_clicked();
     void on_Editprofile_clicked();
     void on_client_logout_clicked();
+private:
     UIServer* uiserver;
 };
 class StaffPortalUI: public QDialog
@@ -174,10 +183,11 @@ public:
     void show_window();
     void hide_window();
     Ui::StaffPortal* staffportalUI;
-private:
+private slots:
     void on_btnAnimals_clicked();
     void on_btnClients_clicked();
     void on_staff_logout_clicked();
+private:
     UIServer* uiserver;
 };
 
@@ -186,6 +196,7 @@ class UIServer
 public:
     UIServer();
     ~UIServer();
+    void set_up_logic(AddNewAnimal*, AddNewClient*, EditAnimal*, EditClient*, Login*, ManageAnimal*, ManageClient* ,ClientPortal*, StaffPortal*);
     void init();
     void show_animals(bool);
     void show_clients();

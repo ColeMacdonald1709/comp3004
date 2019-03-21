@@ -7,8 +7,11 @@ Ian Sloan 		101021039
 
 #include "editclient.h"
 
-EditClient::EditClient(UIServer* uiserver){ui = uiserver;}
-EditClient::EditClient(DBServer* dbserver){db = dbserver;}
+EditClient::EditClient(DBServer* dbserver, UIServer* uiserver)
+{
+    ui = uiserver;
+    db = dbserver;
+}
 
 void EditClient::set_up(QString* name, QString* phone, QString* email, QList<QString>* PA, QList<QString>* NPA)
 {

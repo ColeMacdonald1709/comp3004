@@ -22,64 +22,65 @@ Ian Sloan 		101021039
 
 UIServer::UIServer()
 {
-    UIServer::addnewanimalLogic = new AddNewAnimal(this);
     UIServer::addnewanimalUIC = new AddNewAnimalUI(this);
-    UIServer::addnewclientLogic = new AddNewClient(this);
+
     UIServer::addnewclientUIC = new AddNewClientUI(this);
-    UIServer::editanimalLogic = new EditAnimal(this);
+
     UIServer::editanimalUIC = new EditAnimalUI(this);
-    UIServer::editclientLogic = new EditClient(this);
+
     UIServer::editclientUIC = new EditClientUI(this);
-    UIServer::loginLogic = new Login(this);
+
     UIServer::loginUIC = new LoginUI(this);
-    UIServer::manageanimalLogic = new ManageAnimal(this);
+
     UIServer::manageanimalUIC = new ManageAnimalUI(this);
-    UIServer::manageclientLogic = new ManageClient(this);
+
     UIServer::manageclientUIC = new ManageClientUI(this);
-    UIServer::clientportalLogic = new ClientPortal(this);
+
     UIServer::clientportalUIC = new ClientPortalUI(this);
-    UIServer::staffportalLogic = new StaffPortal(this);
+
     UIServer::staffportalUIC = new StaffPortalUI(this);
 }
 UIServer::~UIServer()
 {
     delete UIServer::addnewanimalUIC->addnewanimalUI;
     delete UIServer::addnewanimalUIC;
-    delete UIServer::addnewanimalLogic;
 
     delete UIServer::addnewclientUIC->addnewclientUI;
     delete UIServer::addnewclientUIC;
-    delete UIServer::addnewclientLogic;
 
     delete UIServer::editanimalUIC->editanimalUI;
     delete UIServer::editanimalUIC;
-    delete UIServer::editanimalLogic;
 
     delete UIServer::editclientUIC->editclientUI;
     delete UIServer::editclientUIC;
-    delete UIServer::editclientLogic;
 
     delete UIServer::loginUIC->loginUI;
     delete UIServer::loginUIC;
-    delete UIServer::loginLogic;
 
     delete UIServer::manageanimalUIC->manageanimalUI;
     delete UIServer::manageanimalUIC;
-    delete UIServer::manageanimalLogic;
 
     delete UIServer::manageclientUIC->manageclientUI;
     delete UIServer::manageclientUIC;
-    delete UIServer::manageclientLogic;
 
     delete UIServer::clientportalUIC->clientportalUI;
     delete UIServer::clientportalUIC;
-    delete UIServer::clientportalLogic;
 
     delete UIServer::staffportalUIC->staffportalUI;
     delete UIServer::staffportalUIC;
-    delete UIServer::staffportalLogic;
 }
-
+void UIServer::set_up_logic(AddNewAnimal* ana, AddNewClient* anc, EditAnimal* ea, EditClient* ec, Login* l, ManageAnimal* ma, ManageClient* mc, ClientPortal* cp, StaffPortal* sp)
+{
+    addnewanimalLogic = ana;
+    addnewclientLogic = anc;
+    editanimalLogic = ea;
+    editclientLogic = ec;
+    loginLogic = l;
+    manageanimalLogic = ma;
+    manageclientLogic = mc;
+    clientportalLogic = cp;
+    staffportalLogic = sp;
+}
 void UIServer::init()
 {
     UIServer::manageanimalUIC->load_animals();
@@ -140,16 +141,14 @@ AddNewAnimalUI::AddNewAnimalUI(UIServer* uis) : QDialog(), addnewanimalUI(new Ui
 {
     uiserver = uis;
     addnewanimalUI->setupUi(this);
-    this->setModal(true);
 }
 void AddNewAnimalUI::show_window()
 {
-    this->exec();
-    this->show();
+    this->open();
 }
 void AddNewAnimalUI::hide_window()
 {
-    this->hide();
+    this->close();
 }
 void AddNewAnimalUI::on_cancelbtn_clicked()
 {
@@ -223,16 +222,14 @@ AddNewClientUI::AddNewClientUI(UIServer* uis) : QDialog(), addnewclientUI(new Ui
 {
     uiserver = uis;
     addnewclientUI->setupUi(this);
-    this->setModal(true);
 }
 void AddNewClientUI::show_window()
 {
-    this->exec();
-    this->show();
+    this->open();
 }
 void AddNewClientUI::hide_window()
 {
-    this->hide();
+    this->close();
 }
 void AddNewClientUI::on_cancel_button_clicked()
 {
@@ -260,16 +257,14 @@ EditAnimalUI::EditAnimalUI(UIServer* uis) : QDialog(), editanimalUI(new Ui::Edit
 {
     uiserver = uis;
     editanimalUI->setupUi(this);
-    this->setModal(true);
 }
 void EditAnimalUI::show_window()
 {
-    this->exec();
-    this->show();
+    this->open();
 }
 void EditAnimalUI::hide_window()
 {
-    this->hide();
+    this->close();
 }
 void EditAnimalUI::load_info(QString* n)
 {
@@ -342,16 +337,14 @@ EditClientUI::EditClientUI(UIServer* uis) : QDialog(), editclientUI(new Ui::Edit
 {
     uiserver = uis;
     editclientUI->setupUi(this);
-    this->setModal(true);
 }
 void EditClientUI::show_window()
 {
-    this->exec();
-    this->show();
+    this->open();
 }
 void EditClientUI::hide_window()
 {
-    this->hide();
+    this->close();
 }
 void EditClientUI::load_info(QString* n)
 {
@@ -447,7 +440,6 @@ LoginUI::LoginUI(UIServer* uis) : QDialog(), loginUI(new Ui::Login)
 {
     uiserver = uis;
     loginUI->setupUi(this);
-    this->setModal(true);
 }
 void LoginUI::invalid_cred()
 {
@@ -456,12 +448,11 @@ void LoginUI::invalid_cred()
 }
 void LoginUI::show_window()
 {
-    this->exec();
-    this->show();
+    this->open();
 }
 void LoginUI::hide_window()
 {
-    this->hide();
+    this->close();
 }
 void LoginUI::on_btnClient_clicked()
 {
@@ -480,7 +471,6 @@ ClientPortalUI::ClientPortalUI(UIServer* uis) : QDialog(), clientportalUI(new Ui
 {
     uiserver = uis;
     clientportalUI->setupUi(this);
-    this->setModal(true);
 }
 void ClientPortalUI::on_Viewanimals_clicked()
 {
@@ -496,12 +486,11 @@ void ClientPortalUI::on_client_logout_clicked()
 }
 void ClientPortalUI::show_window()
 {
-    this->exec();
-    this->show();
+    this->open();
 }
 void ClientPortalUI::hide_window()
 {
-    this->hide();
+    this->close();
 }
 
 ///manageanimal interface
@@ -510,16 +499,14 @@ ManageAnimalUI::ManageAnimalUI(UIServer* uis) : QDialog(), manageanimalUI(new Ui
 {
     uiserver = uis;
     manageanimalUI->setupUi(this);
-    this->setModal(true);
 }
 void ManageAnimalUI::show_window()
 {
-    this->exec();
-    this->show();
+    this->open();
 }
 void ManageAnimalUI::hide_window()
 {
-    this->hide();
+    this->close();
 }
 void ManageAnimalUI::update_animals(QString* name, QList<QString>* PA)
 {
@@ -563,23 +550,24 @@ void ManageAnimalUI::load_animals()
         }
     }
 }
+void ManageAnimalUI::on_btnEditanimal_clicked()
+{
 
+}
 ///manage client interface
 /// ----------------------
 ManageClientUI::ManageClientUI(UIServer* uis) : QDialog(), manageclientUI(new Ui::ManageClient)
 {
     uiserver = uis;
     manageclientUI->setupUi(this);
-    this->setModal(true);
 }
 void ManageClientUI::show_window()
 {
-    this->exec();
-    this->show();
+    this->open();
 }
 void ManageClientUI::hide_window()
 {
-    this->hide();
+    this->close();
 }
 void ManageClientUI::update_clients(QString* name, QString* phone, QString* email)
 {
@@ -625,14 +613,20 @@ void ManageClientUI::load_clients()
         table_cell->setText(email);
     }
 }
+void ManageClientUI::on_addclientbutton_clicked()
+{
 
+}
+void ManageClientUI::on_btnLogout_clicked()
+{
+
+}
 ///staff portal interface
 ///----------------------
 StaffPortalUI::StaffPortalUI(UIServer* uis) : QDialog(), staffportalUI(new Ui::StaffPortal)
 {
     uiserver = uis;
     staffportalUI->setupUi(this);
-    this->setModal(true);
 }
 void StaffPortalUI::on_btnAnimals_clicked()
 {
@@ -648,10 +642,11 @@ void StaffPortalUI::on_staff_logout_clicked()
 }
 void StaffPortalUI::show_window()
 {
-    this->exec();
-    this->show();
+    this->open();
 }
 void StaffPortalUI::hide_window()
 {
-    this->hide();
+    this->close();
 }
+
+

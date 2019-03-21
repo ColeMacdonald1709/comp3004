@@ -7,8 +7,11 @@ Ian Sloan 		101021039
 
 #include "addnewclient.h"
 
-AddNewClient::AddNewClient(UIServer* uiserver){ui = uiserver;}
-AddNewClient::AddNewClient(DBServer* dbserver){db = dbserver;}
+AddNewClient::AddNewClient(DBServer* dbserver,UIServer* uiserver)
+{
+    ui = uiserver;
+    db = dbserver;
+}
 
 bool AddNewClient::client_exists(QString* name)
 {
