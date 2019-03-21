@@ -90,9 +90,9 @@ void UIServer::init()
 void UIServer::show_animals(bool isclient)
 {
     if(isclient) {
-        UIServer::manageanimalUIC->manageanimalUI->addAnimalbtn->hide();
+        UIServer::manageanimalUIC->manageanimalUI->addNewAnimalbtn->hide();
     } else {
-        UIServer::manageanimalUIC->manageanimalUI->addAnimalbtn->show();
+        UIServer::manageanimalUIC->manageanimalUI->addNewAnimalbtn->show();
     }
     UIServer::manageanimalUIC->show_window();
 }
@@ -554,6 +554,34 @@ void ManageAnimalUI::on_btnEditanimal_clicked()
 {
 
 }
+void ManageAnimalUI::on_animalView_activated(const QModelIndex &index)
+{
+    //access dynamic memory and pull the animal that at index of the row that was clicked
+        QList<QString> PA;
+        QList<QString> NPA;
+        QString name;
+        uiserver->manageanimalLogic->get_animal(index.row(),&name,&PA,&NPA);
+
+        manageanimalUI->txt_Name->setText(name);
+        manageanimalUI->txt_Species->setText(PA.at(0));
+        manageanimalUI->txt_Breed->setText(PA.at(1));
+        manageanimalUI->txt_Sex->setText(PA.at(2));
+        manageanimalUI->txt_Age->setText(PA.at(3));
+
+        manageanimalUI->txt_NPA1->setText(NPA.at(0));
+        manageanimalUI->txt_NPA2->setText(NPA.at(1));
+        manageanimalUI->txt_NPA3->setText(NPA.at(2));
+        manageanimalUI->txt_NPA4->setText(NPA.at(3));
+        manageanimalUI->txt_NPA5->setText(NPA.at(4));
+        manageanimalUI->txt_NPA6->setText(NPA.at(5));
+        manageanimalUI->txt_NPA7->setText(NPA.at(6));
+        manageanimalUI->txt_NPA8->setText(NPA.at(7));
+        manageanimalUI->txt_NPA9->setText(NPA.at(8));
+        manageanimalUI->txt_NPA10->setText(NPA.at(9));
+        manageanimalUI->txt_NPA11->setText(NPA.at(10));
+        manageanimalUI->txt_NPA12->setText(NPA.at(11));
+}
+
 ///manage client interface
 /// ----------------------
 ManageClientUI::ManageClientUI(UIServer* uis) : QDialog(), manageclientUI(new Ui::ManageClient)
@@ -648,5 +676,8 @@ void StaffPortalUI::hide_window()
 {
     this->close();
 }
+
+
+
 
 

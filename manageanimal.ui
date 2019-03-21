@@ -34,7 +34,7 @@
      <height>682</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="addAnimalbtn">
+   <widget class="QPushButton" name="addNewAnimalbtn">
     <property name="geometry">
      <rect>
       <x>120</x>
