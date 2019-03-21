@@ -27,6 +27,9 @@ public:
     void updateAnimals(Animal*);
     void set_client_view();
     void set_staff_view();
+    void open_edit_animal();
+    void logout();
+    void back();
 private:
     DBServer* db;
     UIServer* ui;

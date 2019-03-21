@@ -22,8 +22,6 @@ Ian Sloan 		101021039
 #include "ui_manageanimal.h"
 #include "ui_manageclient.h"
 #include "ui_staffportal.h"
-#include "ui_editclient.h"
-#include "ui_editanimal.h"
 
 namespace Ui {
 class AddNewAnimal;
@@ -35,8 +33,6 @@ class ManageAnimal;
 class ManageClient;
 class ClientPortal;
 class StaffPortal;
-class EditClient;
-class EditAnimal;
 }
 
 class UIServer;
@@ -50,8 +46,6 @@ class ManageAnimal;
 class ManageClient;
 class ClientPortal;
 class StaffPortal;
-class EditClient;
-class EditAnimal;
 
 class AddNewAnimalUI: public QDialog
 {
@@ -141,12 +135,18 @@ public:
     Ui::ManageAnimal* manageanimalUI;
 private slots:
     void on_btnEditanimal_clicked();
+    void on_btnLogout_clicked();
+    void on_animalView_activated(const QModelIndex &index);
+    void on_btnBack_clicked();
+
 private:
     UIServer* uiserver;
 };
 class ManageClientUI: public QDialog
 {
    Q_OBJECT
+    void on_animalView_activated(const QModelIndex &index);
+
 public:
     explicit ManageClientUI(UIServer*);
     void show_window();
@@ -157,6 +157,11 @@ public:
 private slots:
     void on_addclientbutton_clicked();
     void on_btnLogout_clicked();
+    void on_btnEditclient_clicked();
+    void on_btnBack_clicked();
+
+    void on_clientlist_activated(const QModelIndex &index);
+
 private:
     UIServer* uiserver;
 };
@@ -204,6 +209,8 @@ public:
     void show_staff_portal();
     void show_client_portal(QString*);
     void logout();
+    void staffback();
+    void clientback();
     void edit_client_profile(QString*);
     void on_comboBox_currentIndexChanged(const QString &arg1);
     void on_comboBoxSpecies_currentIndexChanged(const QString &arg1);

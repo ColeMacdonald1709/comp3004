@@ -24,6 +24,9 @@ public:
     int client_size();
     void get_client(int,QString*,QString*,QString*);
     void get_client(int, QString*, QString*, QString*,QList<QString>*,QList<QString>*);
+    void open_edit_client();
+    void logout();
+    void back();
 private:
     DBServer* db;
     UIServer* ui;

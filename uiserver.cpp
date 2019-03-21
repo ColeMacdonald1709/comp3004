@@ -115,6 +115,26 @@ void UIServer::logout()
     UIServer::staffportalUIC->hide_window();
     UIServer::loginUIC->show_window();
 }
+void UIServer::staffback()
+{
+    UIServer::addnewanimalUIC->hide_window();
+    UIServer::addnewclientUIC->hide_window();
+    UIServer::manageanimalUIC->hide_window();
+    UIServer::manageclientUIC->hide_window();
+    UIServer::clientportalUIC->hide_window();
+    UIServer::staffportalUIC->show_window();
+    UIServer::loginUIC->hide_window();
+}
+void UIServer::clientback()
+{
+    UIServer::addnewanimalUIC->hide_window();
+    UIServer::addnewclientUIC->hide_window();
+    UIServer::manageanimalUIC->hide_window();
+    UIServer::manageclientUIC->hide_window();
+    UIServer::clientportalUIC->show_window();
+    UIServer::staffportalUIC->hide_window();
+    UIServer::loginUIC->hide_window();
+}
 void UIServer::show_staff_portal()
 {
     UIServer::staffportalUIC->show_window();
@@ -550,10 +570,42 @@ void ManageAnimalUI::load_animals()
         }
     }
 }
+void ManageAnimalUI::on_animalView_activated(const QModelIndex &index)
+{
+    //access dynamic memory and pull the animal that at index of the row that was clicked
+        QList<QString> PA;
+        QList<QString> NPA;
+        QString name;
+        uiserver->manageanimalLogic->get_animal(index.row(),&name,&PA,&NPA);
+
+        manageanimalUI->txt_Name->setText(name);
+        manageanimalUI->txt_Species->setText(PA.at(0));
+        manageanimalUI->txt_Breed->setText(PA.at(1));
+        manageanimalUI->txt_Sex->setText(PA.at(2));
+        manageanimalUI->txt_Age->setText(PA.at(3));
+
+        manageanimalUI->txt_NPA1->setText(NPA.at(0));
+        manageanimalUI->txt_NPA2->setText(NPA.at(1));
+        manageanimalUI->txt_NPA3->setText(NPA.at(2));
+        manageanimalUI->txt_NPA4->setText(NPA.at(3));
+        manageanimalUI->txt_NPA5->setText(NPA.at(4));
+        manageanimalUI->txt_NPA6->setText(NPA.at(5));
+        manageanimalUI->txt_NPA7->setText(NPA.at(6));
+        manageanimalUI->txt_NPA8->setText(NPA.at(7));
+        manageanimalUI->txt_NPA9->setText(NPA.at(8));
+        manageanimalUI->txt_NPA10->setText(NPA.at(9));
+        manageanimalUI->txt_NPA11->setText(NPA.at(10));
+        manageanimalUI->txt_NPA12->setText(NPA.at(11));
+}
 void ManageAnimalUI::on_btnEditanimal_clicked()
 {
-
+    uiserver->manageanimalLogic->open_edit_animal();
 }
+void ManageAnimalUI::on_btnBack_clicked()
+{
+    uiserver->manageanimalLogic->back();
+}
+
 ///manage client interface
 /// ----------------------
 ManageClientUI::ManageClientUI(UIServer* uis) : QDialog(), manageclientUI(new Ui::ManageClient)
@@ -617,9 +669,40 @@ void ManageClientUI::on_addclientbutton_clicked()
 {
 
 }
-void ManageClientUI::on_btnLogout_clicked()
+void ManageClientUI::on_clientlist_activated(const QModelIndex &index)
 {
+    //access dynamic memory and pull the client that at index of the row that was clicked
+    QList<QString> PA;
+    QList<QString> NPA;
+    QString name;
+    QString phone;
+    QString email;
+    uiserver->manageclientLogic->get_client(index.row(),&name,&phone,&email,&PA,&NPA);
 
+    manageclientUI->clientname->setText(name);
+    manageclientUI->clientphone->setText(PA.at(0));
+    manageclientUI->clientemail->setText(PA.at(1));
+
+    manageclientUI->NPA1text->setText(NPA.at(0));
+    manageclientUI->NPA2text->setText(NPA.at(1));
+    manageclientUI->NPA3text->setText(NPA.at(2));
+    manageclientUI->NPA4text->setText(NPA.at(3));
+    manageclientUI->NPA5text->setText(NPA.at(4));
+    manageclientUI->NPA6text->setText(NPA.at(5));
+    manageclientUI->NPA7text->setText(NPA.at(6));
+    manageclientUI->NPA8text->setText(NPA.at(7));
+    manageclientUI->NPA9text->setText(NPA.at(8));
+    manageclientUI->NPA10text->setText(NPA.at(9));
+    manageclientUI->NPA11text->setText(NPA.at(10));
+    manageclientUI->NPA12text->setText(NPA.at(11));
+}
+void ManageClientUI::on_btnBack_clicked()
+{
+    uiserver->manageclientLogic->back();
+}
+void ManageClientUI::on_btnEditclient_clicked()
+{
+    uiserver->manageclientLogic->open_edit_client();
 }
 ///staff portal interface
 ///----------------------

@@ -22,3 +22,17 @@ void ManageClient::get_client(int i, QString* name, QString* phone, QString* ema
 {
     db->get_client(i, name, phone, email, PA, NPA);
 }
+void ManageClient::open_edit_client()
+{
+    //temporary
+    QString name = "Paul";
+    ui->edit_client_profile(&name);
+}
+void ManageClient::logout()
+{
+    ui->logout();
+}
+void ManageClient::back()
+{
+    ui->clientback();
+}

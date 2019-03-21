@@ -21,7 +21,9 @@ void ClientPortal::open_view_animal()
 }
 void ClientPortal::open_edit_client()
 {
-    ui->edit_client_profile(name);
+    //temporary
+    QString name = "Paul";
+    ui->edit_client_profile(&name);
 }
 void ClientPortal::logout()
 {

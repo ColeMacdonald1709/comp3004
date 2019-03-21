@@ -34,3 +34,13 @@ void ManageAnimal::updateAnimals(Animal* a)
 {
 
 }
+void ManageAnimal::open_edit_animal()
+{
+    //temporary
+    QString name = "Jack";
+    ui->edit_client_profile(&name);
+}
+void ManageAnimal::back()
+{
+    ui->logout();
+}
