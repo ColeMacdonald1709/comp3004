@@ -70,6 +70,19 @@
     <string>Logout</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>90</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Run ACM</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -22,6 +22,8 @@ Ian Sloan 		101021039
 #include "ui_manageanimal.h"
 #include "ui_manageclient.h"
 #include "ui_staffportal.h"
+#include "ui_acmmain.h"
+#include "ui_acmdetails.h"
 
 namespace Ui {
 class AddNewAnimal;
@@ -33,6 +35,8 @@ class ManageAnimal;
 class ManageClient;
 class ClientPortal;
 class StaffPortal;
+class ACMmain;
+class ACMDetails;
 }
 
 class UIServer;
@@ -46,6 +50,8 @@ class ManageAnimal;
 class ManageClient;
 class ClientPortal;
 class StaffPortal;
+class ACMmain;
+class ACMDetails;
 
 class AddNewAnimalUI: public QDialog
 {
@@ -190,12 +196,40 @@ private:
     UIServer* uiserver;
 };
 
+class ACMmainUI: public QDialog
+{
+    Q_OBJECT
+public:
+    explicit ACMmainUI(UIServer*);
+    void show_window();
+    void hide_window();
+    Ui::ACMmain* acmmainUI;
+private slots:
+    void on_ACMResultsTable_activated(const QModelIndex &index);
+private:
+    UIServer* uiserver;
+};
+class ACMDetailsUI : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit ACMDetailsUI(UIServer*);
+    void show_window();
+    void hide_window();
+    Ui::ACMDetails* acmdetailsUI;
+private slots:
+    void on_backButton_clicked();
+
+private:
+    UIServer* uiserver;
+};
 class UIServer
 {
 public:
     UIServer();
     ~UIServer();
-    void set_up_logic(AddNewAnimal*, AddNewClient*, EditAnimal*, EditClient*, Login*, ManageAnimal*, ManageClient* ,ClientPortal*, StaffPortal*);
+    void set_up_logic(AddNewAnimal*, AddNewClient*, EditAnimal*, EditClient*, Login*, ManageAnimal*, ManageClient* ,ClientPortal*, StaffPortal*,ACMmain*,ACMDetails*);
     void init();
     void show_animals(bool);
     void show_clients();
@@ -217,6 +251,8 @@ public:
     ManageClientUI *manageclientUIC;
     ClientPortalUI *clientportalUIC;
     StaffPortalUI *staffportalUIC;
+    ACMmainUI *acmmainUIC;
+    ACMDetailsUI *acmdetailsUIC;
 
     AddNewAnimal *addnewanimalLogic;
     AddNewClient *addnewclientLogic;
@@ -227,6 +263,8 @@ public:
     ManageClient *manageclientLogic;
     ClientPortal *clientportalLogic;
     StaffPortal *staffportalLogic;
+    ACMmain *acmmainLogic;
+    ACMDetails *acmdetailsLogic;
 };
 
 

@@ -24,6 +24,8 @@ Ian Sloan 		101021039
 #include "manageanimal.h"
 #include "manageclient.h"
 #include "staffportal.h"
+#include "acmmain.h"
+#include "acmdetails.h"
 
 class DBServer
 {
