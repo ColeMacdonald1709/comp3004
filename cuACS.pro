@@ -39,7 +39,8 @@ SOURCES += \
     uiserver.cpp \
     dbserver.cpp \
     acmmain.cpp \
-    acmdetails.cpp
+    acmdetails.cpp \
+    acm.cpp
 
 HEADERS += \
     animal.h \
@@ -56,7 +57,8 @@ HEADERS += \
     uiserver.h \
     dbserver.h \
     acmmain.h \
-    acmdetails.h
+    acmdetails.h \
+    acm.h
 
 
 FORMS += \
