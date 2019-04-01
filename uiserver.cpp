@@ -117,6 +117,10 @@ void UIServer::show_clients()
 {
     UIServer::manageclientUIC->show_window();
 }
+void UIServer::show_acmdetails()
+{
+    UIServer::acmdetailsUIC->show_window();
+}
 void UIServer::show_login_error()
 {
     UIServer::loginUIC->show_window();
@@ -816,6 +820,11 @@ StaffPortalUI::StaffPortalUI(UIServer* uis) : QDialog(), staffportalUI(new Ui::S
     uiserver = uis;
     staffportalUI->setupUi(this);
 }
+void StaffPortalUI::on_runACMButton_clicked()
+{
+    hide_window();
+    uiserver->staffportalLogic->open_ACMDetails();
+}
 void StaffPortalUI::on_btnAnimals_clicked()
 {
     hide_window();
@@ -884,3 +893,5 @@ void ACMDetailsUI::on_ACMResultsTable_activated(const QModelIndex &index)
 {
      //open detailed view showing client and animal profiles side-by-side with coloured fields
 }
+
+
