@@ -192,7 +192,7 @@ private slots:
     void on_btnAnimals_clicked();
     void on_btnClients_clicked();
     void on_staff_logout_clicked();
-    void on_pushButton_clicked();
+    void on_runACMButton_clicked();
 
 private:
     UIServer* uiserver;
