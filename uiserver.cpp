@@ -879,3 +879,8 @@ void ACMDetailsUI::hide_window()
 {
     this->close();
 }
+
+void ACMDetailsUI::on_ACMResultsTable_activated(const QModelIndex &index)
+{
+     //open detailed view showing client and animal profiles side-by-side with coloured fields
+}

@@ -221,6 +221,8 @@ public:
 private slots:
     void on_backButton_clicked();
 
+    void on_ACMResultsTable_activated(const QModelIndex &index);
+
 private:
     UIServer* uiserver;
 };

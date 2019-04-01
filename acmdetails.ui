@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>590</width>
+    <width>953</width>
     <height>619</height>
    </rect>
   </property>
@@ -16,8 +16,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>20</y>
+     <x>520</x>
+     <y>10</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -38,8 +38,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>20</y>
+     <x>800</x>
+     <y>10</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -60,8 +60,8 @@
   <widget class="QLabel" name="cname_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>50</y>
+     <x>470</x>
+     <y>40</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -73,8 +73,8 @@
   <widget class="QLabel" name="aname_label">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>50</y>
+     <x>760</x>
+     <y>40</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -86,8 +86,8 @@
   <widget class="QLabel" name="txt_clientname">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>50</y>
+     <x>550</x>
+     <y>40</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -99,8 +99,8 @@
   <widget class="QLabel" name="txt_animalname">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>50</y>
+     <x>830</x>
+     <y>40</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -112,8 +112,8 @@
   <widget class="QLabel" name="PAtitle_label">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>80</y>
+     <x>640</x>
+     <y>70</y>
      <width>141</width>
      <height>16</height>
     </rect>
@@ -133,8 +133,8 @@
   <widget class="QLabel" name="cspecies_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>110</y>
+     <x>470</x>
+     <y>100</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -146,8 +146,8 @@
   <widget class="QLabel" name="aspecies_label">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>110</y>
+     <x>760</x>
+     <y>100</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -159,8 +159,8 @@
   <widget class="QLabel" name="txt_cspecies">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>110</y>
+     <x>550</x>
+     <y>100</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -172,8 +172,8 @@
   <widget class="QLabel" name="txt_aspecies">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>110</y>
+     <x>840</x>
+     <y>100</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -185,8 +185,8 @@
   <widget class="QLabel" name="cbreed_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>140</y>
+     <x>470</x>
+     <y>130</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -198,8 +198,8 @@
   <widget class="QLabel" name="abreed_label">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>140</y>
+     <x>760</x>
+     <y>130</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -211,8 +211,8 @@
   <widget class="QLabel" name="csex_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>170</y>
+     <x>470</x>
+     <y>160</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -224,8 +224,8 @@
   <widget class="QLabel" name="asex_label">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>170</y>
+     <x>760</x>
+     <y>160</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -237,8 +237,8 @@
   <widget class="QLabel" name="txt_cbreed">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>140</y>
+     <x>550</x>
+     <y>130</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -250,8 +250,8 @@
   <widget class="QLabel" name="txt_abreed">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>140</y>
+     <x>840</x>
+     <y>130</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -263,8 +263,8 @@
   <widget class="QLabel" name="txt_csex">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>170</y>
+     <x>550</x>
+     <y>160</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -276,8 +276,8 @@
   <widget class="QLabel" name="txt_asex">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>170</y>
+     <x>840</x>
+     <y>160</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -289,8 +289,8 @@
   <widget class="QLabel" name="cage_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>200</y>
+     <x>470</x>
+     <y>190</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -302,8 +302,8 @@
   <widget class="QLabel" name="aage_label">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>200</y>
+     <x>760</x>
+     <y>190</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -315,8 +315,8 @@
   <widget class="QLabel" name="txt_cage">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>200</y>
+     <x>550</x>
+     <y>190</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -328,8 +328,8 @@
   <widget class="QLabel" name="txt_aage">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>200</y>
+     <x>840</x>
+     <y>190</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -341,8 +341,8 @@
   <widget class="QLabel" name="NPAtitle_label">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>240</y>
+     <x>620</x>
+     <y>230</y>
      <width>191</width>
      <height>16</height>
     </rect>
@@ -362,8 +362,8 @@
   <widget class="QLabel" name="NPA1_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>270</y>
+     <x>470</x>
+     <y>260</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -375,8 +375,8 @@
   <widget class="QLabel" name="NPA1_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>270</y>
+     <x>760</x>
+     <y>260</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -388,8 +388,8 @@
   <widget class="QLabel" name="txt_NPA1">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>270</y>
+     <x>550</x>
+     <y>260</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -401,8 +401,8 @@
   <widget class="QLabel" name="txt_NPA1_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>270</y>
+     <x>840</x>
+     <y>260</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -414,8 +414,8 @@
   <widget class="QLabel" name="NPA2_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>300</y>
+     <x>470</x>
+     <y>290</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -427,8 +427,8 @@
   <widget class="QLabel" name="NPA2_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>300</y>
+     <x>760</x>
+     <y>290</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -440,8 +440,8 @@
   <widget class="QLabel" name="NPA3_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>330</y>
+     <x>470</x>
+     <y>320</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -453,8 +453,8 @@
   <widget class="QLabel" name="NPA3_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>330</y>
+     <x>760</x>
+     <y>320</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -466,8 +466,8 @@
   <widget class="QLabel" name="NPA4_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>360</y>
+     <x>470</x>
+     <y>350</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -479,8 +479,8 @@
   <widget class="QLabel" name="NPA4_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>360</y>
+     <x>760</x>
+     <y>350</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -492,8 +492,8 @@
   <widget class="QLabel" name="NPA5_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>390</y>
+     <x>470</x>
+     <y>380</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -505,8 +505,8 @@
   <widget class="QLabel" name="NPA5_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>390</y>
+     <x>760</x>
+     <y>380</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -518,8 +518,8 @@
   <widget class="QLabel" name="NPA6_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>420</y>
+     <x>470</x>
+     <y>410</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -531,8 +531,8 @@
   <widget class="QLabel" name="NPA6_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>420</y>
+     <x>760</x>
+     <y>410</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -544,8 +544,8 @@
   <widget class="QLabel" name="NPA7_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>450</y>
+     <x>470</x>
+     <y>440</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -557,8 +557,8 @@
   <widget class="QLabel" name="NPA7_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>450</y>
+     <x>760</x>
+     <y>440</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -570,8 +570,8 @@
   <widget class="QLabel" name="NPA8_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>480</y>
+     <x>470</x>
+     <y>470</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -583,8 +583,8 @@
   <widget class="QLabel" name="NPA8_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>480</y>
+     <x>760</x>
+     <y>470</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -596,8 +596,8 @@
   <widget class="QLabel" name="NPA9_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>510</y>
+     <x>470</x>
+     <y>500</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -609,8 +609,8 @@
   <widget class="QLabel" name="NPA9_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>510</y>
+     <x>760</x>
+     <y>500</y>
      <width>41</width>
      <height>17</height>
     </rect>
@@ -622,8 +622,8 @@
   <widget class="QLabel" name="NPA10_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>540</y>
+     <x>470</x>
+     <y>530</y>
      <width>51</width>
      <height>17</height>
     </rect>
@@ -635,8 +635,8 @@
   <widget class="QLabel" name="NPA10_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>540</y>
+     <x>760</x>
+     <y>530</y>
      <width>51</width>
      <height>17</height>
     </rect>
@@ -648,8 +648,8 @@
   <widget class="QLabel" name="NPA11_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>570</y>
+     <x>470</x>
+     <y>560</y>
      <width>51</width>
      <height>17</height>
     </rect>
@@ -661,8 +661,8 @@
   <widget class="QLabel" name="NPA11_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>570</y>
+     <x>760</x>
+     <y>560</y>
      <width>51</width>
      <height>17</height>
     </rect>
@@ -674,8 +674,8 @@
   <widget class="QLabel" name="NPA12_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>600</y>
+     <x>470</x>
+     <y>590</y>
      <width>51</width>
      <height>17</height>
     </rect>
@@ -687,8 +687,8 @@
   <widget class="QLabel" name="NPA12_label_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>600</y>
+     <x>760</x>
+     <y>590</y>
      <width>51</width>
      <height>17</height>
     </rect>
@@ -700,8 +700,8 @@
   <widget class="QLabel" name="txt_NPA2">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>300</y>
+     <x>550</x>
+     <y>290</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -713,8 +713,8 @@
   <widget class="QLabel" name="txt_NPA2_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>300</y>
+     <x>840</x>
+     <y>290</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -726,8 +726,8 @@
   <widget class="QLabel" name="txt_NPA3">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>330</y>
+     <x>550</x>
+     <y>320</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -739,8 +739,8 @@
   <widget class="QLabel" name="txt_NPA3_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>330</y>
+     <x>840</x>
+     <y>320</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -752,8 +752,8 @@
   <widget class="QLabel" name="txt_NPA4">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>360</y>
+     <x>550</x>
+     <y>350</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -765,8 +765,8 @@
   <widget class="QLabel" name="txt_NPA4_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>360</y>
+     <x>840</x>
+     <y>350</y>
      <width>64</width>
      <height>16</height>
     </rect>
@@ -778,8 +778,8 @@
   <widget class="QLabel" name="txt_NPA5">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>390</y>
+     <x>550</x>
+     <y>380</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -791,8 +791,8 @@
   <widget class="QLabel" name="txt_NPA5_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>390</y>
+     <x>840</x>
+     <y>380</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -804,8 +804,8 @@
   <widget class="QLabel" name="txt_NPA6">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>420</y>
+     <x>550</x>
+     <y>410</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -817,8 +817,8 @@
   <widget class="QLabel" name="txt_NPA6_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>420</y>
+     <x>840</x>
+     <y>410</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -830,8 +830,8 @@
   <widget class="QLabel" name="txt_NPA7">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>450</y>
+     <x>550</x>
+     <y>440</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -843,8 +843,8 @@
   <widget class="QLabel" name="txt_NPA7_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>450</y>
+     <x>840</x>
+     <y>440</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -856,8 +856,8 @@
   <widget class="QLabel" name="txt_NPA8">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>480</y>
+     <x>550</x>
+     <y>470</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -869,8 +869,8 @@
   <widget class="QLabel" name="txt_NPA8_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>480</y>
+     <x>840</x>
+     <y>470</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -882,8 +882,8 @@
   <widget class="QLabel" name="txt_NPA9">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>510</y>
+     <x>550</x>
+     <y>500</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -895,8 +895,8 @@
   <widget class="QLabel" name="txt_NPA9_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>510</y>
+     <x>840</x>
+     <y>500</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -908,8 +908,8 @@
   <widget class="QLabel" name="txt_NPA10">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>540</y>
+     <x>550</x>
+     <y>530</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -921,8 +921,8 @@
   <widget class="QLabel" name="txt_NPA10_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>540</y>
+     <x>840</x>
+     <y>530</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -934,8 +934,8 @@
   <widget class="QLabel" name="txt_NPA11">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>570</y>
+     <x>550</x>
+     <y>560</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -947,8 +947,8 @@
   <widget class="QLabel" name="txt_NPA11_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>570</y>
+     <x>840</x>
+     <y>560</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -960,8 +960,8 @@
   <widget class="QLabel" name="txt_NPA12">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>600</y>
+     <x>550</x>
+     <y>590</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -973,8 +973,8 @@
   <widget class="QLabel" name="txt_NPA12_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>600</y>
+     <x>840</x>
+     <y>590</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -986,8 +986,8 @@
   <widget class="QPushButton" name="backButton">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>10</y>
+     <x>660</x>
+     <y>0</y>
      <width>83</width>
      <height>25</height>
     </rect>
@@ -995,6 +995,56 @@
    <property name="text">
     <string>Back</string>
    </property>
+  </widget>
+  <widget class="QLabel" name="ACMTitle">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>10</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>DejaVu Sans</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>ACM Results</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="ACMResultsTable">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>50</y>
+     <width>401</width>
+     <height>551</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>New Column</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Client</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Match Score</string>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources/>
