@@ -1,18 +1,19 @@
 #include "acm.h"
 #include <math.h>
 
-ACM::ACM()
+ACM::ACM(Rule rule)
 {
     //contact db to get array of animal pointers
-    Animal* a[];
-    Animal* a_empty[] = NULL;
+    vector<Animal*>* a = new vector<Animal*>();
+    vector<Animal*>* a_empty = new vector<Animal*>();
     //contact db to get array of client pointers
-    Client* c[];
-    Client* c_empty[] = NULL;
+    vector<Client*>* c = new vector<Client*>();
+    vector<Client*>* c_empty = new vector<Client*>();
     ACM::g = new Graph(a,c);
     ACM::m = new Graph(a_empty,c_empty);
     ACM::s = new Graph(a_empty,c_empty);
     ACM::t = new Graph(a_empty,c_empty);
+    ACM::r = rule;
 }
 ACM::~ACM()
 {
@@ -21,7 +22,7 @@ ACM::~ACM()
     delete ACM::s;
     delete ACM::t;
 }
-bool ACM::compute_edge(Animal* a, Client*c, Rule r, Edge* e)
+bool ACM::compute_edge(Animal* a, Client*c, Edge* e)
 {
     float e_curr = 0.0f;
     float edge = 0.0f;
@@ -85,7 +86,30 @@ bool ACM::compute_edge(Animal* a, Client*c, Rule r, Edge* e)
 }
 void ACM::label()
 {
-
+    for(vector<Client*>::size_type i=0; i!=ACM::g->get_clients().size(); i++) {
+        Client* curr_c = &(ACM::g->get_clients()->at(i));
+        //curr_c->set_label(0);
+        vector<Edge> edges;
+        for(vector<Animal*>::size_type j=0; j!=ACM::g->get_animals()->size; j++){
+            Animal* curr_a = &(ACM::g->get_animals()->at(j));
+            Edge new_edge;
+            if(ACM::compute_edge(curr_a, curr_c, new_edge)){
+                edges.push_back(new_edge);
+                //curr_a->add_neighbour(curr_c);
+                //curr_c->add_neighbour(max_edge.animal);
+            }
+        }
+        if(edges.size()>0){
+            Edge max_edge = edges.at(0);
+            for(vector<Edge>::size_type idx=0; idx!=edges.size(); idx++){
+                if(edges.at(idx).weight > max_edge.weight){
+                    max_edge = edges.at(idx);
+                }
+            }
+            //max_edge.animal->set_label(max_edge.weight);
+            ACM::m->add_edge(curr_a, curr_c, max_edge.weight);
+        }
+    }
 }
 void ACM::search_new()
 {
@@ -100,52 +124,83 @@ void ACM::augment_matches(Animal* a)
 
 }
 
-Graph::Graph(Animal* a[], Client* c[])
+Graph::Graph(vector<Animal*>* a, vector<Client*>* c)
 {
-
+    Graph::animals = a;
+    Graph::clients = c;
+    Graph::edges = new vector<Edge*>();
 }
 Graph::~Graph()
 {
-
+    delete animals;
+    delete clients;
+    //iterate and delete???
+    delete edges;
 }
 void Graph::add_animal(Animal* a)
 {
-
+    animals.push_back(a);
 }
-void Graph::add_client(Client*)
+void Graph::add_client(Client* c)
+{
+    clients.push_back(c);
+}
+void Graph::remove_animal(Animal* a)
+{
+    for(vector<Animal*>::size_type i=0; i!= animals.size(); i++){
+        if(a->name == animals.at(i)->name){
+            animals.remove(animals.at(i));
+        }
+    }
+}
+void Graph::remove_client(Client* c)
+{
+    for(vector<Client*>::size_type i=0; i!= clients.size(); i++){
+        if(c->name == clients.at(i)->name){
+            clients.remove(clients.at(i));
+        }
+    }
+}
+vector<Animal*>* Graph::get_animals()
+{
+    return &animals;
+}
+vector<Client*>* Graph::get_clients()
+{
+    return &clients;
+}
+void Graph::add_edge(Animal* a, Client* c , float w)
+{
+    Edge* new_edge = new Edge(a,c,w);
+    edges.push_back(new_edge);
+}
+void Graph::remove_edge(Animal* a, Client* c)
 {
 
+    for(vector<Edge*>::size_type i=0; i!= edges.size(); i++){
+        if(c->name == edges.at(i)->client->name && a->name == edges.at(i)->animal->name){
+            edges.remove(i);
+        }
+    }
+    remove_animal(a);
+    remove_client(c);
 }
-void Graph::remove_animal(Animal*)
+void Graph::set_edge_weight(Animal* a, Client* c, float w)
 {
-
-}
-void Graph::remove_client(Client*)
-{
-
-}
-void Graph::add_edge(Animal*,Client*,float)
-{
-
-}
-void Graph::remove_edge(Animal*,Client*)
-{
-
-}
-void Graph::set_edge(Animal*,Client*,float)
-{
-
+    for(vector<Edge*>::size_type i=0; i!= edges.size(); i++){
+        if(c->name == edges.at(i)->client->name && a->name == edges.at(i)->animal->name){
+            edges.at(i)->weight = w;
+        }
+    }
 }
 
 Edge::Edge(Animal* a, Client* c, float w)
 {
-
+    Edge::animal = a;
+    Edge::client = c;
+    Edge::weight = w;
 }
 Edge::~Edge()
-{
-
-}
-void Edge::set_edge(float w)
 {
 
 }
