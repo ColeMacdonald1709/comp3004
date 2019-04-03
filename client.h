@@ -8,6 +8,10 @@ Ian Sloan 		101021039
 #ifndef CLIENT_H
 #define CLIENT_H
 
+#include <bits/stdc++.h>
+
+#include "animal.h"
+
 #include <QString>
 #include <QList>
 
@@ -28,6 +32,10 @@ public:
     QList<QString>* getPrefs();
     void updatePrefs(int,QString);
 
+    //ACM stuff
+    float get_label();
+    void set_label(float);
+    bool empty_neighbour();
 protected:
     QString name;
     QString phone;
@@ -36,6 +44,9 @@ protected:
     QList<QString>* PAList;
     //animal preferences
     QList<QString>* NPAList;
+    //ACM stuff
+    float label = 0.0f;
+    std::set<Animal*>* neighbours;
 };
 
 #endif // CLIENT_H

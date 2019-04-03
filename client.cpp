@@ -14,6 +14,7 @@ Client::Client(QString n, QString p, QString e)
     email = e;
     PAList = new QList<QString>();
     NPAList = new QList<QString>();
+    neighbours = new std::set<Animal*>();
 }
 Client::Client(QString n, QString p, QString e, QList<QString>* info, QList<QString>* prefs)
 {
@@ -24,10 +25,12 @@ Client::Client(QString n, QString p, QString e, QList<QString>* info, QList<QStr
     PAList = info;
     //non-physical attributes
     NPAList = prefs;
+    neighbours = new std::set<Animal*>();
 }
 Client::~Client(){
     delete PAList;
     delete NPAList;
+    delete neighbours;
 }
 QString Client::getName(){return name;}
 void Client::changeName(QString newname){name = newname;}
@@ -43,3 +46,17 @@ void Client::updateInfo(int idx,QString value){PAList->value(idx,value);}
 
 QList<QString>* Client::getPrefs(){return NPAList;}
 void Client::updatePrefs(int idx,QString value){NPAList->value(idx,value);}
+
+//ACM stuff
+void Client::set_label(float l)
+{
+    Client::label = l;
+}
+float Client::get_label()
+{
+    return Client::label;
+}
+bool Client::empty_neighbour()
+{
+    return neighbours->size()>0;
+}

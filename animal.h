@@ -8,6 +8,10 @@ Ian Sloan 		101021039
 #ifndef _ANIMAL_H
 #define _ANIMAL_H
 
+#include <bits/stdc++.h>
+
+#include "client.h"
+
 #include <QString>
 #include <QList>
 
@@ -19,7 +23,6 @@ class Animal {
         ~Animal(void);
 
         QString getAnimalName();
-
         void viewProfile();
 
         QList<QString>* getPAttr();
@@ -29,20 +32,19 @@ class Animal {
         QList<QString>* getNPAttr();
         void addNPAttr(QString attribute);
         void remNPAttr(QString attribute);
+
+        //ACM stuff
+        float get_label();
+        void set_label(float);
+        bool empty_neighbour();
     private:
         QString name;
         QList<QString>* PAttr;
         QList<QString>* NPAttr;
+        //ACM stuff
+        float label = 0.0f;
+        std::set<Animal*>* neighbours;
 };
-
-
-
-/*
-string species;
-string breed;
-int age;
-string gender;
-*/
 
 class Dog: public Animal {
     public:

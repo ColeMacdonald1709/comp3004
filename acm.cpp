@@ -8,12 +8,14 @@ ACM::ACM(DBServer* dbs, UIServer* uis)
 }
 ACM::ACM(Rule rule)
 {
-    //contact db to get array of animal pointers
     set<Animal*>* a = new set<Animal*>();
     set<Animal*>* a_empty = new set<Animal*>();
-    //contact db to get array of client pointers
+    for(int i=0; i<db->animals->size(); i++){a->insert(db->animals->at(i));}
+
     set<Client*>* c = new set<Client*>();
     set<Client*>* c_empty = new set<Client*>();
+    for(int i=0; i<db->clients->size(); i++){c->insert(db->clients->at(i);)}
+
     ACM::g = new Graph(a,c);
     ACM::m = new Graph(a_empty,c_empty);
     ACM::s = new Graph(a_empty,c_empty);
@@ -86,32 +88,33 @@ bool ACM::compute_edge(Animal* a, Client*c, Edge* e)
         edge = 12.0f - edge;
         if(edge > 4.0f){E_match = true;}
     }
-    e->set_edge(edge);
+    e->set_edge_weight(edge);
     return E_match && PA_match;
 }
 void ACM::label()
 {
-    for(set<Client*>::size_type i=0; i!=ACM::g->get_clients().size(); i++) {
-        Client* curr_c = &(ACM::g->get_clients()->at(i));
-        //curr_c->set_label(0);
-        set<Edge> edges;
-        for(set<Animal*>::size_type j=0; j!=ACM::g->get_animals()->size; j++){
-            Animal* curr_a = &(ACM::g->get_animals()->at(j));
-            Edge new_edge;
+    for(set<Client*>::iterator i=ACM::g->clients.begin(); i!=ACM::g->clients.end(); ++i) {
+        Client* curr_c = (*i);
+        curr_c->set_label(0.0);
+        set<Edge*> edges;
+        for(set<Animal*>::iterator j=ACM::g->animals.begin(); j!=ACM::g->animals.end(); ++j){
+            Animal* curr_a =(*j);
+            Edge* new_edge;
             if(ACM::compute_edge(curr_a, curr_c, new_edge)){
-                edges.push_back(new_edge);
-                //curr_a->neighbour->add(curr_c);
-                //curr_c->neighbour->add(max_edge.animal);
+                ACM::g->add_edge(curr_a,curr_c,new_edge->get_edge_weight());
+                edges.insert(new_edge);
+                curr_a->neighbours->insert(curr_c);
+                curr_c->neighbours->insert(curr_a);
             }
         }
         if(edges.size()>0){
-            Edge max_edge = edges.at(0);
-            for(set<Edge>::size_type idx=0; idx!=edges.size(); idx++){
-                if(edges.at(idx).weight > max_edge.weight){
-                    max_edge = edges.at(idx);
+            Edge* max_edge = (*edges.begin());
+            for(set<Edge*>::iterator idx=edges.begin(); idx!=edges.end(); ++idx){
+                if((*idx)->get_edge_weight() > max_edge->get_edge_weight()){
+                    max_edge = (*idx);
                 }
             }
-            //max_edge.animal->set_label(max_edge.weight);
+            max_edge->animal->set_label(max_edge->weight);
             ACM::m->add_edge(curr_a, curr_c, max_edge.weight);
         }
     }
@@ -128,10 +131,8 @@ void ACM::search_new()
     for(a_it=g_a_cpy.begin(); a_it!=g_a_cpy.end(); ++a_it){
         ACM::s->add_animal(*a_it);
         ACM::t->clear();
-        //if((*a_it)->neighbour.is_empty())
-            update_labels();
-        //if(!(*a_it)->neighbour.is_empty())
-            augment_matches((*a_it));
+        if((*a_it)->empty_neighbour()){update_labels();}
+        if(!(*a_it)->empty_neighbour()){augment_matches((*a_it));}
     }
 }
 void ACM::update_labels()
@@ -156,40 +157,41 @@ void ACM::update_labels()
             }
         }
     }
+    float prev = 0.0f;
     for(a_it=ACM::s->animals.begin(); a_it!=ACM::s_.animals.end(); ++a_it){
-        //(*a_it)->label -= delta;
+        prev = (*a_it)->get_label();
+        (*a_it)->set_label(prev - delta);
     }
     for(c_it=ACM::t->clients.begin(); c_it!=ACM::t->clients.end(); ++c_it){
-        //(*c_it)->label += delta;
+        prev = (*c_it)->get_label();
+        (*c_it)->set_label(prev + delta);
     }
-    //min_a->neighbour->add(min_c);
-    //min_c->neighbour->add(min_a);
+    min_a->neighbours->insert(min_c);
+    min_c->neighbours->insert(min_a);
 }
 void ACM::augment_matches(Animal* a)
 {
     set<Client*>::iterator p_it;
-    /*std::set_difference(a->neighbour->begin(), a->neigbour->end(),
+    std::set_difference(a->neighbours->begin(), a->neigbours->end(),
                         ACM::t->clients.begin(), ACM::t->clients.end(),
                         p_it);
-    */
     float max_w = 0.0f;
     Client* max_client = (*p_it);
-    /*for(p_it=a->neighbour->begin(); p_it!=a->neighbour->end(); ++p_it){
+    for(p_it=a->neighbours->begin(); p_it!=a->neighbours->end(); ++p_it){
         float curr_w = ACM::g->get_edge_weight(a,(*p_it));
         if(curr_w > max_w){
             max_w = curr_w;
             max_client = (*p_it);
         }
-    }*/
+    }
     ACM::m->add_edge(a,max_client,max_w);
-    //a->neighbour->add(max_client);
-    //max_client->neighbour->add(a);
+    a->neighbours->insert(max_client);
+    max_client->neighbours->insert(a);
     ACM::s->add_animal(a);
     ACM::t->add_client(max_client);
-    /*if(*(*(ACM::s->get_animals()->begin()).neighbour) == *(ACM::t->get_clients()->begin())){
+    if((*ACM::s->get_animals()->begin())->neighbours->begin() == (*ACM::t->get_clients()->begin())){
         update_labels();
     }
-    */
 }
 
 Graph::Graph(set<Animal*>* a, set<Client*>* c)
@@ -288,7 +290,11 @@ Edge::~Edge()
 {
 
 }
-void Edge::set_edge(float w)
+void Edge::set_edge_weight(float w)
 {
     Edge::weight=w;
+}
+float Edge::get_edge_weight()
+{
+    return Edge::weight;
 }
