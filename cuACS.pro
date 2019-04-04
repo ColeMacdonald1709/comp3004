@@ -38,7 +38,6 @@ SOURCES += \
     editclient.cpp \
     uiserver.cpp \
     dbserver.cpp \
-    acmmain.cpp \
     acmdetails.cpp \
     acm.cpp
 
@@ -56,7 +55,6 @@ HEADERS += \
     editanimal.h\
     uiserver.h \
     dbserver.h \
-    acmmain.h \
     acmdetails.h \
     acm.h
 
@@ -71,5 +69,4 @@ FORMS += \
     clientportal.ui \
     editclient.ui \
     editanimal.ui \
-    acmmain.ui \
     acmdetails.ui

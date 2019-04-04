@@ -17,7 +17,6 @@ Ian Sloan 		101021039
 #include "staffportal.h"
 #include "editclient.h"
 #include "editanimal.h"
-#include "acmmain.h"
 #include "acmdetails.h"
 
 #include <QDebug>
@@ -41,8 +40,6 @@ UIServer::UIServer()
     UIServer::clientportalUIC = new ClientPortalUI(this);
 
     UIServer::staffportalUIC = new StaffPortalUI(this);
-
-    UIServer::acmmainUIC = new ACMmainUI(this);
 
     UIServer::acmdetailsUIC = new ACMDetailsUI(this);
 }
@@ -75,13 +72,10 @@ UIServer::~UIServer()
     delete UIServer::staffportalUIC->staffportalUI;
     delete UIServer::staffportalUIC;
 
-    delete UIServer::acmmainUIC->acmmainUI;
-    delete UIServer::acmmainUIC;
-
     delete UIServer::acmdetailsUIC->acmdetailsUI;
     delete UIServer::acmdetailsUIC;
 }
-void UIServer::set_up_logic(AddNewAnimal* ana, AddNewClient* anc, EditAnimal* ea, EditClient* ec, Login* l, ManageAnimal* ma, ManageClient* mc, ClientPortal* cp, StaffPortal* sp,ACMmain* acm, ACMDetails* acmd)
+void UIServer::set_up_logic(AddNewAnimal* ana, AddNewClient* anc, EditAnimal* ea, EditClient* ec, Login* l, ManageAnimal* ma, ManageClient* mc, ClientPortal* cp, StaffPortal* sp, ACMDetails* acmd)
 {
     addnewanimalLogic = ana;
     addnewclientLogic = anc;
@@ -92,7 +86,6 @@ void UIServer::set_up_logic(AddNewAnimal* ana, AddNewClient* anc, EditAnimal* ea
     manageclientLogic = mc;
     clientportalLogic = cp;
     staffportalLogic = sp;
-    acmmainLogic = acm;
     acmdetailsLogic = acmd;
 }
 void UIServer::init()
@@ -849,25 +842,7 @@ void StaffPortalUI::hide_window()
     this->close();
 }
 
-///ACMmain interface
-///----------------------
-ACMmainUI::ACMmainUI(UIServer* uis) : QDialog(), acmmainUI(new Ui::ACMmain)
-{
-    uiserver = uis;
-    acmmainUI->setupUi(this);
-}
-void ACMmainUI::on_ACMResultsTable_activated(const QModelIndex &index)
-{
-    //open detailed view showing client and animal profiles side-by-side with coloured fields
-}
-void ACMmainUI::show_window()
-{
-    this->open();
-}
-void ACMmainUI::hide_window()
-{
-    this->close();
-}
+
 ///ACMDetails interface
 ///----------------------
 ACMDetailsUI::ACMDetailsUI(UIServer* uis) : QDialog(), acmdetailsUI(new Ui::ACMDetails)
@@ -878,7 +853,7 @@ ACMDetailsUI::ACMDetailsUI(UIServer* uis) : QDialog(), acmdetailsUI(new Ui::ACMD
 void ACMDetailsUI::on_backButton_clicked()
 {
     hide_window();
-    uiserver->acmmainUIC->show_window();
+    uiserver->staffportalUIC->show_window();
 }
 void ACMDetailsUI::show_window()
 {
@@ -891,7 +866,7 @@ void ACMDetailsUI::hide_window()
 
 void ACMDetailsUI::on_ACMResultsTable_activated(const QModelIndex &index)
 {
-     //open detailed view showing client and animal profiles side-by-side with coloured fields
+     //update detailed view showing client and animal profiles side-by-side with coloured fields
 }
 
 
