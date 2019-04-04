@@ -222,6 +222,7 @@ public:
     void show_clients();
     void show_login_error();
     void show_staff_portal();
+    void show_acmdetails();
     void show_client_portal(QString*);
     void logout();
     void staffback();
