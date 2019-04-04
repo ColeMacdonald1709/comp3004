@@ -305,3 +305,11 @@ void DBServer::get_client(QString* name, QString* phone, QString* email, QList<Q
         }
     }
 }
+QList<Animal*>* DBServer::get_animals()
+{
+    return animals;
+}
+QList<Client*>* DBServer::get_clients()
+{
+    return clients;
+}

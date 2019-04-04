@@ -194,7 +194,6 @@ private slots:
 private:
     UIServer* uiserver;
 };
-
 class ACMDetailsUI : public QDialog
 {
     Q_OBJECT

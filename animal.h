@@ -15,6 +15,7 @@ Ian Sloan 		101021039
 #include <QString>
 #include <QList>
 
+class Client;
 //Animal is an abstract class
 class Animal {
     public:
@@ -32,18 +33,19 @@ class Animal {
         QList<QString>* getNPAttr();
         void addNPAttr(QString attribute);
         void remNPAttr(QString attribute);
-
         //ACM stuff
         float get_label();
         void set_label(float);
         bool empty_neighbour();
+        std::set<Client*>* get_neighbours();
+    protected:
+        //ACM stuff
+        float label = 0.0f;
+        std::set<Client*>* neighbours;
     private:
         QString name;
         QList<QString>* PAttr;
         QList<QString>* NPAttr;
-        //ACM stuff
-        float label = 0.0f;
-        std::set<Animal*>* neighbours;
 };
 
 class Dog: public Animal {

@@ -1,8 +1,9 @@
 #ifndef ACM_H
 #define ACM_H
 
-#include <bits/stdc++.h>
 #include <algorithm>
+#include <set>
+#include <iterator>
 #include <math.h>
 
 #include "client.h"
@@ -20,6 +21,8 @@ public:
     ~Edge();
     void set_edge_weight(float);
     float get_edge_weight();
+    Animal* get_animal();
+    Client* get_client();
 private:
     Animal* animal;
     Client* client;
@@ -29,7 +32,7 @@ private:
 class Graph
 {
 public:
-    Graph(set<Animal*>*,set<Client*>);
+    Graph(set<Animal*>*,set<Client*>*);
     ~Graph();
     void add_animal(Animal*);
     void add_client(Client*);
@@ -43,9 +46,9 @@ public:
     void clear();
     float get_edge_weight(Animal*,Client*);
 private:
-    set<Animal*> animals;
-    set<Client*> clients;
-    set<Edge*> edges;
+    set<Animal*>* animals;
+    set<Client*>* clients;
+    set<Edge*>* edges;
 };
 
 class ACM
@@ -54,7 +57,7 @@ public:
     ACM(DBServer*,UIServer*);
     ACM(Rule);
     ~ACM();
-    bool compute_edge(Animal*,Client*,Rule,Edge*);
+    bool compute_edge(Animal*,Client*,Edge*);
     void label();
     void search_new();
     void update_labels();

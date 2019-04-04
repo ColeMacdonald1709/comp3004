@@ -24,7 +24,6 @@ Ian Sloan 		101021039
 #include "manageanimal.h"
 #include "manageclient.h"
 #include "staffportal.h"
-#include "acmmain.h"
 #include "acmdetails.h"
 
 class DBServer
@@ -60,6 +59,9 @@ public:
 
     void get_breeds(QString*,QList<QString>*);
     void init();
+
+    QList<Animal*>* get_animals();
+    QList<Client*>* get_clients();
 private:
     QList<Animal*>* animals;
     QList<Client*>* clients;

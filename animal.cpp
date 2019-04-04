@@ -43,3 +43,7 @@ bool Animal::empty_neighbour()
 {
     return neighbours->size()>0;
 }
+std::set<Client*>* Animal::get_neighbours()
+{
+    return neighbours;
+}

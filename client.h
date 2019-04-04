@@ -15,6 +15,8 @@ Ian Sloan 		101021039
 #include <QString>
 #include <QList>
 
+class Animal;
+
 class Client
 {
 public:
@@ -31,11 +33,11 @@ public:
     void updateInfo(int,QString);
     QList<QString>* getPrefs();
     void updatePrefs(int,QString);
-
     //ACM stuff
     float get_label();
     void set_label(float);
     bool empty_neighbour();
+    std::set<Animal*>* get_neighbours();
 protected:
     QString name;
     QString phone;

@@ -63,7 +63,9 @@ SOURCES       = animal.cpp \
 		editanimal.cpp \
 		editclient.cpp \
 		uiserver.cpp \
-		dbserver.cpp moc_uiserver.cpp
+		dbserver.cpp \
+		acmdetails.cpp \
+		acm.cpp moc_uiserver.cpp
 OBJECTS       = animal.o \
 		main.o \
 		addnewanimal.o \
@@ -78,6 +80,8 @@ OBJECTS       = animal.o \
 		editclient.o \
 		uiserver.o \
 		dbserver.o \
+		acmdetails.o \
+		acm.o \
 		moc_uiserver.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -180,7 +184,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		editclient.h \
 		editanimal.h \
 		uiserver.h \
-		dbserver.h animal.cpp \
+		dbserver.h \
+		acmdetails.h \
+		acm.h animal.cpp \
 		main.cpp \
 		addnewanimal.cpp \
 		manageanimal.cpp \
@@ -193,7 +199,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		editanimal.cpp \
 		editclient.cpp \
 		uiserver.cpp \
-		dbserver.cpp
+		dbserver.cpp \
+		acmdetails.cpp \
+		acm.cpp
 QMAKE_TARGET  = cuACS
 DESTDIR       = 
 TARGET        = cuACS
@@ -202,7 +210,7 @@ TARGET        = cuACS
 first: all
 ####### Build rules
 
-$(TARGET): ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h ui_addnewclient.h ui_clientportal.h ui_editclient.h ui_editanimal.h $(OBJECTS)  
+$(TARGET): ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h ui_addnewclient.h ui_clientportal.h ui_editclient.h ui_editanimal.h ui_acmdetails.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: cuACS.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -409,9 +417,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents animal.h addnewanimal.h manageanimal.h login.h staffportal.h manageclient.h client.h addnewclient.h clientportal.h editclient.h editanimal.h uiserver.h dbserver.h $(DISTDIR)/
-	$(COPY_FILE) --parents animal.cpp main.cpp addnewanimal.cpp manageanimal.cpp login.cpp staffportal.cpp manageclient.cpp client.cpp addnewclient.cpp clientportal.cpp editanimal.cpp editclient.cpp uiserver.cpp dbserver.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents addnewanimal.ui manageanimal.ui login.ui staffportal.ui manageclient.ui addnewclient.ui clientportal.ui editclient.ui editanimal.ui $(DISTDIR)/
+	$(COPY_FILE) --parents animal.h addnewanimal.h manageanimal.h login.h staffportal.h manageclient.h client.h addnewclient.h clientportal.h editclient.h editanimal.h uiserver.h dbserver.h acmdetails.h acm.h $(DISTDIR)/
+	$(COPY_FILE) --parents animal.cpp main.cpp addnewanimal.cpp manageanimal.cpp login.cpp staffportal.cpp manageclient.cpp client.cpp addnewclient.cpp clientportal.cpp editanimal.cpp editclient.cpp uiserver.cpp dbserver.cpp acmdetails.cpp acm.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents addnewanimal.ui manageanimal.ui login.ui staffportal.ui manageclient.ui addnewclient.ui clientportal.ui editclient.ui editanimal.ui acmdetails.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -455,6 +463,7 @@ moc_uiserver.cpp: ui_addnewanimal.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
 		uiserver.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -462,9 +471,9 @@ moc_uiserver.cpp: ui_addnewanimal.h \
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h ui_addnewclient.h ui_clientportal.h ui_editclient.h ui_editanimal.h
+compiler_uic_make_all: ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h ui_addnewclient.h ui_clientportal.h ui_editclient.h ui_editanimal.h ui_acmdetails.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h ui_addnewclient.h ui_clientportal.h ui_editclient.h ui_editanimal.h
+	-$(DEL_FILE) ui_addnewanimal.h ui_manageanimal.h ui_login.h ui_staffportal.h ui_manageclient.h ui_addnewclient.h ui_clientportal.h ui_editclient.h ui_editanimal.h ui_acmdetails.h
 ui_addnewanimal.h: addnewanimal.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic addnewanimal.ui -o ui_addnewanimal.h
@@ -501,6 +510,10 @@ ui_editanimal.h: editanimal.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic editanimal.ui -o ui_editanimal.h
 
+ui_acmdetails.h: acmdetails.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic acmdetails.ui -o ui_acmdetails.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -511,7 +524,8 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-animal.o: animal.cpp animal.h
+animal.o: animal.cpp animal.h \
+		client.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o animal.o animal.cpp
 
 main.o: main.cpp uiserver.h \
@@ -524,6 +538,7 @@ main.o: main.cpp uiserver.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
 		dbserver.h \
 		animal.h \
 		client.h \
@@ -535,7 +550,8 @@ main.o: main.cpp uiserver.h \
 		login.h \
 		manageanimal.h \
 		manageclient.h \
-		staffportal.h
+		staffportal.h \
+		acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 addnewanimal.o: addnewanimal.cpp addnewanimal.h \
@@ -549,6 +565,7 @@ addnewanimal.o: addnewanimal.cpp addnewanimal.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
 		dbserver.h \
 		animal.h \
 		client.h \
@@ -559,11 +576,13 @@ addnewanimal.o: addnewanimal.cpp addnewanimal.h \
 		login.h \
 		manageanimal.h \
 		manageclient.h \
-		staffportal.h
+		staffportal.h \
+		acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addnewanimal.o addnewanimal.cpp
 
 manageanimal.o: manageanimal.cpp manageanimal.h \
 		animal.h \
+		client.h \
 		uiserver.h \
 		ui_addnewanimal.h \
 		ui_addnewclient.h \
@@ -574,8 +593,8 @@ manageanimal.o: manageanimal.cpp manageanimal.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
 		dbserver.h \
-		client.h \
 		addnewanimal.h \
 		addnewclient.h \
 		clientportal.h \
@@ -583,7 +602,8 @@ manageanimal.o: manageanimal.cpp manageanimal.h \
 		editclient.h \
 		login.h \
 		manageclient.h \
-		staffportal.h
+		staffportal.h \
+		acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o manageanimal.o manageanimal.cpp
 
 login.o: login.cpp login.h \
@@ -597,6 +617,7 @@ login.o: login.cpp login.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
 		dbserver.h \
 		animal.h \
 		client.h \
@@ -607,7 +628,8 @@ login.o: login.cpp login.h \
 		editclient.h \
 		manageanimal.h \
 		manageclient.h \
-		staffportal.h
+		staffportal.h \
+		acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o login.cpp
 
 staffportal.o: staffportal.cpp staffportal.h \
@@ -620,11 +642,13 @@ staffportal.o: staffportal.cpp staffportal.h \
 		ui_login.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
-		ui_staffportal.h
+		ui_staffportal.h \
+		ui_acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o staffportal.o staffportal.cpp
 
 manageclient.o: manageclient.cpp manageclient.h \
 		client.h \
+		animal.h \
 		uiserver.h \
 		ui_addnewanimal.h \
 		ui_addnewclient.h \
@@ -635,8 +659,8 @@ manageclient.o: manageclient.cpp manageclient.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
 		dbserver.h \
-		animal.h \
 		addnewanimal.h \
 		addnewclient.h \
 		clientportal.h \
@@ -644,10 +668,12 @@ manageclient.o: manageclient.cpp manageclient.h \
 		editclient.h \
 		login.h \
 		manageanimal.h \
-		staffportal.h
+		staffportal.h \
+		acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o manageclient.o manageclient.cpp
 
-client.o: client.cpp client.h
+client.o: client.cpp client.h \
+		animal.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o client.o client.cpp
 
 addnewclient.o: addnewclient.cpp addnewclient.h \
@@ -661,6 +687,7 @@ addnewclient.o: addnewclient.cpp addnewclient.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
 		dbserver.h \
 		animal.h \
 		client.h \
@@ -671,7 +698,8 @@ addnewclient.o: addnewclient.cpp addnewclient.h \
 		login.h \
 		manageanimal.h \
 		manageclient.h \
-		staffportal.h
+		staffportal.h \
+		acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addnewclient.o addnewclient.cpp
 
 clientportal.o: clientportal.cpp clientportal.h \
@@ -684,7 +712,8 @@ clientportal.o: clientportal.cpp clientportal.h \
 		ui_login.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
-		ui_staffportal.h
+		ui_staffportal.h \
+		ui_acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o clientportal.o clientportal.cpp
 
 editanimal.o: editanimal.cpp editanimal.h \
@@ -698,6 +727,7 @@ editanimal.o: editanimal.cpp editanimal.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
 		dbserver.h \
 		animal.h \
 		client.h \
@@ -708,7 +738,8 @@ editanimal.o: editanimal.cpp editanimal.h \
 		login.h \
 		manageanimal.h \
 		manageclient.h \
-		staffportal.h
+		staffportal.h \
+		acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o editanimal.o editanimal.cpp
 
 editclient.o: editclient.cpp editclient.h \
@@ -722,6 +753,7 @@ editclient.o: editclient.cpp editclient.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
 		dbserver.h \
 		animal.h \
 		client.h \
@@ -732,7 +764,8 @@ editclient.o: editclient.cpp editclient.h \
 		login.h \
 		manageanimal.h \
 		manageclient.h \
-		staffportal.h
+		staffportal.h \
+		acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o editclient.o editclient.cpp
 
 uiserver.o: uiserver.cpp uiserver.h \
@@ -745,6 +778,7 @@ uiserver.o: uiserver.cpp uiserver.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
 		addnewanimal.h \
 		dbserver.h \
 		animal.h \
@@ -756,7 +790,8 @@ uiserver.o: uiserver.cpp uiserver.h \
 		login.h \
 		manageanimal.h \
 		manageclient.h \
-		staffportal.h
+		staffportal.h \
+		acmdetails.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o uiserver.o uiserver.cpp
 
 dbserver.o: dbserver.cpp dbserver.h \
@@ -773,6 +808,34 @@ dbserver.o: dbserver.cpp dbserver.h \
 		ui_manageanimal.h \
 		ui_manageclient.h \
 		ui_staffportal.h \
+		ui_acmdetails.h \
+		addnewclient.h \
+		clientportal.h \
+		editanimal.h \
+		editclient.h \
+		login.h \
+		manageanimal.h \
+		manageclient.h \
+		staffportal.h \
+		acmdetails.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dbserver.o dbserver.cpp
+
+acmdetails.o: acmdetails.cpp acmdetails.h \
+		animal.h \
+		client.h \
+		uiserver.h \
+		ui_addnewanimal.h \
+		ui_addnewclient.h \
+		ui_clientportal.h \
+		ui_editanimal.h \
+		ui_editclient.h \
+		ui_login.h \
+		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
+		ui_acmdetails.h \
+		dbserver.h \
+		addnewanimal.h \
 		addnewclient.h \
 		clientportal.h \
 		editanimal.h \
@@ -781,7 +844,34 @@ dbserver.o: dbserver.cpp dbserver.h \
 		manageanimal.h \
 		manageclient.h \
 		staffportal.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dbserver.o dbserver.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o acmdetails.o acmdetails.cpp
+
+acm.o: acm.cpp acm.h \
+		client.h \
+		animal.h \
+		dbserver.h \
+		addnewanimal.h \
+		uiserver.h \
+		ui_addnewanimal.h \
+		ui_addnewclient.h \
+		ui_clientportal.h \
+		ui_editanimal.h \
+		ui_editclient.h \
+		ui_login.h \
+		ui_manageanimal.h \
+		ui_manageclient.h \
+		ui_staffportal.h \
+		ui_acmdetails.h \
+		addnewclient.h \
+		clientportal.h \
+		editanimal.h \
+		editclient.h \
+		login.h \
+		manageanimal.h \
+		manageclient.h \
+		staffportal.h \
+		acmdetails.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o acm.o acm.cpp
 
 moc_uiserver.o: moc_uiserver.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_uiserver.o moc_uiserver.cpp
