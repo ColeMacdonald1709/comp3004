@@ -27,3 +27,7 @@ void ClientPortal::logout()
 {
     ui->logout();
 }
+QString ClientPortal::get_name()
+{
+    return name;
+}

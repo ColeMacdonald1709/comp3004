@@ -646,7 +646,9 @@ void ManageAnimalUI::load_animals()
 }
 void ManageAnimalUI::on_animalView_activated(const QModelIndex &index)
 {
-    manageanimalUI->btnEditanimal->setEnabled(true);
+    if (manageanimalUI->btnEditanimal->isVisible()){
+        manageanimalUI->btnEditanimal->setEnabled(true);
+    }
     QList<QString> PA;
     QList<QString> NPA;
     QString name;
@@ -682,8 +684,13 @@ void ManageAnimalUI::on_btnEditanimal_clicked()
 void ManageAnimalUI::on_btnBack_clicked()
 {
     hide_window();
-  //  uiserver->manageanimalLogic->back();
-    uiserver->staffportalUIC->show_window();
+    if (!manageanimalUI->btnEditanimal->isHidden()){
+        uiserver->staffportalUIC->show_window();
+    }else{
+        //uiserver->manageanimalLogic->back();
+        uiserver->loginLogic->verify_client(uiserver->clientportalLogic->get_name());
+
+    }
 }
 void ManageAnimalUI::on_addNewAnimalbtn_clicked()
 {

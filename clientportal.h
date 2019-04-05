@@ -21,6 +21,7 @@ public:
     void open_edit_client();
     void logout();
     void set_name(QString*);
+    QString get_name();
 private:
     UIServer* ui;
     QString name;
