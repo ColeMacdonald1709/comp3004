@@ -8,6 +8,7 @@
 #include "client.h"
 #include "uiserver.h"
 #include "dbserver.h"
+#include "acm.h"
 
 class UIServer;
 class DBServer;

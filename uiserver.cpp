@@ -20,6 +20,7 @@ Ian Sloan 		101021039
 #include "acmdetails.h"
 
 #include <QDebug>
+#include <QInputDialog>
 
 UIServer::UIServer()
 {
@@ -823,8 +824,27 @@ StaffPortalUI::StaffPortalUI(UIServer* uis) : QDialog(), staffportalUI(new Ui::S
 }
 void StaffPortalUI::on_runACMButton_clicked()
 {
-    hide_window();
-    uiserver->staffportalLogic->open_ACMDetails();
+    Rule r;
+    QList<QString> rules;
+    rules << "Strong" << "Good" << "Fair" << "Poor";
+    bool ok;
+       QString rule = QInputDialog::getItem(this, tr("Choose Strength"),
+                                            tr("Strength:"), rules,
+                                            0,true,&ok);
+    if (ok && !rule.isEmpty()) {
+        if (rule=="Strong")
+            r=strong;
+        else if (rule=="Good")
+            r=good;
+        else if (rule=="Fair")
+            r=fair;
+        else if (rule=="Poor")
+            r=poor;
+
+        //do something from here
+        hide_window();
+        uiserver->staffportalLogic->open_ACMDetails();
+    }
 }
 void StaffPortalUI::on_btnAnimals_clicked()
 {
