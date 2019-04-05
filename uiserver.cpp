@@ -682,7 +682,8 @@ void ManageAnimalUI::on_btnEditanimal_clicked()
 void ManageAnimalUI::on_btnBack_clicked()
 {
     hide_window();
-    uiserver->manageanimalLogic->back();
+  //  uiserver->manageanimalLogic->back();
+    uiserver->staffportalUIC->show_window();
 }
 void ManageAnimalUI::on_addNewAnimalbtn_clicked()
 {
