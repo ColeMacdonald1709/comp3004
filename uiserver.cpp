@@ -387,6 +387,8 @@ void EditAnimalUI::on_btnSave_clicked() {
     uiserver->editanimalLogic->editAnimal(&name,PAList,NPAList);
     QMessageBox::information(this, tr("Information Updated"), tr("Save successful!"));
     hide_window();
+    uiserver->manageanimalUIC->update_animal(&name, PAList);
+    uiserver->manageanimalUIC->clear_details();
     uiserver->manageanimalUIC->show_window();
 }
 void EditAnimalUI::on_btnCancel_clicked()
@@ -697,6 +699,27 @@ void ManageAnimalUI::on_addNewAnimalbtn_clicked()
 {
     hide_window();
     uiserver->addnewanimalUIC->show_window();
+}
+void ManageAnimalUI::clear_details()
+{
+    manageanimalUI->txt_Name->setText("");
+    manageanimalUI->txt_Species->setText("");
+    manageanimalUI->txt_Breed->setText("");
+    manageanimalUI->txt_Sex->setText("");
+    manageanimalUI->txt_Age->setText("");
+
+    manageanimalUI->txt_NPA1->setText("");
+    manageanimalUI->txt_NPA2->setText("");
+    manageanimalUI->txt_NPA3->setText("");
+    manageanimalUI->txt_NPA4->setText("");
+    manageanimalUI->txt_NPA5->setText("");
+    manageanimalUI->txt_NPA6->setText("");
+    manageanimalUI->txt_NPA7->setText("");
+    manageanimalUI->txt_NPA8->setText("");
+    manageanimalUI->txt_NPA9->setText("");
+    manageanimalUI->txt_NPA10->setText("");
+    manageanimalUI->txt_NPA11->setText("");
+    manageanimalUI->txt_NPA12->setText("");
 }
 
 ///manage client interface

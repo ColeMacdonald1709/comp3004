@@ -55,59 +55,75 @@ bool ACM::compute_edge(Animal* a, Client*c, Edge* e)
     float edge = 0.0f;
     bool E_match = false;
     bool PA_match = false;
-    if(r == strong){
-        PA_match =
-            (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
-            (a->getPAttr()->at(1) == c->getInfo()->at(1)) &&
-            (a->getPAttr()->at(2) == c->getInfo()->at(2)) &&
-            (a->getPAttr()->at(3) == c->getInfo()->at(3));
-        for(int idx=0; idx < a->getNPAttr()->size(); idx++){
-            float a_NPA = a->getNPAttr()->at(idx).toFloat();
-            float c_NPA = c->getPrefs()->at(idx).toFloat();
-            e_curr = (float)fabs(a_NPA - c_NPA);
-            if(e_curr < 1.0f){edge += 1.0f;}
+    bool p_candidate = true;
+    bool i_candidate = true;
+    for(int i=0; i<c->getPrefs()->size(); i++){
+        if(c->getPrefs()->at(i) == "NULL"){
+            p_candidate = false;
+            break;
         }
-        edge /= 5.0f;
-        edge = 12.0f - edge;
-        if(edge > 7.0f){E_match = true;}
-    }else if(r == good){
-        PA_match =
-            (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
-            (a->getPAttr()->at(2) == c->getInfo()->at(2)) &&
-            (a->getPAttr()->at(3) == c->getInfo()->at(3));
-        for(int idx=0; idx < a->getNPAttr()->size(); idx++){
-            float a_NPA = a->getNPAttr()->at(idx).toFloat();
-            float c_NPA = c->getPrefs()->at(idx).toFloat();
-            e_curr = (float)fabs(a_NPA - c_NPA);
-            if(e_curr < 2.0f){edge += 1.0f;}
+    }
+    for(int i=0; i<c->getInfo()->size(); i++){
+        if(c->getInfo()->at(i) == "NULL"){
+            i_candidate = false;
+            break;
         }
-        edge /= 5.0f;
-        edge = 12.0f - edge;
-        if(edge > 6.0f){E_match = true;}
-    }else if(r == fair){
-        PA_match =
-            (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
-            (a->getPAttr()->at(2) == c->getInfo()->at(2));
-        for(int idx=0; idx < a->getNPAttr()->size(); idx++){
-            float a_NPA = a->getNPAttr()->at(idx).toFloat();
-            float c_NPA = c->getPrefs()->at(idx).toFloat();
-            e_curr = (float)fabs(a_NPA - c_NPA);
-            if(e_curr < 3.0f){edge += 1.0f;}
+    }
+    if(!p_candidate && !i_candidate){
+        if(r == strong){
+            PA_match =
+                (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
+                (a->getPAttr()->at(1) == c->getInfo()->at(1)) &&
+                (a->getPAttr()->at(2) == c->getInfo()->at(2)) &&
+                (a->getPAttr()->at(3) == c->getInfo()->at(3));
+            for(int idx=0; idx < a->getNPAttr()->size(); idx++){
+                float a_NPA = a->getNPAttr()->at(idx).toFloat();
+                float c_NPA = c->getPrefs()->at(idx).toFloat();
+                e_curr = (float)fabs(a_NPA - c_NPA);
+                if(e_curr < 1.0f){edge += 1.0f;}
+            }
+            edge /= 5.0f;
+            edge = 12.0f - edge;
+            if(edge > 7.0f){E_match = true;}
+        }else if(r == good){
+            PA_match =
+                (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
+                (a->getPAttr()->at(2) == c->getInfo()->at(2)) &&
+                (a->getPAttr()->at(3) == c->getInfo()->at(3));
+            for(int idx=0; idx < a->getNPAttr()->size(); idx++){
+                float a_NPA = a->getNPAttr()->at(idx).toFloat();
+                float c_NPA = c->getPrefs()->at(idx).toFloat();
+                e_curr = (float)fabs(a_NPA - c_NPA);
+                if(e_curr < 2.0f){edge += 1.0f;}
+            }
+            edge /= 5.0f;
+            edge = 12.0f - edge;
+            if(edge > 6.0f){E_match = true;}
+        }else if(r == fair){
+            PA_match =
+                (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
+                (a->getPAttr()->at(2) == c->getInfo()->at(2));
+            for(int idx=0; idx < a->getNPAttr()->size(); idx++){
+                float a_NPA = a->getNPAttr()->at(idx).toFloat();
+                float c_NPA = c->getPrefs()->at(idx).toFloat();
+                e_curr = (float)fabs(a_NPA - c_NPA);
+                if(e_curr < 3.0f){edge += 1.0f;}
+            }
+            edge /= 5.0f;
+            edge = 12.0f - edge;
+            if(edge > 5.0f){E_match = true;}
+        }else if(r == poor){
+            PA_match = (a->getPAttr()->at(0) == c->getInfo()->at(0));
+            for(int idx=0; idx < a->getNPAttr()->size(); idx++){
+                float a_NPA = a->getNPAttr()->at(idx).toFloat();
+                float c_NPA = c->getPrefs()->at(idx).toFloat();
+                e_curr = (float)fabs(a_NPA - c_NPA);
+                if(e_curr < 4.0f){edge += 1.0f;}
+            }
+            edge /= 5.0f;
+            edge = 12.0f - edge;
+            if(edge > 4.0f){E_match = true;}
         }
-        edge /= 5.0f;
-        edge = 12.0f - edge;
-        if(edge > 5.0f){E_match = true;}
-    }else if(r == poor){
-        PA_match = (a->getPAttr()->at(0) == c->getInfo()->at(0));
-        for(int idx=0; idx < a->getNPAttr()->size(); idx++){
-            float a_NPA = a->getNPAttr()->at(idx).toFloat();
-            float c_NPA = c->getPrefs()->at(idx).toFloat();
-            e_curr = (float)fabs(a_NPA - c_NPA);
-            if(e_curr < 4.0f){edge += 1.0f;}
-        }
-        edge /= 5.0f;
-        edge = 12.0f - edge;
-        if(edge > 4.0f){E_match = true;}
     }
     e->set_edge_weight(edge);
     return E_match && PA_match;

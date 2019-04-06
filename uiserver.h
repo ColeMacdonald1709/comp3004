@@ -136,6 +136,7 @@ public:
     void set_client_view();
     void set_staff_view();
     void load_animals();
+    void clear_details();
     Ui::ManageAnimal* manageanimalUI;
 private slots:
     void on_btnEditanimal_clicked();
