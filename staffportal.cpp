@@ -20,9 +20,9 @@ void StaffPortal::open_manage_client()
 {
     ui->show_clients();
 }
-void StaffPortal::open_ACMDetails()
+void StaffPortal::open_ACM()
 {
-    ui->show_acmdetails();
+    ui->show_acm();
 }
 void StaffPortal::logout()
 {

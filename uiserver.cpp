@@ -1,4 +1,4 @@
-/**
+﻿/**
 COMP3004A/B W19 - Project Deliverable 3 - Team R4V3N$
 Dennis Kuipers  101033098
 Cole Macdonald	101013458
@@ -17,7 +17,7 @@ Ian Sloan 		101021039
 #include "staffportal.h"
 #include "editclient.h"
 #include "editanimal.h"
-#include "acmdetails.h"
+#include "acm.h"
 
 #include <QDebug>
 #include <QInputDialog>
@@ -42,7 +42,7 @@ UIServer::UIServer()
 
     UIServer::staffportalUIC = new StaffPortalUI(this);
 
-    UIServer::acmdetailsUIC = new ACMDetailsUI(this);
+    UIServer::acmUIC = new ACMUI(this);
 }
 UIServer::~UIServer()
 {
@@ -73,10 +73,10 @@ UIServer::~UIServer()
     delete UIServer::staffportalUIC->staffportalUI;
     delete UIServer::staffportalUIC;
 
-    delete UIServer::acmdetailsUIC->acmdetailsUI;
-    delete UIServer::acmdetailsUIC;
+    delete UIServer::acmUIC->acmUI;
+    delete UIServer::acmUIC;
 }
-void UIServer::set_up_logic(AddNewAnimal* ana, AddNewClient* anc, EditAnimal* ea, EditClient* ec, Login* l, ManageAnimal* ma, ManageClient* mc, ClientPortal* cp, StaffPortal* sp, ACMDetails* acmd)
+void UIServer::set_up_logic(AddNewAnimal* ana, AddNewClient* anc, EditAnimal* ea, EditClient* ec, Login* l, ManageAnimal* ma, ManageClient* mc, ClientPortal* cp, StaffPortal* sp, ACM* a)
 {
     addnewanimalLogic = ana;
     addnewclientLogic = anc;
@@ -87,7 +87,7 @@ void UIServer::set_up_logic(AddNewAnimal* ana, AddNewClient* anc, EditAnimal* ea
     manageclientLogic = mc;
     clientportalLogic = cp;
     staffportalLogic = sp;
-    acmdetailsLogic = acmd;
+    acmLogic = a;
 }
 void UIServer::init()
 {
@@ -111,9 +111,9 @@ void UIServer::show_clients()
 {
     UIServer::manageclientUIC->show_window();
 }
-void UIServer::show_acmdetails()
+void UIServer::show_acm()
 {
-    UIServer::acmdetailsUIC->show_window();
+    UIServer::acmUIC->show_window();
 }
 void UIServer::show_login_error()
 {
@@ -841,9 +841,12 @@ void StaffPortalUI::on_runACMButton_clicked()
         else if (rule=="Poor")
             r=poor;
 
-        //do something from here
+        uiserver->acmLogic->changeRule(r);
+        qDebug()<<"Start label";
+        uiserver->acmLogic->label();
+        qDebug()<<"Finish";
         hide_window();
-        uiserver->staffportalLogic->open_ACMDetails();
+        uiserver->staffportalLogic->open_ACM();
     }
 }
 void StaffPortalUI::on_btnAnimals_clicked()
@@ -871,27 +874,27 @@ void StaffPortalUI::hide_window()
 }
 
 
-///ACMDetails interface
+///acm interface
 ///----------------------
-ACMDetailsUI::ACMDetailsUI(UIServer* uis) : QDialog(), acmdetailsUI(new Ui::ACMDetails)
+ACMUI::ACMUI(UIServer* uis) : QDialog(), acmUI(new Ui::ACM)
 {
     uiserver = uis;
-    acmdetailsUI->setupUi(this);
+    acmUI->setupUi(this);
 }
-void ACMDetailsUI::on_backButton_clicked()
+void ACMUI::on_backButton_clicked()
 {
     hide_window();
     uiserver->staffportalUIC->show_window();
 }
-void ACMDetailsUI::show_window()
+void ACMUI::show_window()
 {
     this->open();
 }
-void ACMDetailsUI::hide_window()
+void ACMUI::hide_window()
 {
     this->close();
 }
-void ACMDetailsUI::on_ACMResultsTable_activated(const QModelIndex &index)
+void ACMUI::on_ACMResultsTable_activated(const QModelIndex &index)
 {
      //update detailed view showing client and animal profiles side-by-side with coloured fields
 }

@@ -17,7 +17,7 @@ public:
     StaffPortal(UIServer*);
     void open_manage_animal();
     void open_manage_client();
-    void open_ACMDetails();
+    void open_ACM();
     void logout();
 private:
     UIServer* ui;

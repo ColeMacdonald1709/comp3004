@@ -20,7 +20,7 @@ Ian Sloan 		101021039
 #include "staffportal.h"
 #include "editclient.h"
 #include "editanimal.h"
-#include "acmdetails.h"
+#include "acm.h"
 
 int main(int argc, char *argv[])
 {
@@ -29,6 +29,8 @@ int main(int argc, char *argv[])
     DBServer* dbserver = new DBServer();
 
     UIServer* uiserver = new UIServer();
+
+    dbserver->init();
 
     AddNewAnimal* addnewanimalLogic = new AddNewAnimal(dbserver,uiserver);
 
@@ -48,7 +50,7 @@ int main(int argc, char *argv[])
 
     StaffPortal* staffportalLogic = new StaffPortal(uiserver);
 
-    ACMDetails* acmdetailsLogic = new ACMDetails(dbserver, uiserver);
+    ACM* acmLogic = new ACM(dbserver, uiserver);
 
     uiserver->set_up_logic(addnewanimalLogic,
                            addnewclientLogic,
@@ -59,8 +61,8 @@ int main(int argc, char *argv[])
                            manageclientLogic,
                            clientportalLogic,
                            staffportalLogic,
-                           acmdetailsLogic);
-    dbserver->init();
+                           acmLogic);
+
     uiserver->init();
 
     if(a.exec() == 0){
@@ -76,7 +78,7 @@ int main(int argc, char *argv[])
         delete manageclientLogic;
         delete clientportalLogic;
         delete staffportalLogic;
-        delete acmdetailsLogic;
+        delete acmLogic;
     }
     return 0;
 }

@@ -13,6 +13,7 @@ Ian Sloan 		101021039
 #include "client.h"
 
 #include <QString>
+#include <QDebug>
 #include <QList>
 
 class Client;

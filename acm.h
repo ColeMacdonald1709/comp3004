@@ -62,6 +62,7 @@ public:
     void search_new();
     void update_labels();
     void augment_matches(Animal*);
+    void changeRule(Rule);
 private:
     DBServer* db;
     UIServer* ui;

@@ -307,9 +307,11 @@ void DBServer::get_client(QString* name, QString* phone, QString* email, QList<Q
 }
 QList<Animal*>* DBServer::get_animals()
 {
+    //qDebug()<<animals->size();
     return animals;
 }
 QList<Client*>* DBServer::get_clients()
 {
+    //qDebug()<<clients->size();
     return clients;
 }

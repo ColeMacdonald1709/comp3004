@@ -41,6 +41,7 @@ float Animal::get_label()
 }
 bool Animal::empty_neighbour()
 {
+    qDebug()<<"emptyneighbour";
     return neighbours->size()>0;
 }
 std::set<Client*>* Animal::get_neighbours()
