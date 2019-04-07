@@ -1032,12 +1032,12 @@
    </property>
    <column>
     <property name="text">
-     <string>Animal</string>
+     <string>Client</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Client</string>
+     <string>Animal</string>
     </property>
    </column>
    <column>

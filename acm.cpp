@@ -243,21 +243,21 @@ void ACM::load()
                 ui->acmUIC->acmUI->ACMResultsTable->insertRow(rowNum);
                 QTableWidgetItem* table_cell = new QTableWidgetItem;
                 ui->acmUIC->acmUI->ACMResultsTable->setItem(rowNum,0,table_cell);
-                aName = (*a)->getAnimalName();
-                table_cell->setText( aName );
+                cName = (*c)->getName();
+                table_cell->setText( cName );
                 table_cell->setFont(boldfont);
                 table_cell = new QTableWidgetItem;
                 ui->acmUIC->acmUI->ACMResultsTable->setItem(rowNum,1,table_cell);
-                cName = (*c)->getName();
-                table_cell->setText( cName );
+                aName = (*a)->getAnimalName();
+                table_cell->setText( aName );
                 table_cell = new QTableWidgetItem;
                 ui->acmUIC->acmUI->ACMResultsTable->setItem(rowNum,2,table_cell);
                 float w = ACM::g->get_edge_weight((*a),(*c));
                 QString wgt;
-                wgt.setNum(w);
-                table_cell->setText( wgt );
+                wgt.setNum((w/12)*100,'g',4);
+                table_cell->setText( wgt + "%" );
                 rowNum++;
-            }//test
+            }
         }
     }
 }
