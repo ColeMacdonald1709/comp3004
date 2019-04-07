@@ -60,7 +60,7 @@ public:
     ACM(DBServer*,UIServer*);
     ACM(Rule);
     ~ACM();
-    bool compute_edge(Animal*,Client*,Edge*);
+    bool compute_edge(Animal*,Client*,float&);
     void label();
     void search_new();
     void update_labels();

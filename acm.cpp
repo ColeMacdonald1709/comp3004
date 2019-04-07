@@ -27,7 +27,7 @@ ACM::~ACM()
     delete ACM::s;
     delete ACM::t;
 }
-bool ACM::compute_edge(Animal* a, Client*c, Edge* e)
+bool ACM::compute_edge(Animal* a, Client* c, float& e)
 {
     float e_curr = 0.0f;
     float edge = 0.0f;
@@ -45,11 +45,9 @@ bool ACM::compute_edge(Animal* a, Client*c, Edge* e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr < 1.0f){edge += 1.0f;}
+                if(e_curr <= 1.0f){edge += 1.0f;}
             }
-            edge /= 5.0f;
-            edge = 12.0f - edge;
-            if(edge > 7.0f){E_match = true;}
+            if(edge >= 7.0f){E_match = true;}
         }if(r == good){
             PA_match =
                 (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
@@ -59,11 +57,9 @@ bool ACM::compute_edge(Animal* a, Client*c, Edge* e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr < 2.0f){edge += 1.0f;}
+                if(e_curr <= 2.0f){edge += 1.0f;}
             }
-            edge /= 5.0f;
-            edge = 12.0f - edge;
-            if(edge > 6.0f){E_match = true;}
+            if(edge >= 6.0f){E_match = true;}
         }if(r == fair){
             PA_match =
                 (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
@@ -72,26 +68,20 @@ bool ACM::compute_edge(Animal* a, Client*c, Edge* e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr < 3.0f){edge += 1.0f;}
+                if(e_curr <= 3.0f){edge += 1.0f;}
             }
-            edge /= 5.0f;
-            edge = 12.0f - edge;
-            if(edge > 5.0f){E_match = true;}
+            if(edge >= 5.0f){E_match = true;}
         }if(r == poor){
             PA_match = (a->getPAttr()->at(0) == c->getInfo()->at(0));
             for(int idx=0; idx < a->getNPAttr()->size(); idx++){
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr < 4.0f){edge += 1.0f;}
+                if(e_curr <= 4.0f){edge += 1.0f;}
             }
-            edge /= 5.0f;
-            edge = 12.0f - edge;
-            if(edge > 4.0f){E_match = true;}
+            if(edge >= 4.0f){E_match = true;}
         }
-    e->set_edge_weight(edge);
-    e->set_animal(a);
-    e->set_client(c);
+    e = edge;
     return E_match && PA_match;
 }
 void ACM::label()
@@ -99,36 +89,34 @@ void ACM::label()
     for(set<Client*>::iterator i=ACM::g->get_clients()->begin(); i!=ACM::g->get_clients()->end(); ++i) {
         Client* curr_c = (*i);
         curr_c->set_label(0.0f);
-        set<Edge*> edges;
+        float curr_w = 0.0f;
+        float max_w = 0.0f;
         Animal* curr_a;
-        Edge new_edge = Edge(NULL,NULL,0.0f);
-        Edge max_edge = Edge(NULL,NULL,0.0f);
+        Animal* max_a = NULL;
         for(set<Animal*>::iterator j=ACM::g->get_animals()->begin(); j!=ACM::g->get_animals()->end(); ++j){
             curr_a = (*j);
-            if(ACM::compute_edge(curr_a, curr_c, &new_edge)){
-                ACM::g->add_edge(curr_a, curr_c, new_edge.get_edge_weight());
-                edges.insert(&new_edge);
+            if(ACM::compute_edge(curr_a, curr_c, curr_w)){
+                ACM::g->add_edge(curr_a, curr_c, curr_w);
                 curr_a->get_neighbours()->insert(curr_c);
                 curr_c->get_neighbours()->insert(curr_a);
-            }
-        }
-        if(edges.size()>0){
-            max_edge = (*(*edges.begin()));
-            for(set<Edge*>::iterator idx=edges.begin(); idx!=edges.end(); ++idx){
-                if((*idx)->get_edge_weight() > max_edge.get_edge_weight()){
-                    max_edge = (*(*idx));
+                if(curr_w > max_w){
+                    max_w = curr_w;
+                    max_a = curr_a;
                 }
             }
-            max_edge.get_animal()->set_label(max_edge.get_edge_weight());
-            ACM::m->add_edge(curr_a, curr_c, max_edge.get_edge_weight());
+        }
+        if(max_w > 0.0f && max_a != NULL){
+            max_a->set_label(max_w);
+            ACM::m->add_edge(max_a, curr_c, max_w);
         }
     }
+    /*
     std::cout << "Graph G" << std::endl;
     for(set<Animal*>::iterator a=ACM::g->get_animals()->begin(); a!=ACM::g->get_animals()->end(); ++a){
         for(set<Client*>::iterator c=ACM::g->get_clients()->begin(); c!= ACM::g->get_clients()->end(); ++c){
             if(ACM::g->get_edge_weight((*a),(*c)) > 0.0f){
-                std::cout << (*a)->getAnimalName().toStdString() << " and " <<
-                             (*c)->getName().toStdString() << " score " <<
+                std::cout << (*a)->getAnimalName().toStdString() << " label " << (*a)->get_label() << " and " <<
+                             (*c)->getName().toStdString() << " label " << (*c)->get_label() << " score " <<
                              ACM::g->get_edge_weight((*a),(*c))
                           << std::endl;
             }
@@ -139,19 +127,21 @@ void ACM::label()
     std::cout << "Graph M" << std::endl;
     for(set<Animal*>::iterator a=ACM::m->get_animals()->begin(); a!=ACM::m->get_animals()->end(); ++a){
         for(set<Client*>::iterator c=ACM::m->get_clients()->begin(); c!= ACM::m->get_clients()->end(); ++c){
-            if(ACM::g->get_edge_weight((*a),(*c)) > 0.0f){
-                std::cout << (*a)->getAnimalName().toStdString() << " and " <<
-                             (*c)->getName().toStdString() << " score " <<
-                             ACM::g->get_edge_weight((*a),(*c))
+            if(ACM::m->get_edge_weight((*a),(*c)) > 0.0f){
+                std::cout << (*a)->getAnimalName().toStdString() << " label " << (*a)->get_label() << " and " <<
+                             (*c)->getName().toStdString() << " label " << (*c)->get_label() << " score " <<
+                             ACM::m->get_edge_weight((*a),(*c))
                           << std::endl;
             }
         }
         std::cout << std::endl;
     }
+    */
     search_new();
 }
 void ACM::search_new()
 {
+
     set<Animal*>* g_a_cpy = ACM::g->get_animals();
     set<Animal*>* m_a_cpy = ACM::m->get_animals();
     set<Animal*> a_diff;
@@ -159,11 +149,19 @@ void ACM::search_new()
     std::set_difference(g_a_cpy->begin(), g_a_cpy->end(),
                         m_a_cpy->begin(), m_a_cpy->end(),
                         std::inserter(a_diff,a_diff.end()));
+    std::cout << "looking for " << a_diff.size() << " new matches" << std::endl;
     for(a_it=a_diff.begin(); a_it!=a_diff.end(); ++a_it){
+        std::cout << "looking at " << (*a_it)->getAnimalName().toStdString() << std::endl;
         ACM::s->add_animal(*a_it);
         ACM::t->clear();
-        if((*a_it)->empty_neighbour()){update_labels();}
-        if(!(*a_it)->empty_neighbour()){augment_matches((*a_it));}
+        if((*a_it)->empty_neighbour()){
+            std::cout << (*a_it)->getAnimalName().toStdString() << " has neighbours " << std::endl;
+            update_labels();
+        }
+        if(!(*a_it)->empty_neighbour()){
+            std::cout << (*a_it)->getAnimalName().toStdString() << " has no neighbours " << std::endl;
+            augment_matches((*a_it));
+        }
     }
 }
 void ACM::update_labels()
