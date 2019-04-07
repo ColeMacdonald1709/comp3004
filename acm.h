@@ -20,6 +20,8 @@ public:
     Edge(Animal*,Client*,float);
     ~Edge();
     void set_edge_weight(float);
+    void set_animal(Animal*);
+    void set_client(Client*);
     float get_edge_weight();
     Animal* get_animal();
     Client* get_client();

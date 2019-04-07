@@ -11,15 +11,18 @@ Animal::Animal(QString aName, QList<QString>* PAttribute, QList<QString>* NPAttr
     name = aName;
     PAttr = PAttribute;
     NPAttr = NPAttribute;
+    neighbours = new std::set<Client*>();
 }
 Animal::Animal(QString aName){
     name = aName;
     PAttr = new QList<QString>();
     NPAttr = new QList<QString>();
+    neighbours = new std::set<Client*>();
 }
 Animal::~Animal(){
     delete PAttr;
     delete NPAttr;
+    delete neighbours;
 }
 QString Animal::getAnimalName(){return name;}
 void Animal::viewProfile(){}
