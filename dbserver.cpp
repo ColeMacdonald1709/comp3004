@@ -273,6 +273,8 @@ void DBServer::get_animal(int i, QString* name, QList<QString>* PA, QList<QStrin
     *name = animals->at(i)->getAnimalName();
     *PA = *(animals->at(i)->getPAttr());
     *NPA = *(animals->at(i)->getNPAttr());
+    qDebug() << "get_animal for " << animals->at(i)->getAnimalName();
+    qDebug() << "PA1 is " << animals->at(i)->getPAttr()->at(0) << ", NPA1 is " << animals->at(i)->getNPAttr()->at(0);
 }
 void DBServer::get_animal(int i, QString* name, QList<QString>* PA)
 {
@@ -288,6 +290,7 @@ void DBServer::get_animal(QString* name, QList<QString>* PA, QList<QString>* NPA
         }
     }
 }
+
 void DBServer::get_client(int i, QString* name, QString* phone, QString* email, QList<QString>* PA, QList<QString>* NPA)
 {
     *name = clients->at(i)->getName();
@@ -304,6 +307,22 @@ void DBServer::get_client(QString* name, QString* phone, QString* email, QList<Q
             break;
         }
     }
+}
+void DBServer::get_client(QString* name, QList<QString>* PA, QList<QString>* NPA)
+{
+    for(int i=0; i<clients->size(); i++){
+        if(clients->at(i)->getName() == *name){
+            get_client(i, name, PA, NPA);
+            break;
+        }
+    }
+}
+void DBServer::get_client(int i, QString* name, QList<QString>* PA, QList<QString>* NPA){
+    *name = clients->at(i)->getName();
+    *PA = *(clients->at(i)->getInfo());
+    *NPA = *(clients->at(i)->getPrefs());
+    qDebug() << "get_client for " << clients->at(i)->getName();
+    qDebug() << "PA1 is " << clients->at(i)->getInfo()->at(0) << ", NPA1 is " << clients->at(i)->getPrefs()->at(0);
 }
 QList<Animal*>* DBServer::get_animals()
 {

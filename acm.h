@@ -42,6 +42,7 @@ public:
     void remove_client(Client*);
     set<Animal*>* get_animals();
     set<Client*>* get_clients();
+    set<Edge*>* get_edges();
     void add_edge(Animal*,Client*,float);
     void remove_edge(Animal*,Client*);
     void set_edge_weight(Animal*,Client*,float);
@@ -66,6 +67,9 @@ public:
     void augment_matches(Animal*);
     void changeRule(Rule);
     void load();
+    Graph* get_m();
+    Graph* get_g();
+    void get_attributes(QString, QString, QList<QString>*, QList<QString>*, QList<QString>*, QList<QString>*);
 private:
     DBServer* db;
     UIServer* ui;

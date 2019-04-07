@@ -46,6 +46,8 @@ public:
     void get_client(int, QString*, QString*, QString*);
     void get_client(int, QString*, QString*, QString*, QList<QString>*, QList<QString>*);
     void get_client(QString* , QString* , QString* , QList<QString>* , QList<QString>* );
+    void get_client(QString*, QList<QString>*, QList<QString>*);
+    void get_client(int, QString*, QList<QString>*,QList<QString>*);
 
     void get_animal(int, QString*, QList<QString>*,QList<QString>*);
     void get_animal(int, QString*, QList<QString>*);

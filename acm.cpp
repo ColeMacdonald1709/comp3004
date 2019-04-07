@@ -231,28 +231,36 @@ void ACM::augment_matches(Animal* a)
 void ACM::changeRule(Rule rule) {
     ACM::r = rule;
 }
+Graph* ACM::get_m()
+{
+    return m;
+}
+Graph* ACM::get_g()
+{
+    return g;
+}
 void ACM::load()
 {
+    ui->acmUIC->acmUI->ACMResultsTable->clearContents();
     QFont boldfont;
     boldfont.setBold(true);
     int rowNum = 0;
-    QString aName, cName;
     for(set<Animal*>::iterator a=ACM::m->get_animals()->begin(); a!=ACM::m->get_animals()->end(); ++a){
         for(set<Client*>::iterator c=ACM::m->get_clients()->begin(); c!= ACM::m->get_clients()->end(); ++c){
             if(ACM::g->get_edge_weight((*a),(*c)) > 0.0f){
                 ui->acmUIC->acmUI->ACMResultsTable->insertRow(rowNum);
+
                 QTableWidgetItem* table_cell = new QTableWidgetItem;
                 ui->acmUIC->acmUI->ACMResultsTable->setItem(rowNum,0,table_cell);
-                cName = (*c)->getName();
-                table_cell->setText( cName );
-                table_cell->setFont(boldfont);
+                table_cell->setText( (*c)->getName() );
+
                 table_cell = new QTableWidgetItem;
                 ui->acmUIC->acmUI->ACMResultsTable->setItem(rowNum,1,table_cell);
-                aName = (*a)->getAnimalName();
-                table_cell->setText( aName );
+                table_cell->setText( (*a)->getAnimalName() );
+
                 table_cell = new QTableWidgetItem;
                 ui->acmUIC->acmUI->ACMResultsTable->setItem(rowNum,2,table_cell);
-                float w = ACM::g->get_edge_weight((*a),(*c));
+                float w = ACM::g->get_edge_weight((*a),(*c));                
                 QString wgt;
                 wgt.setNum((w/12)*100,'g',4);
                 table_cell->setText( wgt + "%" );
@@ -260,7 +268,31 @@ void ACM::load()
             }
         }
     }
+
+    qDebug() << "load complete";
 }
+void ACM::get_attributes(QString cName, QString aName, QList<QString>* cPA, QList<QString>* cNPA, QList<QString>* aPA, QList<QString>* aNPA)
+{
+    qDebug() << "getting attributes for" <<cName<<" and " << aName;
+    //iterate over m and find the edge of aName and cName
+    for(set<Animal*>::iterator a=ACM::m->get_animals()->begin(); a!=ACM::m->get_animals()->end(); ++a){
+        for(set<Client*>::iterator c=ACM::m->get_clients()->begin(); c!= ACM::m->get_clients()->end(); ++c){
+            if(ACM::g->get_edge_weight((*a),(*c)) > 0.0f){
+                qDebug() << (*c)->getName() << " and " << (*a)->getAnimalName();
+                qDebug() << ( ((*c)->getName() == cName) && ((*a)->getAnimalName() == aName));
+                if( ((*c)->getName() == cName) && ((*a)->getAnimalName() == aName)) {
+                     qDebug() << "1";
+                    db->get_client(&cName,cPA,cNPA);
+                    qDebug() << "2";
+                    db->get_animal(&aName,aPA,aNPA);
+                     qDebug() << "3";
+                    return;
+                }
+            }
+        }
+    }
+}
+
 Graph::Graph(set<Animal*>* a, set<Client*>* c)
 {
     Graph::animals = a;
@@ -307,6 +339,10 @@ set<Animal*>* Graph::get_animals()
 set<Client*>* Graph::get_clients()
 {
     return clients;
+}
+set<Edge*>* Graph::get_edges()
+{
+    return edges;
 }
 void Graph::add_edge(Animal* a, Client* c , float w)
 {
