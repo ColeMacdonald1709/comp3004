@@ -257,7 +257,7 @@ void ACM::load()
                 wgt.setNum(w);
                 table_cell->setText( wgt );
                 rowNum++;
-            }
+            }//test
         }
     }
 }
