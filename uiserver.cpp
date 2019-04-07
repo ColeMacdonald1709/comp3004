@@ -909,6 +909,42 @@ void ACMUI::on_backButton_clicked()
 {
 
     acmUI->ACMResultsTable->clear();
+    acmUI->txt_clientname->clear();
+    acmUI->txt_cspecies->clear();
+    acmUI->txt_cbreed->clear();
+    acmUI->txt_cage->clear();
+    acmUI->txt_csex->clear();
+    acmUI->txt_NPA1->clear();
+    acmUI->txt_NPA2->clear();
+    acmUI->txt_NPA3->clear();
+    acmUI->txt_NPA4->clear();
+    acmUI->txt_NPA5->clear();
+    acmUI->txt_NPA6->clear();
+    acmUI->txt_NPA7->clear();
+    acmUI->txt_NPA8->clear();
+    acmUI->txt_NPA9->clear();
+    acmUI->txt_NPA10->clear();
+    acmUI->txt_NPA11->clear();
+    acmUI->txt_NPA12->clear();
+    acmUI->txt_animalname->clear();
+    acmUI->txt_aspecies->clear();
+    acmUI->txt_abreed->clear();
+    acmUI->txt_aage->clear();
+    acmUI->txt_asex->clear();
+    acmUI->txt_NPA1_2->clear();
+    acmUI->txt_NPA2_2->clear();
+    acmUI->txt_NPA3_2->clear();
+    acmUI->txt_NPA4_2->clear();
+    acmUI->txt_NPA5_2->clear();
+    acmUI->txt_NPA6_2->clear();
+    acmUI->txt_NPA7_2->clear();
+    acmUI->txt_NPA8_2->clear();
+    acmUI->txt_NPA9_2->clear();
+    acmUI->txt_NPA10_2->clear();
+    acmUI->txt_NPA11_2->clear();
+    acmUI->txt_NPA12_2->clear();
+
+
     hide_window();
     uiserver->staffportalUIC->show_window();
 }
@@ -952,11 +988,9 @@ void ACMUI::load_matches()
         }
     }
 
-    qDebug() << "load complete";
 }
 void ACMUI::on_ACMResultsTable_activated(const QModelIndex &index)
 {
-    qDebug() << "dblclick";
      //update detailed view showing client and animal profiles side-by-side with coloured fields
     QList<QString> cPA;
     QList<QString> cNPA;
@@ -967,75 +1001,113 @@ void ACMUI::on_ACMResultsTable_activated(const QModelIndex &index)
     uiserver->acmLogic->get_attributes(cName,aName,&cPA,&cNPA,&aPA, &aNPA);
     acmUI->txt_clientname->setText(cName);
     acmUI->txt_animalname->setText(aName);
-    qDebug() << "species is " << cPA.at(0) << " and NPA1 is " << cNPA.at(0);
-    //client info
-    if(cPA.size() > 0 && cNPA.size() > 0){
+
         acmUI->txt_cspecies->setText(cPA.at(0));
-        acmUI->txt_cbreed->setText(cPA.at(1));
-        acmUI->txt_csex->setText(cPA.at(2));
-        acmUI->txt_cage->setText(cPA.at(3));
-        acmUI->txt_NPA1->setText(cNPA.at(0));
-        acmUI->txt_NPA2->setText(cNPA.at(1));
-        acmUI->txt_NPA3->setText(cNPA.at(2));
-        acmUI->txt_NPA4->setText(cNPA.at(3));
-        acmUI->txt_NPA5->setText(cNPA.at(4));
-        acmUI->txt_NPA6->setText(cNPA.at(5));
-        acmUI->txt_NPA7->setText(cNPA.at(6));
-        acmUI->txt_NPA8->setText(cNPA.at(7));
-        acmUI->txt_NPA9->setText(cNPA.at(8));
-        acmUI->txt_NPA10->setText(cNPA.at(9));
-        acmUI->txt_NPA11->setText(cNPA.at(10));
-        acmUI->txt_NPA12->setText(cNPA.at(11));
-    }else{
-        acmUI->txt_NPA1->setText("");
-        acmUI->txt_NPA2->setText("");
-        acmUI->txt_NPA3->setText("");
-        acmUI->txt_NPA4->setText("");
-        acmUI->txt_NPA5->setText("");
-        acmUI->txt_NPA6->setText("");
-        acmUI->txt_NPA7->setText("");
-        acmUI->txt_NPA8->setText("");
-        acmUI->txt_NPA9->setText("");
-        acmUI->txt_NPA10->setText("");
-        acmUI->txt_NPA11->setText("");
-        acmUI->txt_NPA12->setText("");
-    }
-    //animal info
-    qDebug() << "animal setting";
-
-    if(aPA.size() > 0 && aNPA.size() > 0){
         acmUI->txt_aspecies->setText(aPA.at(0));
-        qDebug() << "species set";
-        acmUI->txt_abreed->setText(aPA.at(1));
-        acmUI->txt_asex->setText(aPA.at(2));
-        acmUI->txt_aage->setText(aPA.at(3));
-        acmUI->txt_NPA1_2->setText(aNPA.at(0));
-        qDebug() << "NPA1 set";
-        acmUI->txt_NPA2_2->setText(aNPA.at(1));
-        acmUI->txt_NPA3_2->setText(aNPA.at(2));
-        acmUI->txt_NPA4_2->setText(aNPA.at(3));
-        acmUI->txt_NPA5_2->setText(aNPA.at(4));
-        acmUI->txt_NPA6_2->setText(aNPA.at(5));
-        acmUI->txt_NPA7_2->setText(aNPA.at(6));
-        acmUI->txt_NPA8_2->setText(aNPA.at(7));
-        acmUI->txt_NPA9_2->setText(aNPA.at(8));
-        acmUI->txt_NPA10_2->setText(aNPA.at(9));
-        acmUI->txt_NPA11_2->setText(aNPA.at(10));
-        acmUI->txt_NPA12_2->setText(aNPA.at(11));
-        qDebug() << "NPA12` set";
 
-    }else{
-        acmUI->txt_NPA1_2->setText("");
-        acmUI->txt_NPA2_2->setText("");
-        acmUI->txt_NPA3_2->setText("");
-        acmUI->txt_NPA4_2->setText("");
-        acmUI->txt_NPA5_2->setText("");
-        acmUI->txt_NPA6_2->setText("");
-        acmUI->txt_NPA7_2->setText("");
-        acmUI->txt_NPA8_2->setText("");
-        acmUI->txt_NPA9_2->setText("");
-        acmUI->txt_NPA10_2->setText("");
-        acmUI->txt_NPA11_2->setText("");
-        acmUI->txt_NPA12_2->setText("");
-    }
+        acmUI->txt_cbreed->setText(cPA.at(1));
+        acmUI->txt_abreed->setText(aPA.at(1));
+
+        acmUI->txt_csex->setText(cPA.at(2));
+        acmUI->txt_asex->setText(aPA.at(2));
+
+        acmUI->txt_cage->setText(cPA.at(3));
+        acmUI->txt_aage->setText(aPA.at(3));
+
+        acmUI->txt_NPA1->setText(cNPA.at(0));
+        acmUI->txt_NPA1_2->setText(aNPA.at(0));
+        if ((int)abs(cNPA.at(0).toInt() - aNPA.at(0).toInt()) <= 1){
+            acmUI->NPA1_label->setStyleSheet("QLabel { font : bold ; color : green; }");}
+        else{
+            acmUI->NPA1_label->setStyleSheet("QLabel {font : normal ; color : black; }");
+            acmUI->NPA1_label->colorCount();
+        }
+
+        acmUI->txt_NPA2->setText(cNPA.at(1));
+        acmUI->txt_NPA2_2->setText(aNPA.at(1));
+        if ((int)abs(cNPA.at(1).toInt() - aNPA.at(1).toInt()) <= 1){
+            acmUI->NPA2_label->setStyleSheet("QLabel {font : bold ; color : green; }");}
+        else{
+            acmUI->NPA2_label->setStyleSheet("QLabel { font : normal ;color : black; }");
+        }
+
+        acmUI->txt_NPA3->setText(cNPA.at(2));
+        acmUI->txt_NPA3_2->setText(aNPA.at(2));
+        if ((int)abs(cNPA.at(2).toInt() - aNPA.at(2).toInt()) <= 1){
+            acmUI->NPA3_label->setStyleSheet("QLabel {font : bold ;  color : green;  }");}
+        else{
+            acmUI->NPA3_label->setStyleSheet("QLabel {font : normal ;  color : black; }");
+        }
+
+        acmUI->txt_NPA4->setText(cNPA.at(3));
+        acmUI->txt_NPA4_2->setText(aNPA.at(3));
+        if ((int)abs(cNPA.at(3).toInt() - aNPA.at(3).toInt()) <= 1){
+            acmUI->NPA4_label->setStyleSheet("QLabel { font : bold ; color : green;  }");}
+        else{
+            acmUI->NPA4_label->setStyleSheet("QLabel { font : normal ;color : black; }");
+        }
+
+        acmUI->txt_NPA5->setText(cNPA.at(4));
+        acmUI->txt_NPA5_2->setText(aNPA.at(4));
+        if ((int)abs(cNPA.at(4).toInt() - aNPA.at(4).toInt()) <= 1){
+            acmUI->NPA5_label->setStyleSheet("QLabel { font : bold ; color : green;  }");}
+        else{
+            acmUI->NPA5_label->setStyleSheet("QLabel { font : normal ; color : black; }");
+        }
+
+        acmUI->txt_NPA6->setText(cNPA.at(5));
+        acmUI->txt_NPA6_2->setText(aNPA.at(5));
+        if ((int)abs(cNPA.at(5).toInt() - aNPA.at(5).toInt()) <= 1){
+            acmUI->NPA6_label->setStyleSheet("QLabel { font : bold ; color : green;  }");}
+        else{
+            acmUI->NPA6_label->setStyleSheet("QLabel { font : normal ; color : black; }");
+        }
+
+        acmUI->txt_NPA7->setText(cNPA.at(6));
+        acmUI->txt_NPA7_2->setText(aNPA.at(6));
+        if ((int)abs(cNPA.at(6).toInt() - aNPA.at(6).toInt()) <= 1){
+            acmUI->NPA7_label->setStyleSheet("QLabel {font : bold ;  color : green;  }");}
+        else{
+            acmUI->NPA7_label->setStyleSheet("QLabel { font : normal ;color : black; }");
+        }
+
+        acmUI->txt_NPA8->setText(cNPA.at(7));
+        acmUI->txt_NPA8_2->setText(aNPA.at(7));
+        if ((int)abs(cNPA.at(7).toInt() - aNPA.at(7).toInt()) <= 1){
+            acmUI->NPA8_label->setStyleSheet("QLabel { font : bold ; color : green;  }");}
+        else{
+            acmUI->NPA8_label->setStyleSheet("QLabel {font : normal ; color : black; }");
+        }
+
+        acmUI->txt_NPA9->setText(cNPA.at(8));
+        acmUI->txt_NPA9_2->setText(aNPA.at(8));
+        if ((int)abs(cNPA.at(8).toInt() - aNPA.at(8).toInt()) <= 1){
+            acmUI->NPA9_label->setStyleSheet("QLabel { font : bold ; color : green;  }");}
+        else{
+            acmUI->NPA9_label->setStyleSheet("QLabel { font : normal ; color : black; }");
+        }
+
+        acmUI->txt_NPA10->setText(cNPA.at(9));
+        acmUI->txt_NPA10_2->setText(aNPA.at(9));
+        if ((int)abs(cNPA.at(9).toInt() - aNPA.at(9).toInt()) <= 1){
+            acmUI->NPA10_label->setStyleSheet("QLabel { font : bold ; color : green;  }");}
+        else{
+            acmUI->NPA10_label->setStyleSheet("QLabel { font : normal ; color : black; }");
+        }
+
+        acmUI->txt_NPA11->setText(cNPA.at(10));
+        acmUI->txt_NPA11_2->setText(aNPA.at(10));
+        if ((int)abs(cNPA.at(10).toInt() - aNPA.at(10).toInt()) <= 1){
+            acmUI->NPA11_label->setStyleSheet("QLabel { font : bold ; color : green;  }");}
+        else{
+            acmUI->NPA11_label->setStyleSheet("QLabel { font : normal ;color : black; }");
+        }
+
+        acmUI->txt_NPA12->setText(cNPA.at(11));
+        acmUI->txt_NPA12_2->setText(aNPA.at(11));
+        if ((int)abs(cNPA.at(11).toInt() - aNPA.at(11).toInt()) <= 1){
+            acmUI->NPA12_label->setStyleSheet("QLabel { font : bold ; color : green;  }");}
+        else{
+            acmUI->NPA12_label->setStyleSheet("QLabel {font : normal ; color : black; }");
+        }
 }

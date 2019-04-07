@@ -148,7 +148,7 @@ void ACM::label()
         }
         std::cout << std::endl;
     }
-    //search_new();
+    search_new();
 }
 void ACM::search_new()
 {
@@ -273,19 +273,13 @@ void ACM::load()
 }
 void ACM::get_attributes(QString cName, QString aName, QList<QString>* cPA, QList<QString>* cNPA, QList<QString>* aPA, QList<QString>* aNPA)
 {
-    qDebug() << "getting attributes for" <<cName<<" and " << aName;
     //iterate over m and find the edge of aName and cName
     for(set<Animal*>::iterator a=ACM::m->get_animals()->begin(); a!=ACM::m->get_animals()->end(); ++a){
         for(set<Client*>::iterator c=ACM::m->get_clients()->begin(); c!= ACM::m->get_clients()->end(); ++c){
             if(ACM::g->get_edge_weight((*a),(*c)) > 0.0f){
-                qDebug() << (*c)->getName() << " and " << (*a)->getAnimalName();
-                qDebug() << ( ((*c)->getName() == cName) && ((*a)->getAnimalName() == aName));
                 if( ((*c)->getName() == cName) && ((*a)->getAnimalName() == aName)) {
-                     qDebug() << "1";
                     db->get_client(&cName,cPA,cNPA);
-                    qDebug() << "2";
                     db->get_animal(&aName,aPA,aNPA);
-                     qDebug() << "3";
                     return;
                 }
             }
