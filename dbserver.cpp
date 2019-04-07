@@ -227,10 +227,10 @@ void DBServer::loadClients(){
         info->append(species);
         QString breed = clientqry.value("Breed").toString();
         info->append(breed);
-        QString age = clientqry.value("Age").toString();
-        info->append(age);
         QString sex = clientqry.value("Sex").toString();
         info->append(sex);
+        QString age = clientqry.value("Age").toString();
+        info->append(age);
         //add preferences
         QList<QString>* prefs = new QList<QString>();
         QString NPA1 = clientqry.value("NPA1").toString();
