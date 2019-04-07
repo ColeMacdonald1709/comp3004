@@ -114,6 +114,7 @@ void UIServer::show_clients()
 void UIServer::show_acm()
 {
     UIServer::acmUIC->show_window();
+    UIServer::acmUIC->load_matches();
 }
 void UIServer::show_login_error()
 {
@@ -916,6 +917,10 @@ void ACMUI::show_window()
 void ACMUI::hide_window()
 {
     this->close();
+}
+void ACMUI::load_matches()
+{
+    uiserver->acmLogic->load();
 }
 void ACMUI::on_ACMResultsTable_activated(const QModelIndex &index)
 {

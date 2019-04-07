@@ -203,6 +203,7 @@ public:
     explicit ACMUI(UIServer*);
     void show_window();
     void hide_window();
+    void load_matches();
     Ui::ACM* acmUI;
 private slots:
     void on_backButton_clicked();

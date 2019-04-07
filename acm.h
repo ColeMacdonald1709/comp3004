@@ -65,6 +65,7 @@ public:
     void update_labels();
     void augment_matches(Animal*);
     void changeRule(Rule);
+    void load();
 private:
     DBServer* db;
     UIServer* ui;

@@ -231,7 +231,36 @@ void ACM::augment_matches(Animal* a)
 void ACM::changeRule(Rule rule) {
     ACM::r = rule;
 }
-
+void ACM::load()
+{
+    QFont boldfont;
+    boldfont.setBold(true);
+    int rowNum = 0;
+    QString aName, cName;
+    for(set<Animal*>::iterator a=ACM::m->get_animals()->begin(); a!=ACM::m->get_animals()->end(); ++a){
+        for(set<Client*>::iterator c=ACM::m->get_clients()->begin(); c!= ACM::m->get_clients()->end(); ++c){
+            if(ACM::g->get_edge_weight((*a),(*c)) > 0.0f){
+                ui->acmUIC->acmUI->ACMResultsTable->insertRow(rowNum);
+                QTableWidgetItem* table_cell = new QTableWidgetItem;
+                ui->acmUIC->acmUI->ACMResultsTable->setItem(rowNum,0,table_cell);
+                aName = (*a)->getAnimalName();
+                table_cell->setText( aName );
+                table_cell->setFont(boldfont);
+                table_cell = new QTableWidgetItem;
+                ui->acmUIC->acmUI->ACMResultsTable->setItem(rowNum,1,table_cell);
+                cName = (*c)->getName();
+                table_cell->setText( cName );
+                table_cell = new QTableWidgetItem;
+                ui->acmUIC->acmUI->ACMResultsTable->setItem(rowNum,2,table_cell);
+                float w = ACM::g->get_edge_weight((*a),(*c));
+                QString wgt;
+                wgt.setNum(w);
+                table_cell->setText( wgt );
+                rowNum++;
+            }
+        }
+    }
+}
 Graph::Graph(set<Animal*>* a, set<Client*>* c)
 {
     Graph::animals = a;
@@ -359,3 +388,4 @@ Client* Edge::get_client()
 {
     return Edge::client;
 }
+
