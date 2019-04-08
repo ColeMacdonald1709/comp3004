@@ -189,6 +189,13 @@ void AddNewAnimalUI::on_cancelbtn_clicked()
 {
     addnewanimalUI->txtName->clear();
     addnewanimalUI->txtBreed->clear();
+    addnewanimalUI->radDog->setChecked(false);
+    addnewanimalUI->radCat->setChecked(false);
+    addnewanimalUI->radRabbit->setChecked(false);
+    addnewanimalUI->radBird->setChecked(false);
+    addnewanimalUI->radFish->setChecked(false);
+    addnewanimalUI->radMale->setChecked(false);
+    addnewanimalUI->radFemale->setChecked(false);
     addnewanimalUI->NPAttr1spinBox->clear();
     addnewanimalUI->NPAttr2spinBox->clear();
     addnewanimalUI->NPAttr3spinBox->clear();
@@ -259,7 +266,6 @@ void AddNewAnimalUI::on_addAnimalbtn_clicked()
         uiserver->addnewanimalLogic->add_new_animal(&name, PAList, NPAList);
         hide_window();
         uiserver->manageanimalUIC->show_window();
-        uiserver->manageanimalUIC->update_animals(&name, PAList);
     }else{
         QMessageBox::warning(this, tr("Animal already exists"), tr("Error: Animal name already in use."));
     }
@@ -327,6 +333,23 @@ void EditAnimalUI::load_info(QString* n)
     editanimalUI->txt_name->setText(*n);
     editanimalUI->txt_species->setText(PA.at(0));
     editanimalUI->txtBreed->setText(PA.at(1));
+
+    editanimalUI->radMale->setChecked(false);
+    editanimalUI->radFemale->setChecked(false);
+    if (PA.at(2)=="Male")
+        editanimalUI->radMale->setChecked(true);
+    else if (PA.at(2)=="Female")
+        editanimalUI->radFemale->setChecked(true);
+
+    if (PA.at(3)=="Baby")
+        editanimalUI->ageComboBox->setCurrentIndex(editanimalUI->ageComboBox->findText("Baby"));
+    else if (PA.at(3)=="Teenage")
+        editanimalUI->ageComboBox->setCurrentIndex(editanimalUI->ageComboBox->findText("Teenage"));
+    else if (PA.at(3)=="Adult")
+        editanimalUI->ageComboBox->setCurrentIndex(editanimalUI->ageComboBox->findText("Adult"));
+    else if (PA.at(3)=="Mature")
+        editanimalUI->ageComboBox->setCurrentIndex(editanimalUI->ageComboBox->findText("Mature"));
+
 
     editanimalUI->NPAttr1spinBox->setValue(NPA.at(0).toInt());
     editanimalUI->NPAttr2spinBox->setValue(NPA.at(1).toInt());
@@ -426,7 +449,40 @@ void EditClientUI::load_info(QString* n)
     editclientUI->txtPhone->setText(phone);
     editclientUI->txtEmail->setText(email);
 
-    editclientUI->txtBreed->clear();
+    //set to users info
+    editclientUI->radDog->setChecked(false);
+    editclientUI->radCat->setChecked(false);
+    editclientUI->radRabbit->setChecked(false);
+    editclientUI->radBird->setChecked(false);
+    editclientUI->radFish->setChecked(false);
+    if (PA.at(0)=="Dog")
+       editclientUI->radDog->setChecked(true);
+    else if (PA.at(0)=="Cat")
+        editclientUI->radCat->setChecked(true);
+    else if (PA.at(0)=="Rabbit")
+        editclientUI->radRabbit->setChecked(true);
+    else if (PA.at(0)=="Bird")
+        editclientUI->radBird->setChecked(true);
+    else if (PA.at(0)=="Fish")
+        editclientUI->radFish->setChecked(true);
+
+    editclientUI->txtBreed->setText(PA.at(1));
+
+    editclientUI->radMale->setChecked(false);
+    editclientUI->radFemale->setChecked(false);
+    if (PA.at(2)=="Male")
+        editclientUI->radMale->setChecked(true);
+    else if (PA.at(2)=="Female")
+        editclientUI->radFemale->setChecked(true);
+
+    if (PA.at(3)=="Baby")
+        editclientUI->ageComboBox->setCurrentIndex(editclientUI->ageComboBox->findText("Baby"));
+    else if (PA.at(3)=="Teenage")
+        editclientUI->ageComboBox->setCurrentIndex(editclientUI->ageComboBox->findText("Teenage"));
+    else if (PA.at(3)=="Adult")
+        editclientUI->ageComboBox->setCurrentIndex(editclientUI->ageComboBox->findText("Adult"));
+    else if (PA.at(3)=="Mature")
+        editclientUI->ageComboBox->setCurrentIndex(editclientUI->ageComboBox->findText("Mature"));
 
     editclientUI->NPAttr1spinBox->setValue(NPA.at(0).toInt());
     editclientUI->NPAttr2spinBox->setValue(NPA.at(1).toInt());
@@ -585,6 +641,8 @@ ManageAnimalUI::ManageAnimalUI(UIServer* uis) : QDialog(), manageanimalUI(new Ui
 }
 void ManageAnimalUI::show_window()
 {
+    manageanimalUI->btnEditanimal->setDisabled(true);
+    load_animals();
     this->open();
 }
 void ManageAnimalUI::hide_window()
@@ -627,6 +685,10 @@ void ManageAnimalUI::update_animal(QString* name, QList<QString>* PA)
 }
 void ManageAnimalUI::load_animals()
 {
+    //reset table
+    manageanimalUI->animalView->setRowCount(0);
+    //manageanimalUI->animalView->clear();
+
     QFont boldfont;
     boldfont.setBold(true);
     QString name;

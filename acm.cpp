@@ -31,8 +31,10 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr <= 1.0f){edge += 1.0f;}
+                if(e_curr <= 1.0f){edge += e_curr;}
             }
+            edge /= 5;
+            edge = 12 - edge;
             if(edge >= 7.0f){E_match = true;}
         }if(r == good){
             PA_match =
@@ -43,8 +45,10 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr <= 2.0f){edge += 1.0f;}
+                if(e_curr <= 2.0f){edge += e_curr;}
             }
+            edge /= 5;
+            edge = 12 - edge;
             if(edge >= 6.0f){E_match = true;}
         }if(r == fair){
             PA_match =
@@ -54,8 +58,10 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr <= 3.0f){edge += 1.0f;}
+                if(e_curr <= 3.0f){edge += e_curr;}
             }
+            edge /= 5;
+            edge = 12 - edge;
             if(edge >= 5.0f){E_match = true;}
         }if(r == poor){
             PA_match = (a->getPAttr()->at(0) == c->getInfo()->at(0));
@@ -63,8 +69,10 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr <= 4.0f){edge += 1.0f;}
+                if(e_curr <= 4.0f){edge += e_curr;}
             }
+            edge /= 5;
+            edge = 12 - edge;
             if(edge >= 4.0f){E_match = true;}
         }
     e = edge;

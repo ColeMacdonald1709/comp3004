@@ -13,7 +13,13 @@ Client::Client(QString n, QString p, QString e)
     phone = p;
     email = e;
     PAList = new QList<QString>();
+    PAList->append("Dog");
+    PAList->append("NULL");
+    PAList->append("Male");
+    PAList->append("Baby");
     NPAList = new QList<QString>();
+    for (int i=0;i<13;i++)
+        NPAList->append("1");
     neighbours = new std::set<Animal*>();
 }
 Client::Client(QString n, QString p, QString e, QList<QString>* info, QList<QString>* prefs)
