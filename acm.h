@@ -2,7 +2,7 @@
 #define ACM_H
 
 #include <algorithm>
-#include <set>
+#include <vector>
 #include <iterator>
 #include <math.h>
 
@@ -34,24 +34,25 @@ private:
 class Graph
 {
 public:
-    Graph(set<Animal*>*,set<Client*>*);
+    Graph(vector<Animal*>*,vector<Client*>*);
     ~Graph();
     void add_animal(Animal*);
     void add_client(Client*);
     void remove_animal(Animal*);
     void remove_client(Client*);
-    set<Animal*>* get_animals();
-    set<Client*>* get_clients();
-    set<Edge*>* get_edges();
+    vector<Animal*>* get_animals();
+    vector<Client*>* get_clients();
+    vector<Edge*>* get_edges();
     void add_edge(Animal*,Client*,float);
     void remove_edge(Animal*,Client*);
     void set_edge_weight(Animal*,Client*,float);
     void clear();
     float get_edge_weight(Animal*,Client*);
+    bool contains(Animal*,Client*);
 private:
-    set<Animal*>* animals;
-    set<Client*>* clients;
-    set<Edge*>* edges;
+    vector<Animal*>* animals;
+    vector<Client*>* clients;
+    vector<Edge*>* edges;
 };
 
 class ACM
@@ -66,9 +67,7 @@ public:
     void update_labels();
     void augment_matches(Animal*);
     void changeRule(Rule);
-    void load();
     Graph* get_m();
-    Graph* get_g();
     void get_attributes(QString, QString, QList<QString>*, QList<QString>*, QList<QString>*, QList<QString>*);
 private:
     DBServer* db;

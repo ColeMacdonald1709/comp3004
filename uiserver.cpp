@@ -959,7 +959,6 @@ void StaffPortalUI::hide_window()
     this->close();
 }
 
-
 ///acm interface
 ///----------------------
 ACMUI::ACMUI(UIServer* uis) : QDialog(), acmUI(new Ui::ACM)
@@ -1005,9 +1004,8 @@ void ACMUI::on_backButton_clicked()
     acmUI->txt_NPA10_2->clear();
     acmUI->txt_NPA11_2->clear();
     acmUI->txt_NPA12_2->clear();
-
-
     hide_window();
+    uiserver->acmLogic->~ACM();
     uiserver->staffportalUIC->show_window();
 }
 void ACMUI::show_window()
@@ -1023,15 +1021,13 @@ void ACMUI::load_matches()
     //reset table
     acmUI->ACMResultsTable->setRowCount(0);
     acmUI->ACMResultsTable->clear();
-    // uiserver->acmLogic->load();
     QFont boldfont;
     boldfont.setBold(true);
     int rowNum = 0;
     Graph* m = uiserver->acmLogic->get_m();
-    Graph* g = uiserver->acmLogic->get_g();
-    for(set<Animal*>::iterator a= m->get_animals()->begin(); a!= m->get_animals()->end(); ++a){
-        for(set<Client*>::iterator c= m->get_clients()->begin(); c!= m->get_clients()->end(); ++c){
-            if(g->get_edge_weight((*a),(*c)) > 0.0f){
+    for(vector<Animal*>::iterator a= m->get_animals()->begin(); a!= m->get_animals()->end(); ++a){
+        for(vector<Client*>::iterator c= m->get_clients()->begin(); c!= m->get_clients()->end(); ++c){
+            if(m->get_edge_weight((*a),(*c)) > 0.0f){
                 acmUI->ACMResultsTable->insertRow(rowNum);
 
                 QTableWidgetItem* table_cell = new QTableWidgetItem;
@@ -1044,7 +1040,7 @@ void ACMUI::load_matches()
 
                 table_cell = new QTableWidgetItem;
                 acmUI->ACMResultsTable->setItem(rowNum,2,table_cell);
-                float w = g->get_edge_weight((*a),(*c));
+                float w = m->get_edge_weight((*a),(*c));
                 QString wgt;
                 wgt.setNum((w/12)*100,'g',4);
                 table_cell->setText( wgt + "%" );

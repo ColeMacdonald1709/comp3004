@@ -73,7 +73,7 @@
   <widget class="QLabel" name="aname_label">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>40</y>
      <width>64</width>
      <height>17</height>
@@ -86,27 +86,51 @@
   <widget class="QLabel" name="txt_clientname">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>40</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_animalname">
    <property name="geometry">
     <rect>
-     <x>830</x>
+     <x>760</x>
      <y>40</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="PAtitle_label">
@@ -146,7 +170,7 @@
   <widget class="QLabel" name="aspecies_label">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>100</y>
      <width>64</width>
      <height>17</height>
@@ -159,27 +183,51 @@
   <widget class="QLabel" name="txt_cspecies">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>100</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_aspecies">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>100</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="cbreed_label">
@@ -198,7 +246,7 @@
   <widget class="QLabel" name="abreed_label">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>130</y>
      <width>64</width>
      <height>17</height>
@@ -224,7 +272,7 @@
   <widget class="QLabel" name="asex_label">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>160</y>
      <width>64</width>
      <height>17</height>
@@ -237,53 +285,101 @@
   <widget class="QLabel" name="txt_cbreed">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>130</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_abreed">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>130</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_csex">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>160</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_asex">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>160</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="cage_label">
@@ -302,7 +398,7 @@
   <widget class="QLabel" name="aage_label">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>190</y>
      <width>64</width>
      <height>17</height>
@@ -315,27 +411,51 @@
   <widget class="QLabel" name="txt_cage">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>190</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_aage">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>190</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="NPAtitle_label">
@@ -375,7 +495,7 @@
   <widget class="QLabel" name="NPA1_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>260</y>
      <width>41</width>
      <height>17</height>
@@ -388,27 +508,51 @@
   <widget class="QLabel" name="txt_NPA1">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>260</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA1_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>260</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="NPA2_label">
@@ -427,7 +571,7 @@
   <widget class="QLabel" name="NPA2_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>290</y>
      <width>41</width>
      <height>17</height>
@@ -453,7 +597,7 @@
   <widget class="QLabel" name="NPA3_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>320</y>
      <width>41</width>
      <height>17</height>
@@ -479,7 +623,7 @@
   <widget class="QLabel" name="NPA4_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>350</y>
      <width>41</width>
      <height>17</height>
@@ -505,7 +649,7 @@
   <widget class="QLabel" name="NPA5_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>380</y>
      <width>41</width>
      <height>17</height>
@@ -531,7 +675,7 @@
   <widget class="QLabel" name="NPA6_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>410</y>
      <width>41</width>
      <height>17</height>
@@ -557,7 +701,7 @@
   <widget class="QLabel" name="NPA7_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>440</y>
      <width>41</width>
      <height>17</height>
@@ -583,7 +727,7 @@
   <widget class="QLabel" name="NPA8_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>470</y>
      <width>41</width>
      <height>17</height>
@@ -609,7 +753,7 @@
   <widget class="QLabel" name="NPA9_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>500</y>
      <width>41</width>
      <height>17</height>
@@ -635,7 +779,7 @@
   <widget class="QLabel" name="NPA10_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>530</y>
      <width>51</width>
      <height>17</height>
@@ -661,7 +805,7 @@
   <widget class="QLabel" name="NPA11_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>560</y>
      <width>51</width>
      <height>17</height>
@@ -687,7 +831,7 @@
   <widget class="QLabel" name="NPA12_label_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>700</x>
      <y>590</y>
      <width>51</width>
      <height>17</height>
@@ -700,287 +844,551 @@
   <widget class="QLabel" name="txt_NPA2">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>290</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA2_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>290</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA3">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>320</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA3_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>320</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA4">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>350</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA4_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>350</y>
-     <width>64</width>
-     <height>16</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA5">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>380</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA5_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>380</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA6">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>410</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA6_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>410</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA7">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>440</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA7_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>440</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA8">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>470</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA8_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>470</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA9">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>500</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA9_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>500</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA10">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>530</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA10_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>530</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA11">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>560</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA11_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>560</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA12">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>530</x>
      <y>590</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="txt_NPA12_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>760</x>
      <y>590</y>
-     <width>64</width>
-     <height>17</height>
+     <width>150</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>150</width>
+     <height>20</height>
+    </size>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="backButton">
@@ -1026,13 +1434,22 @@
     <rect>
      <x>30</x>
      <y>50</y>
-     <width>401</width>
+     <width>421</width>
      <height>551</height>
     </rect>
    </property>
    <property name="editTriggers">
     <set>QAbstractItemView::NoEditTriggers</set>
    </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>130</number>
+   </attribute>
+   <attribute name="horizontalHeaderMinimumSectionSize">
+    <number>30</number>
+   </attribute>
+   <attribute name="verticalHeaderMinimumSectionSize">
+    <number>30</number>
+   </attribute>
    <column>
     <property name="text">
      <string>Client</string>

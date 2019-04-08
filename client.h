@@ -8,7 +8,7 @@ Ian Sloan 		101021039
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include <bits/stdc++.h>
+#include <vector>
 
 #include "animal.h"
 
@@ -23,7 +23,7 @@ public:
     Client(QString,QString,QString);
     Client(QString, QString, QString, QList<QString>*, QList<QString>*);
     ~Client();
-    QString getName();
+    QString getName() const;
     void changeName(QString);
     QString getPhone();
     void changePhone(QString);
@@ -37,7 +37,8 @@ public:
     float get_label();
     void set_label(float);
     bool empty_neighbour();
-    std::set<Animal*>* get_neighbours();
+    std::vector<Animal*>* get_neighbours();
+    bool operator <(Client*) const;
 protected:
     QString name;
     QString phone;
@@ -48,7 +49,7 @@ protected:
     QList<QString>* NPAList;
     //ACM stuff
     float label = 0.0f;
-    std::set<Animal*>* neighbours;
+    std::vector<Animal*>* neighbours;
 };
 
 #endif // CLIENT_H

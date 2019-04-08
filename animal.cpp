@@ -11,20 +11,20 @@ Animal::Animal(QString aName, QList<QString>* PAttribute, QList<QString>* NPAttr
     name = aName;
     PAttr = PAttribute;
     NPAttr = NPAttribute;
-    neighbours = new std::set<Client*>();
+    neighbours = new std::vector<Client*>();
 }
 Animal::Animal(QString aName){
     name = aName;
     PAttr = new QList<QString>();
     NPAttr = new QList<QString>();
-    neighbours = new std::set<Client*>();
+    neighbours = new std::vector<Client*>();
 }
 Animal::~Animal(){
     delete PAttr;
     delete NPAttr;
     delete neighbours;
 }
-QString Animal::getAnimalName(){return name;}
+QString Animal::getAnimalName()const{return name;}
 void Animal::viewProfile(){}
 QList<QString>* Animal::getPAttr() { return PAttr; }
 void Animal::addPAttr(QString attribute) { PAttr->append(attribute); }
@@ -44,10 +44,13 @@ float Animal::get_label()
 }
 bool Animal::empty_neighbour()
 {
-    qDebug()<<"emptyneighbour";
     return neighbours->size()>0;
 }
-std::set<Client*>* Animal::get_neighbours()
+std::vector<Client*>* Animal::get_neighbours()
 {
     return neighbours;
+}
+bool Animal::operator <(Animal* other) const
+{
+    return (this->name < other->name);
 }

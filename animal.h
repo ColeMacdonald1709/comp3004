@@ -8,7 +8,7 @@ Ian Sloan 		101021039
 #ifndef _ANIMAL_H
 #define _ANIMAL_H
 
-#include <bits/stdc++.h>
+#include <vector>
 
 #include "client.h"
 
@@ -24,7 +24,7 @@ class Animal {
         Animal(QString aName);
         ~Animal(void);
 
-        QString getAnimalName();
+        QString getAnimalName() const;
         void viewProfile();
 
         QList<QString>* getPAttr();
@@ -38,11 +38,12 @@ class Animal {
         float get_label();
         void set_label(float);
         bool empty_neighbour();
-        std::set<Client*>* get_neighbours();
+        std::vector<Client*>* get_neighbours();
+        bool operator <(Animal*)const;
     protected:
         //ACM stuff
         float label = 0.0f;
-        std::set<Client*>* neighbours;
+        std::vector<Client*>* neighbours;
     private:
         QString name;
         QList<QString>* PAttr;

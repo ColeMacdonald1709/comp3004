@@ -20,7 +20,7 @@ Client::Client(QString n, QString p, QString e)
     NPAList = new QList<QString>();
     for (int i=0;i<13;i++)
         NPAList->append("1");
-    neighbours = new std::set<Animal*>();
+    neighbours = new std::vector<Animal*>();
 }
 Client::Client(QString n, QString p, QString e, QList<QString>* info, QList<QString>* prefs)
 {
@@ -31,14 +31,14 @@ Client::Client(QString n, QString p, QString e, QList<QString>* info, QList<QStr
     PAList = info;
     //non-physical attributes
     NPAList = prefs;
-    neighbours = new std::set<Animal*>();
+    neighbours = new std::vector<Animal*>();
 }
 Client::~Client(){
     delete PAList;
     delete NPAList;
     delete neighbours;
 }
-QString Client::getName(){return name;}
+QString Client::getName()const{return name;}
 void Client::changeName(QString newname){name = newname;}
 
 QString Client::getPhone(){return phone;}
@@ -66,7 +66,11 @@ bool Client::empty_neighbour()
 {
     return neighbours->size()>0;
 }
-std::set<Animal*>* Client::get_neighbours()
+std::vector<Animal*>* Client::get_neighbours()
 {
     return neighbours;
+}
+bool Client::operator<(Client* other) const
+{
+    return (this->name < other->name);
 }
