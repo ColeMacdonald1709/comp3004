@@ -5,20 +5,6 @@ ACM::ACM(DBServer* dbs, UIServer* uis)
 {
     db = dbs;
     ui = uis;
-    set<Animal*>* a = new set<Animal*>();
-    set<Animal*>* a_empty = new set<Animal*>();
-    QList<Animal*>* a_db = db->get_animals();
-    for(int i=0; i<a_db->size(); i++){a->insert(a_db->at(i));}
-
-    set<Client*>* c = new set<Client*>();
-    set<Client*>* c_empty = new set<Client*>();
-    QList<Client*>* c_db = db->get_clients();
-    for(int i=0; i<c_db->size(); i++){c->insert(c_db->at(i));}
-
-    ACM::g = new Graph(a,c);
-    ACM::m = new Graph(a,c);
-    ACM::s = new Graph(a_empty,c_empty);
-    ACM::t = new Graph(a_empty,c_empty);
 }
 ACM::~ACM()
 {
@@ -86,6 +72,22 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
 }
 void ACM::label()
 {
+    //reset graphs
+    set<Animal*>* a = new set<Animal*>();
+    set<Animal*>* a_empty = new set<Animal*>();
+    QList<Animal*>* a_db = db->get_animals();
+    for(int i=0; i<a_db->size(); i++){a->insert(a_db->at(i));}
+
+    set<Client*>* c = new set<Client*>();
+    set<Client*>* c_empty = new set<Client*>();
+    QList<Client*>* c_db = db->get_clients();
+    for(int i=0; i<c_db->size(); i++){c->insert(c_db->at(i));}
+
+    ACM::g = new Graph(a,c);
+    ACM::m = new Graph(a,c);
+    ACM::s = new Graph(a_empty,c_empty);
+    ACM::t = new Graph(a_empty,c_empty);
+
     for(set<Client*>::iterator i=ACM::g->get_clients()->begin(); i!=ACM::g->get_clients()->end(); ++i) {
         Client* curr_c = (*i);
         curr_c->set_label(0.0f);

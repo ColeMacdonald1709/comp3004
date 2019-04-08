@@ -113,8 +113,8 @@ void UIServer::show_clients()
 }
 void UIServer::show_acm()
 {
-    UIServer::acmUIC->show_window();
     UIServer::acmUIC->load_matches();
+    UIServer::acmUIC->show_window();
 }
 void UIServer::show_login_error()
 {
@@ -958,7 +958,10 @@ void ACMUI::hide_window()
 }
 void ACMUI::load_matches()
 {
-   // uiserver->acmLogic->load();
+    //reset table
+    acmUI->ACMResultsTable->setRowCount(0);
+    acmUI->ACMResultsTable->clear();
+    // uiserver->acmLogic->load();
     QFont boldfont;
     boldfont.setBold(true);
     int rowNum = 0;
@@ -991,7 +994,7 @@ void ACMUI::load_matches()
 }
 void ACMUI::on_ACMResultsTable_activated(const QModelIndex &index)
 {
-     //update detailed view showing client and animal profiles side-by-side with coloured fields
+    //update detailed view showing client and animal profiles side-by-side with coloured fields
     QList<QString> cPA;
     QList<QString> cNPA;
     QList<QString> aPA;
@@ -1020,7 +1023,6 @@ void ACMUI::on_ACMResultsTable_activated(const QModelIndex &index)
             acmUI->NPA1_label->setStyleSheet("QLabel { font : bold ; color : green; }");}
         else{
             acmUI->NPA1_label->setStyleSheet("QLabel {font : normal ; color : black; }");
-            acmUI->NPA1_label->colorCount();
         }
 
         acmUI->txt_NPA2->setText(cNPA.at(1));
