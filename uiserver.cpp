@@ -214,6 +214,18 @@ void AddNewAnimalUI::on_addAnimalbtn_clicked()
 {
     QString name = addnewanimalUI->txtName->toPlainText();
     if(!uiserver->addnewanimalLogic->animal_exists(&name)){
+        if(!(addnewanimalUI->radDog->isChecked()
+                || addnewanimalUI->radCat->isChecked()
+                || addnewanimalUI->radRabbit->isChecked()
+                || addnewanimalUI->radBird->isChecked()
+                || addnewanimalUI->radFish->isChecked())) {
+            QMessageBox::warning(this, tr("No Species Selected"), tr("Error: Please choose a species."));
+            return;
+        }
+        if(addnewanimalUI->txtName->toPlainText().isEmpty()) {
+            QMessageBox::warning(this, tr("No Name Specified"), tr("Error: Please enter a name."));
+            return;
+        }
         QList<QString>* PAList = new QList<QString>();
         QList<QString>* NPAList = new QList<QString>();
         //add values to PALIST
@@ -268,6 +280,7 @@ void AddNewAnimalUI::on_addAnimalbtn_clicked()
         uiserver->manageanimalUIC->show_window();
     }else{
         QMessageBox::warning(this, tr("Animal already exists"), tr("Error: Animal name already in use."));
+        return;
     }
 }
 
