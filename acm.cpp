@@ -24,7 +24,6 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
         if(r == strong){
             PA_match =
                 (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
-                (a->getPAttr()->at(1) == c->getInfo()->at(1)) &&
                 (a->getPAttr()->at(2) == c->getInfo()->at(2)) &&
                 (a->getPAttr()->at(3) == c->getInfo()->at(3));
             for(int idx=0; idx < a->getNPAttr()->size(); idx++){
@@ -34,7 +33,7 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 edge += e_curr/5;
             }
             edge = 12 - edge;
-            if(edge >= 7.0f){E_match = true;}
+            if(edge >= 9.0f){E_match = true;}
         }if(r == good){
             PA_match =
                 (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
@@ -47,7 +46,7 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 edge += e_curr/5;
             }
             edge = 12 - edge;
-            if(edge >= 6.0f){E_match = true;}
+            if(edge >= 7.0f){E_match = true;}
         }if(r == fair){
             PA_match =
                 (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
@@ -59,7 +58,7 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 edge += e_curr/5;
             }
             edge = 12 - edge;
-            if(edge >= 5.0f){E_match = true;}
+            if(edge >= 6.0f){E_match = true;}
         }if(r == poor){
             PA_match = (a->getPAttr()->at(0) == c->getInfo()->at(0));
             for(int idx=0; idx < a->getNPAttr()->size(); idx++){
