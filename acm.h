@@ -69,6 +69,7 @@ public:
     void changeRule(Rule);
     Graph* get_m();
     void get_attributes(QString, QString, QList<QString>*, QList<QString>*, QList<QString>*, QList<QString>*);
+    void clear();
 private:
     DBServer* db;
     UIServer* ui;

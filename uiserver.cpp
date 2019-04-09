@@ -928,9 +928,7 @@ void StaffPortalUI::on_runACMButton_clicked()
             r=poor;
 
         uiserver->acmLogic->changeRule(r);
-        qDebug()<<"Start label";
         uiserver->acmLogic->label();
-        qDebug()<<"Finish";
         hide_window();
         uiserver->staffportalLogic->open_ACM();
     }
@@ -1005,7 +1003,7 @@ void ACMUI::on_backButton_clicked()
     acmUI->txt_NPA11_2->clear();
     acmUI->txt_NPA12_2->clear();
     hide_window();
-    uiserver->acmLogic->~ACM();
+    uiserver->acmLogic->clear();
     uiserver->staffportalUIC->show_window();
 }
 void ACMUI::show_window()

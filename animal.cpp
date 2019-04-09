@@ -42,10 +42,6 @@ float Animal::get_label()
 {
     return Animal::label;
 }
-bool Animal::empty_neighbour()
-{
-    return neighbours->size()>0;
-}
 std::vector<Client*>* Animal::get_neighbours()
 {
     return neighbours;

@@ -31,9 +31,8 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr <= 1.0f){edge += e_curr;}
+                edge += e_curr/5;
             }
-            edge /= 5;
             edge = 12 - edge;
             if(edge >= 7.0f){E_match = true;}
         }if(r == good){
@@ -45,9 +44,8 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr <= 2.0f){edge += e_curr;}
+                edge += e_curr/5;
             }
-            edge /= 5;
             edge = 12 - edge;
             if(edge >= 6.0f){E_match = true;}
         }if(r == fair){
@@ -58,9 +56,8 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr <= 3.0f){edge += e_curr;}
+                edge += e_curr/5;
             }
-            edge /= 5;
             edge = 12 - edge;
             if(edge >= 5.0f){E_match = true;}
         }if(r == poor){
@@ -69,9 +66,8 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
                 e_curr = (float)fabs(a_NPA - c_NPA);
-                if(e_curr <= 4.0f){edge += e_curr;}
+                edge += e_curr/5;
             }
-            edge /= 5;
             edge = 12 - edge;
             if(edge >= 4.0f){E_match = true;}
         }
@@ -121,7 +117,7 @@ void ACM::label()
             }
         }
     }
-    search_new();
+   search_new();
 }
 void ACM::search_new()
 {
@@ -131,20 +127,19 @@ void ACM::search_new()
     vector<Animal*>::iterator a_it, a_ls;
     std::sort(g_a_cpy->begin(),g_a_cpy->end());
     std::sort(m_a_cpy->begin(),m_a_cpy->end());
-
-    a_ls = std::set_difference(g_a_cpy->begin(), g_a_cpy->end(),
-                        m_a_cpy->begin(), m_a_cpy->end(),
-                        a_diff->begin());
-    std::cout << "G size => " << g_a_cpy->size() << std::endl;
-    std::cout << "M size => " << m_a_cpy->size() << std::endl;
-    std::cout << "D size => " << (a_ls - a_diff->begin()) << std::endl;
+    if(g_a_cpy->size() > 0 && m_a_cpy->size() > 0){
+        a_ls = std::set_difference(g_a_cpy->begin(), g_a_cpy->end(),
+                            m_a_cpy->begin(), m_a_cpy->end(),
+                            a_diff->begin());
+    }else{a_ls = g_a_cpy->begin();}
     for(a_it=a_diff->begin(); a_it!=a_ls; ++a_it){
+        ACM::s->clear();
         ACM::s->add_animal(*a_it);
         ACM::t->clear();
-        if((*a_it)->empty_neighbour()){
+        if((*a_it)->get_neighbours()->size() == 0){
             update_labels();
         }
-        if(!(*a_it)->empty_neighbour()){
+        if((*a_it)->get_neighbours()->size() != 0){
             augment_matches((*a_it));
         }
     }
@@ -161,12 +156,11 @@ void ACM::update_labels()
     vector<Client*>* c_diff = g_c_cpy;
     std::sort(g_c_cpy->begin(),g_c_cpy->end());
     std::sort(m_c_cpy->begin(),m_c_cpy->end());
-    c_ls = std::set_difference(g_c_cpy->begin(), g_c_cpy->end(),
-                        m_c_cpy->begin(), m_c_cpy->end(),
-                        c_diff->begin());
-    std::cout << "G size => " << g_c_cpy->size() << std::endl;
-    std::cout << "M size => " << m_c_cpy->size() << std::endl;
-    std::cout << "D size => " << (c_ls - c_diff->begin()) << std::endl;
+    if(g_c_cpy->size() > 0 && m_c_cpy->size() > 0){
+        c_ls = std::set_difference(g_c_cpy->begin(), g_c_cpy->end(),
+                            m_c_cpy->begin(), m_c_cpy->end(),
+                            c_diff->begin());
+    }else{c_ls = g_c_cpy->begin();}
     for(a_it=ACM::s->get_animals()->begin(); a_it!=ACM::s->get_animals()->end(); ++a_it){
         for(c_it=c_diff->begin(); c_it!=c_ls; ++c_it){
             float temp = (*a_it)->get_label() + (*c_it)->get_label() - ACM::g->get_edge_weight((*a_it),(*c_it));
@@ -177,31 +171,31 @@ void ACM::update_labels()
             }
         }
     }
-    float prev = 0.0f;
-    for(a_it=ACM::s->get_animals()->begin(); a_it!=ACM::s->get_animals()->end(); ++a_it){
-        prev = (*a_it)->get_label();
-        (*a_it)->set_label(prev - delta);
+    if(delta > 0 && delta <= 12){
+        for(a_it=ACM::s->get_animals()->begin(); a_it!=ACM::s->get_animals()->end(); ++a_it)
+            (*a_it)->set_label((*a_it)->get_label() - delta);
+
+        for(c_it=ACM::t->get_clients()->begin(); c_it!=ACM::t->get_clients()->end(); ++c_it)
+            (*c_it)->set_label((*c_it)->get_label() + delta);
     }
-    for(c_it=ACM::t->get_clients()->begin(); c_it!=ACM::t->get_clients()->end(); ++c_it){
-        prev = (*c_it)->get_label();
-        (*c_it)->set_label(prev + delta);
-    }
-    min_a->get_neighbours()->push_back(min_c);
-    min_c->get_neighbours()->push_back(min_a);
 }
 void ACM::augment_matches(Animal* a)
 {
     vector<Client*>* a_n_cpy = a->get_neighbours();
     vector<Client*>* t_c_cpy = ACM::t->get_clients();
-    vector<Client*>::iterator p_it, p_ls;
     vector<Client*>* p_diff = a_n_cpy;
+    vector<Client*>::iterator p_it, p_ls;
+
     std::sort(a_n_cpy->begin(),a_n_cpy->end());
     std::sort(t_c_cpy->begin(),t_c_cpy->end());
-    p_ls = std::set_difference(a_n_cpy->begin(), a_n_cpy->end(),
-                        t_c_cpy->begin(), t_c_cpy->end(),
-                        p_diff->begin());
+
+    if(a_n_cpy->size() > 0 && t_c_cpy->size() > 0){
+        p_ls = std::set_difference(a_n_cpy->begin(), a_n_cpy->end(),
+                            t_c_cpy->begin(), t_c_cpy->end(),
+                            p_diff->begin());
+    }else{p_ls = a_n_cpy->begin();}
     float max_w = 0.0f;
-    Client* max_client = (*p_it);
+    Client* max_client = (*p_diff->begin());
     for(p_it=p_diff->begin(); p_it!=p_ls; ++p_it){
         float curr_w = ACM::g->get_edge_weight(a,(*p_it));
         if(curr_w > max_w){
@@ -209,12 +203,11 @@ void ACM::augment_matches(Animal* a)
             max_client = (*p_it);
         }
     }
-    ACM::m->add_edge(a,max_client,max_w);
-    a->get_neighbours()->push_back(max_client);
-    max_client->get_neighbours()->push_back(a);
-    ACM::s->add_animal(a);
-    ACM::t->add_client(max_client);
-    if((*(*ACM::s->get_animals()->begin())->get_neighbours()->begin())->getName() == ((*ACM::t->get_clients()->begin())->getName())){
+    if(!ACM::m->contains(a,max_client)){
+        ACM::m->add_edge(a,max_client,max_w);
+    }else{
+        ACM::s->add_animal(a);
+        ACM::t->add_client(max_client);
         update_labels();
     }
 }
@@ -240,7 +233,13 @@ void ACM::get_attributes(QString cName, QString aName, QList<QString>* cPA, QLis
         }
     }
 }
-
+void ACM::clear()
+{
+    ACM::g->clear();
+    ACM::m->clear();
+    ACM::s->clear();
+    ACM::t->clear();
+}
 Graph::Graph(vector<Animal*>* a, vector<Client*>* c)
 {
     Graph::animals = a;
@@ -249,6 +248,14 @@ Graph::Graph(vector<Animal*>* a, vector<Client*>* c)
 }
 Graph::~Graph()
 {
+    for(vector<Animal*>::iterator a_it=animals->begin(); a_it!=animals->end(); ++a_it){
+        (*a_it)->set_label(0.0f);
+        (*a_it)->get_neighbours()->clear();
+    }
+    for(vector<Client*>::iterator c_it=clients->begin(); c_it!=clients->end(); ++c_it){
+        (*c_it)->set_label(0.0f);
+        (*c_it)->get_neighbours()->clear();
+    }
     delete animals;
     delete clients;
     delete edges;
@@ -319,7 +326,17 @@ void Graph::set_edge_weight(Animal* a, Client* c, float w)
 }
 void Graph::clear()
 {
-    delete animals; delete clients; delete edges;
+    for(vector<Animal*>::iterator a_it=animals->begin(); a_it!=animals->end(); ++a_it){
+        (*a_it)->set_label(0.0f);
+        (*a_it)->get_neighbours()->clear();
+    }
+    for(vector<Client*>::iterator c_it=clients->begin(); c_it!=clients->end(); ++c_it){
+        (*c_it)->set_label(0.0f);
+        (*c_it)->get_neighbours()->clear();
+    }
+    delete animals;
+    delete clients;
+    delete edges;
     Graph::animals = new vector<Animal*>();
     Graph::clients = new vector<Client*>();
     Graph::edges = new vector<Edge*>();

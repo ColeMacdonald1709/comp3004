@@ -36,7 +36,6 @@ public:
     //ACM stuff
     float get_label();
     void set_label(float);
-    bool empty_neighbour();
     std::vector<Animal*>* get_neighbours();
     bool operator <(Client*) const;
 protected:
