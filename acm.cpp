@@ -60,7 +60,8 @@ bool ACM::compute_edge(Animal* a, Client* c, float& e)
             edge = 12 - edge;
             if(edge >= 6.0f){E_match = true;}
         }if(r == poor){
-            PA_match = (a->getPAttr()->at(0) == c->getInfo()->at(0));
+            PA_match = (a->getPAttr()->at(0) == c->getInfo()->at(0)) &&
+                    ((a->getPAttr()->at(2) == c->getInfo()->at(2)) ||  (a->getPAttr()->at(3) == c->getInfo()->at(3)));
             for(int idx=0; idx < a->getNPAttr()->size(); idx++){
                 float a_NPA = a->getNPAttr()->at(idx).toFloat();
                 float c_NPA = c->getPrefs()->at(idx).toFloat();
