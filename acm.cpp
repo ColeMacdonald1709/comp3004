@@ -12,13 +12,7 @@ ACM::ACM(DBServer* dbs, UIServer* uis)
     db = dbs;
     ui = uis;
 }
-ACM::~ACM()
-{
-    delete ACM::g;
-    delete ACM::m;
-    delete ACM::s;
-    delete ACM::t;
-}
+ACM::~ACM(){}
 bool ACM::compute_edge(Animal* a, Client* c, float& e)
 {
     float e_curr = 0.0f;
